@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 function ShoppingCart() {
 
+    //ESTE COMPONENTE DEBE RECUPERAR DE LOCALHISTORY LOS DATOS DE LOS ELEMENTOS PARA INSERTAR EN LA LISTA DEL CARRITO, Y CUANDO SE ELIMINE ALGUNO DE LA LISTA TAMBIEN
+    // SE DEBE ACTUALIZAR LOCAL HISTORY, POR AHORA PONGO VARIOS ELEMENTOS DE PRUEBA
+
     // const history = useHistory();
     const navigate = useNavigate();
 
