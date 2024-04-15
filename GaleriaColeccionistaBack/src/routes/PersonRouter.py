@@ -13,7 +13,7 @@ def get_person():
     PersonService.get_person()
     print("Consola: Personas obtenidas.")
 
-    return 'Página: Productos obtenidos.'
+    return 'Página: Personas obtenidss.'
 
 @postPerson.route('/',methods=['POST'])
 
@@ -58,12 +58,12 @@ def put_person(id_person):
     
    
     PersonService.put_person(id_person, updateperson)
-    print('Consola: Producto actualizado: ')
-    return 'Página: Producto actualizado.'
+    print('Consola: Persona actualizado: ')
+    return 'Página: Persona actualizado.'
    
        
 @deletePerson.route('/<int:id_person>', methods=['DELETE'])
-def delete_producto(id_person):       
+def delete_person(id_person):       
     PersonService.delete_person(id_person)
     print('Consola: Persona eliminada.')
     return 'Página: Persona eliminada.'

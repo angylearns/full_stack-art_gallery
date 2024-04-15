@@ -1,5 +1,5 @@
 from flask import Flask
-from src.routes import PersonRouter, UserRouter
+from src.routes import PersonRouter, UserRouter, ProductRouter
 
 
 app= Flask(__name__)
@@ -16,4 +16,9 @@ def init_app(config):
     app.register_blueprint(UserRouter.postUser, url_prefix='/user')
     app.register_blueprint(UserRouter.putUser, url_prefix='/user')
     app.register_blueprint(UserRouter.deleteUser, url_prefix='/user')
+
+    app.register_blueprint(ProductRouter.getProduct, url_prefix='/user')
+    app.register_blueprint(ProductRouter.postProduct, url_prefix='/user')
+    app.register_blueprint(ProductRouter.putProduct, url_prefix='/user')
+    app.register_blueprint(ProductRouter.deleteProduct, url_prefix='/user')
     return app

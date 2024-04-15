@@ -56,7 +56,7 @@ def put_user(id_user):
    
        
 @deleteUser.route('/<int:id_user>', methods=['DELETE'])
-def delete_producto(id_user):       
+def delete_user(id_user):       
     UserService.delete_user(id_user)
     print('Consola: Usuaro eliminado.')
     return 'Página: Usuario eliminado.'
