@@ -17,8 +17,8 @@ def init_app(config):
     app.register_blueprint(UserRouter.putUser, url_prefix='/user')
     app.register_blueprint(UserRouter.deleteUser, url_prefix='/user')
 
-    app.register_blueprint(ProductRouter.getProduct, url_prefix='/user')
-    app.register_blueprint(ProductRouter.postProduct, url_prefix='/user')
-    app.register_blueprint(ProductRouter.putProduct, url_prefix='/user')
-    app.register_blueprint(ProductRouter.deleteProduct, url_prefix='/user')
+    app.register_blueprint(ProductRouter.getProduct, url_prefix='/productr')
+    app.register_blueprint(ProductRouter.postProduct, url_prefix='/product')
+    app.register_blueprint(ProductRouter.putProduct, url_prefix='/product')
+    app.register_blueprint(ProductRouter.deleteProduct, url_prefix='/product')
     return app
