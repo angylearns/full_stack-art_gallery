@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './shoppingCart.css'
 import '../endPurchase/EndPurchase'
 // import { useHistory } from 'react-router-dom';
@@ -12,6 +12,17 @@ function ShoppingCart() {
 
     // const history = useHistory();
     const navigate = useNavigate();
+
+    const [productList2, setProductList2] = useState([]);
+
+    useEffect(() => {
+        const storedProducts = JSON.parse(localStorage.getItem('products'));
+        if (storedProducts != null) {
+            setProductList2(storedProducts);
+        }
+
+    }, []);
+
 
     const [productList, setProductList] = useState([
         {
@@ -49,6 +60,7 @@ function ShoppingCart() {
         }
     ]);
 
+
     // Calcular el total de los precios
     const totalPrecio = productList.reduce((total, product) => total + parseFloat(product.price), 0);
     // URL de la imagen estática
@@ -60,9 +72,10 @@ function ShoppingCart() {
         eliminarProducto(index);
     };
 
+
     const eliminarProducto = (index) => {
-        const nuevaLista = productList.filter((product, idx) => idx !== index);
-        setProductList(nuevaLista);
+        const nuevaLista = productList2.filter((product, idx) => idx !== index);
+        setProductList2(nuevaLista);
     };
 
     const handleEndPurchase = (total) => {
@@ -95,7 +108,7 @@ function ShoppingCart() {
                         </tr>
                     </thead>
                     <tbody>
-                        {productList.map((product, index) => (
+                        {productList2.map((product, index) => (
                             <tr
                                 key={product.id_product}
                                 className={highlightedIndex === index ? 'highlighted' : ''}

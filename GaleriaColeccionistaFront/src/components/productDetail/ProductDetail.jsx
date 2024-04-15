@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './productDetail.css'
 import React from 'react';
 
@@ -6,25 +6,50 @@ import React from 'react';
 function ProductDetail() {
   //este componente debe recibir como parámetro la obra que se quiere mostrar pero de momento solo para probar pongo una a mano, al pinchar en el boton de comprar guarda en local storage
 
+  const [arrayProduct, setArrayProduct] = useState([]);
+
   const [product, setProduct] = useState(
     {
-        id_product: "1",
-        title: "Producto 1",
-        price: "10",
+        id_product: "3",
+        url: "https://i.postimg.cc/JhrQQ0tf/treen.png",
+        title: "Producto 2",
+        price: "105",
         material: "Material 1",
-        dimension: "Dimension 1",
+        dimensions: "Dimension 1",
         in_stock: true,
-        style: "Estilo 1",
-        id_purchase_order: "1",
-        url: "https://i.postimg.cc/tCfhFKYv/popArt1.png"
+        style: "Estilo 22221e",
+        id_purchase_order: "2",
+        id_person_fk: "2"
     });
+
+    //recuperamos local storage asi si vamos a añadir la obra al carrito no eliminamos las que ya puedan estar añadidas y guardadas en local storage
+    useEffect(() => {
+      const storedProducts = JSON.parse(localStorage.getItem('products'));
+      if (storedProducts != null){
+        setArrayProduct(storedProducts);
+      }
+      
+    }, []);
+  
+   //guardamos el producto en local storage para que luego aparezca en la lista de la compra que es la que lo recupera
+    useEffect(() => {
+      if (arrayProduct.length > 0) {
+        localStorage.setItem('products', JSON.stringify(arrayProduct));
+      }
+    }, [arrayProduct]);
+
+    const handleSaveProduct = () => {
+      setArrayProduct(prevArray => [...prevArray, product]);
+  };
+
+
 
   return (
     <>
  <div className="contenedor">
       <div className="fila fila-superior">
         <div className="columna">Contenido 1 logo de Galeria</div>
-        <div className="columna"><button>Comprar</button></div>
+        <div className="columna"><button onClick={() => handleSaveProduct()}>Comprar</button></div>
       </div>
       <div className="fila fila-inferior">
         <div className="columna-grande">
@@ -32,8 +57,8 @@ function ProductDetail() {
         </div>
         <div className="columna-grande">
             <h3>{product.title}</h3>
-            <p>Artista: dfasdf</p>
-            <p>Tamaño: {product.dimension}</p>
+            <p>Artista: {product.id_person_fk}</p>
+            <p>Tamaño: {product.dimensions}</p>
             <p>Material: {product.material}</p>
             <p>Estilo: {product.style}</p>
             <p>Ref. {product.id}</p>
