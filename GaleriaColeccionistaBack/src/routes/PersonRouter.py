@@ -27,17 +27,17 @@ def get_person():
     if request.method == 'GET':
         get_person = PersonService.get_person()
         if get_person:
-            return 'Lista productos actualizada'
+            return 'Lista actualizada'
         else:
-            return 'No se pudo acualizar los productos'
+            return 'No se pudo acualizar '
         
 
     elif request.method == 'POST':
         post_person = PersonService.post_person(person)
         if post_person:
-            return 'Producto agregado correctamente'
+            return 'Persona agregado correctamente'
         else:
-            return 'No se pudo agregar el producto'  
+            return 'No se pudo agregar la persona'  
 
 @main.route('/', methods=['PUT', 'DELETE'])
 def update_delete_producto():
@@ -56,13 +56,13 @@ def update_delete_producto():
     if request.method == 'PUT':
        put_person = PersonService.put_person(id_person, person)
        if put_person:
-           return 'Producto editado correctamente'  
+           return 'Editado correctamente'  
        else:
-           return 'No se pudo editar el producto'
+           return 'No se pudo editar'
     
     elif request.method == 'DELETE':
         delete_person = PersonService.delete_person(id_person)
         if delete_person:
-            return 'Producto eliminado correctamente'
+            return 'Eliminado correctamente'
         else:
-            return 'No se pudo eliminar el producto'
+            return 'No se pudo eliminar '
