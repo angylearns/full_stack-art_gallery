@@ -1,2 +1,3 @@
 # Ignorar directorio de entorno virtual
 new/
+__pycache__

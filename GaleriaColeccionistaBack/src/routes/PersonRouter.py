@@ -2,11 +2,22 @@ from flask import Blueprint, request
 from src.services.PersonService import PersonService
 from src.models.personModel import Person
 
-main = Blueprint('person_blueprint',__name__)
+getPerson = Blueprint('person_blueprint_get', __name__)
+postPerson = Blueprint('person_blueprint_post', __name__)
+putPerson = Blueprint('person_blueprint_put', __name__)
+deletePerson = Blueprint('person_blueprint_delete', __name__)
 
-@main.route('/',methods=['GET', 'POST'])
+@getPerson.route('/',methods=['GET'])
 
 def get_person():
+    PersonService.get_person()
+    print("Consola: Personas obtenidas.")
+
+    return 'Página: Productos obtenidos.'
+
+@postPerson.route('/',methods=['POST'])
+
+def post_person():
 
     name = request.json ['name']
     last_name = request.json ['last_name']
@@ -24,24 +35,17 @@ def get_person():
 
     person= Person(0,name,last_name,dni,birth_date,email, telephone, id_user_fk)
 
-    if request.method == 'GET':
-        get_person = PersonService.get_person()
-        if get_person:
-            return 'Lista actualizada'
-        else:
-            return 'No se pudo acualizar '
-        
 
-    elif request.method == 'POST':
-        post_person = PersonService.post_person(person)
-        if post_person:
-            return 'Persona agregado correctamente'
-        else:
-            return 'No se pudo agregar la persona'  
+    if PersonService.post_person(person):
+        print('Consola:Persona insertada: ', person)
+        return 'Persona creado.'
+    
+    return 'Página: Ok'
 
-@main.route('/', methods=['PUT', 'DELETE'])
-def update_delete_producto():
-    id_person = request.json['id_person']
+@putPerson.route('/<int:id_person>', methods=['PUT'])
+
+def put_person(id_person):
+    
     name = request.json ['name']
     last_name = request.json ['last_name']
     dni = request.json ['dni']
@@ -50,19 +54,17 @@ def update_delete_producto():
     telephone = request.json ['telephone']
     id_user_fk = request.json ['id_user_fk']
 
-    person= Person(id_person,name,last_name,dni,birth_date,email, telephone, id_user_fk)
+    updateperson= Person(id_person,name,last_name,dni,birth_date,email, telephone, id_user_fk)
     
    
-    if request.method == 'PUT':
-       put_person = PersonService.put_person(id_person, person)
-       if put_person:
-           return 'Editado correctamente'  
-       else:
-           return 'No se pudo editar'
-    
-    elif request.method == 'DELETE':
-        delete_person = PersonService.delete_person(id_person)
-        if delete_person:
-            return 'Eliminado correctamente'
-        else:
-            return 'No se pudo eliminar '
+    PersonService.put_person(id_person, updateperson)
+    print('Consola: Producto actualizado: ')
+    return 'Página: Producto actualizado.'
+   
+       
+@deletePerson.route('/<int:id_person>', methods=['DELETE'])
+def delete_producto(id_person):       
+    PersonService.delete_person(id_person)
+    print('Consola: Persona eliminada.')
+    return 'Página: Persona eliminada.'
+

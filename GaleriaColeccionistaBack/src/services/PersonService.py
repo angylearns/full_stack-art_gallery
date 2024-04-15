@@ -57,18 +57,19 @@ class PersonService():
     @classmethod
     def put_person(cls, id_person, person: Person):
         try:
-            connection = get_connection()
-            with connection.cursor() as cursor:
-                name = person.name
-                last_name = person.last_name
-                dni = person.dni
-                birth_date = person.birth_date
-                email = person.email
-                telephone = person.telephone
-                id_user_fk = person. id_user_fk
-                cursor.execute("UPDATE person SET name = %s, last_name = %s, dni = %s, birth_date = %s, email = %s, telephone = %s, id_user_fk = %s WHERE id_person = %s;", (name, last_name, dni, birth_date, email, telephone, id_user_fk, id_person))
-                connection.commit()
-            connection.close()
-            return 'Persona actualizado correctamente'
+             connection = get_connection()
+             with connection.cursor() as cursor:
+              name = person.name
+              last_name = person.last_name
+              dni = person.dni
+              birth_date = person.birth_date
+              email = person.email
+              telephone = person.telephone
+              id_user_fk = person.id_user_fk
+              cursor.execute("UPDATE person SET name = %s, last_name = %s, dni = %s, birth_date = %s, email = %s, telephone = %s, id_user_fk = %s WHERE id_person = %s;", (name, last_name, dni, birth_date, email, telephone, id_user_fk, id_person))
+              connection.commit()
+             connection.close()
+             return 'Persona actualizado correctamente'
         except Exception as ex:
-            print(ex)        
+               print(ex)
+     
