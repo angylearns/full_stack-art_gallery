@@ -7,7 +7,7 @@ function Navbar() {
   return (
     <>
 
-<button>Login</button>
+
 
     </>
   )
