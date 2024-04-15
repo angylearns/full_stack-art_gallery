@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import Gallery from './components/gallery/Gallery'
 import ShoppingCart from './components/shoppingCart/ShoppingCart'
