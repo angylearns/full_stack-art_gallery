@@ -1,0 +1,26 @@
+{
+    "user": [
+ 
+      {
+        "id_user": 1,
+        "user_name": "Lore",
+        "password": "1234",
+        "user_type": "artist"
+      }
+   
+    ],
+    "person": [
+ 
+        {
+          "id_person": 1,
+          "name": "Lore",
+          "last_name": "Rodríguez",
+          "dni": "74568999M",
+          "birth_date": "14-8-1998",
+          "email": "lore@gmail.com",
+          "telephone": "666555444",
+          "id_user_fk": 1
+        }
+     
+      ]
+}
