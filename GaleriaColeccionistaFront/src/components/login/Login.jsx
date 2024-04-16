@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './login.css';
-import loginService from '../../services/loginService';
-import { loginHandler } from '../../handlers/loginHandler';
+
+
+
+
+
+import { handleLogin, handleRegister } from '../../handlers/loginHandler';
+
 
 function Login() {
     //Variable para ver modal
@@ -14,20 +19,26 @@ function Login() {
     const [password, setPassword] = useState('');
 
     //variables de registro
-    const [name, setName] = useState('');
+    //const [name, setName] = useState('');
+    const [first_name, setFirstName] = useState('');
+    
     const [last_name, setLastName] = useState('');
     const [dni, setDni] = useState('');
     const [birth_date, setBirthDate] = useState('');
     const [email, setEmail] = useState('');
     const [telephone, setTelephone] = useState('');
+    const [userType, setUserType] = useState('');
 
     //Almacenar Id usuario
     const [user, setUser] = useState(null);
+
+
 
     // Verificar si el usuario está logueado al cargar la aplicación
     useEffect(() => {
 
         const loggedInUser = localStorage.getItem('user');
+        console.log(' loggedInUser '+loggedInUser);
         if (loggedInUser) {
             const foundUser = JSON.parse(loggedInUser);
             setUser(foundUser);
@@ -36,9 +47,9 @@ function Login() {
 
     // const handleLogin = async (e) => {
     //     e.preventDefault();
-    //     console.log('LORENA handleLogin');
-    //     console.log('LORENA handleLogin username ' + username);
-    //     console.log('LORENA handleLogin password ' + password);
+    //     console.log('LORENA jsx handleLogin');
+    //     console.log('LORENA jsx handleLogin username ' + username);
+    //     console.log('LORENA jsx handleLogin password ' + password);
 
 
     //     try {
@@ -89,12 +100,12 @@ function Login() {
                             <form onSubmit={newUser ? handleRegister : handleLogin}>
                                 {newUser && (
                                     <>
-                                        <label htmlFor="name">Nombre:</label>
+                                        <label htmlFor="first_name">Nombre:</label>
                                         <input
                                             type="text"
-                                            id="name"
-                                            value={name}
-                                            onChange={(e) => setName(e.target.value)}
+                                            id="first_name"
+                                            value={first_name}
+                                            onChange={(e) => setFirstName(e.target.value)}
                                             required
                                         />
                                         <label htmlFor="lastName">Apellidos</label>
@@ -139,6 +150,8 @@ function Login() {
                                             onChange={(e) => setTelephone(e.target.value)}
                                             required
                                         />
+                                     
+
                                     </>
                                 )}
                                 <label htmlFor="username">Usuario:</label>
@@ -157,6 +170,14 @@ function Login() {
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
+                                   <label htmlFor="userType">Tipo de Usuario:</label>
+                                        <select 
+                                            id="userType" 
+                                            value={userType} 
+                                            onChange={(e) => setUserType(e.target.value)} required>
+                                            <option value="cliente">Cliente</option>
+                                            <option value="artista">Artista</option>
+                                        </select>
                                 <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
                                 </button>
