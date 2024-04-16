@@ -17,8 +17,8 @@ class adminServicesB():
                 print(jsonify(result))
                 print("cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
                 # Devolver los resultados en formato JSON
-                # return result
-                return jsonify(result)
+                return result
+                # return jsonify(result)
                
         except Exception as ex: 
             print(ex)
