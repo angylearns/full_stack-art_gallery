@@ -26,7 +26,6 @@ def post_product():
     dimensions = request.json ['dimensions']
     in_stock = request.json ['in_stock']
     style = request.json ['style']
-    id_purchase_order_fk = request.json ['id_purchase_order_fk']
     id_person_fk = request.json ['id_person_fk']
 
     print(url)
@@ -36,10 +35,9 @@ def post_product():
     print(dimensions)
     print(in_stock)
     print(style)
-    print(id_purchase_order_fk)
     print(id_person_fk)
 
-    product= Product(0,url, title, price, material, dimensions, in_stock, style, id_purchase_order_fk, id_person_fk)
+    product= Product(0,url, title, price, material, dimensions, in_stock, style, id_person_fk)
 
 
     if ProductService.post_product(product):
@@ -59,10 +57,9 @@ def put_product(id_product):
     dimensions = request.json ['dimensions']
     in_stock = request.json ['in_stock']
     style = request.json ['style']
-    id_purchase_order_fk = request.json ['id_purchase_order_fk']
     id_person_fk = request.json ['id_person_fk']
 
-    updateproduct= Product(id_product,url, title, price, material, dimensions, in_stock, style, id_purchase_order_fk, id_person_fk)
+    updateproduct= Product(id_product,url, title, price, material, dimensions, in_stock, style, id_person_fk)
     
    
     ProductService.put_product(id_product, updateproduct)

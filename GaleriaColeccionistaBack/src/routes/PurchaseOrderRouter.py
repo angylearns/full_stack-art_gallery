@@ -22,14 +22,16 @@ def post_user():
     date = request.json ['date']
     status = request.json ['status']
     id_user_fk = request.json ['id_user_fk']
+    id_product_fk = request.json ['id_product_fk']
     
 
     print(date)
     print(status)
     print(id_user_fk)
+    print(id_product_fk)
     
 
-    purchaseorder= PurchaseOrder(0,date,status,id_user_fk)
+    purchaseorder= PurchaseOrder(0,date,status,id_user_fk,id_product_fk)
 
 
     if PurchaseOrderService.post_purchaseorder(purchaseorder):
@@ -45,9 +47,10 @@ def put_purchaseorder(id_purchase_order):
     date = request.json ['date']
     status = request.json ['status']
     id_user_fk = request.json ['id_user_fk']
+    id_product_fk = request.json ['id_product_fk']
     
 
-    updatepurchaseorder= PurchaseOrder(id_purchase_order,date,status,id_user_fk)
+    updatepurchaseorder= PurchaseOrder(id_purchase_order,date,status,id_user_fk,id_product_fk)
     
    
     PurchaseOrderService.put_purchaseorder(id_purchase_order, updatepurchaseorder)
