@@ -1,17 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './artistGallery.css';
-import { addProduct, updateProduct, deleteProduct } from '../../handlers/galleryHandler.js';
-import userService from '../../services/artistService.js';
+import './product.css';
+import productService from '../../services/productService';
+import { addProduct, updateProduct, deleteProduct } from '../../handlers/productHandler';
+
+
+
+
+
 
 const Product = () => {
   const [productos, setProductos] = useState([]);
   const [newProduct, setNewProduct] = useState({
+    id_product:'',
+    url: '',
     title: '',
     price: '',
-    description: '',
-    category: '',
-    image: null,
-    stock: '',
+    material: '',
+    dimensions: '',
+    in_stock: '',
+    style: '',
   });
   const [isEditing, setIsEditing] = useState(false);
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
@@ -23,13 +30,13 @@ const Product = () => {
 
   const fetchData = async () => {
     try {
-      const productsData = await userService.getAllProducts();
+      const productsData = await productService.getAllProducts();
       setProductos(productsData);
     } catch (error) {
       console.error('Error al obtener productos:', error);
     }
   };
-
+//ESTO DEBERÍA ESTAR EN CARPETA HANDLE
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -39,12 +46,14 @@ const Product = () => {
         await addProduct(newProduct, fetchData);
       }
       setNewProduct({
+        id_product:'',
+        url: '',
         title: '',
         price: '',
-        description: '',
-        category: '',
-        image: '',
-        stock: '',
+        material: '',
+        dimensions: '',
+        in_stock: '',
+        style: '',
       });
       setIsEditing(false); 
     } catch (error) {
@@ -69,14 +78,17 @@ const Product = () => {
     if (categoriasSeleccionadas.length === 0) {
       return true; 
     } else {
-      return categoriasSeleccionadas.includes(producto.category);
+      return categoriasSeleccionadas.includes(producto.style);
     }
   });
 
-  const categorias = ['Ropa', 'Juguetes', 'Estatuas']; 
+  const categorias = ['Abstracto', 'Contemporaneo', 'Digital', 'Expresionismo', 'Neo Pop', 'Realismo']; 
 
   return (
-    <div>
+    <div className='style'>
+      <div>
+        <h1>Nuestra Galería</h1>
+      </div>
       <div className="navbar">
         {categorias.map((categoria) => (
           <div key={categoria} className="navbar-item">
@@ -94,6 +106,23 @@ const Product = () => {
 
       <div className='add-product'>
         <form className='Form-add-product' ref={formRef} onSubmit={handleSubmit}>
+        <label htmlFor="title">Copie la URL de su imagen:</label>
+        <input
+          type="text"
+          id="title"
+          value={newProduct.url}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, url: e.target.value })
+          }
+          required
+        />
+        {newProduct.url && (
+          <img
+            src={newProduct.url}
+            alt="Previsualización de la imagen"
+            style={{ maxWidth: "17%", height: "200px" }}
+          />
+        )}
         <label htmlFor="title">Título:</label>
         <input
           type="text"
@@ -114,52 +143,35 @@ const Product = () => {
           }
           required
         />
-        <label htmlFor="title">Descripción:</label>
+        <label htmlFor="title">Composición de la obra:</label>
         <input
           type="text"
           id="title"
-          value={newProduct.description}
+          value={newProduct.material}
           onChange={(e) =>
-            setNewProduct({ ...newProduct, description: e.target.value })
+            setNewProduct({ ...newProduct, material: e.target.value })
           }
           required
         />
-        <label htmlFor="title">Categoría:</label>
+        <label htmlFor="title">Dimensiones:</label>
         <input
           type="text"
           id="title"
-          value={newProduct.category}
+          value={newProduct.dimensions}
           onChange={(e) =>
-            setNewProduct({ ...newProduct, category: e.target.value })
+            setNewProduct({ ...newProduct, dimensions: e.target.value })
           }
           required
         />
 
-        <label htmlFor="title">Copie la URL de su imagen:</label>
-        <input
-          type="text"
-          id="title"
-          value={newProduct.image}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, image: e.target.value })
-          }
-          required
-        />
-        {newProduct.image && (
-          <img
-            src={newProduct.image}
-            alt="Previsualización de la imagen"
-            style={{ maxWidth: "17%", height: "200px" }}
-          />
-        )}
 
         <label htmlFor="title">Stock:</label>
         <input
           type="text"
           id="title"
-          value={newProduct.stock}
+          value={newProduct.in_stock}
           onChange={(e) =>
-            setNewProduct({ ...newProduct, stock: e.target.value })
+            setNewProduct({ ...newProduct, in_stock: e.target.value })
           }
           required
         />
@@ -175,16 +187,16 @@ const Product = () => {
           <div key={producto.id} className="product-card">
             <h3>{producto.title}</h3>
             <img
-              src={producto.image}
+              src={producto.url}
               alt={producto.title}
               width={100}
               height={100}
             ></img>
             <p>Precio: {producto.price}€</p>
-            <p>Descripción: {producto.description}</p>
-            <p>Categoría: {producto.category}</p>
-
-            <p>Stock: {producto.stock}</p>
+            <p>Composición: {producto.material}</p>
+            <p>Dimensiones: {producto.dimensions}</p>
+            <p>Stock: {producto.in_stock}</p>
+            <p>Categoría: {producto.style}</p>
             <div>
               <button className='btn-cardForm-edit' onClick={() => handleEdit(producto.id)}>Editar</button>
               <button className='btn-cardForm-delete'onClick={() => handleDelete(producto.id)}>Eliminar</button>

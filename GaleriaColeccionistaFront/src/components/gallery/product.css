@@ -1,0 +1,115 @@
+h1 {
+    font: bold;
+    color: #E6ECEC;
+}
+.style {
+    background-color: #669EC6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dcedf7;
+    padding: 2px;
+    text-align: center;
+    border-radius: 25px;
+    margin: 25px;
+  }
+  
+  /* .navbar-item {
+    display: flex;
+    padding: 5px;
+    align-items: center;
+  }
+  
+  .navbar-item input[type="checkbox"] {
+    margin-right: -85px;
+    border: none;
+    border-radius: 25px;
+  }
+  
+  .navbar-item label {
+    color: #44BAD3;
+  }
+  
+   */
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+  }add-product
+  
+  .Form-add-product {
+    align-items: center;
+    background-color: #EDF3F8;
+    flex-direction: column;
+    display: flex;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    padding: 25px;
+    max-width: 400px;
+    min-width: 300px;
+  }
+  
+  .Form-add-product {
+  
+    align-items: center;
+    background-color: #EDF3F8;
+    flex-direction: column;
+    display: flex;
+    border-radius: 25px;
+    margin-bottom: 25px;
+    padding: 25px;
+    max-width: 400px;
+    min-width: 300px;
+    align-self: center;
+    
+   
+  }
+  .add-product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .product-card {
+    width: 200px;
+    background-color: #EDF3F8;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 20px;
+  text-align: center;
+  
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    align-items: center;
+    display: flex;
+    padding: 8px;
+  }
+  
+  .product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+  }
+  .btn-cardForm-edit, .btn-cardForm-delete{
+    border-radius: 30px;
+    background-color: #44BAD3;
+    color: #44BAD3;
+    border: none;
+    color: white;
+    width: 100px;
+    margin: 3px;
+    padding: 6px;
+    transition: background-color 0.5s;
+  }
+  
+  .btn-cardForm-edit:hover, .btn-cardForm-delete:hover {
+    background-color: #0d6efd;
+  }

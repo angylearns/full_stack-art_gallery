@@ -1,11 +1,9 @@
-import artistService from "../services/artistService.js"
-
+import productService from "../services/productService";
 
 export const addProduct = async (newProduct, fetchData) => {
   try {
-    await artistService.addProduct(newProduct);
+    await productService.addProduct(newProduct, fetchData);
     alert('Producto agregado exitosamente');
-    fetchData();
   } catch (error) {
     console.error('Error al guardar producto:', error);
   }
@@ -13,9 +11,8 @@ export const addProduct = async (newProduct, fetchData) => {
 
 export const updateProduct = async (productId, newProduct, fetchData) => {
   try {
-    await artistService.updateProduct(productId, newProduct);
+    await productService.updateProduct(productId, newProduct, fetchData);
     alert('Producto actualizado exitosamente');
-    fetchData();
   } catch (error) {
     console.error('Error al actualizar producto:', error);
   }
@@ -23,9 +20,8 @@ export const updateProduct = async (productId, newProduct, fetchData) => {
 
 export const deleteProduct = async (productId, fetchData) => {
   try {
-    await artistService.deleteProduct(productId);
+    await productService.deleteProduct(productId, fetchData);
     alert('Producto eliminado exitosamente');
-    fetchData();
   } catch (error) {
     console.error('Error al eliminar producto:', error);
   }
