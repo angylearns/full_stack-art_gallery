@@ -44,7 +44,7 @@ class UserService():
         try:
             connection = get_connection()
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM user WHERE id_person = %s;", (id_user))
+                cursor.execute("DELETE FROM user WHERE id_user = %s;", (id_user))
                 connection.commit()
             connection.close()
             return 'Usuario eliminado correctamente'
