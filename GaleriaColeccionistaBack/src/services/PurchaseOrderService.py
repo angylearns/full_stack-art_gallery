@@ -11,9 +11,10 @@ class PurchaseOrderService():
             with connection.cursor() as cursor:
                 cursor.execute('SELECT * FROM purchase_order')
                 result= cursor.fetchall()
+                list_purchaseorder=[PurchaseOrder.convert_from_BD(row) for row in result]
                 print(result)
                 connection.close()
-                return 'lista actualizada'
+                return list_purchaseorder
                
         except Exception as ex: 
             print(ex)
@@ -29,9 +30,10 @@ class PurchaseOrderService():
                 date = purchase_order.date
                 status = purchase_order.status
                 id_user_fk = purchase_order.id_user_fk
+                id_product_fk = purchase_order.id_product_fk
                 
 
-                cursor.execute("INSERT INTO purchase_order (id_purchase_order, date, status, id_user_fk) VALUES ('{0}', '{1}', '{2} ', '{3}');".format(id_purchase_order, date, status, id_user_fk))
+                cursor.execute("INSERT INTO purchase_order (id_purchase_order, date, status, id_user_fk, id_product_fk) VALUES ('{0}', '{1}', '{2} ', '{3}', '{4}');".format(id_purchase_order, date, status, id_user_fk, id_product_fk))
                 connection.commit()
                 connection.close()
                 return 'Pedido agregado correctamente'
@@ -59,8 +61,9 @@ class PurchaseOrderService():
               date = purchase_order.date
               status = purchase_order.status
               id_user_fk = purchase_order.id_user_fk
+              id_product_fk = purchase_order.id_product_fk
               
-              cursor.execute("UPDATE purchase_order SET date = %s, status= %s, id_user_fk = %s WHERE id_purchase_order = %s;", (date, status, id_user_fk, id_purchase_order))
+              cursor.execute("UPDATE purchase_order SET date = %s, status= %s, id_user_fk = %s, id_product_fk = %s WHERE id_purchase_order = %s;", (date, status, id_user_fk, id_product_fk, id_purchase_order))
               connection.commit()
              connection.close()
              return 'Pedido actualizado correctamente'

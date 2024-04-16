@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from src.services.PurchaseOrderService import PurchaseOrderService
 from src.models.purchaseOrderModel import PurchaseOrder
 
@@ -10,10 +10,10 @@ deletePurchaseOrder = Blueprint('purchaseorder_blueprint_delete', __name__)
 @getPurchaseOrder.route('/',methods=['GET'])
 
 def get_purchaseorder():
-    PurchaseOrderService.get_purchaseorder()
+    list_purchaseorder=PurchaseOrderService.get_purchaseorder()
     print("Consola: Pedidos obtenidos.")
 
-    return 'Página: Pedidos obtenidos.'
+    return jsonify([purchaseorder.__dict__ for purchaseorder in list_purchaseorder])
 
 @postPurchaseOrder.route('/',methods=['POST'])
 

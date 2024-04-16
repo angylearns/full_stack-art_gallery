@@ -11,9 +11,10 @@ class ProductService():
             with connection.cursor() as cursor:
                 cursor.execute('SELECT * FROM product')
                 result= cursor.fetchall()
+                list_product=[Product.convert_from_BD(row) for row in result]
                 print(result)
                 connection.close()
-                return 'lista actualizada'
+                return list_product
                
         except Exception as ex: 
             print(ex)

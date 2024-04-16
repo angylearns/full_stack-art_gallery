@@ -8,4 +8,8 @@ class Person():
        self.email=email
        self.telephone=telephone
        self.id_user_fk=id_user_fk
+
+    @classmethod
+    def convert_from_BD(cls, row):
+        return cls(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7])       
        

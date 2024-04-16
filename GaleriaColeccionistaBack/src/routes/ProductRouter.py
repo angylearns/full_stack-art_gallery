@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from src.services.ProductService import ProductService
 from src.models.productModel import Product
 
@@ -10,10 +10,10 @@ deleteProduct = Blueprint('product_blueprint_delete', __name__)
 @getProduct.route('/',methods=['GET'])
 
 def get_product():
-    ProductService.get_product()
+    list_product = ProductService.get_product()
     print("Consola: Productos obtenidos.")
 
-    return 'Página: Productos obtenidos.'
+    return jsonify([product.__dict__ for product in list_product])
 
 @postProduct.route('/',methods=['POST'])
 

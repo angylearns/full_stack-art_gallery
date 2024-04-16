@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from src.services.PersonService import PersonService
 from src.models.personModel import Person
 
@@ -10,10 +10,10 @@ deletePerson = Blueprint('person_blueprint_delete', __name__)
 @getPerson.route('/',methods=['GET'])
 
 def get_person():
-    PersonService.get_person()
+    list_person=PersonService.get_person()
     print("Consola: Personas obtenidas.")
 
-    return 'Página: Personas obtenidss.'
+    return jsonify([person.__dict__ for person in list_person])
 
 @postPerson.route('/',methods=['POST'])
 

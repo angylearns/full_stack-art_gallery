@@ -11,9 +11,10 @@ class UserService():
             with connection.cursor() as cursor:
                 cursor.execute('SELECT * FROM user')
                 result= cursor.fetchall()
+                list_user=[User.convert_from_BD(row) for row in result]
                 print(result)
                 connection.close()
-                return 'lista actualizada'
+                return list_user
                
         except Exception as ex: 
             print(ex)

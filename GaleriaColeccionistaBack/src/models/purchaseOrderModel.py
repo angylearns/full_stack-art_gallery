@@ -5,4 +5,8 @@ class PurchaseOrder():
        self.status=status
        self.id_user_fk=id_user_fk
        self.id_product_fk=id_product_fk
+
+    @classmethod
+    def convert_from_BD(cls, row):
+        return cls(row[0], row[1], row[2], row[3], row[4])         
        

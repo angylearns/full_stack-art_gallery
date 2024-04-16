@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from src.services.UserService import UserService
 from src.models.userModel import User
 
@@ -10,10 +10,10 @@ deleteUser = Blueprint('user_blueprint_delete', __name__)
 @getUser.route('/',methods=['GET'])
 
 def get_user():
-    UserService.get_user()
+    list_user=UserService.get_user()
     print("Consola: Usuarios obtenidos.")
 
-    return 'Página: Usuarios obtenidos.'
+    return jsonify([user.__dict__ for user in list_user])
 
 @postUser.route('/',methods=['POST'])
 
