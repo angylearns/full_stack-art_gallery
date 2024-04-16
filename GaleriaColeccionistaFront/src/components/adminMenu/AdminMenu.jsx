@@ -31,7 +31,8 @@ function AdminMenu() {
             <ul>
                 {users.map((user, index) => (
                     <li key={index}>
-                        ID: {user[0]}, Nombre: {user[1]}, Usuario: {user[2]}, Rol: {user[3]}
+                        {/* ID: {user[0]}, Nombre: {user[1]}, Usuario: {user[2]}, Rol: {user[3]} */}
+                        {user.id_user}
                     </li>
                 ))}
             </ul>
