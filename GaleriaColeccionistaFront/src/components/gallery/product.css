@@ -1,6 +1,8 @@
 h1 {
+  display: flex;
     font: bold;
     color: #E6ECEC;
+    justify-content: center;
 }
 .style {
     background-color: #669EC6;
@@ -112,4 +114,8 @@ h1 {
   
   .btn-cardForm-edit:hover, .btn-cardForm-delete:hover {
     background-color: #0d6efd;
+  }
+
+  .button-add-product {
+    margin: 10px;
   }
