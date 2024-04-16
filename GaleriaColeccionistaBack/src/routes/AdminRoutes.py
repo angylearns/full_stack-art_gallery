@@ -12,7 +12,7 @@ def transformData():
     # Creas una lista para almacenar las instancias de User
     lista_usuarios_serializables = []
 
-
+    print("Mimiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.........................")
     # Obtienes los usuarios
     get_users = adminServicesB.get_user()
 
@@ -35,12 +35,12 @@ def transformData():
     return lista_usuarios_serializables
 
 
-def get_admin():
+def dashboard_admin_users():
     #user contiene una lista de listas
 
     print(request)
     print(request.method)
-
+    print("hola .............................................................................................")
     print(request.content_type)
 
     # if request.method != 'GET':
@@ -53,12 +53,17 @@ def get_admin():
 
    
     if request.method == 'GET':
-       
+        print("hola caracola.............................................................................................")
         # get_users = adminServicesB.get_user()
         # print('el admin se trae los usuarios')
         # print(get_users)
         # return jsonify(get_users)
+
+        #recuperamos los datos de los usuarios y de las personas para devolverlas al front
         datosTransformados = transformData()
         return jsonify(datosTransformados)
+    
+
+
      # Si el método no es GET, devuelve un error 405 Method Not Allowed
     return jsonify({'error': 'Método no permitido'}), 405

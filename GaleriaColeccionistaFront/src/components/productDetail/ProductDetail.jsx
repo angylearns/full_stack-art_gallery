@@ -11,14 +11,14 @@ function ProductDetail() {
   const [product, setProduct] = useState(
     {
         id_product: "3",
-        url: "https://i.postimg.cc/JhrQQ0tf/treen.png",
-        title: "Producto 2",
-        price: "105",
-        material: "Material 1",
-        dimensions: "Dimension 1",
+        url: "https://i.postimg.cc/tCfhFKYv/popArt1.png",
+        title: "Producto 4",
+        price: "10",
+        material: "Material 5",
+        dimensions: "Dimension 4",
         in_stock: true,
-        style: "Estilo 22221e",
-        id_purchase_order: "2",
+        style: "Estilo pop",
+        id_purchase_order: "8",
         id_person_fk: "2"
     });
 
