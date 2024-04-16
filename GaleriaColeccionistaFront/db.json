@@ -1,26 +1,62 @@
 {
-    "user": [
- 
-      {
-        "id_user": 1,
-        "user_name": "Lore",
-        "password": "1234",
-        "user_type": "artist"
-      }
-   
-    ],
-    "person": [
- 
-        {
-          "id_person": 1,
-          "name": "Lore",
-          "last_name": "Rodríguez",
-          "dni": "74568999M",
-          "birth_date": "14-8-1998",
-          "email": "lore@gmail.com",
-          "telephone": "666555444",
-          "id_user_fk": 1
-        }
-     
-      ]
+  "user": [
+    {
+      "id_user": 1,
+      "user_name": "Lore",
+      "password": "1234",
+      "user_type": "artist",
+      "id": "31e9"
+    }
+  ],
+  "person": [
+    {
+      "id_person": 1,
+      "name": "Lore",
+      "last_name": "Rodríguez",
+      "dni": "74568999M",
+      "birth_date": "14-8-1998",
+      "email": "lore@gmail.com",
+      "telephone": "666555444",
+      "id_user_fk": 1,
+      "id": "6faa"
+    },
+    {
+      "id_person": 2,
+      "name": "Susi",
+      "last_name": "López",
+      "dni": "33568459R",
+      "birth_date": "10-12-2005",
+      "email": "susi@gmail.com",
+      "telephone": "666458715",
+      "id_user_fk": 2,
+      "id": "8a2f"
+    },
+    {
+      "id": "0dc6",
+      "name": "Lorena",
+      "last_name": "Cortés",
+      "dni": "24587987",
+      "birth_date": "1977-12-06",
+      "email": "lorenarodriguezc@gmail.com",
+      "telephone": "646753432"
+    },
+    {
+      "id": "22a9",
+      "name": "Isabel",
+      "last_name": "Cortés",
+      "dni": "24587987",
+      "birth_date": "1977-12-06",
+      "email": "lorenarodriguezc@gmail.com",
+      "telephone": "646753432"
+    },
+    {
+      "id": "3c37",
+      "name": "Lorena",
+      "last_name": "Rodriguez",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "lorenarodriguezc@gmail.com",
+      "telephone": "646753432"
+    }
+  ]
 }
