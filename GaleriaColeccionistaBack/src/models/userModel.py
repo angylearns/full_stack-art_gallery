@@ -4,4 +4,7 @@ class User():
        self.user_name=user_name
        self.password=password
        self.user_type=user_type
-       
+
+    @classmethod
+    def convert_from_BD(cls, row):
+        return cls(row[0], row[1], row[2], row[3])         
