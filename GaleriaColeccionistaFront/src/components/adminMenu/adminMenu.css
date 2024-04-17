@@ -4,10 +4,12 @@
 
 .container {
     display: flex;
+    min-height: 500px;
   }
   
   .columna1 {
     width: 100px;
+    background-color: #669EC6;
   }
   
   .columna2 {

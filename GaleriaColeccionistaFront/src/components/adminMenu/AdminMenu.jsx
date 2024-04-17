@@ -13,8 +13,8 @@ function AdminMenu() {
 
             <div className="container">
                 <div className="columna1">
-                    <button>Botón 1</button>
-                    <button>Botón 2</button>
+                    <button>Artistas</button>
+                    <button>Clientes</button>
                 </div>
                 <div className="columna2">
                     Contenido de la columna 2
