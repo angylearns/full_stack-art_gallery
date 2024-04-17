@@ -3,9 +3,10 @@ from src.services.adminServicesB import adminServicesB
 from src.models.userModel import User
 
 
+
 main = Blueprint('adminPerson_blueprint',__name__)
 
-@main.route('/',methods=['GET','POST', 'PATCH','DELETE','OPTIONS'])
+@main.route('/',methods=['GET','POST', 'PATCH','DELETE','OPTIONS'], strict_slashes=False)
 
 
 def dashboard_admin_persons():
@@ -15,12 +16,14 @@ def dashboard_admin_persons():
     print("blbalalablablabalblablalbalbalblablalbalblalb")
     print(request.method)
     print("typeeee type type type type type type type type type type")
+    # request.environ['CONTENT_TYPE'] = 'application/json'
     print(request.content_type)
-
-    if request.method != 'GET':
+    #content type llega como None
+    
+    if request.method != 'GET' and request.method != 'OPTIONS':
 
         print(request.json)
-        id_user = request.json["id_user"]
+        id_user = ""
         user_name = request.json["user_name"]
         password = request.json["password"]
         user_type = request.json["user_type"]
@@ -82,8 +85,19 @@ def dashboard_admin_persons():
 
     elif request.method == 'POST':
         result = adminServicesB.post_PersonUser(user1)
-        return 0
-
+        return "hola mundo"
+    elif request.method == 'OPTIONS':
+        print("estamos en metodo optionss llllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+        # Aquí se crea una respuesta JSON con un mensaje indicando que la solicitud pre-vuelo fue exitosa.
+        response = jsonify({'message': 'Preflight request success'})
+        #Se añade el encabezado Access-Control-Allow-Origin a la respuesta, permitiendo el acceso desde cualquier origen (*).
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        #Se añade el encabezado Access-Control-Allow-Headers a la respuesta, especificando los encabezados permitidos en las solicitudes reales. En este caso, se permiten los encabezados Content-Type y Authorization.
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        #Se añade el encabezado Access-Control-Allow-Methods a la respuesta, especificando los métodos HTTP permitidos en las solicitudes reales. Aquí se permiten los métodos GET, PUT, POST y DELETE.
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+        # Finalmente, se devuelve la respuesta, completando el manejo de la solicitud OPTIONS y permitiendo que el navegador continúe con la solicitud real si la pre-vuelo fue exitosa.
+        return response
 
      # Si el método no es GET, devuelve un error 405 Method Not Allowed
     return jsonify({'error': 'Método no permitido'}), 405

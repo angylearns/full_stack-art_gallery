@@ -4,7 +4,7 @@ def get_connection():
     try:
         return pymysql.connect(
             host='localhost',
-            database='db_galeria_coleccionista-3',
+            database='db_galeria_coleccionista',
             user='root',
             passwd=''
 )
