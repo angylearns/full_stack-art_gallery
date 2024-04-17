@@ -22,6 +22,12 @@
       "user_name": "Junio",
       "password": "junio",
       "userType": "cliente"
+    },
+    {
+      "id": "c9c9",
+      "user_name": "pepi",
+      "password": "123",
+      "userType": "cliente"
     }
   ],
   "person": [
@@ -54,6 +60,16 @@
       "email": "lorenarodriguezc@gmail.com",
       "telephone": "646753432",
       "id_user": "1c05"
+    },
+    {
+      "id": "0ec5",
+      "first_name": "lore",
+      "last_name": "Rodríguez Cortés",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "lorenarodriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "c9c9"
     }
   ]
 }

@@ -1,0 +1,32 @@
+.App {
+    width: 700px;
+    height: 100%;
+    background-color: #E6ECEC;
+    margin: 15px;
+    color: black;
+    padding-bottom: 50px;
+   
+}
+
+
+.login {
+    width: 28px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 300px;
+}
+
+.optionusertype {
+margin-top: 15px;
+}
+
+.button-submit {
+    margin-top: 15px;
+}
