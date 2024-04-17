@@ -1,4 +1,16 @@
-.postContainer{
+/* .postContainer{
     padding: 5%;
-}
+} */
 
+.container {
+    display: flex;
+  }
+  
+  .columna1 {
+    width: 100px;
+  }
+  
+  .columna2 {
+    flex: 1; /* Esto hace que ocupe el espacio restante */
+  }
+  

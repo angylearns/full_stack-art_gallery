@@ -1,5 +1,5 @@
 from src.database.db_mysql import get_connection
-from flask import jsonify  # Importa jsonify para devolver JSON
+from flask import jsonify  
 from src.models.userModel import User
 
 class adminServicesB():

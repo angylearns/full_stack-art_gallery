@@ -1,10 +1,9 @@
 from flask import Flask
 # from src.routes import PersonRouter
 from flask_cors import CORS
-from .routes import AdminRoutes
 from .routes import AdminRoutesPerson
 from .routes.AdminRoutesPerson import main as adminPerson_blueprint
-
+from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter
 
 app= Flask(__name__)
 
@@ -13,23 +12,6 @@ CORS(app)
 # CORS(app, resources={r"/*": {"origins": "*"}})
 # CORS(app, origins='http://localhost:5173', allow_headers=['Content-Type'])
 # CORS(app, origins='http://localhost:5173')  # Reemplaza esto con el origen correcto de tu frontend
-
-
-def init_app(config):
-    app.config.from_object(config)
-    app.register_blueprint(AdminRoutes.main, url_prefix='/users')
-    # app.register_blueprint(AdminRoutesPerson.main, url_prefix='/persons/')
-
-    app.register_blueprint(adminPerson_blueprint, url_prefix='/persons')
-    # app.register_blueprint(PersonRouter.getPerson, url_prefix='/')
-    # app.register_blueprint(PersonRouter.postPerson, url_prefix='/post')
-    # app.register_blueprint(PersonRouter.putPerson, url_prefix='/update')
-    # app.register_blueprint(PersonRouter.deletePerson, url_prefix='/delete')
-    return appfrom flask import Flask
-from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter
-
-
-app= Flask(__name__)
 
 def init_app(config):
     app.config.from_object(config)
@@ -53,4 +35,7 @@ def init_app(config):
     app.register_blueprint(PurchaseOrderRouter.postPurchaseOrder, url_prefix='/purchaseorder')
     app.register_blueprint(PurchaseOrderRouter.putPurchaseOrder, url_prefix='/purchaseorder')
     app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
+
+    # maria pruebas - No borrar de momento
+    app.register_blueprint(adminPerson_blueprint, url_prefix='/persons')
     return app

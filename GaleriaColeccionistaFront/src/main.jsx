@@ -5,6 +5,8 @@ import './index.css'
 import EndPurchase from './components/endPurchase/EndPurchase.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ShoppingCart from './components/shoppingCart/ShoppingCart.jsx'
+import AdminMenu from './components/adminMenu/AdminMenu.jsx'
+import AdminUsers from './components/adminMenu/AdminUsers.jsx'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -20,7 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/" element={<App />} />
           <Route path="/EndPurchase" element={<EndPurchase />} />
           <Route path="/ShoppingCart" element={<ShoppingCart />} />
-
+          <Route path="/AdminMenu" element={<AdminMenu />} />
+          <Route path="/AdminUsers" element={<AdminUsers />} />
         </Routes>
       </BrowserRouter>
     
