@@ -92,7 +92,7 @@ const Product = () => {
 
   const categorias = [
     "Arte Abstracto",
-    "Realismo Contemporáneo",
+    "Realismo Contemporaneo",
     "Arte Digital",
     "Expresionismo",
     "Neo-Pop"
@@ -139,7 +139,7 @@ const Product = () => {
             <img
               src={newProduct.url}
               alt="Previsualización de la imagen"
-              style={{ maxWidth: "17%", height: "200px" }}
+              style={{ maxWidth: "20%", height: "200px" }}
             />
           )}
           <label htmlFor="title">Título:</label>
