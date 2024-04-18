@@ -1,5 +1,5 @@
 from flask import Flask
-from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter
+from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter, AuthRouter
 
 
 app= Flask(__name__)
@@ -26,4 +26,6 @@ def init_app(config):
     app.register_blueprint(PurchaseOrderRouter.postPurchaseOrder, url_prefix='/purchaseorder')
     app.register_blueprint(PurchaseOrderRouter.putPurchaseOrder, url_prefix='/purchaseorder')
     app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
+
+    app.register_blueprint(AuthRouter.main, url_prefix='/login')
     return app

@@ -1,5 +1,6 @@
 from src.database.db_mysql import get_connection
 from src.models.userModel import User
+from werkzeug.security import generate_password_hash
 
 class UserService():
 
@@ -29,10 +30,10 @@ class UserService():
             with connection.cursor() as cursor:
                 id_user = user.id_user
                 user_name = user.user_name
-                password = user.password
+                passwordunic = user.password
                 user_type = user.user_type
                 
-
+                password = generate_password_hash (passwordunic,  'pbkdf2:sha256', 30)
                 cursor.callproc("InsertUser", (id_user, user_name, password, user_type))
                 connection.commit()
                 connection.close()
