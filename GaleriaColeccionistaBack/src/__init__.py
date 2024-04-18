@@ -1,8 +1,11 @@
 from flask import Flask
 from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter
-
+from flask_cors import CORS
+# from .routes.ProductRouter import product_router as product_router_ESTY
 
 app= Flask(__name__)
+
+CORS(app,resources={"*":{"origins": "http://localhost:5173"}})
 
 def init_app(config):
     app.config.from_object(config)
@@ -26,4 +29,8 @@ def init_app(config):
     app.register_blueprint(PurchaseOrderRouter.postPurchaseOrder, url_prefix='/purchaseorder')
     app.register_blueprint(PurchaseOrderRouter.putPurchaseOrder, url_prefix='/purchaseorder')
     app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
+
+    # app.register_blueprint(product_router_ESTY, url_prefix='/product')
+
+    
     return app

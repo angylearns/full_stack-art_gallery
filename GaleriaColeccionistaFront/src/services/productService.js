@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'http://127.0.0.1:5000';
 
 const productService = {
   getAllProducts: async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/product`);
+      const response = await axios.get(`${API_BASE_URL}/product/`);
       return response.data;
     } catch (error) {
       console.error('Error al obtener productos:', error);
@@ -15,7 +15,7 @@ const productService = {
 
   addProduct: async (newProduct, fetchData) => {
     try {
-      await axios.post(`${API_BASE_URL}/product`, newProduct);
+      await axios.post(`${API_BASE_URL}/product/`, newProduct);
       alert('Producto agregado exitosamente');
       fetchData();
     } catch (error) {

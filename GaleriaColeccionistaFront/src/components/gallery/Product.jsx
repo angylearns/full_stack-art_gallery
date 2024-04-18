@@ -18,7 +18,7 @@ const Product = () => {
     dimensions: "",
     in_stock: "",
     style: "",
-    id_person_fk: "",
+    id_person_fk: "2",
   });
   const [isEditing, setIsEditing] = useState(false);
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
@@ -216,7 +216,7 @@ const Product = () => {
 
       <div className="product-list">
         {filteredProductos.map((producto) => (
-          <div key={producto.id} className="product-card">
+          <div key={producto.id_product} className="product-card">
             <h3>{producto.title}</h3>
             <img
               src={producto.url}
@@ -232,13 +232,13 @@ const Product = () => {
             <div>
               <button
                 className="btn-cardForm-edit"
-                onClick={() => handleEdit(producto.id)}
+                onClick={() => handleEdit(producto.id_product)}
               >
                 Editar
               </button>
               <button
                 className="btn-cardForm-delete"
-                onClick={() => handleDelete(producto.id)}
+                onClick={() => handleDelete(producto.id_product)}
               >
                 Eliminar
               </button>
