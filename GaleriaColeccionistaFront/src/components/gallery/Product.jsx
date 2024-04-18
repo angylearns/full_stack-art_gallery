@@ -172,7 +172,7 @@ const Product = () => {
             }
             required
           />
-          <label htmlFor="title">Dimensiones:</label>
+          <label htmlFor="title">Dimensiones, Alto*Ancho:</label>
           <input
             type="text"
             id="title"
