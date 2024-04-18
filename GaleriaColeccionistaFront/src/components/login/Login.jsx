@@ -34,7 +34,6 @@ function Login() {
     const [user, setUser] = useState(null);
 
 
-
     // Verificar si el usuario está logueado al cargar la aplicación
     useEffect(() => {
 

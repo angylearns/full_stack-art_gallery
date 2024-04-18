@@ -21,6 +21,10 @@ form {
 
 input {
     width: 300px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    background-color: transparent;
 }
 
 .optionusertype {

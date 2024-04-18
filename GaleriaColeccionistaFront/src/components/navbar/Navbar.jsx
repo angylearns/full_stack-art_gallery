@@ -21,8 +21,8 @@ function Navbar() {
             <img src={logo} className='logo' alt="" />
             {/* <p>GALERIA</p> */}
             <button className='gallery_button'>GALERIA</button>
-            </div>
-
+          </div>
+          <div className='form_login_logout_shopping'>
             <form className='form'>
               <input
                 type="text"
@@ -33,13 +33,15 @@ function Navbar() {
               <img src={search} className='search' alt="" />
               {/* <p>BUSCAR</p> */}
             </form>
-          
-            <img src={login} className='login' alt="login" />
-            <img src={logout} className='logout' alt="logout" />
-            <img src={shoppingCart} className='shoppingcart' alt="shoppingcart" />
-        
-        </div>
+            <div className='login_logout_shoppingcart'>
+              <img src={login} className='login' alt="login" />
+              <img src={logout} className='logout' alt="logout" />
+              <img src={shoppingCart} className='shoppingcart' alt="shoppingcart" />
+            </div>
 
+
+          </div>
+        </div>
         <div className='linedivider'>
 
           <img src={line} className='line' alt="line" />
@@ -49,8 +51,16 @@ function Navbar() {
       </div>
 
 
+      {/* RESPONSIVE */}
 
-    </>
+
+<div>
+
+</div>
+
+
+
+</>
   )
 }
 
