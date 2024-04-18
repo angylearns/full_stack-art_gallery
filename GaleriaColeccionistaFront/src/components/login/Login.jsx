@@ -57,15 +57,6 @@ function Login() {
     };
 
 
-
-
-
-
-
-
-
-
-
     // Verificar si el usuario está logueado al cargar la aplicación
     useEffect(() => {
 
@@ -77,6 +68,14 @@ function Login() {
         }
     }, []);
 
+    const handleLogout = () => {
+        // Eliminar el usuario del almacenamiento local
+        localStorage.removeItem('user');
+        // Limpiar el estado del usuario en el componente
+        setUser(null);
+      };
+      
+
     return (
 
         <>
@@ -86,7 +85,7 @@ function Login() {
                     <img src={login} className='login' alt="Aquí hay una imagen" />
                 </button>
                 <button>
-                    <img src={logout} className='logout' alt="Aquí hay una imagen" />
+                    <img src={logout} onClick={handleLogout} className='logout' alt="Aquí hay una imagen" />
                 </button>
                 {showModal && (
                     <div className="modal">
