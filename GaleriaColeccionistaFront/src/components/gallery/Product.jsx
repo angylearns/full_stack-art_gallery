@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./product.css";
 import productService from "../../services/productService";
-import {
-  addProduct,
-  updateProduct,
-  deleteProduct,
-} from "../../handlers/productHandler";
+import {addProduct, updateProduct, deleteProduct} from "../../handlers/productHandler";
+  
+ 
+  
+
 
 const Product = () => {
   const [productos, setProductos] = useState([]);
@@ -40,8 +40,8 @@ const Product = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (newProduct.id) {
-        await updateProduct(newProduct.id, newProduct, fetchData);
+      if (newProduct.id_product) { // Verifica si el producto tiene un id_product
+        await updateProduct(newProduct.id_product, newProduct, fetchData);
       } else {
         await addProduct(newProduct, fetchData);
       }
@@ -52,7 +52,7 @@ const Product = () => {
         price: "",
         material: "",
         dimensions: "",
-        in_stock: "",
+        in_stock: "1",
         style: "",
         id_person_fk: "",
       });
@@ -61,6 +61,17 @@ const Product = () => {
       console.error("Error al guardar producto:", error);
     }
   };
+
+  
+  const handleEdit = async (productId) => {
+    const productToEdit = productos.find((producto) => producto.id_product === productId);
+    setNewProduct({
+       ...productToEdit,
+       id_product: productToEdit.id_product, // Asegurarse de que el id se copie correctamente
+    });
+    setIsEditing(true); 
+    formRef.current.scrollIntoView({ behavior: 'smooth' });
+   };
 
   const handleDelete = async (productId) => {
     await deleteProduct(productId, fetchData);
@@ -86,12 +97,12 @@ const Product = () => {
   });
 
   const categorias = [
-    "Abstracto",
-    "Contemporaneo",
-    "Digital",
+    "Arte Abstracto",
+    "Realismo Contemporaneo",
+    "Arte Digital",
     "Expresionismo",
-    "Neo Pop",
-    "Realismo",
+    "Neo Pop"
+    
   ];
 
   return (
@@ -178,7 +189,7 @@ const Product = () => {
             required
           />
 
-          <label htmlFor="title">Stock:</label>
+          {/* <label htmlFor="title">Stock:</label>
           <input
             type="text"
             id="title"
@@ -187,7 +198,7 @@ const Product = () => {
               setNewProduct({ ...newProduct, in_stock: e.target.value })
             }
             required
-          />
+          /> */}
 
           <label htmlFor="style">Categoría de la obra:</label>
           <select
@@ -199,12 +210,12 @@ const Product = () => {
             required
           >
             <option value="">Selecciona una categoría</option>
-            <option value="Abstracto">Abstracto</option>
-            <option value="Contemporaneo">Contemporaneo</option>
-            <option value="Digital">Digital</option>
+            <option value="Arte Abstracto">Arte Abstracto</option>
+            <option value="Realismo Contemporaneo">Realismo Contemporáneo</option>
+            <option value="Arte Digital">Arte Digital</option>
             <option value="Expresionismo">Expresionismo</option>
             <option value="Neo Pop">Neo Pop</option>
-            <option value="Realismo">Realismo</option>
+            
           </select>
 
           <button className="button-add-product" type="submit">
