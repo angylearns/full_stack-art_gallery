@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './login.css';
 import login from "../../images/login.svg";
+import logout from "../../images/logout.svg";
 
 
 
@@ -22,7 +23,7 @@ function Login() {
     //variables de registro
     //const [name, setName] = useState('');
     const [first_name, setFirstName] = useState('');
-    
+
     const [last_name, setLastName] = useState('');
     const [dni, setDni] = useState('');
     const [birth_date, setBirthDate] = useState('');
@@ -33,12 +34,43 @@ function Login() {
     //Almacenar Id usuario
     const [user, setUser] = useState(null);
 
+    //Agrega un estado para el mensaje de error
+    const [errorMessage, setErrorMessage] = useState('');
+
+
+
+
+
+
+
+    // Función para manejar el envío del formulario de registro
+    const handleSubmitRegister = async (e,) => {
+        e.preventDefault();
+        // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
+        await handleRegister(e, setErrorMessage);
+    };
+
+    const handleSubmitLogin = async (e,) => {
+        e.preventDefault();
+        // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
+        await handleLogin(e, setErrorMessage);
+    };
+
+
+
+
+
+
+
+
+
+
 
     // Verificar si el usuario está logueado al cargar la aplicación
     useEffect(() => {
 
         const loggedInUser = localStorage.getItem('user');
-        console.log(' loggedInUser '+loggedInUser);
+        console.log(' loggedInUser ' + loggedInUser);
         if (loggedInUser) {
             const foundUser = JSON.parse(loggedInUser);
             setUser(foundUser);
@@ -51,7 +83,10 @@ function Login() {
 
             <div className="App">
                 <button className="btn-user" onClick={() => setShowModal(true)}>
-                <img src={login} className='login' alt="login" />
+                    <img src={login} className='login' alt="Aquí hay una imagen" />
+                </button>
+                <button>
+                    <img src={logout} className='logout' alt="Aquí hay una imagen" />
                 </button>
                 {showModal && (
                     <div className="modal">
@@ -60,7 +95,7 @@ function Login() {
                                 &times;
                             </span>
                             <h2>{newUser ? "Registrarse" : "Iniciar Sesión"}</h2>
-                            <form onSubmit={newUser ? handleRegister : handleLogin}>
+                            <form onSubmit={newUser ? handleSubmitRegister : handleSubmitLogin}>
                                 {newUser && (
                                     <>
                                         <label htmlFor="first_name">Nombre:</label>
@@ -113,7 +148,7 @@ function Login() {
                                             onChange={(e) => setTelephone(e.target.value)}
                                             required
                                         />
-                                     
+
 
                                     </>
                                 )}
@@ -133,18 +168,20 @@ function Login() {
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
                                 />
-                                   <label htmlFor="userType">Tipo de Usuario:</label>
-                                        <select className='optionusertype'
-                                            id="userType" 
-                                            value={userType} 
-                                            onChange={(e) => setUserType(e.target.value)} required>
-                                            <option value="cliente" >Cliente</option>
-                                            <option value="artista" >Artista</option>
-                                        </select>
+                                <label htmlFor="userType">Tipo de Usuario:</label>
+                                <select className='optionusertype'
+                                    id="userType"
+                                    value={userType}
+                                    onChange={(e) => setUserType(e.target.value)} required>
+                                    <option value="cliente" >Cliente</option>
+                                    <option value="artista" >Artista</option>
+                                </select>
                                 <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
                                 </button>
                             </form>
+
+                            {errorMessage && <div className="error-message">{errorMessage}</div>}
                             {!newUser && (
                                 <p>
                                     ¿Todavía no estás registrado?{" "}
