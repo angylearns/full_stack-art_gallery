@@ -35,7 +35,7 @@ class PersonService():
                 telephone = person.telephone
                 id_user_fk = person. id_user_fk
 
-                cursor.execute("INSERT INTO person (id_person, name, last_name, dni, birth_date, email, telephone, id_user_fk) VALUES ('{0}', '{1}', '{2} ', '{3}', '{4}', '{5}','{6}', '{7}');".format(id_person, name, last_name, dni, birth_date, email, telephone, id_user_fk))
+                cursor.execute("CAll sp_InsertPerson (%s, %s, %s, %s, %s, %s, %s, %s)", (id_person, name, last_name, dni, birth_date, email, telephone, id_user_fk ))
                 connection.commit()
                 connection.close()
                 return 'Persona agregado correctamente'

@@ -15,6 +15,7 @@ class UserService():
                 print(result)
                 connection.close()
                 return list_user
+                
                
         except Exception as ex: 
             print(ex)
@@ -32,7 +33,7 @@ class UserService():
                 user_type = user.user_type
                 
 
-                cursor.execute("INSERT INTO user (id_user, user_name, password, user_type) VALUES ('{0}', '{1}', '{2} ', '{3}');".format(id_user, user_name, password, user_type))
+                cursor.callproc("InsertUser", (id_user, user_name, password, user_type))
                 connection.commit()
                 connection.close()
                 return 'Usuario agregado correctamente'
@@ -45,7 +46,7 @@ class UserService():
         try:
             connection = get_connection()
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM user WHERE id_user = %s;", (id_user))
+                cursor.callproc("DeleteUser", (id_user,))
                 connection.commit()
             connection.close()
             return 'Usuario eliminado correctamente'
@@ -61,7 +62,7 @@ class UserService():
               password = user.password
               user_type = user.user_type
               
-              cursor.execute("UPDATE user SET user_name = %s, password= %s, user_type = %s WHERE id_user = %s;", (user_name, password, user_type, id_user))
+              cursor.callproc("UpdateUser", (id_user, user_name, password, user_type))
               connection.commit()
              connection.close()
              return 'Usuario actualizado correctamente'

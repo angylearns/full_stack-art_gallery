@@ -36,7 +36,7 @@ class ProductService():
                 style = product.style
                 id_person_fk = product.id_person_fk
 
-                cursor.execute("INSERT INTO product (id_product, url, title, price, material, dimensions, in_stock, style, id_person_fk) VALUES ('{0}', '{1}', '{2} ', '{3}', '{4}', '{5}','{6}', '{7}','{8}');".format(id_product, url, title, price, material, dimensions, in_stock, style, id_person_fk))
+                cursor.callproc("InsertProduct", (id_product, url, title, price, material, dimensions, in_stock, style, id_person_fk))
                 connection.commit()
                 connection.close()
                 return 'Producto agregado correctamente'
@@ -49,7 +49,7 @@ class ProductService():
         try:
             connection = get_connection()
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM product WHERE id_product = %s;", (id_product))
+                cursor.callproc("DeleteProduct", (id_product,))
                 connection.commit()
             connection.close()
             return 'Producto eliminado correctamente'
@@ -69,7 +69,7 @@ class ProductService():
               in_stock = product.in_stock
               style = product.style
               id_person_fk = product.id_person_fk
-              cursor.execute("UPDATE product SET url = %s, title = %s, price = %s, material = %s, dimensions = %s, in_stock = %s, style = %s, id_person_fk = %s WHERE id_product = %s;", ( url, title, price, material, dimensions, in_stock, style, id_person_fk, id_product))
+              cursor.callproc("UpdateProduct", (id_product, url, title, price, material, dimensions, in_stock, style, id_person_fk))
               connection.commit()
              connection.close()
              return 'Producto actualizado correctamente'

@@ -14,6 +14,7 @@ def get_user():
     print("Consola: Usuarios obtenidos.")
 
     return jsonify([user.__dict__ for user in list_user])
+    
 
 @postUser.route('/',methods=['POST'])
 
