@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./product.css";
 import productService from "../../services/productService";
-import {addProduct, updateProduct, deleteProduct} from "../../handlers/productHandler";
+import {addProduct, updateProduct, handleEdit, deleteProduct} from "../../handlers/productHandler";
   
  
   
@@ -63,15 +63,9 @@ const Product = () => {
   };
 
   
-  const handleEdit = async (productId) => {
-    const productToEdit = productos.find((producto) => producto.id_product === productId);
-    setNewProduct({
-       ...productToEdit,
-       id_product: productToEdit.id_product, // Asegurarse de que el id se copie correctamente
-    });
-    setIsEditing(true); 
-    formRef.current.scrollIntoView({ behavior: 'smooth' });
-   };
+  const handleEditClick = (productId) => {
+    handleEdit(productId, productos, setNewProduct, setIsEditing);
+ };
 
   const handleDelete = async (productId) => {
     await deleteProduct(productId, fetchData);
@@ -98,10 +92,10 @@ const Product = () => {
 
   const categorias = [
     "Arte Abstracto",
-    "Realismo Contemporaneo",
+    "Realismo Contemporáneo",
     "Arte Digital",
     "Expresionismo",
-    "Neo Pop"
+    "Neo-Pop"
     
   ];
 
@@ -214,7 +208,7 @@ const Product = () => {
             <option value="Realismo Contemporaneo">Realismo Contemporáneo</option>
             <option value="Arte Digital">Arte Digital</option>
             <option value="Expresionismo">Expresionismo</option>
-            <option value="Neo Pop">Neo Pop</option>
+            <option value="Neo-Pop">Neo-Pop</option>
             
           </select>
 
@@ -243,7 +237,7 @@ const Product = () => {
             <div>
               <button
                 className="btn-cardForm-edit"
-                onClick={() => handleEdit(producto.id_product)}
+                onClick={() => handleEditClick(producto.id_product)}
               >
                 Editar
               </button>
