@@ -128,7 +128,12 @@ def dashboard_admin_persons():
         print(user1)
         result = adminServicesB.patchPerson(person1)
         # result2 = adminServicesB.patchUser(user1)
-
+        # return 0
+    elif request.method == 'DELETE':
+        print("estamos en delete..............")
+        result = adminServicesB.deletePerson(person1)
+        result2 = adminServicesB.deleteUser(user1)
+        return jsonify({'ok': 'elemento borrado'})
 
      # Si el método no es GET, devuelve un error 405 Method Not Allowed
     return jsonify({'error': 'Método no permitido'}), 405

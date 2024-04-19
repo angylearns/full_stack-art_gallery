@@ -172,3 +172,43 @@ class adminServicesB():
                 return 0
         except Exception as ex:
             print(ex)
+
+    @classmethod
+    def deleteUser(cls,user:User):
+        try:
+            connection = get_connection()
+            print(connection)
+            with connection.cursor() as cursor:
+                id_user = user.id_user
+                
+                
+                cursor.execute("DELETE FROM user WHERE id_user='{0}'".format(id_user))                           
+                connection.commit()
+
+                
+                print("usuario eliminado ............................................................................")
+                connection.close()
+                return 0
+        except Exception as ex:
+            print("errorrrrr persona eliminada no funciona 1111111111111111111")
+            print(ex)
+
+    @classmethod
+    def deletePerson(cls,person:Person):
+        try:
+            connection = get_connection()
+            print(connection)
+            with connection.cursor() as cursor:
+                id_person = person.id_person
+                
+                
+                cursor.execute("DELETE FROM person WHERE id_person='{0}'".format(id_person))                           
+                connection.commit()
+
+                
+                print("persona eliminada ............................................................................")
+                connection.close()
+                return 0
+        except Exception as ex:
+            print("errorrrrr persona eliminada no funciona")
+            print(ex)

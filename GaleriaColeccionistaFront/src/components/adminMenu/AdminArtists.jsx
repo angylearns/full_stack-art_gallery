@@ -8,6 +8,7 @@ import TransposedTable from './TransposedTable';
 
 function AdminArtists({ artists }) {
     const [editMode, setEditMode] = useState(false);
+    const [artistsGlobal, setArtistGlobal] = useState([]);
 
     // const [data, setData] = useState(initialData);
     // const [editIndex, setEditIndex] = useState(null);
@@ -80,7 +81,8 @@ function AdminArtists({ artists }) {
         //setFila(artists[index]);
 
         //artist tiene los datos que se han modificado, eso es lo que me llevo a la base de datos
-        adminServiceF.patchPerson(artists[index]);
+        // adminServiceF.patchPerson(artists[index]);
+        adminServiceF.patchPerson(artistsGlobal[index]);
 
 
         // Después de guardar, eliminamos la fila del estado editableRows
@@ -154,14 +156,14 @@ function AdminArtists({ artists }) {
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
-        
+
     //     console.log(formData);
     //     postUsers(formData);
     // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         console.log(formData);
         await postUsers(formData);
         // window.location.reload(); // Recargar la página
@@ -183,11 +185,15 @@ function AdminArtists({ artists }) {
 
         // fetchUsers();
         // setPersons({artist});
+
+
+        setArtistGlobal(artists);
+
         setFila(artists);
     }, []);
 
     useEffect(() => {
- 
+
         async function fetchUsers() {
             try {
 
@@ -197,8 +203,10 @@ function AdminArtists({ artists }) {
                 // const clientes = allPersons.filter(persona => persona.user_type === 'Client');
 
                 // Almacenar resultados en artists
+
+                // // artists = artistas;
+                setArtistGlobal(artistas);
                 
-                artists = artistas;
 
             } catch (error) {
                 console.error("Error al obtener datos:", error);
@@ -210,62 +218,70 @@ function AdminArtists({ artists }) {
         setFila(artists);
     }, [updatePage]);
 
-    console.log(users);
-
-
-    const handleDelete = rowIndex => {
+ 
+    const handleDelete = async (index) => {
+               
+        await deletePerson(index);
+        // window.location.reload(); // Recargar la página
+        setUpdatePage(prevState => !prevState); // Cambiar el estado para forzar la actualización de la página
+    };
+    
+    async function deletePerson (index){
+    // const handleDelete = rowIndex => {
         // Lógica para eliminar una fila
-      };
+        adminServiceF.DeletePerson(artistsGlobal[index]);
+      
+    };
 
     return (
         <div className="mainContainer">
             <div className="getContainer">
                 <h1>Artistas</h1>
                 <div className="tableOwerflow">
-                <table>
-                    <thead>
-                        <tr>
-                        
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Apellido</th>
-                            <th>DNI</th>
-                            <th>Fecha de Nacimiento</th>
-                            <th>Email</th>
-                            <th>Teléfono</th>
-                            <th>ID de Usuario</th>
-                            <th>Nombre Usuario</th>
-                            <th>Tipo de usuario</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {artists.map((user, index) => (
-                            <tr key={index}>
-                                <td>{user.id_person}</td>
-                                <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["name"]} onChange={(e) => handleInputChange(e.target.value, index, "name")} /> : user.name}</td>
-                                <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["last_name"]} onChange={(e) => handleInputChange(e.target.value, "last_name")} /> : user.last_name}</td>
-                                <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["dni"]} onChange={(e) => handleInputChange(e.target.value, "dni")} /> : user.dni}</td>
-                                <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["birth_date"]} onChange={(e) => handleInputChange(e.target.value, "birth_date")} /> : user.birth_date}</td>
-                                <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["email"]} onChange={(e) => handleInputChange(e.target.value, "email")} /> : user.email}</td>
-                                <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["telephone"]} onChange={(e) => handleInputChange(e.target.value, "telephone")} /> : user.telephone}</td>                                    {/* <td>{user.id_user_fk}</td> */}
-                                <td>{editableRows.includes(index) ? <input type="text" value={user.id_user_fk} /> : user.id_user_fk}</td>
-                                <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["user_name"]} onChange={(e) => handleInputChange(e.target.value, "user_name")} /> : user.user_name}</td>
-                                <td>{user.user_type}</td>
-                                <td>
-                                    {editableRows.includes(index) ? (
-                                        <button onClick={() => handleSave(index)}>Guardar</button>
-                                    ) : (
-                                        <button onClick={() => handleEdit(index)}>Editar</button>
-                                    )}
-                                </td>
-                                <td>
-                                    <button onClick={() => handleDelete(index)}>Eliminar</button>
-                                </td>
+                    <table>
+                        <thead>
+                            <tr>
+
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>DNI</th>
+                                <th>Fecha de Nacimiento</th>
+                                <th>Email</th>
+                                <th>Teléfono</th>
+                                <th>ID de Usuario</th>
+                                <th>Nombre Usuario</th>
+                                <th>Tipo de usuario</th>
+                                <th>Acciones</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            {artistsGlobal.map((user, index) => (
+                                <tr key={index}>
+                                    <td>{user.id_person}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["name"]} onChange={(e) => handleInputChange(e.target.value, index, "name")} /> : user.name}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["last_name"]} onChange={(e) => handleInputChange(e.target.value, "last_name")} /> : user.last_name}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["dni"]} onChange={(e) => handleInputChange(e.target.value, "dni")} /> : user.dni}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["birth_date"]} onChange={(e) => handleInputChange(e.target.value, "birth_date")} /> : user.birth_date}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["email"]} onChange={(e) => handleInputChange(e.target.value, "email")} /> : user.email}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["telephone"]} onChange={(e) => handleInputChange(e.target.value, "telephone")} /> : user.telephone}</td>                                    {/* <td>{user.id_user_fk}</td> */}
+                                    <td>{editableRows.includes(index) ? <input type="text" value={user.id_user_fk} /> : user.id_user_fk}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["user_name"]} onChange={(e) => handleInputChange(e.target.value, "user_name")} /> : user.user_name}</td>
+                                    <td>{user.user_type}</td>
+                                    <td>
+                                        {editableRows.includes(index) ? (
+                                            <button className="button1" onClick={() => handleSave(index)}><img src="https://i.postimg.cc/jSD9KCSq/salvar.png"></img></button>
+                                        ) : (
+                                            <button className="button1" onClick={() => handleEdit(index)}><img src="https://i.postimg.cc/HsQBd5Qt/editar.png"></img></button>
+                                        )}
+                                    </td>
+                                    <td>
+                                        <button className="button1" onClick={() => handleDelete(index)}><img src="https://i.postimg.cc/mgspHVbq/eliminar-simbolo.png"></img></button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div className="postContainer">
@@ -308,8 +324,8 @@ function AdminArtists({ artists }) {
                             <option value="Artist">Artista</option>
                             <option value="Client">Cliente</option>                            
                         </select>
-                    </label> */}
-                    <button type="submit">Añadir Artista</button>
+                    </label> */}<br></br>
+                    <button className="button" type="submit">Añadir Artista</button>
                 </form>
             </div>
 

@@ -12,7 +12,7 @@ function AdminMenu() {
     const [componenteSeleccionado, setComponenteSeleccionado] = useState(null);
     // const [persons, setPersons] = useState([]);
     const [artists, setArtists] = useState([]);
-    const [clients, setClients] = useState([]);
+    const [customers, setCustomers] = useState([]);
 
     // Función para cambiar el componente seleccionado cuando se presiona un botón
     const handleBotonClick = (componente) => {
@@ -32,7 +32,7 @@ function AdminMenu() {
 
                 // Almacenar resultados en variables de estado
                 setArtists(artistas);
-                setClients(clientes);
+                setCustomers(clientes);
 
             } catch (error) {
                 console.error("Error al obtener datos:", error);
@@ -47,12 +47,13 @@ function AdminMenu() {
 
             <div className="container">
                 <div className="columna1">
-                    <button onClick={() => handleBotonClick("ArtistasComponent")}>Artistas</button>
-                    <button onClick={() => handleBotonClick("ClienteComponent")}>Cliente</button>
+                    <button className="button1" onClick={() => handleBotonClick("ArtistasComponent")}>Artistas</button>
+                    <button className="button1" onClick={() => handleBotonClick("ClienteComponent")}>Clientes</button>
                 </div>
                 <div className="columna2">
+                    
                     {componenteSeleccionado === "ArtistasComponent" && <AdminArtists artists={artists}/>}
-                    {componenteSeleccionado === "ClienteComponent" && <AdminCustomers clients={clients}/>}
+                    {componenteSeleccionado === "ClienteComponent" && <AdminCustomers customers={customers}/>}
                 </div>
             </div>
 

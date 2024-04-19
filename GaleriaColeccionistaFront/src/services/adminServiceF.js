@@ -70,6 +70,17 @@ export const adminServiceF = {
             console.error("Error al actualiar datos:", error);
             throw error;
         }
+    },
+
+    async DeletePerson(person) {
+        try {
+            let person2 = JSON.stringify(person)
+            let response = await apiClient.delete("/persons", { data: person });
+            return response.data;
+        } catch (error) {
+            console.error("Error al eliminar datosssssssss:", error);
+            throw error;
+        }
     }
 }
 

@@ -1,3 +1,72 @@
+.tableOwerflow{
+  overflow-x: auto;
+  
+  /* background-color: pink; */
+  width: 100%;
+}
+
+.getContainer{
+  background-color: rgb(255, 255, 255);
+  max-height: 400px;
+  overflow-y: auto;
+} 
+
+.mainContainer{
+  width:100%;
+  /* overflow: auto; */
+  background-color:#9BC9F4;
+}
+
 .postContainer{
-    padding: 5%;
+  overflow-x: auto;
+  width: auto;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+
+.button1 {
+background-color: white; 
+/* color: #21577E;  */
+/* border: 1px solid #21577E; */
+border:0;
+/* padding: 5px 5px;  */
+width: fit-content;
+/* border-radius: 5px;  */
+cursor: pointer; 
+transition: background-color 0.3s; /* Transición suave */
+}
+
+img{
+width: 35px;
+height:35px;
+border:0;
+}
+
+
+
+
+
+input {
+  background-color: rgb(242, 242, 242); 
+  border: 1px solid #abc2d2;
+  padding: 8px; 
+  border-radius: 5px; 
+  margin:5px;
+}
+
+
+input:hover {
+  background-color: white; 
+}
+
+
+input:focus {
+  background-color: rgb(255, 255, 209); 
+}
+
+label{
+  margin: 5px;
 }
