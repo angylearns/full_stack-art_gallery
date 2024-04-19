@@ -93,88 +93,97 @@ function Login({ isOpen, onClose }) {
         <>
             {isOpen && (
                 <div className="modal">
+
                     <div className="modal-content">
-                        <span className="close" onClick={onClose}> {/* Utiliza onClose para cerrar el modal */}
-                            &times;
-                        </span>
 
                         <div className="App">
 
-                            <h2>{newUser ? "Registrarse" : "Iniciar Sesión"}</h2>
+                            <span className="close" onClick={onClose}>
+                                &times;
+                            </span>
+                            <h2 className='login-title'>{newUser ? "Regístrese" : "Iniciar Sesión"}</h2>
                             <form onSubmit={newUser ? handleSubmitRegister : handleSubmitLogin}>
                                 {newUser && (
                                     <>
-                                        <label htmlFor="first_name">Nombre:</label>
-                                        <input
+                                        {/* <label htmlFor="first_name">Nombre:</label> */}
+                                        <input className='input-register'
                                             type="text"
                                             id="first_name"
                                             value={first_name}
                                             onChange={(e) => setFirstName(e.target.value)}
                                             required
+                                            placeholder="Nombre"
                                         />
-                                        <label htmlFor="lastName">Apellidos</label>
-                                        <input
+                                        {/* <label htmlFor="lastName">Apellidos</label> */}
+                                        <input className='input-register'
                                             type="text"
                                             id="last_name"
                                             value={last_name}
                                             onChange={(e) => setLastName(e.target.value)}
                                             required
+                                            placeholder="Apellidos"
                                         />
-                                        <label htmlFor="dni">DNI:</label>
-                                        <input
+                                        {/* <label htmlFor="dni">DNI:</label> */}
+                                        <input className='input-register'
                                             type="text"
                                             id="dni"
                                             value={dni}
                                             onChange={(e) => setDni(e.target.value)}
                                             required
+                                            placeholder="DNI"
                                         />
-                                        <label htmlFor="birth_date">Fecha de Nacimiento:</label>
-                                        <input
+                                        {/* <label htmlFor="birth_date">Fecha de Nacimiento:</label> */}
+                                        <input className='input-register'
                                             type="text"
                                             id="birth_date"
                                             value={birth_date}
                                             onChange={(e) => setBirthDate(e.target.value)}
                                             required
+                                            placeholder="Fecha de Nacimiento"
                                         />
 
-                                        <label htmlFor="email">Correo Electrónico:</label>
-                                        <input
+                                        {/* <label htmlFor="email">Correo Electrónico:</label> */}
+                                        <input className='input-register'
                                             type="email"
                                             id="email"
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             required
+                                            placeholder="Correo Electrónico"
                                         />
 
-                                        <label htmlFor="telephone">Teléfono:</label>
-                                        <input
+                                        {/* <label htmlFor="telephone">Teléfono:</label> */}
+                                        <input className='input-register'
                                             type="telephone"
                                             id="telephone"
                                             value={telephone}
                                             onChange={(e) => setTelephone(e.target.value)}
                                             required
+                                            placeholder="Teléfono"
                                         />
 
 
                                     </>
                                 )}
-                                <label htmlFor="username">Usuario:</label>
-                                <input
+                                {/* <label htmlFor="username">Usuario:</label> */}
+                                <input className='input-login'
                                     type="text"
                                     id="username"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
                                     required
+                                    placeholder="Usuario"
                                 />
-                                <label htmlFor="password">Contraseña:</label>
-                                <input
+                                {/* <label htmlFor="password">Contraseña:</label> */}
+                                <input className='input-login'
                                     type="password"
                                     id="password"
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
+                                    placeholder="Contraseña"
                                 />
-                                <label htmlFor="userType">Tipo de Usuario:</label>
+                                <label htmlFor="userType" className='usertypetext'>Tipo de Usuario:</label>
                                 <select className='optionusertype'
                                     id="userType"
                                     value={userType}
@@ -185,9 +194,6 @@ function Login({ isOpen, onClose }) {
                                 <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
                                 </button>
-                                {/* <button type="submit" className={newUser ? 'button-submit' : 'button-submit hidden'} id='botonregist'>
-                                        {newUser ? "Regístrate" : "hola"}
-                                    </button> */}
                             </form>
 
                             <button onClick={handleToggleView}>
@@ -202,17 +208,13 @@ function Login({ isOpen, onClose }) {
                                         Regístrate aquí
                                     </button>
                                 </p>
+
                             )}
                         </div>
                     </div>
-
-                    {/* )} */}
-
                 </div>
 
                 // {user && <p>Bienvenido, {user.user_name}.</p>}
-                //   </div>
-                // </div>
             )}
         </>
 

@@ -1,4 +1,4 @@
-//Este es el método GET del usuario registrado
+
 
 import loginService from '../services/loginService.js';
 
