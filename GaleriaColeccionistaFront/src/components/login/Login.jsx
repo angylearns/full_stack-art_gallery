@@ -81,10 +81,10 @@ function Login() {
         <>
 
             <div className="App">
-                <button className="btn-user" onClick={() => setShowModal(true)}>
+                <button className="btn-login" onClick={() => setShowModal(true)}>
                     <img src={login} className='login' alt="Aquí hay una imagen" />
                 </button>
-                <button>
+                <button className='btn-logout'>
                     <img src={logout} onClick={handleLogout} className='logout' alt="Aquí hay una imagen" />
                 </button>
                 {showModal && (

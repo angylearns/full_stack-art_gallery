@@ -1,11 +1,13 @@
 .App {
-    width: 700px;
-    height: 100%;
-    background-color: #E6ECEC;
+    /* width: 100%; */
+    height: auto;
+  padding: 25px;
     margin: 15px;
     color: black;
-    padding-bottom: 50px;
+    background-color: grey;
+    /* padding-bottom: 50px; */
    
+
 }
 
 
@@ -33,4 +35,14 @@ margin-top: 15px;
 
 .button-submit {
     margin-top: 15px;
+}
+
+.btn-login {
+    border: 0;
+    background: none;
+}
+
+.btn-logout {
+    border: 0;
+    background: none;
 }
