@@ -60,7 +60,7 @@ const loginService = {
   addPerson: async (first_name, last_name, dni, birth_date, email, telephone, id_user) => {
     try {
       const response = await fetch(`${API_URL}/person`, {
-        method: 'POST',
+        method: 'POST',                                                      
         headers: {
           'Content-Type': 'application/json',
         },

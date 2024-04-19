@@ -47,6 +47,15 @@ function Navbar() {
 
             <img src={search} className='search' alt="" />
 
+            <button onClick={handleOpenLogin}>
+
+              <img src={login} className='login' alt="login" />
+            </button>
+
+            <button onClick={handleCloseLogin}>
+              <img src={logout} className='logout' alt="logout" />
+            </button>
+
             <img src={shoppingCart} className='shoppingcart' alt="shoppingcart" />
           </div>
 
@@ -56,19 +65,10 @@ function Navbar() {
 
             <Login isOpen={isLoginOpen} onClose={handleCloseLogin}>
 
-              <button onClick={handleOpenLogin}>
-                <img src={login} className='login' alt="login" />
-              </button>
-
-              <button onClick={handleCloseLogin}>
-                <img src={logout} className='logout' alt="logout" />
-              </button>
-
             </Login>
 
           </div>
         </div>
-
         <div className='linedivider'>
 
           <img src={line} className='line' alt="line" />

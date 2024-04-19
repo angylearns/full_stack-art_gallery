@@ -183,7 +183,7 @@ function Login() {
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
                                 </button> */}
                                 <button type="submit" className={newUser ? 'button-submit' : 'button-submit hidden'} id='botonregist'>
-                                    {newUser ? "Regístrate" : null}
+                                    {newUser ? "Regístrate" : "hola"}
                                 </button>
                             </form>
 
