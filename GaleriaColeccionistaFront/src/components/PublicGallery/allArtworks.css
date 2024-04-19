@@ -1,0 +1,21 @@
+h1 {
+    display: flex;
+      font: bold;
+      color: #E6ECEC;
+      justify-content: center;
+  }
+  .all-artworks {
+      background-color: #669EC6;
+  }
+.artwork-list{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.artwork-card{
+
+    padding: 20px;
+   
+}
