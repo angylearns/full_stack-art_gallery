@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://127.0.0.1:5000';
 
 
 const loginService = {
@@ -57,25 +57,35 @@ const loginService = {
       throw new Error('Ocurrió un error al verificar la existencia del usuario');
     }
   },
-  addPerson: async (first_name, last_name, dni, birth_date, email, telephone, id_user) => {
+  addPerson: async (newPerson) => {
     try {
-      const response = await fetch(`${API_URL}/person`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ first_name, last_name, dni, birth_date, email, telephone, id_user }),
-      });
-      if (!response.ok) {
-        throw new Error('Error al registrar el usuario');
-      }
-      return await response.json();
+      await axios.post(`${API_BASE_URL}/person/`, newPerson);
+      alert('Persona agregada exitosamente');
+      // Puedes hacer algo aquí después de agregar la persona, como refrescar la lista de personas.
     } catch (error) {
-      console.error(error);
-      throw new Error('Ocurrió un error al registrar el usuario');
-
+      console.error('Error al guardar persona:', error);
+      throw error;
     }
   },
+  // addPerson: async (name, last_name, dni, birth_date, email, telephone, id_user) => {
+  //   try {
+  //     const response = await fetch(`${API_URL}/person/`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ name, last_name, dni, birth_date, email, telephone, id_user }),
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error('Error al registrar el usuario');
+  //     }
+  //     return await response.json();
+  //   } catch (error) {
+  //     console.error(error);
+  //     throw new Error('Ocurrió un error al registrar el usuario');
+
+  //   }
+  // },
   addUser: async (user_name, password, userType) => {
     try {
       const response = await fetch(`${API_URL}/user`, {
