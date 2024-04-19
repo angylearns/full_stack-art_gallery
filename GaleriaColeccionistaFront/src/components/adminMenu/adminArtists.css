@@ -1,0 +1,21 @@
+.tableOwerflow{
+    overflow-x: auto;
+    background-color: pink;
+    width: 100%;
+}
+
+.getContainer{
+    background-color: aquamarine;
+    /* width: fit-content; */
+ 
+}
+
+.mainContainer{
+    width:100%;
+    /* overflow: auto; */
+}
+
+.postContainer{
+    overflow-x: auto;
+    width: auto;
+}

@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 import { adminServiceF } from "../../services/adminServiceF";
-import './adminUsers.css'
+import './adminArtists.css'
 
 
 
-function AdminUsers() {
+
+function AdminCustomers({clients}) {
+
+ 
     const [users, setUsers] = useState([]);
     const [persons, setPersons] = useState([]);
     const [editableRows, setEditableRows] = useState([]);
@@ -54,18 +57,25 @@ function AdminUsers() {
 
     async function postUsers(formData) {
 
-        const user1 = {
-            id_user:"",
-            user_name:formData.username,
-            password:formData.password,
-            user_type:formData.user_type
-        }
+
+      const user1 = {
+        id_user:"",
+        user_name:formData.username,
+        password:formData.password,
+        user_type:'Client',
+        id_person :"",
+        name:formData.name,
+        last_name:formData.last_name,
+        dni:formData.dni,
+        birth_date:formData.birth_date,
+        email:formData.email,
+        telephone:formData.telephone,
+        id_user_fk:formData.id_user_fk
+    }
 
         try {
             const allPersons = await adminServiceF.postUser(user1);
             
-            //limpiar formdata
-            //post en person tambien
 
         } catch (error) {
             console.error("Error al insertar datos:", error);
@@ -80,19 +90,20 @@ function AdminUsers() {
     };
 
     useEffect(() => {
-        async function fetchUsers() {
-            try {
-                // const allUsers = await adminServiceF.getAllUser();
-                // setUsers(allUsers);
-                const allPersons = await adminServiceF.getAllPersons();
-                setPersons(allPersons);
+        // async function fetchUsers() {
+        //     try {
+        //         // const allUsers = await adminServiceF.getAllUser();
+        //         // setUsers(allUsers);
+        //         const allPersons = await adminServiceF.getAllPersons();
+        //         setPersons(allPersons);
 
-            } catch (error) {
-                console.error("Error al obtener datos:", error);
-            }
-        }
+        //     } catch (error) {
+        //         console.error("Error al obtener datos:", error);
+        //     }
+        // }
 
-        fetchUsers();
+        // fetchUsers();
+        // setPersons({artist});
     }, []);
 
     console.log(users);
@@ -100,7 +111,7 @@ function AdminUsers() {
     return (
         <div className="mainContainer">
             <div className="getContainer">
-                <h1>Lista de usuarios registrados</h1>
+                <h1>Clientes</h1>
 
                 <table>
       <thead>
@@ -119,7 +130,7 @@ function AdminUsers() {
         </tr>
       </thead>
       <tbody>
-        {persons.map((user, index) => (
+        {clients.map((user, index) => (
           <tr key={index}>
             <td>{user.id_person}</td>
             <td>{editableRows.includes(index) ? <input type="text" value={user.name} /> : user.name}</td>
@@ -179,14 +190,14 @@ function AdminUsers() {
                         Contraseña:
                         <input type="text" name="password" value={formData.password} onChange={handleChange} />
                     </label>
-                    <label>
+                    {/* <label>
                         Tipo de usuario:
                         <select name="user_type" value={formData.user_type} onChange={handleChange}>                            
                             <option value="Artist">Artista</option>
                             <option value="Client">Cliente</option>                            
                         </select>
-                    </label>
-                    <button type="submit">Añadir Usuario</button>
+                    </label> */}
+                    <button type="submit">Añadir Cliente</button>
                 </form>
             </div>
 
@@ -196,4 +207,4 @@ function AdminUsers() {
     );
 }
 
-export default AdminUsers;
+export default AdminCustomers;

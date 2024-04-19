@@ -4,15 +4,19 @@
 
 .container {
     display: flex;
-    min-height: 500px;
+    /* min-height: 500px; */
+    width: 100%;
   }
   
   .columna1 {
-    width: 100px;
+    width: 10%;
     background-color: #669EC6;
+    padding-top: 5%;
   }
   
   .columna2 {
-    flex: 1; /* Esto hace que ocupe el espacio restante */
+    /* flex: 1;  */
+    width: 90%;
+   
   }
   
