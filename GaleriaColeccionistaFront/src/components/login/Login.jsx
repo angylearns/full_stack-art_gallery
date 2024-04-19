@@ -38,6 +38,10 @@ function Login() {
     const [errorMessage, setErrorMessage] = useState('');
 
 
+    //DE REGISTER A LOGIN
+    const handleToggleView = () => {
+        setNewUser(!newUser);
+    };
 
 
 
@@ -73,8 +77,8 @@ function Login() {
         localStorage.removeItem('user');
         // Limpiar el estado del usuario en el componente
         setUser(null);
-      };
-      
+    };
+
 
     return (
 
@@ -175,10 +179,17 @@ function Login() {
                                     <option value="cliente" >Cliente</option>
                                     <option value="artista" >Artista</option>
                                 </select>
-                                <button type="submit" className='button-submit'>
+                                {/* <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
+                                </button> */}
+                                <button type="submit" className={newUser ? 'button-submit' : 'button-submit hidden'} id='botonregist'>
+                                    {newUser ? "Regístrate" : null}
                                 </button>
                             </form>
+
+                            <button onClick={handleToggleView}>
+                                {newUser ? "¿Ya tienes una cuenta? Inicia sesión" : "¿No tienes una cuenta? Regístrate"}
+                            </button>
 
                             {errorMessage && <div className="error-message">{errorMessage}</div>}
                             {!newUser && (

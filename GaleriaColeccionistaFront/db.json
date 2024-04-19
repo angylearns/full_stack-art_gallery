@@ -6,6 +6,24 @@
       "password": "1234",
       "user_type": "artist",
       "id": "31e9"
+    },
+    {
+      "id": "2834",
+      "user_name": "lili",
+      "password": "1234",
+      "userType": "cliente"
+    },
+    {
+      "id": "cb56",
+      "user_name": "angy",
+      "password": "1234",
+      "userType": "cliente"
+    },
+    {
+      "id": "7efe",
+      "user_name": "kkkk",
+      "password": "123",
+      "userType": "cliente"
     }
   ],
   "person": [
@@ -18,7 +36,36 @@
       "email": "lorenarodriguezc@gmail.com",
       "telephone": "646753432",
       "id_user": "31e9"
+    },
+    {
+      "id": "ce76",
+      "first_name": "Lorena",
+      "last_name": "Rod Cor",
+      "dni": "25548965M",
+      "birth_date": "2000-12-5",
+      "email": "lorenzc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "2834"
+    },
+    {
+      "id": "c8e1",
+      "first_name": "Angy",
+      "last_name": "lalala",
+      "dni": "25548965M",
+      "birth_date": "2000-12-5",
+      "email": "angy@gmail.com",
+      "telephone": "646753432",
+      "id_user": "cb56"
+    },
+    {
+      "id": "c0cc",
+      "first_name": "lalala",
+      "last_name": "lelele",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "driguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "7efe"
     }
-   
   ]
 }
