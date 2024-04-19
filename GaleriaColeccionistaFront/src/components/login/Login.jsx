@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './login.css';
 import login from "../../images/login.svg";
 import logout from "../../images/logout.svg";
-
+import Navbar from '../navbar/Navbar';
 
 
 
@@ -10,7 +10,7 @@ import logout from "../../images/logout.svg";
 import { handleLogin, handleRegister } from '../../handlers/loginHandler';
 
 
-function Login() {
+function Login({ isOpen, onClose }) {
     //Variable para ver modal
     const [showModal, setShowModal] = useState(false);
     //Variable saber si estoy en login o en registro
@@ -54,11 +54,13 @@ function Login() {
         await handleRegister(e, setErrorMessage);
     };
 
+
     const handleSubmitLogin = async (e,) => {
         e.preventDefault();
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleLogin(e, setErrorMessage);
     };
+
 
 
     // Verificar si el usuario está logueado al cargar la aplicación
@@ -72,31 +74,32 @@ function Login() {
         }
     }, []);
 
-    const handleLogout = () => {
-        // Eliminar el usuario del almacenamiento local
-        localStorage.removeItem('user');
-        // Limpiar el estado del usuario en el componente
-        setUser(null);
-    };
+    // const handleLogout = () => {
+    //     // Eliminar el usuario del almacenamiento local
+    //     localStorage.removeItem('user');
+    //     // Limpiar el estado del usuario en el componente
+    //     setUser(null);
+    // };
 
+    //PROPS
+    const [mensaje, setMensaje] = useState('');
+
+    const onClick = () => {
+        setMensaje('Mensaje del padre');
+    };
 
     return (
 
         <>
+            {isOpen && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <span className="close" onClick={onClose}> {/* Utiliza onClose para cerrar el modal */}
+                            &times;
+                        </span>
 
-            <div className="App">
-                <button className="btn-login" onClick={() => setShowModal(true)}>
-                    <img src={login} className='login' alt="Aquí hay una imagen" />
-                </button>
-                <button className='btn-logout'>
-                    <img src={logout} onClick={handleLogout} className='logout' alt="Aquí hay una imagen" />
-                </button>
-                {showModal && (
-                    <div className="modal">
-                        <div className="modal-content">
-                            <span className="close" onClick={() => setShowModal(false)}>
-                                &times;
-                            </span>
+                        <div className="App">
+
                             <h2>{newUser ? "Registrarse" : "Iniciar Sesión"}</h2>
                             <form onSubmit={newUser ? handleSubmitRegister : handleSubmitLogin}>
                                 {newUser && (
@@ -179,12 +182,12 @@ function Login() {
                                     <option value="cliente" >Cliente</option>
                                     <option value="artista" >Artista</option>
                                 </select>
-                                {/* <button type="submit" className='button-submit'>
+                                <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
-                                </button> */}
-                                <button type="submit" className={newUser ? 'button-submit' : 'button-submit hidden'} id='botonregist'>
-                                    {newUser ? "Regístrate" : "hola"}
                                 </button>
+                                {/* <button type="submit" className={newUser ? 'button-submit' : 'button-submit hidden'} id='botonregist'>
+                                        {newUser ? "Regístrate" : "hola"}
+                                    </button> */}
                             </form>
 
                             <button onClick={handleToggleView}>
@@ -202,10 +205,15 @@ function Login() {
                             )}
                         </div>
                     </div>
-                )}
-            </div>
-            {user && <p>Bienvenido, {user.user_name}.</p>}
 
+                    {/* )} */}
+
+                </div>
+
+                // {user && <p>Bienvenido, {user.user_name}.</p>}
+                //   </div>
+                // </div>
+            )}
         </>
 
     );
