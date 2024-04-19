@@ -1,0 +1,26 @@
+.container-navbar {
+    width: 100%;
+    background-color: blue;
+    height: 180px;
+}
+
+.icons-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 40%;
+    padding-top: 70px;
+}
+
+
+input[type="text"] {
+    width: 150px;
+}
+
+.login_logout {
+    display: flex;
+    flex-direction: row;
+    padding-left: 70%;
+    
+}
