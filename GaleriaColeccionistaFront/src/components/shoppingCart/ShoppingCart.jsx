@@ -7,10 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 function ShoppingCart() {
 
-    //ESTE COMPONENTE DEBE RECUPERAR DE LOCALHISTORY LOS DATOS DE LOS ELEMENTOS PARA INSERTAR EN LA LISTA DEL CARRITO, Y CUANDO SE ELIMINE ALGUNO DE LA LISTA TAMBIEN
-    // SE DEBE ACTUALIZAR LOCAL HISTORY, POR AHORA PONGO VARIOS ELEMENTOS DE PRUEBA
-
-    // const history = useHistory();
     const navigate = useNavigate();
 
     const [productList2, setProductList2] = useState([]);
@@ -62,15 +58,15 @@ function ShoppingCart() {
 
     return (
         <>
-            <div className='mainContainer'>
-                <table>
+            <div className='mainContainer1'>
+                <table className='tableM'>
                     <thead>
                         <tr>
                             <th>Imagen</th>
                             <th>ID</th>
                             <th>Título</th>
                             <th>Precio</th>
-                            <th>Imagen Estática</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,19 +77,19 @@ function ShoppingCart() {
                                 onMouseEnter={() => handleMouseEnter(index)}
                                 onMouseLeave={handleMouseLeave}
                             >
-                                <td><img src={product.url} alt="Imagen del producto" width="100" height="100" /></td>
+                                <td><img src={product.url} alt="Imagen del producto" className='imgProduct' /></td>
                                 <td>{product.id_product}</td>
                                 <td>{product.title}</td>
-                                <td>{product.price}</td>
-                                <td onClick={() => mostrarNumeroFila(index)}><img src={imagenEstatica} alt="eliminar" width="40" height="40" /></td>
+                                <td>{product.price} eur</td>
+                                <td onClick={() => mostrarNumeroFila(index)}><img src={imagenEstatica} alt="eliminar" className='imgDelete'/></td>
                             </tr>
                         ))}
                     </tbody>
                     <tfoot>
                         <tr>
                             <td colSpan="3">Total:</td>
-                            <td>{totalPrecio.toFixed(2)}</td>
-                            <td><button onClick={() => handleEndPurchase(totalPrecio.toFixed(2))} className='btnPay'>Finalizar compra</button></td>
+                            <td>{totalPrecio.toFixed(2)} eur</td>
+                            <td><button onClick={() => handleEndPurchase(totalPrecio.toFixed(2))} className='btnPay'>Pagar</button></td>
                         </tr>
                     </tfoot>
                 </table>
