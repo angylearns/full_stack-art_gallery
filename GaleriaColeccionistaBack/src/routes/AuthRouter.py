@@ -30,7 +30,7 @@ def post_login_user():
         return jsonify({'success':False})
     
 @main.route('/', methods=['GET'])
-def get_login_user():
+def check_login_user_exists():
     # Obtiene el cuerpo JSON de la solicitud
     request_json = request.json
     user_name = request_json.get('user_name')
