@@ -43,7 +43,10 @@ function Login({ isOpen, onClose }) {
         setNewUser(!newUser);
     };
 
-
+    const resetToLoginView = () => {
+        setNewUser(false);
+        // Aquí puedes resetear también los campos del formulario de registro si es necesario
+    };
 
 
 
@@ -52,6 +55,7 @@ function Login({ isOpen, onClose }) {
         e.preventDefault();
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleRegister(e, setErrorMessage);
+        resetToLoginView(); // Resetear la vista después de intentar registrarse
     };
 
 

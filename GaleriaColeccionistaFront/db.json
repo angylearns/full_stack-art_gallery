@@ -30,6 +30,18 @@
       "user_name": "kikiki",
       "password": "1234",
       "userType": "cliente"
+    },
+    {
+      "id": "0c99",
+      "user_name": "Loredfsdf",
+      "password": "123",
+      "userType": "cliente"
+    },
+    {
+      "id": "3f61",
+      "user_name": "Loredfsdffgf",
+      "password": "123444",
+      "userType": "cliente"
     }
   ],
   "person": [
@@ -82,6 +94,26 @@
       "email": "ezc@gmail.com",
       "telephone": "646753432",
       "id_user": "6191"
+    },
+    {
+      "id": "3026",
+      "first_name": "Rodrí",
+      "last_name": "Cos",
+      "dni": "123587l44",
+      "birth_date": "1977-12-06",
+      "email": "lorrc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "0c99"
+    },
+    {
+      "id": "28a3",
+      "first_name": "Rodríasdfaf",
+      "last_name": "Cosfads",
+      "dni": "123587l443",
+      "birth_date": "1977-12-06",
+      "email": "lorrererc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "3f61"
     }
   ]
 }
