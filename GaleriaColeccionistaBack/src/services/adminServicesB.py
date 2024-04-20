@@ -154,6 +154,7 @@ class adminServicesB():
     
     @classmethod
     def patchUser(cls,user:User):
+        print("estamos en patch para el usuario")
         try:
             connection = get_connection()
             print(connection)
@@ -162,7 +163,8 @@ class adminServicesB():
                 user_name = user.user_name
                 password = user.password
                 user_type = user.user_type
-                
+                print("actualizar usuario:mmmmmmmmmmmmmmmmmmm")
+                print(id_user)
                 cursor.execute("UPDATE user SET user_name='{1}', password='{2}', user_type ='{3}' WHERE id_user = {0}".format(id_user,user_name,password,user_type))                           
                 connection.commit()
 
@@ -185,7 +187,7 @@ class adminServicesB():
                 cursor.execute("DELETE FROM user WHERE id_user='{0}'".format(id_user))                           
                 connection.commit()
 
-                
+                print(id_user)
                 print("usuario eliminado ............................................................................")
                 connection.close()
                 return 0
@@ -205,7 +207,7 @@ class adminServicesB():
                 cursor.execute("DELETE FROM person WHERE id_person='{0}'".format(id_person))                           
                 connection.commit()
 
-                
+                print(id_person)
                 print("persona eliminada ............................................................................")
                 connection.close()
                 return 0

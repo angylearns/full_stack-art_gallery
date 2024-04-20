@@ -22,8 +22,9 @@
   width: auto;
   padding-top: 2%;
   padding-bottom: 2%;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+  background-color: blue;
 }
 
 
@@ -48,7 +49,6 @@ border:0;
 
 
 
-
 input {
   background-color: rgb(242, 242, 242); 
   border: 1px solid #abc2d2;
@@ -68,5 +68,38 @@ input:focus {
 }
 
 label{
-  margin: 5px;
+  margin: 2px;
+}
+
+
+.formContent{
+  display: flex;
+  flex-direction: row;
+}
+
+.groupForm1{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  background-color: greenyellow;
+}
+
+.groupForm2{
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  background-color: pink;
+}
+
+.smallDiv{
+  text-align: center; 
+}
+
+.labelStyle{
+  display: block;
+  margin-bottom: 5px;
+}
+
+.buttonAdd{
+  margin-left: 5px;
 }

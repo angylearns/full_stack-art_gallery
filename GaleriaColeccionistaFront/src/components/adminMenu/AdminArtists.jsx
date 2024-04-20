@@ -55,6 +55,30 @@ function AdminArtists({ artists }) {
     //     setEditedValue(e.target.value);
     //   };
 
+    // function FormatDate( artists ) {
+    //     // Convertir la cadena de fecha a un objeto Date
+    //     for (let i = 0; i < artists.length; i++) {
+    //         const subArray = artists[i];
+            
+    //         // for (let j = 0; j < subArray.length; j++) {
+              
+    //         const fechaObjeto = new Date(subArray.birth_date);
+    //         // Obtener el día, mes y año
+    //         const dia = fechaObjeto.getDate();
+    //         const mes = fechaObjeto.getMonth() + 1; // Sumar 1 porque los meses son indexados desde 0
+    //         const año = fechaObjeto.getFullYear();
+            
+    //         // Formatear la fecha como deseas
+    //         const fechaFormateada = `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${año}`;
+            
+    //         // Asignar la fecha formateada como un string a birth_date
+    //         artists[i].birth_date = toString(fechaFormateada);
+
+
+    //         // }
+    //       }
+       
+    //   }
 
     const handleEdit = (index) => {
         if (editableRows.includes(index)) {
@@ -64,8 +88,6 @@ function AdminArtists({ artists }) {
             // Si la fila no está en modo de edición, la añadimos al estado editableRows
             setEditableRows([...editableRows, index]);
         }
-
-
     };
 
     const handleSave = (index) => {
@@ -82,6 +104,9 @@ function AdminArtists({ artists }) {
 
         //artist tiene los datos que se han modificado, eso es lo que me llevo a la base de datos
         // adminServiceF.patchPerson(artists[index]);
+
+        
+        
         adminServiceF.patchPerson(artistsGlobal[index]);
 
 
@@ -90,16 +115,23 @@ function AdminArtists({ artists }) {
     };
 
 
-    const handleFieldChange = (e) => {
-        const { name, value } = e.target;
-        setFila(artists[index]);
-        setFormData({ ...formData, [name]: value });
-    };
+    // const handleFieldChange = (e) => {
+    //     const { name, value } = e.target;
+    //     setFila(artists[index]);
+    //     setFormData({ ...formData, [name]: value });
+    // };
 
     const handleInputChange = (newValue, index, field) => {
-        // setFila(artists[index]);
-        // setFila({ ...fila, name: newValue });
-        artists[index][field] = newValue;
+        // // //  setFila(artists[index]);
+        // setFila(artistsGlobal[index]);
+        // setFila({ ...fila, field: newValue });
+        // // // setFila(artistsGlobal[index]);
+        // // // setFila({ ...fila, field: newValue })
+        //  artists[index][field] = newValue;
+        // // artistsGlobal[index]= fila;
+        // setArtistGlobal(artists);
+         
+        artistsGlobal[index][field] = newValue;
     };
 
 
@@ -132,23 +164,9 @@ function AdminArtists({ artists }) {
             telephone: formData.telephone,
             id_user_fk: ""
         }
-        // const person1 = {
-        //     id_person :"",
-        //     user_name:formData.name,
-        //     last_name:formData.last_name,
-        //     dni:formData.dni,
-        //     birth_date:formData.birth_date,
-        //     email:formData.email,
-        //     telephone:formData.telephone,
-        //     id_user_fk:formData.id_user_fk
-        // }
-
         try {
             const newUser = await adminServiceF.postUser(user1);
             // const newPerson = await adminServiceF.postPerson(person1);
-
-
-
         } catch (error) {
             console.error("Error al insertar datos:", error);
         }
@@ -171,24 +189,9 @@ function AdminArtists({ artists }) {
     };
 
     useEffect(() => {
-        // async function fetchUsers() {
-        //     try {
-        //         // const allUsers = await adminServiceF.getAllUser();
-        //         // setUsers(allUsers);
-        //         const allPersons = await adminServiceF.getAllPersons();
-        //         setPersons(allPersons);
-
-        //     } catch (error) {
-        //         console.error("Error al obtener datos:", error);
-        //     }
-        // }
-
-        // fetchUsers();
-        // setPersons({artist});
-
-
+       
         setArtistGlobal(artists);
-
+        
         setFila(artists);
     }, []);
 
@@ -200,14 +203,9 @@ function AdminArtists({ artists }) {
                 const allPersons = await adminServiceF.getAllPersons();
                 // Filtrar personas por tipo de usuario
                 const artistas = allPersons.filter(persona => persona.user_type === 'Artist');
-                // const clientes = allPersons.filter(persona => persona.user_type === 'Client');
-
-                // Almacenar resultados en artists
-
-                // // artists = artistas;
+              
                 setArtistGlobal(artistas);
                 
-
             } catch (error) {
                 console.error("Error al obtener datos:", error);
             }
@@ -215,7 +213,8 @@ function AdminArtists({ artists }) {
 
         fetchUsers();
 
-        setFila(artists);
+        // setFila(artists);
+        setFila(artistsGlobal);
     }, [updatePage]);
 
  
@@ -223,15 +222,15 @@ function AdminArtists({ artists }) {
                
         await deletePerson(index);
         // window.location.reload(); // Recargar la página
-        setUpdatePage(prevState => !prevState); // Cambiar el estado para forzar la actualización de la página
     };
     
     async function deletePerson (index){
-    // const handleDelete = rowIndex => {
-        // Lógica para eliminar una fila
+
         adminServiceF.DeletePerson(artistsGlobal[index]);
-      
+        setUpdatePage(prevState => !prevState); // Cambiar el estado para forzar la actualización de la página
     };
+
+
 
     return (
         <div className="mainContainer">
@@ -251,23 +250,23 @@ function AdminArtists({ artists }) {
                                 <th>Teléfono</th>
                                 <th>ID de Usuario</th>
                                 <th>Nombre Usuario</th>
-                                <th>Tipo de usuario</th>
-                                <th>Acciones</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                             </tr>
                         </thead>
                         <tbody>
                             {artistsGlobal.map((user, index) => (
                                 <tr key={index}>
                                     <td>{user.id_person}</td>
-                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["name"]} onChange={(e) => handleInputChange(e.target.value, index, "name")} /> : user.name}</td>
-                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["last_name"]} onChange={(e) => handleInputChange(e.target.value, "last_name")} /> : user.last_name}</td>
-                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["dni"]} onChange={(e) => handleInputChange(e.target.value, "dni")} /> : user.dni}</td>
-                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["birth_date"]} onChange={(e) => handleInputChange(e.target.value, "birth_date")} /> : user.birth_date}</td>
-                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["email"]} onChange={(e) => handleInputChange(e.target.value, "email")} /> : user.email}</td>
-                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["telephone"]} onChange={(e) => handleInputChange(e.target.value, "telephone")} /> : user.telephone}</td>                                    {/* <td>{user.id_user_fk}</td> */}
-                                    <td>{editableRows.includes(index) ? <input type="text" value={user.id_user_fk} /> : user.id_user_fk}</td>
-                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={fila[index]["user_name"]} onChange={(e) => handleInputChange(e.target.value, "user_name")} /> : user.user_name}</td>
-                                    <td>{user.user_type}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["name"]} onChange={(e) => handleInputChange(e.target.value, index, "name")} /> : user.name}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["last_name"]} onChange={(e) => handleInputChange(e.target.value, index,"last_name")} /> : user.last_name}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["dni"]} onChange={(e) => handleInputChange(e.target.value,index, "dni")} /> : user.dni}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["birth_date"]} onChange={(e) => handleInputChange(e.target.value,index, "birth_date")} /> : user.birth_date}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["email"]} onChange={(e) => handleInputChange(e.target.value,index, "email")} /> : user.email}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["telephone"]} onChange={(e) => handleInputChange(e.target.value,index, "telephone")} /> : user.telephone}</td>                                    {/* <td>{user.id_user_fk}</td> */}
+                                    <td>{ user.id_user_fk}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["user_name"]} onChange={(e) => handleInputChange(e.target.value, index,"user_name")} /> : user.user_name}</td>
+                                    {/* <td>{user.user_type}</td> */}
                                     <td>
                                         {editableRows.includes(index) ? (
                                             <button className="button1" onClick={() => handleSave(index)}><img src="https://i.postimg.cc/jSD9KCSq/salvar.png"></img></button>

@@ -47,8 +47,8 @@ function AdminMenu() {
 
             <div className="container">
                 <div className="columna1">
-                    <button className="button1" onClick={() => handleBotonClick("ArtistasComponent")}>Artistas</button>
-                    <button className="button1" onClick={() => handleBotonClick("ClienteComponent")}>Clientes</button>
+                    <button className="buttonA" onClick={() => handleBotonClick("ArtistasComponent")}>Artistas</button>
+                    <button className="buttonA" onClick={() => handleBotonClick("ClienteComponent")}>Clientes</button>
                 </div>
                 <div className="columna2">
                     

@@ -123,11 +123,15 @@ def dashboard_admin_persons():
         return response
     elif request.method == 'PATCH':
         print("estamos en el metodo patchhhh")
+        print("id person")
+        print(person1.id_person)
+        print("id user")
+        print(user1.id_user)
         print(person1)
         print("patch userrrrrr")
         print(user1)
         result = adminServicesB.patchPerson(person1)
-        # result2 = adminServicesB.patchUser(user1)
+        result2 = adminServicesB.patchUser(user1)
         # return 0
     elif request.method == 'DELETE':
         print("estamos en delete..............")
