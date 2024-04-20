@@ -27,7 +27,7 @@ class PersonService():
         
             with connection.cursor() as cursor:
                 id_person = person.id_person
-                name = person.name
+                first_name = person.first_name
                 last_name = person.last_name
                 dni = person.dni
                 birth_date = person.birth_date
@@ -35,7 +35,7 @@ class PersonService():
                 telephone = person.telephone
                 id_user_fk = person. id_user_fk
 
-                cursor.execute("CAll sp_InsertPerson (%s, %s, %s, %s, %s, %s, %s, %s)", (id_person, name, last_name, dni, birth_date, email, telephone, id_user_fk ))
+                cursor.execute("CAll sp_InsertPerson (%s, %s, %s, %s, %s, %s, %s, %s)", (id_person, first_name, last_name, dni, birth_date, email, telephone, id_user_fk ))
                 connection.commit()
                 connection.close()
                 return 'Persona agregado correctamente'
@@ -60,14 +60,14 @@ class PersonService():
         try:
              connection = get_connection()
              with connection.cursor() as cursor:
-              name = person.name
+              first_name = person.first_name
               last_name = person.last_name
               dni = person.dni
               birth_date = person.birth_date
               email = person.email
               telephone = person.telephone
               id_user_fk = person.id_user_fk
-              cursor.execute("UPDATE person SET name = %s, last_name = %s, dni = %s, birth_date = %s, email = %s, telephone = %s, id_user_fk = %s WHERE id_person = %s;", (name, last_name, dni, birth_date, email, telephone, id_user_fk, id_person))
+              cursor.execute("UPDATE person SET first_name = %s, last_name = %s, dni = %s, birth_date = %s, email = %s, telephone = %s, id_user_fk = %s WHERE id_person = %s;", (first_name, last_name, dni, birth_date, email, telephone, id_user_fk, id_person))
               connection.commit()
              connection.close()
              return 'Persona actualizado correctamente'

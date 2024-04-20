@@ -117,34 +117,11 @@ export const handleRegister = async (e, setErrorMessage) => {
     const telephone = document.getElementById('telephone').value;
     const userType = document.getElementById('userType').value;
 
-    try {
-        const listaUser = await loginService.checkUserExists(username);
-        console.log(username);
-        console.log("LISTA USEEEEER");
-        console.log(listaUser);
-        for (let i = 0; i < listaUser.length; i++) {
-            if (listaUser[i].user_name === username) {
-                alert("Este nombre de usuario ya está registrado");
-                return;
-            } if (listaUser[i].email === email) {
-                alert("Este email ya está registrado");
-                return;
-            } else {
-                const newUser = await loginService.addUser(username, password, userType);
-                const newPerson = await loginService.addPerson(first_name, last_name, dni, birth_date, email, telephone, newUser.id);
 
-                localStorage.setItem('user', JSON.stringify(newUser));
-                console.log('Usuario registrado:', newUser);
-            }
-        }
-     
-        const existingPerson = await loginService.checkPersonExists(email);
-        if (existingPerson && existingPerson.length > 0) {
-            alert("Este email ya está registrado");
-            return;
-        }
-    } catch (error) {
-        console.error('Error al registrar el usuario:', error);
-        setErrorMessage('Ocurrió un error al registrar el usuario');
-    }
+    const newUser = await loginService.addUser(username, password, userType);
+    const newPerson = await loginService.addPerson(first_name, last_name, dni, birth_date, email, telephone, newUser.id);
+
+    localStorage.setItem('user', JSON.stringify(newUser));
+    console.log('Usuario registrado:', newUser);
+    
 };

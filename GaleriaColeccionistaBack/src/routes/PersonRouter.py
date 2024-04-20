@@ -19,7 +19,7 @@ def get_person():
 
 def post_person():
 
-    name = request.json ['name']
+    first_name = request.json ['first_name']
     last_name = request.json ['last_name']
     dni = request.json ['dni']
     birth_date = request.json ['birth_date']
@@ -27,13 +27,13 @@ def post_person():
     telephone = request.json ['telephone']
     id_user_fk = request.json ['id_user_fk']
 
-    print(name)
+    print(first_name)
     print(last_name)
     print(dni)
     print(birth_date)
     print(email)
 
-    person= Person(0,name,last_name,dni,birth_date,email, telephone, id_user_fk)
+    person= Person(0,first_name,last_name,dni,birth_date,email, telephone, id_user_fk)
 
 
     if PersonService.post_person(person):
@@ -46,7 +46,7 @@ def post_person():
 
 def put_person(id_person):
     
-    name = request.json ['name']
+    first_name = request.json ['first_name']
     last_name = request.json ['last_name']
     dni = request.json ['dni']
     birth_date = request.json ['birth_date']
@@ -54,7 +54,7 @@ def put_person(id_person):
     telephone = request.json ['telephone']
     id_user_fk = request.json ['id_user_fk']
 
-    updateperson= Person(id_person,name,last_name,dni,birth_date,email, telephone, id_user_fk)
+    updateperson= Person(id_person,first_name,last_name,dni,birth_date,email, telephone, id_user_fk)
     
    
     PersonService.put_person(id_person, updateperson)

@@ -188,8 +188,8 @@ function Login({ isOpen, onClose }) {
                                     id="userType"
                                     value={userType}
                                     onChange={(e) => setUserType(e.target.value)} required>
-                                    <option value="cliente" >Cliente</option>
-                                    <option value="artista" >Artista</option>
+                                    <option value="2" >Artista</option>
+                                    <option value="3" >Cliente</option>
                                 </select>
                                 <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}

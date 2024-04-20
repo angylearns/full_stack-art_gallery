@@ -19,66 +19,10 @@ const loginService = {
 
   },
 
-  //COMPROBAR SI EL USUARIO EXISTE
-  checkUserExists: async (username) => {
-    try {
-      console.log('email+username ' + username);
-      const response = await fetch(`${API_URL}/user?user_name=${username}`);
-      if (!response.ok) {
-        throw new Error('Error al verificar la existencia del usuario');
-      }
-      const data = await response.json();
-      console.log('data' + JSON.stringify(data));
-      const usernames = [];
-
-    // Iterar sobre cada objeto en el array de data
-    data.forEach(user => {
-      console.log(user); // Aquí obtienes el nombre de usuario de cada usuario
-      usernames.push(user.user_name); // Almacenar el nombre de usuario en el array
-    });
-
-    console.log("USERNAMEEEEES");
-    // Ahora tienes acceso a los nombres de usuario fuera del bucle forEach
-    console.log(usernames);
-
-    return usernames; // Ajusta según la estructura de tu respuesta
-    } catch (error) {
-      console.error(error);
-      throw new Error('Ocurrió un error al verificar la existencia del usuario');
-    }
-  },
-  checkPersonExists: async (email) => {
-    try {
-      console.log('email ' + email);
-      const response = await fetch(`${API_URL}/person?email=${email}`);
-      if (!response.ok) {
-        throw new Error('Error al verificar la existencia del email');
-      }
-      const data = await response.json();
-      console.log('data ' + JSON.stringify(data));
   
-      // Crear un array para almacenar los correos electrónicos
-      const emails = [];
-  
-      // Iterar sobre cada objeto en el array de data
-      data.forEach(person => {
-        console.log(person.email); // Aquí obtienes el correo electrónico de cada persona
-        emails.push(person.email); // Almacenar el correo electrónico en el array
-      });
-  
-      // Ahora tienes acceso a los correos electrónicos fuera del bucle forEach
-      console.log("EMAILS");
-      console.log(emails);
-  
-      return emails; // Ajusta según la estructura de tu respuesta
-    } catch (error) {
-      console.error(error);
-      throw new Error('Ocurrió un error al verificar la existencia del email');
-    }
-  },
   addPerson: async (first_name, last_name, dni, birth_date, email, telephone, id_user) => {
     try {
-      const response = await fetch(`${API_URL}/person`, {
+      const response = await fetch(`${API_URL}/person/`, {
         method: 'POST',                                                      
         headers: {
           'Content-Type': 'application/json',
@@ -113,14 +57,14 @@ const loginService = {
 
   //   }
   // },
-  addUser: async (user_name, password, userType) => {
+  addUser: async (user_name, password, user_type) => {
     try {
-      const response = await fetch(`${API_URL}/userL`, {
+      const response = await fetch(`${API_URL}/user/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ user_name, password, userType }),
+        body: JSON.stringify({ user_name, password, user_type }),
       });
       if (!response.ok) {
         throw new Error('Error al registrar el usuario');
