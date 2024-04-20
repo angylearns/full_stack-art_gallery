@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { adminServiceF } from "../../services/adminServiceF";
 import './adminArtists.css'
 
-import TransposedTable from './TransposedTable';
+
 
 
 function AdminArtists({ artists }) {

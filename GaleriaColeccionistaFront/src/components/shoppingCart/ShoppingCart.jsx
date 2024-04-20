@@ -24,45 +24,9 @@ function ShoppingCart() {
     }, []);
 
 
-    const [productList, setProductList] = useState([
-        {
-            id_product: "1",
-            title: "Producto 1",
-            price: "10",
-            material: "Material 1",
-            dimension: "Dimension 1",
-            in_stock: true,
-            style: "Estilo 1",
-            id_purchase_order: "1",
-            url: "https://i.postimg.cc/tCfhFKYv/popArt1.png"
-        },
-        {
-            id_product: "2",
-            title: "Producto 2",
-            price: "20",
-            material: "Material 2",
-            dimension: "Dimension 2",
-            in_stock: true,
-            style: "Estilo 2",
-            id_purchase_order: "2",
-            url: "https://i.postimg.cc/tCfhFKYv/popArt1.png"
-        },
-        {
-            id_product: "3",
-            title: "Producto 3",
-            price: "30",
-            material: "Material 3",
-            dimension: "Dimension 3",
-            in_stock: true,
-            style: "Estilo 3",
-            id_purchase_order: "3",
-            url: "https://i.postimg.cc/tCfhFKYv/popArt1.png"
-        }
-    ]);
-
 
     // Calcular el total de los precios
-    const totalPrecio = productList.reduce((total, product) => total + parseFloat(product.price), 0);
+    const totalPrecio = productList2.reduce((total, product) => total + parseFloat(product.price), 0);
     // URL de la imagen estática
     const imagenEstatica = "https://i.postimg.cc/ZRFNChK9/eliminar.png";
 
@@ -76,6 +40,8 @@ function ShoppingCart() {
     const eliminarProducto = (index) => {
         const nuevaLista = productList2.filter((product, idx) => idx !== index);
         setProductList2(nuevaLista);
+        //actualizar localstorage
+        localStorage.setItem('products', JSON.stringify(nuevaLista));
     };
 
     const handleEndPurchase = (total) => {
