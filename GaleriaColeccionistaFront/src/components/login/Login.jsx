@@ -85,8 +85,10 @@ function Login({ isOpen, onClose }) {
     // Función para manejar el envío del formulario de registro
     const handleSubmitRegister = async (e,) => {
         e.preventDefault();
+
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleRegister(e, setErrorMessage);
+
         // setFormState(initialState);
         setFormStateLogin(initialStateLogin);
         setFormStateRegister(initialStateRegister);
@@ -96,6 +98,7 @@ function Login({ isOpen, onClose }) {
 
     const handleSubmitLogin = async (e,) => {
         e.preventDefault();
+        
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleLogin(e, setErrorMessage);
         setFormStateLogin(initialStateLogin);
@@ -122,11 +125,11 @@ function Login({ isOpen, onClose }) {
     // };
 
     //PROPS
-    const [mensaje, setMensaje] = useState('');
+    // const [mensaje, setMensaje] = useState('');
 
-    const onClick = () => {
-        setMensaje('Mensaje del padre');
-    };
+    // const onClick = () => {
+    //     setMensaje('Mensaje del padre');
+    // };
 
 
 
@@ -243,8 +246,10 @@ function Login({ isOpen, onClose }) {
                                     value={userType}
                                     onChange={(e) => setUserType(e.target.value)} required>
                                     <option value="">Tipo de usuario</option>
-                                    <option value="cliente" >Cliente</option>
-                                    <option value="artista" >Artista</option>
+                                    {/* <option value="cliente" >Cliente</option>
+                                    <option value="artista" >Artista</option> */}
+                                    <option value="3" >Cliente</option>
+                                    <option value="2" >Artista</option>
                                 </select>
                                 <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
@@ -254,16 +259,16 @@ function Login({ isOpen, onClose }) {
                             <button onClick={handleToggleView} className='buttonsloginlogout'>
                                 {newUser ? "Inicia sesión" : "Regístrate"}
                             </button>
-                          
+
 
                             {errorMessage && <div className="error-message">{errorMessage}</div>}
                             {!newUser && (
                                 <div className=''>
-                                
-                                        {/* <button className='button-register' onClick={() => setNewUser(true)}>
+
+                                    {/* <button className='button-register' onClick={() => setNewUser(true)}>
                                             Regístrate aquí
                                         </button> */}
-                                  
+
                                 </div>
                             )}
                         </div>

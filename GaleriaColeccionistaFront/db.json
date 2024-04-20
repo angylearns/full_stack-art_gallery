@@ -84,6 +84,18 @@
       "user_name": "yhklgklfg",
       "password": "4155",
       "userType": "artista"
+    },
+    {
+      "id": "5b56",
+      "user_name": "rafague",
+      "password": "ujuk",
+      "userType": "cliente"
+    },
+    {
+      "id": "5c21",
+      "user_name": "lala",
+      "password": "pepe",
+      "userType": "2"
     }
   ],
   "person": [
@@ -226,6 +238,26 @@
       "email": "jdrgrkdg@gmail.com",
       "telephone": "646753432",
       "id_user": "18de"
+    },
+    {
+      "id": "e10f",
+      "first_name": "fkdajf",
+      "last_name": "fadsjk",
+      "dni": "12354687l",
+      "birth_date": "1985-12-06",
+      "email": "sdkjfaskfjriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "5b56"
+    },
+    {
+      "id": "674f",
+      "first_name": "fguj",
+      "last_name": "ghjj",
+      "dni": "45634568",
+      "birth_date": "1985-12-07",
+      "email": "w456tyc@gmail.com",
+      "telephone": "589658745",
+      "id_user": "5c21"
     }
   ]
 }
