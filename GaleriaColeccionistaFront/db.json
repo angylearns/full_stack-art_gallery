@@ -42,6 +42,30 @@
       "user_name": "Loredfsdffgf",
       "password": "123444",
       "userType": "cliente"
+    },
+    {
+      "id": "a9fe",
+      "user_name": "lore_india",
+      "password": "555",
+      "userType": "cliente"
+    },
+    {
+      "id": "3c82",
+      "user_name": "pepepe",
+      "password": "ñeñe",
+      "userType": "cliente"
+    },
+    {
+      "id": "290e",
+      "user_name": "aefjk",
+      "password": "454545",
+      "userType": "cliente"
+    },
+    {
+      "id": "c154",
+      "user_name": "rereer",
+      "password": "454545",
+      "userType": "cliente"
     }
   ],
   "person": [
@@ -114,6 +138,46 @@
       "email": "lorrererc@gmail.com",
       "telephone": "646753432",
       "id_user": "3f61"
+    },
+    {
+      "id": "d6e2",
+      "first_name": "Rodríguez",
+      "last_name": "Cortés",
+      "dni": "24587987",
+      "birth_date": "1985-12-06",
+      "email": "lelele@gmail.com",
+      "telephone": "646753432",
+      "id_user": "a9fe"
+    },
+    {
+      "id": "4082",
+      "first_name": "lalajeejeje",
+      "last_name": "jojojo",
+      "dni": "456464",
+      "birth_date": "2000-12-5",
+      "email": "pepepe@gmail.com",
+      "telephone": "646753432",
+      "id_user": "3c82"
+    },
+    {
+      "id": "b8d7",
+      "first_name": "memem",
+      "last_name": "Corleñka",
+      "dni": "456464",
+      "birth_date": "1985-12-06",
+      "email": "fjsdkl@gmail.com",
+      "telephone": "646753432",
+      "id_user": "290e"
+    },
+    {
+      "id": "39cc",
+      "first_name": "asdfajf",
+      "last_name": "dfjf",
+      "dni": "456464",
+      "birth_date": "1985-12-06",
+      "email": "aireedhj@fgkfg.com",
+      "telephone": "646753432",
+      "id_user": "c154"
     }
   ]
 }

@@ -9,8 +9,34 @@ import Navbar from '../navbar/Navbar';
 
 import { handleLogin, handleRegister } from '../../handlers/loginHandler';
 
-
+//Definir el Estado Inicial
 function Login({ isOpen, onClose }) {
+
+    const initialStateLogin = {
+        username: '',
+        password: '',
+        first_name: '',
+        last_name: '',
+        dni: '',
+        birth_date: '',
+        email: '',
+        telephone: '',
+        userType: '',
+    };
+
+    const initialStateRegister = {
+        first_name: '',
+        last_name: '',
+        dni: '',
+        birth_date: '',
+        email: '',
+        telephone: '',
+        userType: '',
+    };
+
+    //Utilizar el Estado para Controlar los Campos
+    const [formStateLogin, setFormStateLogin] = useState(initialStateLogin);
+
     //Variable para ver modal
     const [showModal, setShowModal] = useState(false);
     //Variable saber si estoy en login o en registro
@@ -37,6 +63,19 @@ function Login({ isOpen, onClose }) {
     //Agrega un estado para el mensaje de error
     const [errorMessage, setErrorMessage] = useState('');
 
+    //Utilizar el Estado para Controlar los Campos RESETEO
+    const handleInputChangeLogin = (e) => {
+        const { name, value } = e.target;
+        setFormStateLogin({ ...formStateLogin, [name]: value });
+    };
+
+
+    const [formStateRegister, setFormStateRegister] = useState(initialStateRegister);
+
+    const handleInputChangeRegister = (e) => {
+        const { name, value } = e.target;
+        setFormStateRegister({ ...formStateRegister, [name]: value });
+    };
 
     //DE REGISTER A LOGIN
     const handleToggleView = () => {
@@ -55,6 +94,8 @@ function Login({ isOpen, onClose }) {
         e.preventDefault();
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleRegister(e, setErrorMessage);
+        // setFormState(initialState);
+        setFormStateRegister(initialStateRegister);
         resetToLoginView(); // Resetear la vista después de intentar registrarse
     };
 
@@ -63,6 +104,7 @@ function Login({ isOpen, onClose }) {
         e.preventDefault();
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleLogin(e, setErrorMessage);
+        setFormStateLogin(initialStateLogin);
     };
 
 
@@ -113,8 +155,9 @@ function Login({ isOpen, onClose }) {
                                         <input className='input-register'
                                             type="text"
                                             id="first_name"
-                                            value={first_name}
-                                            onChange={(e) => setFirstName(e.target.value)}
+                                            name="first_name"
+                                            value={formStateRegister.first_name}
+                                            onChange={handleInputChangeRegister}
                                             required
                                             placeholder="Nombre"
                                         />
@@ -122,8 +165,9 @@ function Login({ isOpen, onClose }) {
                                         <input className='input-register'
                                             type="text"
                                             id="last_name"
-                                            value={last_name}
-                                            onChange={(e) => setLastName(e.target.value)}
+                                            name="last_name"
+                                            value={formStateRegister.last_name}
+                                            onChange={handleInputChangeRegister}
                                             required
                                             placeholder="Apellidos"
                                         />
@@ -131,8 +175,9 @@ function Login({ isOpen, onClose }) {
                                         <input className='input-register'
                                             type="text"
                                             id="dni"
-                                            value={dni}
-                                            onChange={(e) => setDni(e.target.value)}
+                                            name="dni"
+                                            value={formStateRegister.dni}
+                                            onChange={handleInputChangeRegister}
                                             required
                                             placeholder="DNI"
                                         />
@@ -140,8 +185,9 @@ function Login({ isOpen, onClose }) {
                                         <input className='input-register'
                                             type="text"
                                             id="birth_date"
-                                            value={birth_date}
-                                            onChange={(e) => setBirthDate(e.target.value)}
+                                            name="birth_date"
+                                            value={formStateRegister.birth_date}
+                                            onChange={handleInputChangeRegister}
                                             required
                                             placeholder="Fecha de Nacimiento"
                                         />
@@ -150,8 +196,9 @@ function Login({ isOpen, onClose }) {
                                         <input className='input-register'
                                             type="email"
                                             id="email"
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
+                                            name="email"
+                                            value={formStateRegister.email}
+                                            onChange={handleInputChangeRegister}
                                             required
                                             placeholder="Correo Electrónico"
                                         />
@@ -160,12 +207,37 @@ function Login({ isOpen, onClose }) {
                                         <input className='input-register'
                                             type="telephone"
                                             id="telephone"
-                                            value={telephone}
-                                            onChange={(e) => setTelephone(e.target.value)}
+                                            name="telephone"
+                                            value={formStateRegister.telephone}
+                                            onChange={handleInputChangeRegister}
                                             required
                                             placeholder="Teléfono"
                                         />
 
+
+
+
+{/* 
+                                        <input
+                                            className='input-register'
+                                            type="text"
+                                            id="username"
+                                            name="username"
+                                            value={formStateRegister.username}
+                                            onChange={handleInputChangeRegister}
+                                            required
+                                            placeholder="Usuario"
+                                        />
+                                        <input
+                                            className='input-register'
+                                            type="password"
+                                            id="password"
+                                            name="password"
+                                            value={formStateRegister.password}
+                                            onChange={handleInputChangeRegister}
+                                            required
+                                            placeholder="Contraseña"
+                                        /> */}
 
                                     </>
                                 )}
@@ -173,8 +245,9 @@ function Login({ isOpen, onClose }) {
                                 <input className='input-login'
                                     type="text"
                                     id="username"
-                                    value={username}
-                                    onChange={(e) => setUsername(e.target.value)}
+                                    name="username"
+                                    value={formStateLogin.username}
+                                    onChange={handleInputChangeLogin}
                                     required
                                     placeholder="Usuario"
                                 />
@@ -182,8 +255,9 @@ function Login({ isOpen, onClose }) {
                                 <input className='input-login'
                                     type="password"
                                     id="password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
+                                    name="password"
+                                    value={formStateLogin.password}
+                                    onChange={handleInputChangeLogin}
                                     required
                                     placeholder="Contraseña"
                                 />
