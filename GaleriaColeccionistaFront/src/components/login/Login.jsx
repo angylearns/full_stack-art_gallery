@@ -15,13 +15,6 @@ function Login({ isOpen, onClose }) {
     const initialStateLogin = {
         username: '',
         password: '',
-        first_name: '',
-        last_name: '',
-        dni: '',
-        birth_date: '',
-        email: '',
-        telephone: '',
-        userType: '',
     };
 
     const initialStateRegister = {
@@ -95,6 +88,7 @@ function Login({ isOpen, onClose }) {
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleRegister(e, setErrorMessage);
         // setFormState(initialState);
+        setFormStateLogin(initialStateLogin);
         setFormStateRegister(initialStateRegister);
         resetToLoginView(); // Resetear la vista después de intentar registrarse
     };

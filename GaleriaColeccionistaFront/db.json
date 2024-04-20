@@ -66,6 +66,24 @@
       "user_name": "rereer",
       "password": "454545",
       "userType": "cliente"
+    },
+    {
+      "id": "64f0",
+      "user_name": "111",
+      "password": "2154",
+      "userType": "cliente"
+    },
+    {
+      "id": "71b1",
+      "user_name": "fjdkfd5",
+      "password": "1125",
+      "userType": "cliente"
+    },
+    {
+      "id": "18de",
+      "user_name": "yhklgklfg",
+      "password": "4155",
+      "userType": "artista"
     }
   ],
   "person": [
@@ -178,6 +196,36 @@
       "email": "aireedhj@fgkfg.com",
       "telephone": "646753432",
       "id_user": "c154"
+    },
+    {
+      "id": "c14f",
+      "first_name": "sf",
+      "last_name": "sffhtht",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "laeuisfnjezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "64f0"
+    },
+    {
+      "id": "f2f0",
+      "first_name": "iefjskf",
+      "last_name": "asdfhfkj",
+      "dni": "kdjfdafj",
+      "birth_date": "1977-12-06",
+      "email": "afhaejf@gmail.com",
+      "telephone": "654354",
+      "id_user": "71b1"
+    },
+    {
+      "id": "3c78",
+      "first_name": "kfjri",
+      "last_name": "dfadkfh",
+      "dni": "3546523",
+      "birth_date": "1977-12-06",
+      "email": "jdrgrkdg@gmail.com",
+      "telephone": "646753432",
+      "id_user": "18de"
     }
   ]
 }
