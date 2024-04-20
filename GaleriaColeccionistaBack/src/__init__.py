@@ -4,7 +4,7 @@ from flask_cors import CORS
 
 app= Flask(__name__)
 
-CORS(app, resources={"*":{"origins": "http://localhost:5173"}})
+CORS(app, resources={"*": {"origins": "http://localhost:5173"}}, supports_credentials=True, redirect=True)
 
 def init_app(config):
     app.config.from_object(config)
@@ -29,5 +29,5 @@ def init_app(config):
     app.register_blueprint(PurchaseOrderRouter.putPurchaseOrder, url_prefix='/purchaseorder')
     app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
 
-    app.register_blueprint(AuthRouter.main, url_prefix='/login')
+    app.register_blueprint(AuthRouter.login_blueprint, url_prefix='/login')
     return app
