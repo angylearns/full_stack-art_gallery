@@ -18,7 +18,7 @@ function EndPurchase() {
 
     return (
         <>
-            <div className="container">
+            <div className="containerF">
                 <div className="row">
                     <div className="column1">
                         <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={() => cancelPay()}/>
