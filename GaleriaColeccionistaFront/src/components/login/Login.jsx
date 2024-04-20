@@ -134,6 +134,8 @@ function Login({ isOpen, onClose }) {
         setMensaje('Mensaje del padre');
     };
 
+
+
     return (
 
         <>
@@ -151,94 +153,74 @@ function Login({ isOpen, onClose }) {
                             <form onSubmit={newUser ? handleSubmitRegister : handleSubmitLogin}>
                                 {newUser && (
                                     <>
-                                        {/* <label htmlFor="first_name">Nombre:</label> */}
-                                        <input className='input-register'
-                                            type="text"
-                                            id="first_name"
-                                            name="first_name"
-                                            value={formStateRegister.first_name}
-                                            onChange={handleInputChangeRegister}
-                                            required
-                                            placeholder="Nombre"
-                                        />
-                                        {/* <label htmlFor="lastName">Apellidos</label> */}
-                                        <input className='input-register'
-                                            type="text"
-                                            id="last_name"
-                                            name="last_name"
-                                            value={formStateRegister.last_name}
-                                            onChange={handleInputChangeRegister}
-                                            required
-                                            placeholder="Apellidos"
-                                        />
-                                        {/* <label htmlFor="dni">DNI:</label> */}
-                                        <input className='input-register'
-                                            type="text"
-                                            id="dni"
-                                            name="dni"
-                                            value={formStateRegister.dni}
-                                            onChange={handleInputChangeRegister}
-                                            required
-                                            placeholder="DNI"
-                                        />
-                                        {/* <label htmlFor="birth_date">Fecha de Nacimiento:</label> */}
-                                        <input className='input-register'
-                                            type="text"
-                                            id="birth_date"
-                                            name="birth_date"
-                                            value={formStateRegister.birth_date}
-                                            onChange={handleInputChangeRegister}
-                                            required
-                                            placeholder="Fecha de Nacimiento"
-                                        />
+                                        <div className='twoblocks'>
 
-                                        {/* <label htmlFor="email">Correo Electrónico:</label> */}
-                                        <input className='input-register'
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            value={formStateRegister.email}
-                                            onChange={handleInputChangeRegister}
-                                            required
-                                            placeholder="Correo Electrónico"
-                                        />
-
-                                        {/* <label htmlFor="telephone">Teléfono:</label> */}
-                                        <input className='input-register'
-                                            type="telephone"
-                                            id="telephone"
-                                            name="telephone"
-                                            value={formStateRegister.telephone}
-                                            onChange={handleInputChangeRegister}
-                                            required
-                                            placeholder="Teléfono"
-                                        />
+                                            {/* <label htmlFor="first_name">Nombre:</label> */}
+                                            <input className='input-register'
+                                                type="text"
+                                                id="first_name"
+                                                name="first_name"
+                                                value={formStateRegister.first_name}
+                                                onChange={handleInputChangeRegister}
+                                                required
+                                                placeholder="Nombre"
+                                            />
+                                            {/* <label htmlFor="lastName">Apellidos</label> */}
+                                            <input className='input-register'
+                                                type="text"
+                                                id="last_name"
+                                                name="last_name"
+                                                value={formStateRegister.last_name}
+                                                onChange={handleInputChangeRegister}
+                                                required
+                                                placeholder="Apellidos"
+                                            />
+                                            {/* <label htmlFor="dni">DNI:</label> */}
+                                            <input className='input-register'
+                                                type="text"
+                                                id="dni"
+                                                name="dni"
+                                                value={formStateRegister.dni}
+                                                onChange={handleInputChangeRegister}
+                                                required
+                                                placeholder="DNI"
+                                            />
 
 
+                                            {/* <label htmlFor="birth_date">Fecha de Nacimiento:</label> */}
+                                            <input className='input-register'
+                                                type="text"
+                                                id="birth_date"
+                                                name="birth_date"
+                                                value={formStateRegister.birth_date}
+                                                onChange={handleInputChangeRegister}
+                                                required
+                                                placeholder="Fecha de Nacimiento"
+                                            />
+                                            {/* <label htmlFor="email">Correo Electrónico:</label> */}
+                                            <input className='input-register'
+                                                type="email"
+                                                id="email"
+                                                name="email"
+                                                value={formStateRegister.email}
+                                                onChange={handleInputChangeRegister}
+                                                required
+                                                placeholder="Correo Electrónico"
+                                            />
+
+                                            {/* <label htmlFor="telephone">Teléfono:</label> */}
+                                            <input className='input-register'
+                                                type="telephone"
+                                                id="telephone"
+                                                name="telephone"
+                                                value={formStateRegister.telephone}
+                                                onChange={handleInputChangeRegister}
+                                                required
+                                                placeholder="Teléfono"
+                                            />
 
 
-{/* 
-                                        <input
-                                            className='input-register'
-                                            type="text"
-                                            id="username"
-                                            name="username"
-                                            value={formStateRegister.username}
-                                            onChange={handleInputChangeRegister}
-                                            required
-                                            placeholder="Usuario"
-                                        />
-                                        <input
-                                            className='input-register'
-                                            type="password"
-                                            id="password"
-                                            name="password"
-                                            value={formStateRegister.password}
-                                            onChange={handleInputChangeRegister}
-                                            required
-                                            placeholder="Contraseña"
-                                        /> */}
-
+                                        </div>
                                     </>
                                 )}
                                 {/* <label htmlFor="username">Usuario:</label> */}
@@ -261,11 +243,12 @@ function Login({ isOpen, onClose }) {
                                     required
                                     placeholder="Contraseña"
                                 />
-                                <label htmlFor="userType" className='usertypetext'>Tipo de Usuario:</label>
+                                {/* <label htmlFor="userType" className='usertypetext'>Tipo de Usuario:</label> */}
                                 <select className='optionusertype'
                                     id="userType"
                                     value={userType}
                                     onChange={(e) => setUserType(e.target.value)} required>
+                                    <option value="">Tipo de usuario</option>
                                     <option value="cliente" >Cliente</option>
                                     <option value="artista" >Artista</option>
                                 </select>
@@ -274,19 +257,20 @@ function Login({ isOpen, onClose }) {
                                 </button>
                             </form>
 
-                            <button onClick={handleToggleView}>
-                                {newUser ? "¿Ya tienes una cuenta? Inicia sesión" : "¿No tienes una cuenta? Regístrate"}
+                            <button onClick={handleToggleView} className='buttonsloginlogout'>
+                                {newUser ? "Inicia sesión" : "Regístrate"}
                             </button>
+                          
 
                             {errorMessage && <div className="error-message">{errorMessage}</div>}
                             {!newUser && (
-                                <p>
-                                    ¿Todavía no estás registrado?{" "}
-                                    <button className='button-register' onClick={() => setNewUser(true)}>
-                                        Regístrate aquí
-                                    </button>
-                                </p>
-
+                                <div className=''>
+                                
+                                        {/* <button className='button-register' onClick={() => setNewUser(true)}>
+                                            Regístrate aquí
+                                        </button> */}
+                                  
+                                </div>
                             )}
                         </div>
                     </div>

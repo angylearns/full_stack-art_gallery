@@ -4,7 +4,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 30%;
+    width: 28%;
 }
 
 .close {
@@ -30,24 +30,27 @@ form {
     align-items: center;
 }
 
-/* input {
+.login-title {
+    color: #21577E;
+}
+
+.usertypetext {
+    color: #21577E;
+}
+
+.input-login {
     width: 200px;
     border-left: 0;
     border-right: 0;
     border-top: 0;
     background-color: transparent;
-} */
-
-.login-title {
-    color: #21577E;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
-.usertypetext{
-    color: #21577E;
-}
-
-.input-login{
-    width: 150px;
+.input-register {
+    width: 200px;
     border-left: 0;
     border-right: 0;
     border-top: 0;
@@ -57,25 +60,65 @@ form {
     padding: 10px;
 }
 
-.input-register{
-    width: 150px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
-
-input:focus, textarea:focus, select:focus {
+input:focus,
+textarea:focus,
+select:focus {
     outline: none;
-   }
+}
 
 .optionusertype {
     margin-top: 15px;
+    border-radius: 8px;
+    width: 170px;
+    height: 25px;
 }
 
 .button-submit {
     margin-top: 15px;
+    border: none;
+    width: 135px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.button-submit:hover {
+    background-color: #EF0B6A;
+}
+
+.buttonsloginlogout {
+    margin-top: 15px;
+    border: none;
+    width: 135px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.buttonsloginlogout:hover {
+    background-color: #EF0B6A;
+}
+
+.button-register {
+    border: none;
+    width: 135px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.twoblocks {
+    display: flex;
+    flex-direction: column;
+}
+
+.quetionandbutton{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 10px;
+}
+.questiontextregistered{
+    color: #21577E;
+    font-size: small;
 }
