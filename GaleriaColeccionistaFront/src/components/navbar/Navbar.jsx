@@ -18,7 +18,7 @@ function Navbar({ onClick }) {
     setIsLoginOpen(true);
   };
 
-
+  const [user, setUser] = useState(null); 
   // DESLOGUEARSE
   const handleLogout = () => {
     // Eliminar el usuario del almacenamiento local
