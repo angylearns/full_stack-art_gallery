@@ -6,7 +6,7 @@ from werkzeug.security import check_password_hash
 class AuthService():
 
     @classmethod
-    def login_user(cls, user: User, person:Person):
+    def auth_login_user(cls, user: User, person:Person):
         try:
             connection = get_connection()
 
@@ -36,5 +36,58 @@ class AuthService():
 
         except Exception as ex:
             # Imprime cualquier excepción que ocurra durante el proceso de autenticación
-            print("Error en login_user:", ex)
+            print("Error en auth_login_user:", ex)
             return None
+
+    @classmethod
+    def get_info_login_user(cls, user_name: str):
+        try:
+            connection = get_connection()
+
+            with connection.cursor() as cursor:
+                cursor.execute('CALL sp_login_user(%s)', (user_name,))
+                row = cursor.fetchone()
+                print("Info del usuario:", row)
+
+                if row is not None:
+                    # Extrae los datos del usuario y la persona correspondientes
+                    user_id = row[0]
+                    user_name = row[1]
+                    password = row[2]
+                    user_type = row[3]
+                    person_id = row[4]
+                    name = row[5]
+                    last_name = row[6]
+                    dni = row[7]
+                    birth_date = row[8]
+                    email = row[9]
+                    telephone = row[10]
+                    id_user_fk = row[11]
+
+                    # crea un diccionario con los datos extraidos
+                    combined_data = {
+                        'user_id': user_id,
+                        'user_name': user_name,
+                        'password': password,
+                        'user_type': user_type,
+                        'person_id': person_id,
+                        'name': name,
+                        'last_name': last_name,
+                        'dni': dni,
+                        'birth_date': birth_date,
+                        'email': email,
+                        'telephone': telephone,
+                        'id_user_fk': id_user_fk
+                    }
+                    print("Info del usuario:", combined_data)
+                    return combined_data
+                    
+                else:
+                    return None
+                
+        except Exception as ex:
+            print("Error al obtener los usuarios:", ex)
+            return None
+        
+        finally:
+            connection.close()

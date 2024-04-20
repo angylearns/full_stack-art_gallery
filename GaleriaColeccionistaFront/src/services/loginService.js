@@ -29,13 +29,19 @@ const loginService = {
       }
       const data = await response.json();
       console.log('data' + JSON.stringify(data));
-      console.log('data', data);
+      const usernames = [];
 
-      /*let data = {
-        exists: true
-      }*/
+    // Iterar sobre cada objeto en el array de data
+    data.forEach(user => {
+      console.log(user); // Aquí obtienes el nombre de usuario de cada usuario
+      usernames.push(user.user_name); // Almacenar el nombre de usuario en el array
+    });
 
-      return data; // Ajusta según la estructura de tu respuesta
+    console.log("USERNAMEEEEES");
+    // Ahora tienes acceso a los nombres de usuario fuera del bucle forEach
+    console.log(usernames);
+
+    return usernames; // Ajusta según la estructura de tu respuesta
     } catch (error) {
       console.error(error);
       throw new Error('Ocurrió un error al verificar la existencia del usuario');
@@ -43,18 +49,31 @@ const loginService = {
   },
   checkPersonExists: async (email) => {
     try {
-      console.log('email' + email);
+      console.log('email ' + email);
       const response = await fetch(`${API_URL}/person?email=${email}`);
       if (!response.ok) {
         throw new Error('Error al verificar la existencia del email');
       }
       const data = await response.json();
-      console.log('data' + JSON.stringify(data));
-      console.log('data', data);
-      return data; // Ajusta según la estructura de tu respuesta
+      console.log('data ' + JSON.stringify(data));
+  
+      // Crear un array para almacenar los correos electrónicos
+      const emails = [];
+  
+      // Iterar sobre cada objeto en el array de data
+      data.forEach(person => {
+        console.log(person.email); // Aquí obtienes el correo electrónico de cada persona
+        emails.push(person.email); // Almacenar el correo electrónico en el array
+      });
+  
+      // Ahora tienes acceso a los correos electrónicos fuera del bucle forEach
+      console.log("EMAILS");
+      console.log(emails);
+  
+      return emails; // Ajusta según la estructura de tu respuesta
     } catch (error) {
       console.error(error);
-      throw new Error('Ocurrió un error al verificar la existencia del usuario');
+      throw new Error('Ocurrió un error al verificar la existencia del email');
     }
   },
   addPerson: async (first_name, last_name, dni, birth_date, email, telephone, id_user) => {
