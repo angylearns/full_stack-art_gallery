@@ -182,39 +182,39 @@ function AdminCustomers({ customers }) {
                         <div className="groupForm1">
                             <div className="smallDiv">
                                 <label className="labelStyle">Nombre:</label>
-                                <input type="text" name="name" value={formData.name} onChange={handleChange} />
+                                <input type="text" name="name" value={formData.name} onChange={handleChange} required/>
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">Apellido:</label>
-                                <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} />
+                                <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} required />
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">DNI:</label>
-                                <input type="text" name="dni" value={formData.dni} onChange={handleChange} />
+                                <input type="text" name="dni" value={formData.dni} onChange={handleChange} required/>
 
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">Fecha de Nacimiento:</label>
-                                <input type="text" name="birth_date" value={formData.birth_date} onChange={handleChange} />
+                                <input type="text" name="birth_date" value={formData.birth_date} onChange={handleChange} required />
                             </div>
                         </div>
                         <div className="groupForm2">
                             <div className="smallDiv">
                                 <label className="labelStyle">Email:</label>
-                                <input type="text" name="email" value={formData.email} onChange={handleChange} />
+                                <input type="text" name="email" value={formData.email} onChange={handleChange} required/>
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">Teléfono:</label>
-                                <input type="text" name="telephone" value={formData.telephone} onChange={handleChange} />
+                                <input type="text" name="telephone" value={formData.telephone} onChange={handleChange} required />
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">
                                     Usuario:</label>
-                                <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                                <input type="text" name="username" value={formData.username} onChange={handleChange} required />
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle"> Contraseña: </label>
-                                <input type="text" name="password" value={formData.password} onChange={handleChange} />
+                                <input type="text" name="password" value={formData.password} onChange={handleChange} required/>
                             </div>
                         </div>
                         {/* <label>
