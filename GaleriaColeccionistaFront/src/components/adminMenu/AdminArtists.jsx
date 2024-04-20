@@ -285,46 +285,54 @@ function AdminArtists({ artists }) {
             </div>
             <div className="postContainer">
                 <form onSubmit={handleSubmit}>
-                    <label>
-                        Nombre:
-                        <input type="text" name="name" value={formData.name} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Apellido:
-                        <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} />
-                    </label>
-                    <label>
-                        DNI:
-                        <input type="text" name="dni" value={formData.dni} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Fecha de Nacimiento:
-                        <input type="text" name="birth_date" value={formData.birth_date} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Email:
-                        <input type="text" name="email" value={formData.email} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Teléfono:
-                        <input type="text" name="telephone" value={formData.telephone} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Nombre de Usuario:
-                        <input type="text" name="username" value={formData.username} onChange={handleChange} />
-                    </label>
-                    <label>
-                        Contraseña:
-                        <input type="text" name="password" value={formData.password} onChange={handleChange} />
-                    </label>
-                    {/* <label>
+                    <div className="formContentA">
+                        <div className="groupForm1">
+                            <div className="smallDiv">
+                                <label className="labelStyle">Nombre:</label>
+                                <input type="text" name="name" value={formData.name} onChange={handleChange} />
+                            </div>
+                            <div className="smallDiv">
+                                <label className="labelStyle">Apellido:</label>
+                                <input type="text" name="last_name" value={formData.last_name} onChange={handleChange} />
+                            </div>
+                            <div className="smallDiv">
+                                <label className="labelStyle">DNI:</label>
+                                <input type="text" name="dni" value={formData.dni} onChange={handleChange} />
+
+                            </div>
+                            <div className="smallDiv">
+                                <label className="labelStyle">Fecha de Nacimiento:</label>
+                                <input type="text" name="birth_date" value={formData.birth_date} onChange={handleChange} />
+                            </div>
+                        </div>
+                        <div className="groupForm2">
+                            <div className="smallDiv">
+                                <label className="labelStyle">Email:</label>
+                                <input type="text" name="email" value={formData.email} onChange={handleChange} />
+                            </div>
+                            <div className="smallDiv">
+                                <label className="labelStyle">Teléfono:</label>
+                                <input type="text" name="telephone" value={formData.telephone} onChange={handleChange} />
+                            </div>
+                            <div className="smallDiv">
+                                <label className="labelStyle">
+                                    Usuario:</label>
+                                <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                            </div>
+                            <div className="smallDiv">
+                                <label className="labelStyle"> Contraseña: </label>
+                                <input type="text" name="password" value={formData.password} onChange={handleChange} />
+                            </div>
+                        </div>
+                        {/* <label>
                         Tipo de usuario:
                         <select name="user_type" value={formData.user_type} onChange={handleChange}>                            
                             <option value="Artist">Artista</option>
                             <option value="Client">Cliente</option>                            
                         </select>
                     </label> */}<br></br>
-                    <button className="button" type="submit">Añadir Artista</button>
+                        <div className="buttonAdd"><button className="buttonAA" type="submit">Añadir Artista</button></div>
+                    </div>
                 </form>
             </div>
 

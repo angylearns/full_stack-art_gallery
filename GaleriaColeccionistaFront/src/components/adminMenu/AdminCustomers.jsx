@@ -178,7 +178,7 @@ function AdminCustomers({ customers }) {
             </div>
             <div className="postContainer">
                 <form onSubmit={handleSubmit}>
-                    <div className="formContent">
+                    <div className="formContentA">
                         <div className="groupForm1">
                             <div className="smallDiv">
                                 <label className="labelStyle">Nombre:</label>
@@ -223,8 +223,8 @@ function AdminCustomers({ customers }) {
                             <option value="Artist">Artista</option>
                             <option value="Client">Cliente</option>                            
                         </select>
-                    </label> */}<br></br>
-                        <div className="buttonAdd"><button className="button" type="submit">Añadir Artista</button></div>
+                        </label> */}<br></br>
+                        <div className="buttonAdd"><button className="buttonAA" type="submit">Añadir Cliente</button></div>
                     </div>
                 </form>
             </div>

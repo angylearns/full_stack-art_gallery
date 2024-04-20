@@ -24,7 +24,6 @@
   padding-bottom: 2%;
   padding-left: 5%;
   padding-right: 5%;
-  background-color: blue;
 }
 
 
@@ -72,23 +71,27 @@ label{
 }
 
 
-.formContent{
+.formContentA{
   display: flex;
   flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
 }
+
+
 
 .groupForm1{
   display: flex;
   flex-direction: column;
-  align-items: end;
-  background-color: greenyellow;
+  align-items: end;  
 }
 
 .groupForm2{
   display: flex;
   flex-direction: column;
   align-items: end;
-  background-color: pink;
 }
 
 .smallDiv{
@@ -102,4 +105,35 @@ label{
 
 .buttonAdd{
   margin-left: 5px;
+}
+
+@media screen and (max-width: 600px) {
+
+  .formContentA{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+
+.buttonAA {
+  background-color: white;
+  color: #21577E;
+  border: 1px solid #21577E;
+  padding: 8px 8px;
+  width: fit-content;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  /* Transición suave */
+  margin: 3px;
+}
+
+
+.buttonAA:hover {
+  background-color: #EF0B6A;
+  color: white;
+
 }
