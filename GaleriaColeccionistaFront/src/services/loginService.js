@@ -59,9 +59,23 @@ const loginService = {
   },
   addPerson: async (newPerson) => {
     try {
+<<<<<<< HEAD
       await axios.post(`${API_BASE_URL}/person/`, newPerson);
       alert('Persona agregada exitosamente');
       // Puedes hacer algo aquí después de agregar la persona, como refrescar la lista de personas.
+=======
+      const response = await fetch(`${API_URL}/person`, {
+        method: 'POST',                                                      
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ first_name, last_name, dni, birth_date, email, telephone, id_user }),
+      });
+      if (!response.ok) {
+        throw new Error('Error al registrar el usuario');
+      }
+      return await response.json();
+>>>>>>> feature/Lorena
     } catch (error) {
       console.error('Error al guardar persona:', error);
       throw error;

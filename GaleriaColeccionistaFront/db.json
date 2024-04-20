@@ -24,6 +24,12 @@
       "user_name": "kkkk",
       "password": "123",
       "userType": "cliente"
+    },
+    {
+      "id": "6191",
+      "user_name": "kikiki",
+      "password": "1234",
+      "userType": "cliente"
     }
   ],
   "person": [
@@ -66,6 +72,16 @@
       "email": "driguezc@gmail.com",
       "telephone": "646753432",
       "id_user": "7efe"
+    },
+    {
+      "id": "d902",
+      "first_name": "lalalelele",
+      "last_name": "lililolo",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "ezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "6191"
     }
   ]
 }
