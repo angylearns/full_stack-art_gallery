@@ -115,7 +115,7 @@ const loginService = {
   // },
   addUser: async (user_name, password, userType) => {
     try {
-      const response = await fetch(`${API_URL}/user`, {
+      const response = await fetch(`${API_URL}/userL`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

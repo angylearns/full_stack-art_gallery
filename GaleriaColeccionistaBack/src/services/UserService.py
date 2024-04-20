@@ -26,13 +26,13 @@ class UserService():
         try:
             connection=get_connection()
             print(connection)
-        
+            print("estamos post user")
             with connection.cursor() as cursor:
                 id_user = user.id_user
                 user_name = user.user_name
                 passwordunic = user.password
                 user_type = user.user_type
-                
+                print("por buen camino")
                 password = generate_password_hash (passwordunic,  'pbkdf2:sha256', 30)
                 cursor.callproc("InsertUser", (id_user, user_name, password, user_type))
                 connection.commit()
@@ -40,6 +40,7 @@ class UserService():
                 return 'Usuario agregado correctamente'
                
         except Exception as ex: 
+            print("erorororororororor")
             print(ex)
 
     @classmethod

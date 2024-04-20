@@ -4,10 +4,34 @@ from src.models.userModel import User
 from src.utils.Security import Security
 from src.models.personModel import Person
 
-login_blueprint = Blueprint('login_blueprint', __name__)
+# login_blueprint = Blueprint('login_blueprint', __name__)
 
-@login_blueprint.route('/', methods=['POST', 'GET'])
+# @login_blueprint.route('/', methods=['POST', 'GET', 'OPTIONS'],strict_slashes=False)
+
+
+main = Blueprint('adminPerson_blueprint',__name__)
+
+@main.route('/',methods=['GET','POST', 'PATCH','DELETE','OPTIONS'], strict_slashes=False)
+
+
 def handle_login():
+    print(request.method)
+    print("cucucucucucucucucucucucucuc")
+    if request.method == 'OPTIONS':
+        print("estamos en metodo optionss llllllllllllllllllllllllllllllllllllllllllllllllllllllll")
+        # Aquí se crea una respuesta JSON con un mensaje indicando que la solicitud pre-vuelo fue exitosa.
+        response = jsonify({'message': 'Preflight request success'})
+        #Se añade el encabezado Access-Control-Allow-Origin a la respuesta, permitiendo el acceso desde cualquier origen (*).
+        response.headers.add('Access-Control-Allow-Origin', '*')
+        #Se añade el encabezado Access-Control-Allow-Headers a la respuesta, especificando los encabezados permitidos en las solicitudes reales. En este caso, se permiten los encabezados Content-Type y Authorization.
+        response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+        #Se añade el encabezado Access-Control-Allow-Methods a la respuesta, especificando los métodos HTTP permitidos en las solicitudes reales. Aquí se permiten los métodos GET, PUT, POST y DELETE.
+        response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,PATCH,POST,DELETE')
+        # Finalmente, se devuelve la respuesta, completando el manejo de la solicitud OPTIONS y permitiendo que el navegador continúe con la solicitud real si la pre-vuelo fue exitosa.
+        return response
+
+
+
     if request.method == 'POST':
         try:
             # Obtiene los datos de usuario y contraseña del cuerpo de la solicitud

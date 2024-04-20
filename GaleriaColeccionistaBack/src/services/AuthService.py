@@ -26,6 +26,7 @@ class AuthService():
                     print(authenticated_user)
 
                 else:
+                   
                     authenticated_user = None 
 
             connection.close()
