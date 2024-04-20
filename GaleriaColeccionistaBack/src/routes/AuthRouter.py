@@ -29,6 +29,8 @@ def handle_login():
         except Exception as e:
             return jsonify({'success': False}), 500
         
+
+    # Este get es para sacar la información de la consulta almacenada para poder hacer las comprobaciones de email y user_name al registrar   
     elif request.method == 'GET':
         try:
             # Obtiene el cuerpo JSON de la solicitud            user_name = request.args.get('user_name')
