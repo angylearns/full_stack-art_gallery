@@ -7,6 +7,7 @@ import logout from "../../images/logout.svg";
 import shoppingCart from "../../images/shoppingCart.svg";
 import line from "../../images/line.svg";
 import Login from '../login/Login';
+import Swal from 'sweetalert2'
 
 
 function Navbar({ onClick }) {
@@ -25,6 +26,13 @@ function Navbar({ onClick }) {
     localStorage.removeItem('user');
     // Limpiar el estado del usuario en el componente
     setUser(null);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: "Ha cerrado sesión",
+      showConfirmButton: false,
+      timer: 1500
+    });
   };
 
 

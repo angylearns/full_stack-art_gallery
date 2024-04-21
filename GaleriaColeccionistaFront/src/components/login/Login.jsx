@@ -3,6 +3,7 @@ import './login.css';
 import login from "../../images/login.svg";
 import logout from "../../images/logout.svg";
 import Navbar from '../navbar/Navbar';
+import Swal from 'sweetalert2'
 
 
 
@@ -78,9 +79,14 @@ function Login({ isOpen, onClose }) {
     const resetToLoginView = () => {
         setNewUser(false);
         // Aquí puedes resetear también los campos del formulario de registro si es necesario
+        setUserType('');
+    // Aquí puedes resetear también los campos del formulario de registro si es necesario
     };
 
-
+    useEffect(() => {
+        // Llama a resetToLoginView para asegurar que el estado inicial de userType sea correcto
+        resetToLoginView();
+    }, []); 
 
     // Función para manejar el envío del formulario de registro
     const handleSubmitRegister = async (e,) => {
@@ -89,6 +95,23 @@ function Login({ isOpen, onClose }) {
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleRegister(e, setErrorMessage);
 
+        if (!errorMessage) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Se ha registrado correctamente",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+        if (errorMessage) {
+            Swal.fire({
+                icon: "error",
+                title: "No se pudo registrar.",
+                text: "Something went wrong!",
+                footer: 'Por favor, verifica los datos ingresados.'
+              });
+        }
         // setFormState(initialState);
         setFormStateLogin(initialStateLogin);
         setFormStateRegister(initialStateRegister);
@@ -101,6 +124,24 @@ function Login({ isOpen, onClose }) {
         
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleLogin(e, setErrorMessage);
+
+        if (!errorMessage) {
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Ha iniciado sesión",
+                showConfirmButton: false,
+                timer: 1500
+              });
+        }
+        if (errorMessage) {
+            Swal.fire({
+                icon: "error",
+                title: "Error al iniciar sesión.",
+                text: "Something went wrong!",
+                footer: 'Por favor, verifica los datos ingresados.'
+              });
+        }
         setFormStateLogin(initialStateLogin);
     };
 
@@ -117,19 +158,7 @@ function Login({ isOpen, onClose }) {
         }
     }, []);
 
-    // const handleLogout = () => {
-    //     // Eliminar el usuario del almacenamiento local
-    //     localStorage.removeItem('user');
-    //     // Limpiar el estado del usuario en el componente
-    //     setUser(null);
-    // };
 
-    //PROPS
-    // const [mensaje, setMensaje] = useState('');
-
-    // const onClick = () => {
-    //     setMensaje('Mensaje del padre');
-    // };
 
 
 

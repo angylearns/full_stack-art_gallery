@@ -96,6 +96,30 @@
       "user_name": "lala",
       "password": "pepe",
       "userType": "2"
+    },
+    {
+      "id": "7d59",
+      "user_name": "lore_indiasaer",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "386c",
+      "user_name": "silvia",
+      "password": "lele",
+      "userType": "3"
+    },
+    {
+      "id": "b7d5",
+      "user_name": "gege",
+      "password": "123",
+      "userType": "2"
+    },
+    {
+      "id": "7815",
+      "user_name": "lolila",
+      "password": "123",
+      "userType": "2"
     }
   ],
   "person": [
@@ -258,6 +282,46 @@
       "email": "w456tyc@gmail.com",
       "telephone": "589658745",
       "id_user": "5c21"
+    },
+    {
+      "id": "46f8",
+      "first_name": "asdfjk",
+      "last_name": "sdff",
+      "dni": "456464",
+      "birth_date": "2000-12-5",
+      "email": "eeeee@gmail.com",
+      "telephone": "65688933",
+      "id_user": "7d59"
+    },
+    {
+      "id": "e853",
+      "first_name": "eirfeasefj",
+      "last_name": "asdfs",
+      "dni": "55658855",
+      "birth_date": "1985-12-06",
+      "email": "asfertag@gmail.com",
+      "telephone": "584785698",
+      "id_user": "386c"
+    },
+    {
+      "id": "7e0a",
+      "first_name": "fgsdfga",
+      "last_name": "adgadg",
+      "dni": "24587987",
+      "birth_date": "1985-12-06",
+      "email": "asfase@gmail.com",
+      "telephone": "646753432",
+      "id_user": "b7d5"
+    },
+    {
+      "id": "a908",
+      "first_name": "sertgtar",
+      "last_name": "asdfa",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "sadfds@gmail.com",
+      "telephone": "646753432",
+      "id_user": "7815"
     }
   ]
 }
