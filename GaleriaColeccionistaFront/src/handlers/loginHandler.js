@@ -1,6 +1,7 @@
 
 
 import loginService from '../services/loginService.js';
+import Swal from 'sweetalert2'
 
 export const handleLogin = async (e, setErrorMessage) => {
     e.preventDefault();
@@ -10,22 +11,32 @@ export const handleLogin = async (e, setErrorMessage) => {
     console.log('LORENA handler handleLogin username ' + username.value);
     //console.log('LORENA handleLogin password ' + JSON.stringify(password));
 
-
+    
     try {
         const users = await loginService.getUsersByUsernameAndPassword(username.value, password.value);
+        console.log('loginHandler.js handllogin users '+JSON.stringify(users));
         if (users && users.length > 0) {
 
             console.log('LORENA handler handleLogin Usuario conectado ' + users[0].id_user, users[0].user_name);
 
-
-
-
             localStorage.setItem('user', JSON.stringify(users[0]));
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Ha iniciado sesión",
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else {
             // Usuario no encontrado, mostrar mensaje de error
-            console.error('Usuario no encontrado');
-            alert('Usuario no encontrado');
-
+            console.log('loginHandler.js handllogin Usuario no encontrado');
+            // alert('Usuario no encontrado');
+            Swal.fire({
+                icon: "error",
+                title: "Error al iniciar sesión.",
+                text: "Something went wrong!",
+                footer: 'Por favor, verifica los datos ingresados.'
+            });
         }
 
     } catch (error) {

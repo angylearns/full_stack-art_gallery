@@ -79,6 +79,8 @@ function Login({ isOpen, onClose }) {
     //Agrega un estado para el mensaje de error
     const [errorMessage, setErrorMessage] = useState('');
 
+
+
     //Utilizar el Estado para Controlar los Campos RESETEO
     const handleInputChangeLogin = (e) => {
         const { name, value } = e.target;
@@ -295,24 +297,8 @@ function Login({ isOpen, onClose }) {
 
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleLogin(e, setErrorMessage);
-
-        if (!errorMessage) {
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Ha iniciado sesión",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        }
-        if (errorMessage) {
-            Swal.fire({
-                icon: "error",
-                title: "Error al iniciar sesión.",
-                text: "Something went wrong!",
-                footer: 'Por favor, verifica los datos ingresados.'
-            });
-        }
+        console.log('login.jsx handleSubmitLogin errorMessage: '+ errorMessage);
+     
         setFormStateLogin(initialStateLogin);
     };
 
@@ -329,10 +315,14 @@ function Login({ isOpen, onClose }) {
         }
     }, []);
 
+    const handleLoginSuccess = (userData) => {
+        // Actualizar el estado del usuario en el Navbar
+        props.updateUser(userData);
+        // Cerrar el modal de login
+       props.onClose();
+      };
 
-
-
-
+ 
     return (
 
         <>
