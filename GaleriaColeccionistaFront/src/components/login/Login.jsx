@@ -158,7 +158,7 @@ function Login({ isOpen, onClose }) {
         }
         else if (name === 'dni') {
             if (value.length < 9) {
-                setFormErrorsRegister({ ...formErrorsRegister, msgErrordni: 'El nombre de usuario debe tener al menos 9 caracteres.' });
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrordni: 'El DNI debe tener al menos 9 caracteres.' });
             } else {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrordni: '' });
             }

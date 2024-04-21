@@ -144,6 +144,18 @@
       "user_name": "probando2",
       "password": "123",
       "userType": "3"
+    },
+    {
+      "id": "0aea",
+      "user_name": "kiki89",
+      "password": "kiki89",
+      "userType": "3"
+    },
+    {
+      "id": "b6ba",
+      "user_name": "tete5",
+      "password": "1234",
+      "userType": "3"
     }
   ],
   "person": [
@@ -386,6 +398,26 @@
       "email": "at54e5teuezc@gmail.com",
       "telephone": "646753432",
       "id_user": "a57d"
+    },
+    {
+      "id": "49f3",
+      "first_name": "lore",
+      "last_name": "r",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "454545guezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "0aea"
+    },
+    {
+      "id": "4f6b",
+      "first_name": "lore",
+      "last_name": "rere",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "44444444odriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "b6ba"
     }
   ]
 }
