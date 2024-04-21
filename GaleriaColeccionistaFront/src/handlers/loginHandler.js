@@ -87,11 +87,11 @@ import loginService from '../services/loginService.js';
 
 export const handleLogin = async (e, setErrorMessage) => {
     e.preventDefault();
-    const username = document.getElementById('username').value;
+    const user_name = document.getElementById('user_name').value;
     const password = document.getElementById('password').value;
 
     try {
-        const users = await loginService.getUsersByUsernameAndPassword(username, password);
+        const users = await loginService.getUsersByUsernameAndPassword(user_name, password);
         if (users && users.length > 0) {
             console.log('Usuario conectado:', users[0].id_user, users[0].user_name);
             localStorage.setItem('user', JSON.stringify(users[0]));
@@ -107,7 +107,7 @@ export const handleLogin = async (e, setErrorMessage) => {
 
 export const handleRegister = async (e, setErrorMessage) => {
     e.preventDefault();
-    const username = document.getElementById('username').value;
+    const user_name = document.getElementById('user_name').value;
     const password = document.getElementById('password').value;
     const first_name = document.getElementById('first_name').value;
     const last_name = document.getElementById('last_name').value;
@@ -115,13 +115,43 @@ export const handleRegister = async (e, setErrorMessage) => {
     const birth_date = document.getElementById('birth_date').value;
     const email = document.getElementById('email').value;
     const telephone = document.getElementById('telephone').value;
-    const userType = document.getElementById('userType').value;
+    const user_type = document.getElementById('user_type').value;
 
-
-    const newUser = await loginService.addUser(username, password, userType);
-    const newPerson = await loginService.addPerson(first_name, last_name, dni, birth_date, email, telephone, newUser.id);
-
-    localStorage.setItem('user', JSON.stringify(newUser));
-    console.log('Usuario registrado:', newUser);
-    
+    try {
+        // Registra el nuevo usuario
+        await loginService.addUser(user_name, password, user_type);
+        
+        // Obtiene el usuario recién registrado por su nombre de usuario
+        const newUser = await loginService.getUsersByUsername();
+        
+        // Verifica si se obtuvo el usuario correctamente
+        if (!newUser) {
+            throw new Error('El usuario no pudo ser encontrado');
+        } else if (!newUser.id_user) {
+            throw new Error('El usuario no tiene un ID válido');
+        }
+        
+        // Si se llega a este punto, el usuario se obtuvo correctamente
+        console.log('Usuario registrado correctamente:', newUser);
+        
+        // Obtiene el ID del usuario recién registrado
+        const id_user_fk = newUser.id_user;
+        
+        // Registra los detalles de la persona
+        const newPerson = await loginService.addPerson(first_name, last_name, dni, birth_date, email, telephone, id_user_fk);
+        
+        // Guarda el usuario en el almacenamiento local
+        localStorage.setItem('user', JSON.stringify(newUser));
+        
+        // Mensaje de éxito
+        console.log('Usuario registrado:', newUser);
+        console.log('Detalles de la persona registrados:', newPerson);
+    } catch (error) {
+        console.error('Error al registrar el usuario:', error);
+        setErrorMessage('Ocurrió un error al registrar el usuario');
+    }
 };
+
+
+
+

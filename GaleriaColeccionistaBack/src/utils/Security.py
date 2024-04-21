@@ -24,7 +24,7 @@ class Security():
               'password': person.id_user_fk.password,
               'user_type': person.id_user_fk.user_type,
               'id_person': person.id_person,
-              'name': person.name
+              'first_name': person.first_name
 
               
             }

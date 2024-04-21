@@ -2,10 +2,10 @@ const API_URL = 'http://127.0.0.1:5000';
 
 
 const loginService = {
-  getUsersByUsernameAndPassword: async (username, password) => {
+  getUsersByUsernameAndPassword: async (user_name, password) => {
     try {
-      console.log('service getUsersByUsernameAndPassword ini ' + username)
-      const response = await fetch(`${API_URL}/user?user_name=${username}&password=${password}`);
+      console.log('service getUsersByUsernameAndPassword ini ' + user_name)
+      const response = await fetch(`${API_URL}/user?user_name=${user_name}&password=${password}`);
       if (!response.ok) {
         throw new Error('Error al obtener los usuarios');
       }
@@ -20,14 +20,14 @@ const loginService = {
   },
 
   
-  addPerson: async (first_name, last_name, dni, birth_date, email, telephone, id_user) => {
+  addPerson: async (first_name, last_name, dni, birth_date, email, telephone, id_user_fk) => {
     try {
       const response = await fetch(`${API_URL}/person/`, {
         method: 'POST',                                                      
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ first_name, last_name, dni, birth_date, email, telephone, id_user }),
+        body: JSON.stringify({ first_name, last_name, dni, birth_date, email, telephone, id_user_fk }),
       });
       if (!response.ok) {
         throw new Error('Error al registrar el usuario');
@@ -59,23 +59,38 @@ const loginService = {
   // },
   addUser: async (user_name, password, user_type) => {
     try {
-      const response = await fetch(`${API_URL}/user/`, {
+      await fetch(`${API_URL}/user/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ user_name, password, user_type }),
       });
-      if (!response.ok) {
-        throw new Error('Error al registrar el usuario');
-      }
-      return await response.json();
+  
+      // Si la solicitud se realiza con éxito y no hay errores, no necesitas hacer nada más aquí.
     } catch (error) {
       console.error(error);
       throw new Error('Ocurrió un error al registrar el usuario');
-
     }
-  }
-};
+  },
+
+  getUsersByUsername: async (user_name) => {
+    try {
+        const response = await fetch(`${API_URL}/user/?user_name=${user_name}`);
+        if (!response.ok) {
+            throw new Error('Error al obtener el usuario');
+        }
+        // No es necesario convertir a JSON si ya viene en ese formato
+        return response.id_user; // Devolver el id_user directamente desde la respuesta
+    } catch (error) {
+        console.error(error);
+        throw new Error('Ocurrió un error al obtener el usuario');
+    }
+}
+
+
+
+  
+}  
 
 export default loginService;

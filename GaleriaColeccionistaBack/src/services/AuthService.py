@@ -57,7 +57,7 @@ class AuthService():
                     password = row[2]
                     user_type = row[3]
                     person_id = row[4]
-                    name = row[5]
+                    first_name = row[5]
                     last_name = row[6]
                     dni = row[7]
                     birth_date = row[8]
@@ -72,7 +72,7 @@ class AuthService():
                         'password': password,
                         'user_type': user_type,
                         'person_id': person_id,
-                        'name': name,
+                        'first_name': first_name,
                         'last_name': last_name,
                         'dni': dni,
                         'birth_date': birth_date,

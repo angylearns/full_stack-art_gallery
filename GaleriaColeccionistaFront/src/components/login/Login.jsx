@@ -17,7 +17,7 @@ function Login({ isOpen, onClose }) {
     const [newUser, setNewUser] = useState(false);
 
     //variables de login
-    const [username, setUsername] = useState('');
+    const [user_name, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     //variables de registro
@@ -29,7 +29,7 @@ function Login({ isOpen, onClose }) {
     const [birth_date, setBirthDate] = useState('');
     const [email, setEmail] = useState('');
     const [telephone, setTelephone] = useState('');
-    const [userType, setUserType] = useState('');
+    const [user_type, setUserType] = useState('');
 
     //Almacenar Id usuario
     const [user, setUser] = useState(null);
@@ -168,8 +168,8 @@ function Login({ isOpen, onClose }) {
                                 {/* <label htmlFor="username">Usuario:</label> */}
                                 <input className='input-login'
                                     type="text"
-                                    id="username"
-                                    value={username}
+                                    id="user_name"
+                                    value={user_name}
                                     onChange={(e) => setUsername(e.target.value)}
                                     required
                                     placeholder="Usuario"
@@ -185,8 +185,8 @@ function Login({ isOpen, onClose }) {
                                 />
                                 <label htmlFor="userType" className='usertypetext'>Tipo de Usuario:</label>
                                 <select className='optionusertype'
-                                    id="userType"
-                                    value={userType}
+                                    id="user_type"
+                                    value={user_type}
                                     onChange={(e) => setUserType(e.target.value)} required>
                                     <option value="2" >Artista</option>
                                     <option value="3" >Cliente</option>
