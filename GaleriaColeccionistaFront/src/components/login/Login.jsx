@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import { handleLogin, handleRegister } from '../../handlers/loginHandler';
 
 
-function Login({ isOpen, onClose }) {
+function Login({ isOpen, onClose, onLogin  }) {
 
     // Estado inicial para los campos del formulario de Registro
     const initialStateRegister = {
@@ -298,8 +298,15 @@ function Login({ isOpen, onClose }) {
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleLogin(e, setErrorMessage);
         console.log('login.jsx handleSubmitLogin errorMessage: '+ errorMessage);
-     
+        console.log('login.jsx handleSubmitLogin user: '+ user);
+      
         setFormStateLogin(initialStateLogin);
+        if (!errorMessage) {
+            const loggedInUser = localStorage.getItem('user');
+            onLogin(loggedInUser); // Llama a la función onLogin pasada como prop
+            onClose();
+          }
+          
     };
 
 
@@ -315,12 +322,7 @@ function Login({ isOpen, onClose }) {
         }
     }, []);
 
-    const handleLoginSuccess = (userData) => {
-        // Actualizar el estado del usuario en el Navbar
-        props.updateUser(userData);
-        // Cerrar el modal de login
-       props.onClose();
-      };
+  
 
  
     return (

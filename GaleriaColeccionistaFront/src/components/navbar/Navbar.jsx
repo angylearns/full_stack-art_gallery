@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect  } from 'react'
 import './navbar.css'
 import logo from "../../images/logo.svg";
 import search from "../../images/search.svg";
@@ -10,12 +10,12 @@ import Login from '../login/Login';
 import Swal from 'sweetalert2'
 
 
-function Navbar({ onClick }) {
+function Navbar() {
 
   const [isLoginOpen, setIsLoginOpen] = useState(false); // Declaración del estado isLoginOpen
 
   const handleOpenLogin = () => {
-    console.log('aaaaaaaaaaa');
+    console.log('Navbar.jsx handlepenlogin');
     setIsLoginOpen(true);
   };
 
@@ -35,7 +35,22 @@ function Navbar({ onClick }) {
     });
   };
 
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem('user');
+    if (loggedInUser) {
+        const foundUser = JSON.parse(loggedInUser);
+        setUser(foundUser);
+    }
+}, []);
 
+const handleLoginSuccess = (user) => {
+  console.log('handleLoginSuccess '+ JSON.stringify(user));
+  console.log('handleLoginSuccess '+ user);
+  if (user) {
+    setUser(JSON.parse(user)); // Actualiza el estado del usuario después de iniciar sesión
+  }
+  
+};
 
   return (
     <>
@@ -52,7 +67,9 @@ function Navbar({ onClick }) {
             
           </div>
 
-          <p className='navbaruserhello'>Hola, </p>
+           <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
+
+  
           
             <form className='form'>
               <input className='input-navbar'
@@ -85,7 +102,7 @@ function Navbar({ onClick }) {
         </div>
 
         <div className='login_logout'>
-          <Login isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+          <Login isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} onLogin={handleLoginSuccess} />
         </div>
 
       </div>

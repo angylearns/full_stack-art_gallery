@@ -1,7 +1,7 @@
 
 
 import loginService from '../services/loginService.js';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 export const handleLogin = async (e, setErrorMessage) => {
     e.preventDefault();
