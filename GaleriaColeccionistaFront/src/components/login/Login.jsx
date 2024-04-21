@@ -82,25 +82,31 @@ function Login({ isOpen, onClose }) {
     //Utilizar el Estado para Controlar los Campos RESETEO
     const handleInputChangeLogin = (e) => {
         const { name, value } = e.target;
-        console.log(' handleInputChangeLogin Valido login');
+        console.log(' handleInputChangeLogin Valido login ' + name + ' ' + value);
         setFormStateLogin({ ...formStateLogin, [name]: value });
 
         // Validaciones para el campo 'username' de LOGIN
         if (name === 'username') {
-            if (value.length < 3) {
+            if (value.length === 0) {
+                setFormErrorsLogin({ ...formErrorsLogin, msgErrorusername: '' });
+            } else if (value.length < 3) {
                 setFormErrorsLogin({ ...formErrorsLogin, msgErrorusername: 'El nombre de usuario debe tener al menos 3 caracteres.' });
             } else {
                 setFormErrorsLogin({ ...formErrorsLogin, msgErrorusername: '' });
             }
+
         }
 
         if (name === 'password') {
             // Expresión regular para validar la contraseña
-            // Esta expresión requiere al menos una letra mayúscula, una letra minúscula, un número y un caracter especial, con una longitud de 8 a 12 caracteres
-            const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
-        
-            if (!regexPassword.test(value)) {
-                setFormErrorsLogin({ ...formErrorsLogin, msgErrorpassword: 'La contraseña debe tener entre 8 y 20 caracteres, incluir al menos una letra mayúscula, una minúscula, un número y un caracter especial.' });
+            // Expresión regular para validar la contraseña con un mínimo de 4 caracteres
+            const regexPassword = /^[A-Za-z\d@$!%*?&]{4,}$/;
+
+            if (value.length === 0) {
+                setFormErrorsLogin({ ...formErrorsLogin, msgErrorpassword: '' });
+            }
+            else if (!regexPassword.test(value)) {
+                setFormErrorsLogin({ ...formErrorsLogin, msgErrorpassword: 'La contraseña debe tener al menos 4 caracteres.' });
             } else {
                 setFormErrorsLogin({ ...formErrorsLogin, msgErrorpassword: '' });
             }
@@ -114,9 +120,15 @@ function Login({ isOpen, onClose }) {
         setFormStateRegister({ ...formStateRegister, [name]: value });
         setFormStateLogin({ ...formStateLogin, [name]: value });
         // Validaciones para el campo 'first_name' de Registro
+
+
         if (name === 'first_name') {
+
+            if (value.length === 0) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorFirstName: '' });
+            }
             // Verificar si el valor tiene menos de 2 caracteres
-            if (value.length < 2) {
+            else if (value.length < 2) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrorFirstName: 'El nombre de usuario debe tener al menos 2 caracteres.' });
                 // Verificar si el valor contiene números o símbolos
             } else if (/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/.test(value)) {
@@ -127,7 +139,10 @@ function Login({ isOpen, onClose }) {
         }
         // Validaciones para el campo 'last_name'
         if (name === 'last_name') {
-            if (value.length < 2) {
+
+            if (value.length === 0) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorLastName: '' });
+            } else if (value.length < 2) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrorLastName: 'El apellido debe tener al menos 2 caracteres.' });
             } else if (/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/.test(value)) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrorLastName: 'El apellido no debe contener números ni símbolos.' });
@@ -137,7 +152,11 @@ function Login({ isOpen, onClose }) {
         }
 
         // Validaciones para el campo 'dni'
-        if (name === 'dni') {
+
+        if (value.length === 0) {
+            setFormErrorsRegister({ ...formErrorsRegister, msgErrordni: '' });
+        }
+        else if (name === 'dni') {
             if (value.length < 9) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrordni: 'El nombre de usuario debe tener al menos 9 caracteres.' });
             } else {
@@ -149,8 +168,11 @@ function Login({ isOpen, onClose }) {
         if (name === 'birth_date') {
             // Expresión regular para validar el formato de fecha 'YYYY-MM-DD'
             const regexFecha = /^\d{4}-\d{2}-\d{2}$/;
-        
-            if (!regexFecha.test(value)) {
+
+            if (value.length === 0) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorbirth_date: '' });
+            }
+            else if (!regexFecha.test(value)) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrorbirth_date: 'La fecha de nacimiento debe estar en formato AAAA-MM-DD.' });
             } else {
                 // Aquí puedes agregar validaciones adicionales, como verificar que la fecha sea válida
@@ -162,8 +184,10 @@ function Login({ isOpen, onClose }) {
         if (name === 'email') {
             // Expresión regular para validar un correo electrónico
             const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        
-            if (!regexEmail.test(value)) {
+
+            if (value.length === 0) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: '' });
+            } else if (!regexEmail.test(value)) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: 'El formato del correo electrónico no es válido.' });
             } else {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: '' });
@@ -172,7 +196,10 @@ function Login({ isOpen, onClose }) {
 
         // Validaciones para el campo 'telephone'
         if (name === 'telephone') {
-            if (value.length < 9) {
+
+            if (value.length === 0) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrortelephone: '' });
+            } else if (value.length < 9) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrortelephone: 'Al menos 9 caracteres.' });
             } else {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrortelephone: '' });
@@ -184,8 +211,9 @@ function Login({ isOpen, onClose }) {
             // Expresión regular para validar el nombre de usuario
             // Esta expresión permite letras, números y guiones bajos, con una longitud de 3 a 15 caracteres
             const regexUsername = /^[a-zA-Z0-9_]{3,15}$/;
-        
-            if (!regexUsername.test(value)) {
+            if (value.length === 0) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorusername: '' });
+            } else if (!regexUsername.test(value)) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrorusername: 'El nombre de usuario debe tener entre 3 y 15 caracteres y solo puede contener letras, números y guiones bajos.' });
             } else {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrorusername: '' });
@@ -196,10 +224,13 @@ function Login({ isOpen, onClose }) {
         if (name === 'password') {
             // Expresión regular para validar la contraseña
             // Esta expresión requiere al menos una letra mayúscula, una letra minúscula, un número y un caracter especial, con una longitud de 8 a 12 caracteres
-            const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
-        
-            if (!regexPassword.test(value)) {
-                setFormErrorsRegister({ ...formErrorsRegister, msgErrorpassword: 'La contraseña debe tener entre 8 y 20 caracteres, incluir al menos una letra mayúscula, una minúscula, un número y un caracter especial.' });
+            const regexPassword = /^[A-Za-z\d@$!%*?&]{4,}$/;
+
+            if (value.length === 0) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorpassword: '' });
+            }
+            else if (!regexPassword.test(value)) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorpassword: 'La contraseña debe tener mínimo 4 caracteres' });
             } else {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErrorpassword: '' });
             }
@@ -365,7 +396,7 @@ function Login({ isOpen, onClose }) {
                                                 required
                                                 placeholder="Fecha de Nacimiento"
                                             />
-                                            {formErrorsRegister.msgErroremail && <p>{formErrorsRegister.msgErroremail}</p>}
+                                            {formErrorsRegister.msgErrorbirth_date && <p>{formErrorsRegister.msgErrorbirth_date}</p>}
                                             {/* <label htmlFor="email">Correo Electrónico:</label> */}
                                             <input className='input-register'
                                                 type="email"
@@ -376,7 +407,7 @@ function Login({ isOpen, onClose }) {
                                                 required
                                                 placeholder="Correo Electrónico"
                                             />
-                                            {formErrorsRegister.msgErrortelephone && <p>{formErrorsRegister.msgErrortelephone}</p>}
+                                            {formErrorsRegister.msgErroremail && <p>{formErrorsRegister.msgErroremail}</p>}
                                             {/* <label htmlFor="telephone">Teléfono:</label> */}
                                             <input className='input-register'
                                                 type="telephone"
@@ -387,6 +418,7 @@ function Login({ isOpen, onClose }) {
                                                 required
                                                 placeholder="Teléfono"
                                             />
+                                            {formErrorsRegister.msgErrortelephone && <p>{formErrorsRegister.msgErrortelephone}</p>}
 
 
                                         </div>
@@ -408,7 +440,7 @@ function Login({ isOpen, onClose }) {
                                     required
                                     placeholder="Usuario"
                                 />
-                                 {newUser ? formErrorsRegister.msgErrorpassword && <p>  {formErrorsLogin.msgErrorusername}</p> : formErrorsLogin.msgErrorpassword && <p>  {formErrorsLogin.msgErrorpassword}</p>}
+                                {newUser ? formErrorsRegister.msgErrorpassword && <p> {formErrorsRegister.msgErrorpassword}</p> : formErrorsLogin.msgErrorpassword && <p> {formErrorsLogin.msgErrorpassword}</p>}
                                 {/* {formErrorsLogin.msgErrorpassword && <p>{formErrorsLogin.msgErrorpassword}</p>} */}
                                 {/* <label htmlFor="password">Contraseña:</label> */}
                                 <input className='input-login'

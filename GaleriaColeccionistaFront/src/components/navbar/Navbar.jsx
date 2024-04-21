@@ -15,7 +15,7 @@ function Navbar({ onClick }) {
   const [isLoginOpen, setIsLoginOpen] = useState(false); // Declaración del estado isLoginOpen
 
   const handleOpenLogin = () => {
-
+    console.log('aaaaaaaaaaa');
     setIsLoginOpen(true);
   };
 
