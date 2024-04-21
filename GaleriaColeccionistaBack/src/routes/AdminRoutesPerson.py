@@ -5,9 +5,11 @@ from src.models.personModel import Person
 
 
 
-main = Blueprint('adminPerson_blueprint',__name__)
+# main = Blueprint('adminPerson_blueprint',__name__)
+# @main.route('/',methods=['GET','POST', 'PATCH','DELETE','OPTIONS'], strict_slashes=False)
 
-@main.route('/',methods=['GET','POST', 'PATCH','DELETE','OPTIONS'], strict_slashes=False)
+admin_person_blueprint = Blueprint('admin_person_blueprint', __name__)
+@admin_person_blueprint.route('/', methods=['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'], strict_slashes=False)
 
 
 def dashboard_admin_persons():

@@ -2,14 +2,15 @@ from flask import Flask
 # from src.routes import PersonRouter
 from flask_cors import CORS
 from .routes import AdminRoutesPerson
-from .routes.AdminRoutesPerson import main as adminPerson_blueprint
+# from .routes.AdminRoutesPerson import main as adminPerson_blueprint
 from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter
 from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter, AuthRouter
 from flask_cors import CORS
+from src.routes import AdminRoutesPerson
 
 app= Flask(__name__)
 
-CORS(app)
+# CORS(app)
 # CORS(app, supports_credentials=True, expose_headers="Authorization", allow_headers=["Content-Type", "Authorization"])
 # CORS(app, resources={r"/*": {"origins": "*"}})
 # CORS(app, origins='http://localhost:5173', allow_headers=['Content-Type'])
@@ -40,7 +41,9 @@ def init_app(config):
     app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
 
     # maria pruebas - No borrar de momento
-    app.register_blueprint(adminPerson_blueprint, url_prefix='/persons')
+    # app.register_blueprint(AdminRoutesPerson.main, url_prefix='/persons')
+    app.register_blueprint(AdminRoutesPerson.admin_person_blueprint, url_prefix='/persons')
+    
     # app.register_blueprint(AuthRouter.login_blueprint, url_prefix='/login')
 
     app.register_blueprint(AuthRouter.main, url_prefix='/userL')
