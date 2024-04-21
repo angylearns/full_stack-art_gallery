@@ -1,5 +1,6 @@
 from src.database.db_mysql import get_connection
 from src.models.userModel import User
+from werkzeug.security import generate_password_hash
 
 class UserService():
 
@@ -15,6 +16,7 @@ class UserService():
                 print(result)
                 connection.close()
                 return list_user
+                
                
         except Exception as ex: 
             print(ex)
@@ -24,20 +26,21 @@ class UserService():
         try:
             connection=get_connection()
             print(connection)
-        
+            print("estamos post user")
             with connection.cursor() as cursor:
                 id_user = user.id_user
                 user_name = user.user_name
-                password = user.password
+                passwordunic = user.password
                 user_type = user.user_type
-                
-
-                cursor.execute("INSERT INTO user (id_user, user_name, password, user_type) VALUES ('{0}', '{1}', '{2} ', '{3}');".format(id_user, user_name, password, user_type))
+                print("por buen camino")
+                password = generate_password_hash (passwordunic,  'pbkdf2:sha256', 30)
+                cursor.callproc("InsertUser", (id_user, user_name, password, user_type))
                 connection.commit()
                 connection.close()
                 return 'Usuario agregado correctamente'
                
         except Exception as ex: 
+            print("erorororororororor")
             print(ex)
 
     @classmethod
@@ -45,7 +48,7 @@ class UserService():
         try:
             connection = get_connection()
             with connection.cursor() as cursor:
-                cursor.execute("DELETE FROM user WHERE id_user = %s;", (id_user))
+                cursor.callproc("DeleteUser", (id_user,))
                 connection.commit()
             connection.close()
             return 'Usuario eliminado correctamente'
@@ -61,7 +64,7 @@ class UserService():
               password = user.password
               user_type = user.user_type
               
-              cursor.execute("UPDATE user SET user_name = %s, password= %s, user_type = %s WHERE id_user = %s;", (user_name, password, user_type, id_user))
+              cursor.callproc("UpdateUser", (id_user, user_name, password, user_type))
               connection.commit()
              connection.close()
              return 'Usuario actualizado correctamente'

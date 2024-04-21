@@ -1,0 +1,80 @@
+.container-navbar {
+    width: 100%;
+    background-color: #E6ECEC;
+    height: 180px;
+}
+
+.icons-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 70px;
+}
+
+.logo {
+    padding-left: 110px;
+}
+
+.shoppingcart {
+    padding-right: 130px;
+}
+
+.form-and-search {
+    display: flex;
+    flex-direction: row;
+    width: 00px;
+}
+
+.form {
+    padding-top: 20px;
+    padding-left: 30%;
+}
+
+.search {
+    padding-top: 15px;
+    padding-left: 0px;
+}
+
+.login {
+    padding-top: 15px;
+}
+
+.logout {
+    padding-top: 15px;
+}
+
+.shoppingcart {
+    padding-top: 10px;
+}
+
+.input-navbar {
+    width: 180px;
+    border-radius: 10px;
+    border: none;
+}
+
+.login_logout {
+    display: flex;
+    flex-direction: row;
+    padding-left: 70%;
+
+
+}
+
+.login {
+    border: 0;
+    background-color: transparent;
+}
+
+.logout {
+    border: 0;
+    background-color: transparent;
+}
+
+.gallery_button {
+    border: 0;
+    background-color: transparent;
+    color: #21577E;
+}

@@ -4,6 +4,8 @@ from flask_cors import CORS
 from .routes import AdminRoutesPerson
 from .routes.AdminRoutesPerson import main as adminPerson_blueprint
 from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter
+from src.routes import PersonRouter, UserRouter, ProductRouter, PurchaseOrderRouter, AuthRouter
+from flask_cors import CORS
 
 app= Flask(__name__)
 
@@ -12,6 +14,7 @@ CORS(app)
 # CORS(app, resources={r"/*": {"origins": "*"}})
 # CORS(app, origins='http://localhost:5173', allow_headers=['Content-Type'])
 # CORS(app, origins='http://localhost:5173')  # Reemplaza esto con el origen correcto de tu frontend
+CORS(app, resources={"*": {"origins": "http://localhost:5173"}}, supports_credentials=True, redirect=True)
 
 def init_app(config):
     app.config.from_object(config)
@@ -38,4 +41,7 @@ def init_app(config):
 
     # maria pruebas - No borrar de momento
     app.register_blueprint(adminPerson_blueprint, url_prefix='/persons')
+    # app.register_blueprint(AuthRouter.login_blueprint, url_prefix='/login')
+
+    app.register_blueprint(AuthRouter.main, url_prefix='/userL')
     return app
