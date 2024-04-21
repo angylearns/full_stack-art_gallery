@@ -6,6 +6,7 @@ import AdminCustomers from "./AdminCustomers";
 import AdminArtists from "./AdminArtists";
 
 
+
 function AdminMenu() {
 
     // Estado para almacenar qué componente renderizar en la columna2

@@ -9,12 +9,27 @@ function EndPurchase() {
     const navigate = useNavigate();
 
     const location = useLocation();
-    const { total } = location.state;
+    // const { total } = location.state;
+    const { data } = location.state;
+    const total = data.total;
+    const products = data.products;//lista de products que llegan del carrito y que se van a comprar
 
     const cancelPay = () => {
         // history.push('/pagos');
         navigate('/ShoppingCart');
     };
+
+    const handlePay = async () => {
+               
+        //await deletePerson(index);
+        //............................................. ojo .............................................................
+        //para pagar necesito los datos del usuario registrado en concreto id_user_fk = id_user
+        //necesito el id de todos los productos del carrito para crear un registro en la tabla purchase order por cada producto 
+        //para el usuario indicado, productos ya los tengo en products
+
+
+    };
+    
 
     return (
         <>
@@ -68,7 +83,7 @@ function EndPurchase() {
                 </div>
                 <div className="row">
                     <div className="column">
-                        <button className='btnPay'>Pagar ahora <img src="https://i.postimg.cc/FRtzfRxN/candado2.png" alt="seguro" className='btnIcon' /></button>
+                        <button className='btnPay' onClick={() => handlePay()}>Pagar ahora <img src="https://i.postimg.cc/FRtzfRxN/candado2.png" alt="pagar" className='btnIcon' /></button>
                     </div>
                 </div>
             </div>

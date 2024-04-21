@@ -11,6 +11,16 @@ function ShoppingCart() {
 
     const [productList2, setProductList2] = useState([]);
 
+        // Calcular el total de los precios
+        const totalPrecio = productList2.reduce((total, product) => total + parseFloat(product.price), 0);
+        // URL de la imagen estática
+        const imagenEstatica = "https://i.postimg.cc/ZRFNChK9/eliminar.png";
+
+    const data = {
+        total: totalPrecio,
+        products: productList2
+      };
+
     useEffect(() => {
         const storedProducts = JSON.parse(localStorage.getItem('products'));
         if (storedProducts != null) {
@@ -19,12 +29,6 @@ function ShoppingCart() {
 
     }, []);
 
-
-
-    // Calcular el total de los precios
-    const totalPrecio = productList2.reduce((total, product) => total + parseFloat(product.price), 0);
-    // URL de la imagen estática
-    const imagenEstatica = "https://i.postimg.cc/ZRFNChK9/eliminar.png";
 
     // Manejador de clic para mostrar el número de fila en una alert
     const mostrarNumeroFila = (index) => {
@@ -42,7 +46,8 @@ function ShoppingCart() {
 
     const handleEndPurchase = (total) => {
         // history.push('/pagos');
-        navigate('/EndPurchase', { state: { total } });
+        // navigate('/EndPurchase', { state: { total } });
+        navigate('/EndPurchase', { state: { data } });
     };
 
     const [highlightedIndex, setHighlightedIndex] = useState(null);
