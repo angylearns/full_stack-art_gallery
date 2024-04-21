@@ -48,10 +48,12 @@ function Navbar({ onClick }) {
             <img src={logo} className='logo' alt="" />
 
             <button className='gallery_button'>GALERIA</button>
+
+            
           </div>
 
-
-          {/* <div className='form-and-search'> */}
+          <p className='navbaruserhello'>Hola, </p>
+          
             <form className='form'>
               <input className='input-navbar'
                 type="text"
@@ -62,7 +64,7 @@ function Navbar({ onClick }) {
             </form>
 
             <img src={search} className='search' alt="" />
-          {/* </div> */}
+         
 
           {/* PROPS */}
 
