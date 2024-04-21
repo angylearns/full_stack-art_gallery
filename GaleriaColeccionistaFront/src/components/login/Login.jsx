@@ -9,25 +9,37 @@ import { handleLogin, handleRegister } from '../../handlers/loginHandler';
 
 function Login({ isOpen, onClose }) {
 
-    // Estado inicial para los campos del formulario
+    // Estado inicial para los campos del formulario de Registro
     const initialStateRegister = {
-        username: '',
-        // Otros campos...
+
+        first_name: '',
+        last_name: '',
+        dni: '',
+        birth_date: '',
+        email: '',
+        telephone: '',
+
     };
 
     // Estado inicial para los errores de validación de Registro
     const initialStateErrorsRegister = {
-        username: '',
-        // Otros campos...
+
+        first_name: '',
+        last_name: '',
+        dni: '',
+        birth_date: '',
+        email: '',
+        telephone: '',
+
     };
 
-     // Estado inicial para los campos del formulario de login
-     const initialStateLogin = {
+    // Estado inicial para los campos del formulario de Login
+    const initialStateLogin = {
         username: '',
         password: '',
     };
 
-    // Estado inicial para los errores de validación de login
+    // Estado inicial para los errores de validación de Login
     const initialStateErrorsLogin = {
         username: '',
         password: '',
@@ -37,9 +49,9 @@ function Login({ isOpen, onClose }) {
     const [formStateRegister, setFormStateRegister] = useState(initialStateRegister);
     const [formErrorsRegister, setFormErrorsRegister] = useState(initialStateErrorsRegister);
 
-      // Utilizar el Estado para Controlar los Campos de Login
-      const [formStateLogin, setFormStateLogin] = useState(initialStateLogin);
-      const [formErrorsLogin, setFormErrorsLogin] = useState(initialStateErrorsLogin);
+    // Utilizar el Estado para Controlar los Campos de Login
+    const [formStateLogin, setFormStateLogin] = useState(initialStateLogin);
+    const [formErrorsLogin, setFormErrorsLogin] = useState(initialStateErrorsLogin);
 
     //Variable para ver modal
     const [showModal, setShowModal] = useState(false);
@@ -70,53 +82,138 @@ function Login({ isOpen, onClose }) {
     //Utilizar el Estado para Controlar los Campos RESETEO
     const handleInputChangeLogin = (e) => {
         const { name, value } = e.target;
+        console.log(' handleInputChangeLogin Valido login');
         setFormStateLogin({ ...formStateLogin, [name]: value });
 
-  // Validaciones para el campo 'username' de LOGIN
-  if (name === 'username') {
-    if (value.length < 3) {
-        setFormErrorsLogin({ ...formErrorsLogin, username: 'El nombre de usuario debe tener al menos 3 caracteres.' });
-    } else {
-        setFormErrorsLogin({ ...formErrorsLogin, username: '' });
-    }
-}
+        // Validaciones para el campo 'username' de LOGIN
+        if (name === 'username') {
+            if (value.length < 3) {
+                setFormErrorsLogin({ ...formErrorsLogin, msgErrorusername: 'El nombre de usuario debe tener al menos 3 caracteres.' });
+            } else {
+                setFormErrorsLogin({ ...formErrorsLogin, msgErrorusername: '' });
+            }
+        }
 
-
-
-     
-
-
-        // Validaciones y actualizar el estado de errores
-        // Para el campo 'username':
-
-
-        // if (value.length < 3) {
-        //     setFormErrors({ ...formErrors, username: 'El nombre de usuario debe tener al menos 3 caracteres.' });
-        // } else {
-        //     setFormErrors({ ...formErrors, username: '' });
-        // }
-
+        if (name === 'password') {
+            // Expresión regular para validar la contraseña
+            // Esta expresión requiere al menos una letra mayúscula, una letra minúscula, un número y un caracter especial, con una longitud de 8 a 12 caracteres
+            const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
+        
+            if (!regexPassword.test(value)) {
+                setFormErrorsLogin({ ...formErrorsLogin, msgErrorpassword: 'La contraseña debe tener entre 8 y 20 caracteres, incluir al menos una letra mayúscula, una minúscula, un número y un caracter especial.' });
+            } else {
+                setFormErrorsLogin({ ...formErrorsLogin, msgErrorpassword: '' });
+            }
+        }
 
     };
 
     const handleInputChangeRegister = (e) => {
         const { name, value } = e.target;
+        console.log(' handleInputChangeRegister Valido registro ' + name + ' ' + value);
         setFormStateRegister({ ...formStateRegister, [name]: value });
+        setFormStateLogin({ ...formStateLogin, [name]: value });
+        // Validaciones para el campo 'first_name' de Registro
+        if (name === 'first_name') {
+            // Verificar si el valor tiene menos de 2 caracteres
+            if (value.length < 2) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorFirstName: 'El nombre de usuario debe tener al menos 2 caracteres.' });
+                // Verificar si el valor contiene números o símbolos
+            } else if (/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/.test(value)) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorFirstName: 'El nombre de usuario no debe contener números ni símbolos.' });
+            } else {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorFirstName: '' });
+            }
+        }
+        // Validaciones para el campo 'last_name'
+        if (name === 'last_name') {
+            if (value.length < 2) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorLastName: 'El apellido debe tener al menos 2 caracteres.' });
+            } else if (/[^a-zA-ZáéíóúÁÉÍÓÚñÑ ]/.test(value)) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorLastName: 'El apellido no debe contener números ni símbolos.' });
+            } else {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorLastName: '' });
+            }
+        }
+
+        // Validaciones para el campo 'dni'
+        if (name === 'dni') {
+            if (value.length < 9) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrordni: 'El nombre de usuario debe tener al menos 9 caracteres.' });
+            } else {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrordni: '' });
+            }
+        }
+
+        // Validaciones para el campo 'birth_date'
+        if (name === 'birth_date') {
+            // Expresión regular para validar el formato de fecha 'YYYY-MM-DD'
+            const regexFecha = /^\d{4}-\d{2}-\d{2}$/;
+        
+            if (!regexFecha.test(value)) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorbirth_date: 'La fecha de nacimiento debe estar en formato AAAA-MM-DD.' });
+            } else {
+                // Aquí puedes agregar validaciones adicionales, como verificar que la fecha sea válida
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorbirth_date: '' });
+            }
+        }
+
+        // Validaciones para el campo 'email'
+        if (name === 'email') {
+            // Expresión regular para validar un correo electrónico
+            const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+            if (!regexEmail.test(value)) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: 'El formato del correo electrónico no es válido.' });
+            } else {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: '' });
+            }
+        }
+
+        // Validaciones para el campo 'telephone'
+        if (name === 'telephone') {
+            if (value.length < 9) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrortelephone: 'Al menos 9 caracteres.' });
+            } else {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrortelephone: '' });
+            }
+        }
 
         // Validaciones para el campo 'username'
-        if (name === 'first_name') {
-            if (value.length < 3) {
-                setFormErrorsRegister({ ...formErrorsRegister, username: 'El nombre de usuario debe tener al menos 3 caracteres.' });
+        if (name === 'username') {
+            // Expresión regular para validar el nombre de usuario
+            // Esta expresión permite letras, números y guiones bajos, con una longitud de 3 a 15 caracteres
+            const regexUsername = /^[a-zA-Z0-9_]{3,15}$/;
+        
+            if (!regexUsername.test(value)) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorusername: 'El nombre de usuario debe tener entre 3 y 15 caracteres y solo puede contener letras, números y guiones bajos.' });
             } else {
-                setFormErrorsRegister({ ...formErrorsRegister, username: '' });
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorusername: '' });
+            }
+        }
+
+        // Validaciones para el campo 'password'
+        if (name === 'password') {
+            // Expresión regular para validar la contraseña
+            // Esta expresión requiere al menos una letra mayúscula, una letra minúscula, un número y un caracter especial, con una longitud de 8 a 12 caracteres
+            const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,12}$/;
+        
+            if (!regexPassword.test(value)) {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorpassword: 'La contraseña debe tener entre 8 y 20 caracteres, incluir al menos una letra mayúscula, una minúscula, un número y un caracter especial.' });
+            } else {
+                setFormErrorsRegister({ ...formErrorsRegister, msgErrorpassword: '' });
             }
         }
     };
 
 
+
+
+
     //DE REGISTER A LOGIN
     const handleToggleView = () => {
         setNewUser(!newUser);
+        console.log('login jsx : handleToogleView newUser ' + JSON.stringify(newUser));
     };
 
     const resetToLoginView = () => {
@@ -223,7 +320,7 @@ function Login({ isOpen, onClose }) {
                                 {newUser && (
                                     <>
                                         <div className='twoblocks'>
-                                          
+
                                             {/* <label htmlFor="first_name">Nombre:</label> */}
                                             <input className='input-register'
                                                 type="text"
@@ -234,17 +331,18 @@ function Login({ isOpen, onClose }) {
                                                 required
                                                 placeholder="Nombre"
                                             />
-                                             {formErrorsRegister.username && <p>{formErrorsRegister.username}</p>}
+                                            {formErrorsRegister.msgErrorFirstName && <p>{formErrorsRegister.msgErrorFirstName}</p>}
                                             {/* <label htmlFor="lastName">Apellidos</label> */}
                                             <input className='input-register'
                                                 type="text"
                                                 id="last_name"
                                                 name="last_name"
                                                 value={formStateLogin.last_name}
-                                                onChange={handleInputChangeLogin}
+                                                onChange={handleInputChangeRegister}
                                                 required
                                                 placeholder="Apellidos"
                                             />
+                                            {formErrorsRegister.msgErrorLastName && <p>{formErrorsRegister.msgErrorLastName}</p>}
                                             {/* <label htmlFor="dni">DNI:</label> */}
                                             <input className='input-register'
                                                 type="text"
@@ -255,7 +353,7 @@ function Login({ isOpen, onClose }) {
                                                 required
                                                 placeholder="DNI"
                                             />
-
+                                            {formErrorsRegister.msgErrordni && <p>{formErrorsRegister.msgErrordni}</p>}
 
                                             {/* <label htmlFor="birth_date">Fecha de Nacimiento:</label> */}
                                             <input className='input-register'
@@ -267,6 +365,7 @@ function Login({ isOpen, onClose }) {
                                                 required
                                                 placeholder="Fecha de Nacimiento"
                                             />
+                                            {formErrorsRegister.msgErroremail && <p>{formErrorsRegister.msgErroremail}</p>}
                                             {/* <label htmlFor="email">Correo Electrónico:</label> */}
                                             <input className='input-register'
                                                 type="email"
@@ -277,7 +376,7 @@ function Login({ isOpen, onClose }) {
                                                 required
                                                 placeholder="Correo Electrónico"
                                             />
-
+                                            {formErrorsRegister.msgErrortelephone && <p>{formErrorsRegister.msgErrortelephone}</p>}
                                             {/* <label htmlFor="telephone">Teléfono:</label> */}
                                             <input className='input-register'
                                                 type="telephone"
@@ -293,27 +392,35 @@ function Login({ isOpen, onClose }) {
                                         </div>
                                     </>
                                 )}
+
+
+                                {/* CAMPOS COMUNES LOGIN/REGISTER: */}
+                                {/* El mensaje de error es tomado del objeto formerrorregister o del objeto formerrorlogin en función de donde se encuentre el usuario en el modal (newuser) */}
+                                {newUser ? formErrorsRegister.msgErrorusername && <p>  {formErrorsRegister.msgErrorusername}</p> : formErrorsLogin.msgErrorusername && <p>  {formErrorsLogin.msgErrorusername}</p>}
+
                                 {/* <label htmlFor="username">Usuario:</label> */}
                                 <input className='input-login'
                                     type="text"
                                     id="username"
                                     name="username"
                                     value={formStateLogin.username}
-                                    onChange={handleInputChangeLogin}
+                                    onChange={newUser ? handleInputChangeRegister : handleInputChangeLogin}
                                     required
                                     placeholder="Usuario"
                                 />
-                                 {formErrorsLogin.username && <p>{formErrorsLogin.username}</p>}
+                                 {newUser ? formErrorsRegister.msgErrorpassword && <p>  {formErrorsLogin.msgErrorusername}</p> : formErrorsLogin.msgErrorpassword && <p>  {formErrorsLogin.msgErrorpassword}</p>}
+                                {/* {formErrorsLogin.msgErrorpassword && <p>{formErrorsLogin.msgErrorpassword}</p>} */}
                                 {/* <label htmlFor="password">Contraseña:</label> */}
                                 <input className='input-login'
                                     type="password"
                                     id="password"
                                     name="password"
                                     value={formStateLogin.password}
-                                    onChange={handleInputChangeLogin}
+                                    onChange={newUser ? handleInputChangeRegister : handleInputChangeLogin}
                                     required
                                     placeholder="Contraseña"
                                 />
+
                                 {/* <label htmlFor="userType" className='usertypetext'>Tipo de Usuario:</label> */}
                                 <select className='optionusertype'
                                     id="userType"
