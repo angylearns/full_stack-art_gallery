@@ -120,6 +120,30 @@
       "user_name": "lolila",
       "password": "123",
       "userType": "2"
+    },
+    {
+      "id": "4d65",
+      "user_name": "kdfjdk",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "89d7",
+      "user_name": "login",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "4610",
+      "user_name": "probando",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "a57d",
+      "user_name": "probando2",
+      "password": "123",
+      "userType": "3"
     }
   ],
   "person": [
@@ -322,6 +346,46 @@
       "email": "sadfds@gmail.com",
       "telephone": "646753432",
       "id_user": "7815"
+    },
+    {
+      "id": "91b4",
+      "first_name": "lorfaskf",
+      "last_name": "asdfgaf",
+      "dni": "12354687l",
+      "birth_date": "1985-12-06",
+      "email": "dfgsdryriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "4d65"
+    },
+    {
+      "id": "fb02",
+      "first_name": "asdfgr",
+      "last_name": "Cortés",
+      "dni": "12354687l",
+      "birth_date": "1985-12-06",
+      "email": "asdferdriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "89d7"
+    },
+    {
+      "id": "f96b",
+      "first_name": "lelele",
+      "last_name": "jejeje",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "asfaesf@gmail.com",
+      "telephone": "646753432",
+      "id_user": "4610"
+    },
+    {
+      "id": "d435",
+      "first_name": "asfasetag",
+      "last_name": "asfefe",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "at54e5teuezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "a57d"
     }
   ]
 }

@@ -4,32 +4,42 @@ import login from "../../images/login.svg";
 import logout from "../../images/logout.svg";
 import Navbar from '../navbar/Navbar';
 import Swal from 'sweetalert2'
-
-
-
-
 import { handleLogin, handleRegister } from '../../handlers/loginHandler';
 
-//Definir el Estado Inicial
+
 function Login({ isOpen, onClose }) {
 
-    const initialStateLogin = {
+    // Estado inicial para los campos del formulario
+    const initialStateRegister = {
+        username: '',
+        // Otros campos...
+    };
+
+    // Estado inicial para los errores de validación de Registro
+    const initialStateErrorsRegister = {
+        username: '',
+        // Otros campos...
+    };
+
+     // Estado inicial para los campos del formulario de login
+     const initialStateLogin = {
         username: '',
         password: '',
     };
 
-    const initialStateRegister = {
-        first_name: '',
-        last_name: '',
-        dni: '',
-        birth_date: '',
-        email: '',
-        telephone: '',
-        userType: '',
+    // Estado inicial para los errores de validación de login
+    const initialStateErrorsLogin = {
+        username: '',
+        password: '',
     };
 
-    //Utilizar el Estado para Controlar los Campos
-    const [formStateLogin, setFormStateLogin] = useState(initialStateLogin);
+    // Utilizar el Estado para Controlar los Campos de Registro
+    const [formStateRegister, setFormStateRegister] = useState(initialStateRegister);
+    const [formErrorsRegister, setFormErrorsRegister] = useState(initialStateErrorsRegister);
+
+      // Utilizar el Estado para Controlar los Campos de Login
+      const [formStateLogin, setFormStateLogin] = useState(initialStateLogin);
+      const [formErrorsLogin, setFormErrorsLogin] = useState(initialStateErrorsLogin);
 
     //Variable para ver modal
     const [showModal, setShowModal] = useState(false);
@@ -61,15 +71,48 @@ function Login({ isOpen, onClose }) {
     const handleInputChangeLogin = (e) => {
         const { name, value } = e.target;
         setFormStateLogin({ ...formStateLogin, [name]: value });
+
+  // Validaciones para el campo 'username' de LOGIN
+  if (name === 'username') {
+    if (value.length < 3) {
+        setFormErrorsLogin({ ...formErrorsLogin, username: 'El nombre de usuario debe tener al menos 3 caracteres.' });
+    } else {
+        setFormErrorsLogin({ ...formErrorsLogin, username: '' });
+    }
+}
+
+
+
+     
+
+
+        // Validaciones y actualizar el estado de errores
+        // Para el campo 'username':
+
+
+        // if (value.length < 3) {
+        //     setFormErrors({ ...formErrors, username: 'El nombre de usuario debe tener al menos 3 caracteres.' });
+        // } else {
+        //     setFormErrors({ ...formErrors, username: '' });
+        // }
+
+
     };
-
-
-    const [formStateRegister, setFormStateRegister] = useState(initialStateRegister);
 
     const handleInputChangeRegister = (e) => {
         const { name, value } = e.target;
         setFormStateRegister({ ...formStateRegister, [name]: value });
+
+        // Validaciones para el campo 'username'
+        if (name === 'first_name') {
+            if (value.length < 3) {
+                setFormErrorsRegister({ ...formErrorsRegister, username: 'El nombre de usuario debe tener al menos 3 caracteres.' });
+            } else {
+                setFormErrorsRegister({ ...formErrorsRegister, username: '' });
+            }
+        }
     };
+
 
     //DE REGISTER A LOGIN
     const handleToggleView = () => {
@@ -80,13 +123,13 @@ function Login({ isOpen, onClose }) {
         setNewUser(false);
         // Aquí puedes resetear también los campos del formulario de registro si es necesario
         setUserType('');
-    // Aquí puedes resetear también los campos del formulario de registro si es necesario
+        // Aquí puedes resetear también los campos del formulario de registro si es necesario
     };
 
     useEffect(() => {
         // Llama a resetToLoginView para asegurar que el estado inicial de userType sea correcto
         resetToLoginView();
-    }, []); 
+    }, []);
 
     // Función para manejar el envío del formulario de registro
     const handleSubmitRegister = async (e,) => {
@@ -102,7 +145,7 @@ function Login({ isOpen, onClose }) {
                 title: "Se ha registrado correctamente",
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
         }
         if (errorMessage) {
             Swal.fire({
@@ -110,7 +153,7 @@ function Login({ isOpen, onClose }) {
                 title: "No se pudo registrar.",
                 text: "Something went wrong!",
                 footer: 'Por favor, verifica los datos ingresados.'
-              });
+            });
         }
         // setFormState(initialState);
         setFormStateLogin(initialStateLogin);
@@ -121,7 +164,7 @@ function Login({ isOpen, onClose }) {
 
     const handleSubmitLogin = async (e,) => {
         e.preventDefault();
-        
+
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleLogin(e, setErrorMessage);
 
@@ -132,7 +175,7 @@ function Login({ isOpen, onClose }) {
                 title: "Ha iniciado sesión",
                 showConfirmButton: false,
                 timer: 1500
-              });
+            });
         }
         if (errorMessage) {
             Swal.fire({
@@ -140,7 +183,7 @@ function Login({ isOpen, onClose }) {
                 title: "Error al iniciar sesión.",
                 text: "Something went wrong!",
                 footer: 'Por favor, verifica los datos ingresados.'
-              });
+            });
         }
         setFormStateLogin(initialStateLogin);
     };
@@ -180,7 +223,7 @@ function Login({ isOpen, onClose }) {
                                 {newUser && (
                                     <>
                                         <div className='twoblocks'>
-
+                                          
                                             {/* <label htmlFor="first_name">Nombre:</label> */}
                                             <input className='input-register'
                                                 type="text"
@@ -191,13 +234,14 @@ function Login({ isOpen, onClose }) {
                                                 required
                                                 placeholder="Nombre"
                                             />
+                                             {formErrorsRegister.username && <p>{formErrorsRegister.username}</p>}
                                             {/* <label htmlFor="lastName">Apellidos</label> */}
                                             <input className='input-register'
                                                 type="text"
                                                 id="last_name"
                                                 name="last_name"
-                                                value={formStateRegister.last_name}
-                                                onChange={handleInputChangeRegister}
+                                                value={formStateLogin.last_name}
+                                                onChange={handleInputChangeLogin}
                                                 required
                                                 placeholder="Apellidos"
                                             />
@@ -259,6 +303,7 @@ function Login({ isOpen, onClose }) {
                                     required
                                     placeholder="Usuario"
                                 />
+                                 {formErrorsLogin.username && <p>{formErrorsLogin.username}</p>}
                                 {/* <label htmlFor="password">Contraseña:</label> */}
                                 <input className='input-login'
                                     type="password"
