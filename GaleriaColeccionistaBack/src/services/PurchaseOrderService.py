@@ -30,6 +30,8 @@ class PurchaseOrderService():
                 date = purchase_order.date
                 status = purchase_order.status
                 id_user_fk = purchase_order.id_user_fk
+                print(id_user_fk)
+                print("eoeoeoeoeoeooeoe")
                 id_product_fk = purchase_order.id_product_fk
                 
 

@@ -41,9 +41,7 @@ def init_app(config):
     # app.register_blueprint(PurchaseOrderRouter.postPurchaseOrder, url_prefix='/purchaseorders')
     # app.register_blueprint(PurchaseOrderRouter.putPurchaseOrder, url_prefix='/purchaseorder')
     # app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
-
-    # maria pruebas - No borrar de momento
-    # app.register_blueprint(AdminRoutesPerson.main, url_prefix='/persons')
+     
     app.register_blueprint(AdminRoutesPerson.admin_person_blueprint, url_prefix='/persons')
     
     # app.register_blueprint(AuthRouter.login_blueprint, url_prefix='/login')
