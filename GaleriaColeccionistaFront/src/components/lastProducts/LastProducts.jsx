@@ -19,12 +19,13 @@ const LastProducts = () => {
   };
 
   return (
-    <div>
+    <div className='product-gallery'>
       <h1>Obras recién llegadas</h1>
       <div className="product-list">
         {recentProducts.map((product) => (
           <div key={product.id} className="product-item">
-            <img src={product.url} alt={product.title} />
+            <img src={product.url} alt={product.title} width={360}
+            height={420}/>
             <h3>{product.title}</h3>
           </div>
         ))}
