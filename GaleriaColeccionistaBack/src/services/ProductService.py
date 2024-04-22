@@ -76,3 +76,15 @@ class ProductService():
         except Exception as ex:
                print(ex)
      
+    @classmethod
+    def get_last_product_id(cls):
+        try:
+            connection = get_connection()
+            with connection.cursor() as cursor:
+                cursor.execute('SELECT MAX(id_product) FROM product')
+                result = cursor.fetchone()
+                connection.close()
+                id_product = result[0] if result[0] is not None else 0
+                return id_product
+        except Exception as ex:
+            print(ex)

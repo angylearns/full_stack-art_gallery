@@ -6,6 +6,7 @@ getProduct = Blueprint('product_blueprint_get', __name__)
 postProduct = Blueprint('product_blueprint_post', __name__)
 putProduct = Blueprint('product_blueprint_put', __name__)
 deleteProduct = Blueprint('product_blueprint_delete', __name__)
+getLastProductId = Blueprint('user_blueprint_last_user_id', __name__)
 
 @getProduct.route('/',methods=['GET'])
 
@@ -72,4 +73,10 @@ def delete_product(id_product):
     ProductService.delete_product(id_product)
     print('Consola: Producto eliminado.')
     return 'Página: Producto eliminado.'
+
+@getLastProductId.route('/id_user', methods=['GET'])
+def get_last_product_id():
+    id_product = ProductService.get_last_product_id()
+    
+    return jsonify({'id_product':id_product})
 
