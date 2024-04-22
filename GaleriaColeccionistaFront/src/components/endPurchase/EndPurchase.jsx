@@ -120,7 +120,7 @@ function EndPurchase() {
                 <div className="row central">
                     <div className="column">
                         {/* Contenido de la fila 3 (central con formulario) */}
-                        <form>
+                        <form className='myForm'>
                             <div className='dataCC1'>
                                 <h4>Tus datos de pago</h4>
                                 <label>Titular de la tarjeta</label>
@@ -130,7 +130,7 @@ function EndPurchase() {
                             </div>
                             <div className='dataCC2'>
                                 <div className='smallData'>
-                                    <label>Fecha de vencimiento</label>
+                                    <label>Caducidad</label>
                                     <input type="text" placeholder="MM/YYYY" className='dateCC' />
                                 </div>
                                 <div className='smallData'>

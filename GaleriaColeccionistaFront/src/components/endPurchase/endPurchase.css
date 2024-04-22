@@ -1,10 +1,16 @@
 .containerF {
-    width: 45%;
+    width: 23%;
     /* background-color: pink; */
     color: #21577E;
     border: 1px solid;
     border-color: #f0f0f0;
     box-shadow: 0px 0px 10px rgba(136, 136, 136, 0.5);
+}
+
+.myForm{
+    justify-content: left;
+    align-items:flex-start;
+    padding-left: 5%;
 }
 
 .row {
@@ -13,7 +19,7 @@
 }
 
 .column {
-    width: 100%;
+    width: 80%;
 }
 
 .column1 {
@@ -42,14 +48,14 @@
 
 .image-container {
     display: flex;
-    justify-content: space-around;
+    justify-content:start;
     margin-left: 2%;
     margin-right: 2%;
 }
 
 .image {
-    width: 15%;
-    height: 15%;
+    width: 10%;
+    height: 10%;
     border-radius: 8px;
     margin: 1%;
     padding: 1%;
@@ -124,11 +130,11 @@ input {
 }
 
 .cvv {
-    width: 70%;
+    width: 50%;
 }
 
 .dateCC {
-    width: 85%;
+    width: 65%;
 }
 
 .btnIcon {
