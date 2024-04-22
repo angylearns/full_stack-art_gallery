@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from src.services.UserService import UserService
+
 from src.models.userModel import User
 
 getUser = Blueprint('user_blueprint_get', __name__)
