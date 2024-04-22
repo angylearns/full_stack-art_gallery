@@ -97,34 +97,54 @@ export const handleLogin = async (e, setErrorMessage) => {
     console.log('LORENA handler handleLogin username ' + user_name.value);
     //console.log('LORENA handleLogin password ' + JSON.stringify(password));
 
-    
+
     try {
-        
-        const users = await loginService.getUsersByUsernameAndPassword(user_name.value, password.value);
-        console.log('loginHandler.js handllogin users '+JSON.stringify(users));
-        if ( users.length > 0) {
-            console.log('Usuario conectado:', users[0].id_user, users[0].user_name);
 
-            console.log('LORENA handler handleLogin Usuario conectado ' + users[0].id_user, users[0].user_name);
+        const users = await loginService.getUsersByUsernameAndPassword(user_name, password);
+        console.log('loginHandler.js handllogin users ' + JSON.stringify(users));
+        if (users.length > 0) {
+            // console.log('Usuario conectado:', users[0].id_user, users[0].user_name);
 
-            localStorage.setItem('user', JSON.stringify(users[0]));
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Ha iniciado sesión",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            // console.log('LORENA handler handleLogin Usuario conectado ' + users[0].id_user, users[0].user_name);
+
+            localStorage.clear();
+           
+            
+
+            // Verificar si algún objeto en el array de usuarios tiene el user_id y password especificados
+            // const usuarioEncontrado = users.find(user => user.id_user === user_name && user.password === password);
+            const usuarioEncontrado = users.find(user => 
+                user.user_name.toString().trim() === user_name.trim() && user.password === password
+            );
+
+            // Si se encontró un usuario con los datos especificados
+            if (usuarioEncontrado) {
+                console.log("Se encontró un usuario con los datos especificados:", usuarioEncontrado);
+
+                // Guardar el usuario encontrado en localStorage
+                localStorage.setItem('usuario', JSON.stringify(usuarioEncontrado));
+                Swal.fire({
+                    icon: "success",
+                    title: "Usuario correcto.",
+                    text: "enhorabuena estas logeado",
+                    
+                });
+            } else {
+                console.log("No se encontró ningún usuario con los datos especificados.");
+                Swal.fire({
+                    icon: "error",
+                    title: "Error al iniciar sesión.",
+                    text: "Something went wrong!",
+                    footer: 'Por favor, verifica los datos ingresados.'
+                });
+            }
+
+
         } else {
             // Usuario no encontrado, mostrar mensaje de error
             console.log('loginHandler.js handllogin Usuario no encontrado');
             // alert('Usuario no encontrado');
-            Swal.fire({
-                icon: "error",
-                title: "Error al iniciar sesión.",
-                text: "Something went wrong!",
-                footer: 'Por favor, verifica los datos ingresados.'
-            });
+           
         }
     } catch (error) {
         console.error('Error al iniciar sesión:', error);
@@ -157,14 +177,14 @@ export const handleRegister = async (e, setErrorMessage) => {
 
         console.log('Este es el id_user_fk')
         console.log(id_user_fk) // Asegúrate de obtener el último ID correctamente
-        
+
         // Registra los detalles de la persona
         await loginService.addPerson(first_name, last_name, dni, birth_date, email, telephone, id_user_fk);
-        
+
         // Mensaje de éxito
         console.log('Detalles de la persona registrados');
     } catch (error) {
-        
+
         setErrorMessage('Ocurrió un error al registrar la persona');
     }
 };
