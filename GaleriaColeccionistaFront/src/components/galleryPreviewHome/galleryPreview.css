@@ -1,0 +1,15 @@
+.gallery-preview {
+background-color: #669EC6;
+
+}
+
+.gallery-images {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.img-style {
+ padding: 25px;
+ margin: auto;
+}
