@@ -2,20 +2,12 @@ from flask import Blueprint, request, jsonify
 from src.services.ProductService import ProductService
 from src.models.productModel import Product
 
-<<<<<<< HEAD
 getProduct = Blueprint('product_blueprint_get', __name__)
 postProduct = Blueprint('product_blueprint_post', __name__)
 putProduct = Blueprint('product_blueprint_put', __name__)
 deleteProduct = Blueprint('product_blueprint_delete', __name__)
 getLastProductId = Blueprint('product_blueprint_last_product_id', __name__)
-=======
-getProduct = Blueprint("product_blueprint_get", __name__)
-postProduct = Blueprint("product_blueprint_post", __name__)
-putProduct = Blueprint("product_blueprint_put", __name__)
-deleteProduct = Blueprint("product_blueprint_delete", __name__)
->>>>>>> hero
 
-# product_router = Blueprint("product_router_ESTY", __name__)
 
 
 @getProduct.route("/", methods=["GET"])
@@ -86,14 +78,12 @@ def put_product(id_product):
     print("Consola: Producto actualizado: ")
     return "Página: Producto actualizado."
 
-<<<<<<< HEAD
 @getLastProductId.route('/id_product', methods=['GET'])
 def get_last_product_id():
     id_product = ProductService.get_last_product_id()
     
     return jsonify({'id_product':id_product})
 
-=======
 
 @deleteProduct.route("/<int:id_product>", methods=["DELETE"])
 def delete_product(id_product):
@@ -101,13 +91,4 @@ def delete_product(id_product):
     print("Consola: Producto eliminado.")
     return "Página: Producto eliminado."
 
-# @product_router.route("/product", methods=["OPTIONS"])
-# def handle_options():
-#     print("SUERTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-#     # Crear una respuesta con los encabezados CORS adecuados
-#     response = jsonify({'message': 'Preflight request success'})
-#     response.headers.add("Access-Control-Allow-Origin", "*")
-#     response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
-#     response.headers.add("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS")
-#     return response
->>>>>>> hero
+
