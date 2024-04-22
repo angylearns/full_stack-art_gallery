@@ -78,11 +78,11 @@ def put_product(id_product):
     print("Consola: Producto actualizado: ")
     return "Página: Producto actualizado."
 
-@getLastProductId.route('/id_product', methods=['GET'])
-def get_last_product_id():
-    id_product = ProductService.get_last_product_id()
-    
-    return jsonify({'id_product':id_product})
+@getLastProductId.route("/recent", methods=["GET"])
+def get_recent_products():
+    recent_products = ProductService.get_recent_products()
+    print("Consola: Últimos productos obtenidos.")
+    return jsonify([product.__dict__ for product in recent_products])
 
 
 @deleteProduct.route("/<int:id_product>", methods=["DELETE"])

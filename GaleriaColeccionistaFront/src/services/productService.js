@@ -41,8 +41,19 @@ const productService = {
     } catch (error) {
       console.error('Error al eliminar producto:', error);
     }
+  },
+
+
+getRecentProducts: async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/product/recent`);
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener los últimos productos:', error);
+    throw error;
   }
-};
+}
+}
 
 export default productService;
 

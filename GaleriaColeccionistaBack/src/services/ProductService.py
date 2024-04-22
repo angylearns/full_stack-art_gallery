@@ -77,14 +77,14 @@ class ProductService():
                print(ex)
      
     @classmethod
-    def get_last_product_id(cls):
+    def get_recent_products(cls):
         try:
             connection = get_connection()
             with connection.cursor() as cursor:
-                cursor.execute('SELECT MAX(id_product) FROM product')
-                result = cursor.fetchone()
+                cursor.execute('SELECT * FROM product ORDER BY id_product DESC LIMIT 3')
+                result = cursor.fetchall()
                 connection.close()
-                id_product = result[0] if result[0] is not None else 0
-                return id_product
+                recent_products = [Product.convert_from_BD(row) for row in result]
+                return recent_products
         except Exception as ex:
             print(ex)
