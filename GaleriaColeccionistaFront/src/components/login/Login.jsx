@@ -3,8 +3,8 @@ import './login.css';
 import login from "../../images/login.svg";
 import logout from "../../images/logout.svg";
 import Navbar from '../navbar/Navbar';
-import Swal from 'sweetalert2'
 import { handleLogin, handleRegister } from '../../handlers/loginHandler';
+import { useCookies } from 'react-cookie'
 
 
 function Login({ isOpen, onClose, onLogin  }) {
@@ -269,21 +269,21 @@ function Login({ isOpen, onClose, onLogin  }) {
         await handleRegister(e, setErrorMessage);
 
         if (!errorMessage) {
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Se ha registrado correctamente",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            // Swal.fire({
+            //     position: "center",
+            //     icon: "success",
+            //     title: "Se ha registrado correctamente",
+            //     showConfirmButton: false,
+            //     timer: 1500
+            // });
         }
         if (errorMessage) {
-            Swal.fire({
-                icon: "error",
-                title: "No se pudo registrar.",
-                text: "Something went wrong!",
-                footer: 'Por favor, verifica los datos ingresados.'
-            });
+            // Swal.fire({
+            //     icon: "error",
+            //     title: "No se pudo registrar.",
+            //     text: "Something went wrong!",
+            //     footer: 'Por favor, verifica los datos ingresados.'
+            // });
         }
         // setFormState(initialState);
         setFormStateLogin(initialStateLogin);
@@ -292,24 +292,18 @@ function Login({ isOpen, onClose, onLogin  }) {
     };
 
 
-    const handleSubmitLogin = async (e,) => {
+    const handleSubmitLogin = async (e) => {
         e.preventDefault();
-
-        // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
-        await handleLogin(e, setErrorMessage);
-       
-        console.log('login.jsx handleSubmitLogin user: '+ user.user_name);
-        console.log(user)
-      
-        setFormStateLogin(initialStateLogin);
-        if (!errorMessage) {
-            const loggedInUser = localStorage.getItem('user');
-            onLogin(loggedInUser); // Llama a la función onLogin pasada como prop
-            onClose();
-          }
-          
+        
+        // Obtener los valores del estado del formulario de inicio de sesión
+        const { user_name, password } = formStateLogin;
+        
+        // Llama a handleLogin pasando los valores del formulario y setErrorMessage para manejar mensajes de error
+        await handleLogin({ user_name, password }, setErrorMessage);
     };
-
+    
+    
+    
 
 
     // Verificar si el usuario está logueado al cargar la aplicación

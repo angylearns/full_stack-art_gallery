@@ -7,7 +7,7 @@ import logout from "../../images/logout.svg";
 import shoppingCart from "../../images/shoppingCart.svg";
 import line from "../../images/line.svg";
 import Login from '../login/Login';
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 
 
 function Navbar() {

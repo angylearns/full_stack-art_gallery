@@ -1,22 +1,33 @@
+import { jwtDecode } from 'jwt-decode'
+import { useCookies } from 'react-cookie'
+
 const API_URL = 'http://127.0.0.1:5000';
 
 
 const loginService = {
-  getUsersByUsernameAndPassword: async (user_name, password) => {
+  postUsersByUsernameAndPassword: async (user_name, password) => {
     try {
-      console.log('service getUsersByUsernameAndPassword ini ' + user_name)
-      const response = await fetch(`${API_URL}/user?user_name=${user_name}&password=${password}`);
+      const response = await fetch(`${API_URL}/userL/`, {
+        method: 'POST',                                                      
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ user_name, password }),
+        //body: JSON.stringify({ first_name:"x", last_name:"x", dni:"x", birth_date:"2024-04-04", email:"s", telephone:"222", id_user_fk:"12" }),
+      });
       if (!response.ok) {
-        throw new Error('Error al obtener los usuarios');
+        throw new Error('Error al registrar el usuario');
       }
-
-      console.log('service getUsersByUsernameAndPassword end response.json()  ' + response);
-      return await response.json();
+      const data = await response.json()
+      console.log(data)
+      const decodedToken = jwtDecode (data.token)
+      
+      return  decodedToken;
+      
     } catch (error) {
-      console.error(error);
-      throw new Error('Ocurrió un error al obtener los usuarios');
+      console.error('Error al guardar persona:', error);
+      throw error;
     }
-
   },
 
   
