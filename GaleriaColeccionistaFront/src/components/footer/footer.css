@@ -1,3 +1,20 @@
 .footer-content{
     background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-logo{
+    padding: 10px;
+    margin: 10px;
+}
+
+.social-icon {
+    margin: 10px;
+    pad: 5px;
+    margin-top: 20px;
+    
 }
