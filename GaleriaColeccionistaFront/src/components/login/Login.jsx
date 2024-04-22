@@ -341,7 +341,7 @@ function Login({ isOpen, onClose, onLogin  }) {
                                 &times;
                             </span>
                             <h2 className='login-title'>{newUser ? "Regístrese" : "Iniciar Sesión"}</h2>
-                            <form onSubmit={newUser ? handleSubmitRegister : handleSubmitLogin}>
+                            <form className='formlogin' onSubmit={newUser ? handleSubmitRegister : handleSubmitLogin}>
                                 {newUser && (
                                     <>
                                         <div className='twoblocks'>

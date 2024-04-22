@@ -127,9 +127,9 @@
     }
 
     .error-message {
-        color: grey; /* Cambia el color del texto a rojo */
-        font-size: 9px; /* Cambia el tamaño de la fuente */
-        /* Otros estilos que desees aplicar */
+        color: grey; 
+        font-size: 11px; 
+      
     }
 }
 
@@ -145,7 +145,7 @@
         background-color: #E6ECEC;
     }
 
-    form {
+    .formlogin {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -221,5 +221,10 @@
         border-radius: 8px;
         width: 170px;
         height: 25px;
+    }
+
+    .error-message {
+        color: grey; 
+        font-size: 10px; 
     }
 }
