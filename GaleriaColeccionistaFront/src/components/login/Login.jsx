@@ -3,7 +3,7 @@ import './login.css';
 import login from "../../images/login.svg";
 import logout from "../../images/logout.svg";
 import Navbar from '../navbar/Navbar';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { handleLogin, handleRegister } from '../../handlers/loginHandler';
 
 

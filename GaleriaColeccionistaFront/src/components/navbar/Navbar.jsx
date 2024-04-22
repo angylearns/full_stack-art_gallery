@@ -62,24 +62,21 @@ function Navbar() {
 
           <div className='logo-and-gallery-button'>
 
-
             <button className='logo'>
 
               <img src={logo} className='imglogo' alt="" />
 
             </button>
 
-
             <button className='gallery_button'>GALERIA</button>
 
           </div>
 
-          <div className='menu'>
-            <img src={home} className='home' alt="menu" />
+          <div className='home'>
+            <img src={home} className='home' alt="imghome" />
           </div>
 
           <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
-
 
 
           <form className='form'>
@@ -95,8 +92,6 @@ function Navbar() {
           <button className='search'>
             <img src={search} className='imgsearch' alt="" />
           </button>
-
-
 
           {/* PROPS */}
 
