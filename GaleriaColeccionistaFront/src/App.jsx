@@ -13,11 +13,10 @@ function App() {
 
   return (
     <>
-      {/* <Login /> */}
-      <Navbar />
-      {/* <Artist/> */}
+      {/* <Navbar /> */}
+      <Artist/>
       {/* <Gallery/> */}
-      <Home/>
+      {/* <Home/> */}
     </>
   )
 }

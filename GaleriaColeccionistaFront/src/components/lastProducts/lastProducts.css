@@ -3,3 +3,21 @@
     color: #e6ecec;
     
 }
+
+.product-item img {
+    width: 360px;
+    height: 420px;
+    object-fit: cover; 
+} 
+ 
+.modal-content {
+    width: 720px; /* 360px * 2 */
+    height: 840px; /* 420px * 2 */
+  
+  }
+
+.audio-style {
+    margin-bottom: 10px;
+
+}  
+

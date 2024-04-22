@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import productService from '../../services/productService';
 import './lastProducts.css';
+import ModalImage from "react-modal-image";
+
 
 const LastProducts = () => {
  const [recentProducts, setRecentProducts] = useState([]);
@@ -24,15 +26,20 @@ const LastProducts = () => {
       <div className="product-list">
         {recentProducts.map((product) => (
           <div key={product.id} className="product-item">
-            <img src={product.url} alt={product.title} width={360} height={420}/>
+            <ModalImage
+             small={product.url}
+             large={product.url} 
+             alt={product.title}
+            />
             <h3>{product.title}</h3>
-            <audio controls>
-              <source src="/song.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
+            <audio controls className='audio-style'>
+             <source src="/song.mp3" type="audio/mpeg" />
+             Tu navegador no soporta el elemento de audio.
             </audio>
           </div>
         ))}
       </div>
+      {/* <p>Clica <Link to="/Gallery">aquí</Link> para ver más obras en la galería.</p> */}
     </div>
  );
 };
