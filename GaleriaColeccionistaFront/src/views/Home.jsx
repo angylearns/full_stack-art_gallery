@@ -1,3 +1,4 @@
+import Footer from "../components/footer/Footer";
 import GalleryPreview from "../components/galleryPreviewHome/GalleryPreview";
 import Hero from "../components/hero/Hero";
 
@@ -6,6 +7,7 @@ function Home(){
         <>
         <Hero/>
         <GalleryPreview/>
+        <Footer/>
         </>
     )
 }
