@@ -34,5 +34,5 @@ def init_app(config):
     
     app.register_blueprint(AuthRouter.main, url_prefix='/userL')
     app.register_blueprint(UserRouter.getLastUserId, url_prefix='/user')
-    app.register_blueprint(ProductRouter.getLastProductId, url_prefix='/user')
+    app.register_blueprint(ProductRouter.getLastProductId, url_prefix='/product')
     return app
