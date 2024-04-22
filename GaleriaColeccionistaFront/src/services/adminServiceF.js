@@ -86,6 +86,7 @@ export const adminServiceF = {
     async postPurchaseOrder1(purchaseOrder) {
         try {
             console.log("purchaseeeeeeeee")
+            console.log(purchaseOrder)
             let purchaseOrder2 = JSON.stringify(purchaseOrder)
             let response = await apiClient.post("/purchaseorder/post", purchaseOrder2);
             return response.data;

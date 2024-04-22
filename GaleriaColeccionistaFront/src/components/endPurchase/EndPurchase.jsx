@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './endPurchase.css'
 import { useNavigate } from 'react-router-dom';
 import '../shoppingCart/ShoppingCart';
 import { useLocation } from 'react-router-dom';
 import { adminServiceF } from "../../services/adminServiceF";
+// import Swal from 'sweetalert';
+import Swal from 'sweetalert2';
+
+
 
 function EndPurchase() {
 
@@ -15,42 +19,90 @@ function EndPurchase() {
     const total = data.total;
     const products = data.products;//lista de products que llegan del carrito y que se van a comprar
 
+    const [idUser, setIdUser] = useState(""); //usuario conectado, recuperado de localStorage
+
+    const [purchaseOrder, setPurchaseOrder] = useState({
+        id_purchase_order: "",
+        date: "",
+        status: "Preparation",
+        id_user_fk: "",
+        id_product_fk: ""
+    });
+
     const cancelPay = () => {
         // history.push('/pagos');
         navigate('/ShoppingCart');
     };
 
+    const saveDate = () => {
+        // Obtener la fecha de hoy
+        const today = new Date();
+
+        // Obtener el año, el mes y el día
+        const year = today.getFullYear();
+        // Los meses en JavaScript son 0-indexados, por lo que debes sumar 1 al mes
+        const month = String(today.getMonth() + 1).padStart(2, '0'); // Agrega cero a la izquierda si es necesario
+        const day = String(today.getDate()).padStart(2, '0'); // Agrega cero a la izquierda si es necesario
+
+        // Formatear la fecha en formato YYYY-MM-DD
+        const formattedDate = `${year}-${month}-${day}`;
+        return formattedDate;
+    }
+
+    useEffect(() => {
+        const storedUser = JSON.parse(localStorage.getItem('user'));
+        if (storedUser != null) {
+
+            setIdUser(storedUser.id_user)
+        }
+
+    }, []);
+
     const handlePay = async () => {
-               
-       // await deletePerson(index);
+
+
+
         //............................................. ojo .............................................................
         //para pagar necesito los datos del usuario registrado en concreto id_user_fk = id_user, de momento harcodeo para probar
         //necesito el id de todos los productos del carrito para crear un registro en la tabla purchase order por cada producto 
         //para el usuario indicado, productos ya los tengo en products
 
-        const purchaseOrder = {
-            id_purchase_order: "",
-            date: "2024-03-25",
-            status: 'Preparation',
-            id_user_fk: "15",
-            id_product_fk: "6"
-        }
+        const dateToday = saveDate();
 
-        try {
-            const newPurchaseOrder = await adminServiceF.postPurchaseOrder1(purchaseOrder);
-        } catch (error) {
-            console.error("Error al insertar datos:", error);
-        }
+        for (let i = 0; i < products.length; i++) {
+            const objeto = products[i];
+            const idProduct = objeto.id_product; // Extraemos el campo 'id' del producto actual
+            const order = {
+                id_purchase_order: "",
+                date: dateToday,
+                status: "Preparation",
+                id_user_fk: idUser,
+                id_product_fk: idProduct
+            };
+            setPurchaseOrder(order);
 
+            try {
+                const newPurchaseOrder = await adminServiceF.postPurchaseOrder1(order);
+                
+                Swal.fire({
+                    title: '¡Felicitaciones!',
+                    text: 'Su compra se realizó con éxito.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
+            } catch (error) {
+                console.error("Error al insertar datos:", error);
+            }
+        }
     };
-    
+
 
     return (
         <>
             <div className="containerF">
                 <div className="row">
                     <div className="column1">
-                        <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={() => cancelPay()}/>
+                        <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={() => cancelPay()} />
                     </div>
                 </div>
                 <div className="row">
