@@ -84,20 +84,47 @@
 // };
 
 import loginService from '../services/loginService.js';
+import Swal from 'sweetalert2';
 
 export const handleLogin = async (e, setErrorMessage) => {
     e.preventDefault();
     const user_name = document.getElementById('user_name').value;
     const password = document.getElementById('password').value;
 
+    console.log('LORENA handler handleLogin');
+    console.log('LORENA handler handleLogin e ' + e);
+    console.log('LORENA handler handleLogin username ' + username.required);
+    console.log('LORENA handler handleLogin username ' + username.value);
+    //console.log('LORENA handleLogin password ' + JSON.stringify(password));
+
+    
     try {
         const users = await loginService.getUsersByUsernameAndPassword(user_name, password);
+        const users = await loginService.getUsersByUsernameAndPassword(username.value, password.value);
+        console.log('loginHandler.js handllogin users '+JSON.stringify(users));
         if (users && users.length > 0) {
             console.log('Usuario conectado:', users[0].id_user, users[0].user_name);
+
+            console.log('LORENA handler handleLogin Usuario conectado ' + users[0].id_user, users[0].user_name);
+
             localStorage.setItem('user', JSON.stringify(users[0]));
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Ha iniciado sesión",
+                showConfirmButton: false,
+                timer: 1500
+            });
         } else {
-            console.error('Usuario no encontrado');
-            alert('Usuario no encontrado');
+            // Usuario no encontrado, mostrar mensaje de error
+            console.log('loginHandler.js handllogin Usuario no encontrado');
+            // alert('Usuario no encontrado');
+            Swal.fire({
+                icon: "error",
+                title: "Error al iniciar sesión.",
+                text: "Something went wrong!",
+                footer: 'Por favor, verifica los datos ingresados.'
+            });
         }
     } catch (error) {
         console.error('Error al iniciar sesión:', error);

@@ -17,8 +17,13 @@
     padding-left: 110px;
 }
 
+.navbaruserhello{
+    color: black;
+    margin-top: 3.2%;
+}
+
 .shoppingcart {
-    padding-right: 130px;
+    padding-right: 10%;
 }
 
 .form-and-search {
