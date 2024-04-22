@@ -1,5 +1,4 @@
-import { jwtDecode } from 'jwt-decode'
-import { useCookies } from 'react-cookie'
+
 
 const API_URL = 'http://127.0.0.1:5000';
 
@@ -7,28 +6,23 @@ const API_URL = 'http://127.0.0.1:5000';
 const loginService = {
   postUsersByUsernameAndPassword: async (user_name, password) => {
     try {
-      const response = await fetch(`${API_URL}/userL/`, {
-        method: 'POST',                                                      
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ user_name, password }),
-        //body: JSON.stringify({ first_name:"x", last_name:"x", dni:"x", birth_date:"2024-04-04", email:"s", telephone:"222", id_user_fk:"12" }),
-      });
-      if (!response.ok) {
-        throw new Error('Error al registrar el usuario');
-      }
-      const data = await response.json()
-      console.log(data)
-      const decodedToken = jwtDecode (data.token)
-      
-      return  decodedToken;
-      
+        const response = await fetch(`${API_URL}/userL/`, {
+            method: 'POST',                                                      
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_name, password }),
+        });
+        if (!response.ok) {
+            throw new Error('Error al iniciar sesión');
+        }
+        const data = await response.json();
+        return data; // Devuelve tanto el token como los datos de usuario
     } catch (error) {
-      console.error('Error al guardar persona:', error);
-      throw error;
+        console.error('Error al iniciar sesión:', error);
+        throw error;
     }
-  },
+},
 
   
   addPerson: async (first_name, last_name, dni, birth_date, email, telephone, id_user_fk) => {

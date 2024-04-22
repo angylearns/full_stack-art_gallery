@@ -7,9 +7,11 @@ export const handleLogin = async ({ user_name, password }, setErrorMessage) => {
     try {
         const users = await loginService.postUsersByUsernameAndPassword(user_name, password);
         console.log(users);
+        return users; // Devuelve el objeto users que probablemente contiene el token
     } catch (error) {
         console.error('Error al iniciar sesión:', error);
         setErrorMessage('Ocurrió un error al iniciar sesión');
+        throw error; // También puedes lanzar el error para que sea manejado por el código que llama a handleLogin
     }
 };
 

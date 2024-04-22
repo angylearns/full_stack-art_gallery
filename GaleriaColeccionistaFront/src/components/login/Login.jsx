@@ -5,9 +5,10 @@ import logout from "../../images/logout.svg";
 import Navbar from '../navbar/Navbar';
 import { handleLogin, handleRegister } from '../../handlers/loginHandler';
 import { useCookies } from 'react-cookie'
+import { jwtDecode } from 'jwt-decode'
 
 
-function Login({ isOpen, onClose, onLogin  }) {
+function Login({ isOpen, onClose, onLogin }) {
 
     // Estado inicial para los campos del formulario de Registro
     const initialStateRegister = {
@@ -78,6 +79,8 @@ function Login({ isOpen, onClose, onLogin  }) {
 
     //Agrega un estado para el mensaje de error
     const [errorMessage, setErrorMessage] = useState('');
+
+    const [cookies, setCookie] = useCookies(['userToken']);
 
 
 
@@ -292,24 +295,47 @@ function Login({ isOpen, onClose, onLogin  }) {
     };
 
 
+
+
     const handleSubmitLogin = async (e) => {
         e.preventDefault();
-        
-        // Obtener los valores del estado del formulario de inicio de sesión
-        const { user_name, password } = formStateLogin;
-        
-        // Llama a handleLogin pasando los valores del formulario y setErrorMessage para manejar mensajes de error
-        await handleLogin({ user_name, password }, setErrorMessage);
+
+        try {
+            // Obtener los valores del estado del formulario de inicio de sesión
+            const { user_name, password } = formStateLogin;
+
+            // Realizar la solicitud de inicio de sesión
+            const tokenData = await handleLogin({ user_name, password }, setErrorMessage);
+            
+            // Decodificar el token
+            const decodedToken = jwtDecode(tokenData.token);
+
+            
+            setCookie('id_user', decodedToken.id_user);
+            setCookie('first_name', decodedToken.first_name);
+            setCookie('id_person', decodedToken.id_person);
+            setCookie('password', decodedToken.password);
+            setCookie('user_type', decodedToken.user_type);
+            setCookie('user_name', decodedToken.user_name);
+            console.log(decodedToken)
+
+            // Hacer cualquier otra acción necesaria después del inicio de sesión
+            // Por ejemplo, redireccionar a una página de perfil
+        } catch (error) {
+            console.error('Error al iniciar sesión:', error);
+            setErrorMessage('Ocurrió un error al iniciar sesión');
+        }
     };
-    
-    
-    
+
+
+
+
 
 
     // Verificar si el usuario está logueado al cargar la aplicación
     useEffect(() => {
 
-        const loggedInUser = localStorage.getItem('user');
+        const loggedInUser = localStorage.getItem('user_name');
         console.log(' loggedInUser ' + loggedInUser);
         if (loggedInUser) {
             const foundUser = JSON.parse(loggedInUser);
@@ -317,9 +343,9 @@ function Login({ isOpen, onClose, onLogin  }) {
         }
     }, []);
 
-  
 
- 
+
+
     return (
 
         <>
