@@ -118,6 +118,9 @@ function Navbar() {
       </div>
 
 
+
+{/* RESPONSIVE */}
+
     </>
   )
 }
