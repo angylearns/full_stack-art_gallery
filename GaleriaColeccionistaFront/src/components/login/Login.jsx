@@ -448,14 +448,14 @@ function Login({ isOpen, onClose, onLogin  }) {
                                 />
 
                                 {/* <label htmlFor="userType" className='usertypetext'>Tipo de Usuario:</label> */}
-                                {/* <select className='optionusertype'
+                                <select className='optionusertype'
                                     id="user_type"
                                     value={user_type}
                                     onChange={(e) => setUserType(e.target.value)} required>
                                     <option value="">Tipo de usuario</option>
                                     <option value="3" >Cliente</option>
                                     <option value="2" >Artista</option>
-                                </select> */}
+                                </select>
                                 <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
                                 </button>
