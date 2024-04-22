@@ -310,6 +310,7 @@ function Login({ isOpen, onClose, onLogin  }) {
           
     };
 
+    
 
 
     // Verificar si el usuario está logueado al cargar la aplicación

@@ -1,3 +1,6 @@
+
+@media screen and (min-width: 429px) {
+
 .container-navbar {
     width: 100%;
     background-color: #E6ECEC;
@@ -14,7 +17,13 @@
 }
 
 .logo {
-    padding-left: 110px;
+    padding-left: 120px;
+    border: 0;
+    background-color: transparent;
+}
+
+.home{
+    padding-top: 65%;
 }
 
 .navbaruserhello{
@@ -29,7 +38,6 @@
 .form-and-search {
     display: flex;
     flex-direction: row;
-    width: 00px;
 }
 
 .form {
@@ -38,6 +46,8 @@
 }
 
 .search {
+    border: 0;
+    background-color: transparent;
     padding-top: 15px;
     padding-left: 0px;
 }
@@ -64,8 +74,6 @@
     display: flex;
     flex-direction: row;
     padding-left: 70%;
-
-
 }
 
 .login {
@@ -82,4 +90,60 @@
     border: 0;
     background-color: transparent;
     color: #21577E;
+}
+
+.line{
+    width: 80%;
+}
+}
+@media screen and (max-width: 430px) {
+
+/* .icons-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    } */
+
+.imglogo {
+    display: none;
+}
+
+.container-navbar {
+    width: 430px;
+    height: 102px;
+}
+.home{
+    width: 15px ;
+}
+
+.gallery_button{
+    font-size: 11px;
+    padding-right: 55px;
+}
+.form{
+    padding-left: 12%;
+}
+.input-navbar {
+    width: 110px;
+    height: 15px;
+ 
+}
+.imgsearch{
+    width: 13px;
+}
+.imglogin{
+    width: 15px;
+    height: auto;
+}
+.imglogout{
+    width: 15px;
+}
+
+.shoppingcart{
+    width: 15px;
+    
+}
+
 }

@@ -1,6 +1,7 @@
-import { useState, useEffect  } from 'react'
+import { useState, useEffect } from 'react'
 import './navbar.css'
 import logo from "../../images/logo.svg";
+import home from "../../images/home.svg";
 import search from "../../images/search.svg";
 import login from "../../images/login.svg";
 import logout from "../../images/logout.svg";
@@ -19,7 +20,7 @@ function Navbar() {
     setIsLoginOpen(true);
   };
 
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
   // DESLOGUEARSE
   const handleLogout = () => {
     // Eliminar el usuario del almacenamiento local
@@ -38,19 +39,19 @@ function Navbar() {
   useEffect(() => {
     const loggedInUser = localStorage.getItem('user');
     if (loggedInUser) {
-        const foundUser = JSON.parse(loggedInUser);
-        setUser(foundUser);
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
     }
-}, []);
+  }, []);
 
-const handleLoginSuccess = (user) => {
-  console.log('handleLoginSuccess '+ JSON.stringify(user));
-  console.log('handleLoginSuccess '+ user);
-  if (user) {
-    setUser(JSON.parse(user)); // Actualiza el estado del usuario después de iniciar sesión
-  }
-  
-};
+  const handleLoginSuccess = (user) => {
+    console.log('handleLoginSuccess ' + JSON.stringify(user));
+    console.log('handleLoginSuccess ' + user);
+    if (user) {
+      setUser(JSON.parse(user)); // Actualiza el estado del usuario después de iniciar sesión
+    }
+
+  };
 
   return (
     <>
@@ -60,37 +61,51 @@ const handleLoginSuccess = (user) => {
         <div className='icons-group'>
 
           <div className='logo-and-gallery-button'>
-            <img src={logo} className='logo' alt="" />
+
+
+            <button className='logo'>
+
+              <img src={logo} className='imglogo' alt="" />
+
+            </button>
+
 
             <button className='gallery_button'>GALERIA</button>
 
-            
           </div>
 
-           <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
+          <div className='menu'>
+            <img src={home} className='home' alt="menu" />
+          </div>
 
-  
-          
-            <form className='form'>
-              <input className='input-navbar'
-                type="text"
-                // placeholder=""
-                value=''
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            </form>
+          <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
 
-            <img src={search} className='search' alt="" />
-         
+
+
+          <form className='form'>
+            <input className='input-navbar'
+              type="text"
+              // placeholder=""
+              value=''
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+
+            
+          </form>
+          <button className='search'>
+            <img src={search} className='imgsearch' alt="" />
+          </button>
+
+
 
           {/* PROPS */}
 
           <button onClick={handleOpenLogin} className='login'>
-            <img src={login} alt="login" />
+            <img src={login} alt="login" className='imglogin' />
           </button>
 
           <button onClick={handleLogout} className='logout'>
-            <img src={logout} alt="logout" />
+            <img src={logout} alt="logout" className='imglogout' />
           </button>
 
           <img src={shoppingCart} className='shoppingcart' alt="shoppingcart" />
