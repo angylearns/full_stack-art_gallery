@@ -1,0 +1,8 @@
+.flex-wrap{
+    display: flex;
+    background-color: #E6ECEC;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+
+}
