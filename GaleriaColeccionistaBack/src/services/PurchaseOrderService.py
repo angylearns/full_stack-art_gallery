@@ -24,7 +24,7 @@ class PurchaseOrderService():
         try:
             connection=get_connection()
             print(connection)
-        
+            print("estamos en backend insertando purchase order")
             with connection.cursor() as cursor:
                 id_purchase_order = purchase_order.id_purchase_order
                 date = purchase_order.date
@@ -39,6 +39,7 @@ class PurchaseOrderService():
                 return 'Pedido agregado correctamente'
                
         except Exception as ex: 
+            print("error en backend services para purchase order")
             print(ex)
 
     @classmethod

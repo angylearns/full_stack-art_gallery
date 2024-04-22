@@ -81,6 +81,18 @@ export const adminServiceF = {
             console.error("Error al eliminar datosssssssss:", error);
             throw error;
         }
+    },
+
+    async postPurchaseOrder1(purchaseOrder) {
+        try {
+            console.log("purchaseeeeeeeee")
+            let purchaseOrder2 = JSON.stringify(purchaseOrder)
+            let response = await apiClient.post("/purchaseorder/post", purchaseOrder2);
+            return response.data;
+        } catch (error) {
+            console.error("Error al insertar datossss:", error);
+            throw error;
+        }
     }
 }
 

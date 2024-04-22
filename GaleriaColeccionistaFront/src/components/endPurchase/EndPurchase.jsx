@@ -3,6 +3,7 @@ import './endPurchase.css'
 import { useNavigate } from 'react-router-dom';
 import '../shoppingCart/ShoppingCart';
 import { useLocation } from 'react-router-dom';
+import { adminServiceF } from "../../services/adminServiceF";
 
 function EndPurchase() {
 
@@ -21,12 +22,25 @@ function EndPurchase() {
 
     const handlePay = async () => {
                
-        //await deletePerson(index);
+       // await deletePerson(index);
         //............................................. ojo .............................................................
-        //para pagar necesito los datos del usuario registrado en concreto id_user_fk = id_user
+        //para pagar necesito los datos del usuario registrado en concreto id_user_fk = id_user, de momento harcodeo para probar
         //necesito el id de todos los productos del carrito para crear un registro en la tabla purchase order por cada producto 
         //para el usuario indicado, productos ya los tengo en products
 
+        const purchaseOrder = {
+            id_purchase_order: "",
+            date: "2024-03-25",
+            status: 'Preparation',
+            id_user_fk: "15",
+            id_product_fk: "6"
+        }
+
+        try {
+            const newPurchaseOrder = await adminServiceF.postPurchaseOrder1(purchaseOrder);
+        } catch (error) {
+            console.error("Error al insertar datos:", error);
+        }
 
     };
     

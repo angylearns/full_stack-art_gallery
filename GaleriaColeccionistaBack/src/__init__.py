@@ -10,12 +10,14 @@ from src.routes import AdminRoutesPerson
 
 app= Flask(__name__)
 
+CORS(app,resources={"*":{"origins": "http://localhost:5173"}})
 # CORS(app)
 # CORS(app, supports_credentials=True, expose_headers="Authorization", allow_headers=["Content-Type", "Authorization"])
 # CORS(app, resources={r"/*": {"origins": "*"}})
 # CORS(app, origins='http://localhost:5173', allow_headers=['Content-Type'])
 # CORS(app, origins='http://localhost:5173')  # Reemplaza esto con el origen correcto de tu frontend
-CORS(app, resources={"*": {"origins": "http://localhost:5173"}}, supports_credentials=True, redirect=True)
+# CORS(app, resources={"*": {"origins": "http://localhost:5173"}}, supports_credentials=True, redirect=True)
+# CORS(app, resources={r"/purchaseorder": {"origins": "http://localhost:5173/purchaseorder"}})
 
 def init_app(config):
     app.config.from_object(config)
@@ -35,10 +37,10 @@ def init_app(config):
     app.register_blueprint(ProductRouter.putProduct, url_prefix='/product')
     app.register_blueprint(ProductRouter.deleteProduct, url_prefix='/product')
 
-    app.register_blueprint(PurchaseOrderRouter.getPurchaseOrder, url_prefix='/purchaseorder')
-    app.register_blueprint(PurchaseOrderRouter.postPurchaseOrder, url_prefix='/purchaseorder')
-    app.register_blueprint(PurchaseOrderRouter.putPurchaseOrder, url_prefix='/purchaseorder')
-    app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
+    app.register_blueprint(PurchaseOrderRouter.mainPurchaseOrder, url_prefix='/purchaseorder')
+    # app.register_blueprint(PurchaseOrderRouter.postPurchaseOrder, url_prefix='/purchaseorders')
+    # app.register_blueprint(PurchaseOrderRouter.putPurchaseOrder, url_prefix='/purchaseorder')
+    # app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
 
     # maria pruebas - No borrar de momento
     # app.register_blueprint(AdminRoutesPerson.main, url_prefix='/persons')
