@@ -105,6 +105,8 @@ export const handleLogin = async (e, setErrorMessage) => {
     }
 };
 
+
+
 export const handleRegister = async (e, setErrorMessage) => {
     e.preventDefault();
     const user_name = document.getElementById('user_name').value;
@@ -120,35 +122,23 @@ export const handleRegister = async (e, setErrorMessage) => {
     try {
         // Registra el nuevo usuario
         await loginService.addUser(user_name, password, user_type);
-        
-        // Obtiene el usuario recién registrado por su nombre de usuario
-        const newUser = await loginService.getUsersByUsername();
-        
-        // Verifica si se obtuvo el usuario correctamente
-        if (!newUser) {
-            throw new Error('El usuario no pudo ser encontrado');
-        } else if (!newUser.id_user) {
-            throw new Error('El usuario no tiene un ID válido');
-        }
-        
-        // Si se llega a este punto, el usuario se obtuvo correctamente
-        console.log('Usuario registrado correctamente:', newUser);
-        
-        // Obtiene el ID del usuario recién registrado
-        const id_user_fk = newUser.id_user;
+
+        // Obtiene el último ID de usuario
+        const id_user_fk = await loginService.getLastUserId();
+        // const id_user_fk = lastUserIdResponse.id_user_fk;
+        // const id_user_fk = 117
+
+        console.log('Este es el id_user_fk')
+        console.log(id_user_fk) // Asegúrate de obtener el último ID correctamente
         
         // Registra los detalles de la persona
-        const newPerson = await loginService.addPerson(first_name, last_name, dni, birth_date, email, telephone, id_user_fk);
-        
-        // Guarda el usuario en el almacenamiento local
-        localStorage.setItem('user', JSON.stringify(newUser));
+        await loginService.addPerson(first_name, last_name, dni, birth_date, email, telephone, id_user_fk);
         
         // Mensaje de éxito
-        console.log('Usuario registrado:', newUser);
-        console.log('Detalles de la persona registrados:', newPerson);
+        console.log('Detalles de la persona registrados');
     } catch (error) {
-        console.error('Error al registrar el usuario:', error);
-        setErrorMessage('Ocurrió un error al registrar el usuario');
+        console.error('Error al registrar la persona:', error);
+        setErrorMessage('Ocurrió un error al registrar la persona');
     }
 };
 

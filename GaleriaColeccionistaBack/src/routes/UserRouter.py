@@ -6,6 +6,7 @@ getUser = Blueprint('user_blueprint_get', __name__)
 postUser = Blueprint('user_blueprint_post', __name__)
 putUser = Blueprint('user_blueprint_put', __name__)
 deleteUser = Blueprint('user_blueprint_delete', __name__)
+getLastUserId = Blueprint('user_blueprint_last_user_id', __name__)
 
 @getUser.route('/',methods=['GET'])
 
@@ -62,3 +63,8 @@ def delete_user(id_user):
     print('Consola: Usuaro eliminado.')
     return 'Página: Usuario eliminado.'
 
+@getLastUserId.route('/id_user', methods=['GET'])
+def get_last_user_id():
+    id_user_fk = UserService.get_last_user_id()
+    
+    return jsonify({'id_user':id_user_fk})

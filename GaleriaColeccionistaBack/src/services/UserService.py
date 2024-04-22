@@ -71,3 +71,15 @@ class UserService():
         except Exception as ex:
                print(ex)
      
+    @classmethod
+    def get_last_user_id(cls):
+        try:
+            connection = get_connection()
+            with connection.cursor() as cursor:
+                cursor.execute('SELECT MAX(id_user) FROM user')
+                result = cursor.fetchone()
+                connection.close()
+                id_user_fk = result[0] if result[0] is not None else 0
+                return id_user_fk
+        except Exception as ex:
+            print(ex)

@@ -32,6 +32,7 @@ def post_person():
     print(dni)
     print(birth_date)
     print(email)
+    print(id_user_fk)
 
     person= Person(0,first_name,last_name,dni,birth_date,email, telephone, id_user_fk)
 

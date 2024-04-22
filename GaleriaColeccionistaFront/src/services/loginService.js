@@ -28,6 +28,7 @@ const loginService = {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ first_name, last_name, dni, birth_date, email, telephone, id_user_fk }),
+        //body: JSON.stringify({ first_name:"x", last_name:"x", dni:"x", birth_date:"2024-04-04", email:"s", telephone:"222", id_user_fk:"12" }),
       });
       if (!response.ok) {
         throw new Error('Error al registrar el usuario');
@@ -76,7 +77,7 @@ const loginService = {
 
   getUsersByUsername: async (user_name) => {
     try {
-        const response = await fetch(`${API_URL}/user/?user_name=${user_name}`);
+        const response = await fetch(`${API_URL}/user?user_name=${user_name}`);
         if (!response.ok) {
             throw new Error('Error al obtener el usuario');
         }
@@ -86,11 +87,24 @@ const loginService = {
         console.error(error);
         throw new Error('Ocurrió un error al obtener el usuario');
     }
+},
+
+getLastUserId: async () => {
+  try {
+    const response = await fetch(`${API_URL}/user/id_user`);
+    if (!response.ok) {
+      throw new Error('Error al obtener el último ID de usuario');
+    }
+    const data = await response.json();
+    console.log(data.id_user)
+    return data.id_user;
+    // return data
+  } catch (error) {
+    console.error(error);
+    throw new Error('Ocurrió un error al obtener el último ID de usuario');
+  }
 }
 
-
-
-  
 }  
 
 export default loginService;

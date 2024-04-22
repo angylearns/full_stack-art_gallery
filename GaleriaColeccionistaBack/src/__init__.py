@@ -31,6 +31,7 @@ def init_app(config):
     app.register_blueprint(PurchaseOrderRouter.deletePurchaseOrder, url_prefix='/purchaseorder')
 
     # app.register_blueprint(AuthRouter.login_blueprint, url_prefix='/login')
-
+    
     app.register_blueprint(AuthRouter.main, url_prefix='/userL')
+    app.register_blueprint(UserRouter.getLastUserId, url_prefix='/user')
     return app
