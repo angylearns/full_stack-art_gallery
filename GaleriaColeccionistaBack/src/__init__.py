@@ -5,7 +5,7 @@ from flask_cors import CORS
 
 app= Flask(__name__)
 
-CORS(app, resources={"*": {"origins": "http://localhost:5173"}}, supports_credentials=True, redirect=True)
+CORS(app, resources={"*": {"origins": "http://localhost:5174"}}, supports_credentials=True, redirect=True)
 
 def init_app(config):
     app.config.from_object(config)

@@ -33,7 +33,9 @@ const loginService = {
       if (!response.ok) {
         throw new Error('Error al registrar el usuario');
       }
-      return await response.json();
+      
+      return await response.json().result;
+      
     } catch (error) {
       console.error('Error al guardar persona:', error);
       throw error;

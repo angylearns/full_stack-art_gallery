@@ -93,16 +93,16 @@ export const handleLogin = async (e, setErrorMessage) => {
 
     console.log('LORENA handler handleLogin');
     console.log('LORENA handler handleLogin e ' + e);
-    console.log('LORENA handler handleLogin username ' + username.required);
-    console.log('LORENA handler handleLogin username ' + username.value);
+    console.log('LORENA handler handleLogin username ' + user_name.required);
+    console.log('LORENA handler handleLogin username ' + user_name.value);
     //console.log('LORENA handleLogin password ' + JSON.stringify(password));
 
     
     try {
-        const users = await loginService.getUsersByUsernameAndPassword(user_name, password);
-        const users = await loginService.getUsersByUsernameAndPassword(username.value, password.value);
+        
+        const users = await loginService.getUsersByUsernameAndPassword(user_name.value, password.value);
         console.log('loginHandler.js handllogin users '+JSON.stringify(users));
-        if (users && users.length > 0) {
+        if ( users.length > 0) {
             console.log('Usuario conectado:', users[0].id_user, users[0].user_name);
 
             console.log('LORENA handler handleLogin Usuario conectado ' + users[0].id_user, users[0].user_name);
@@ -164,7 +164,7 @@ export const handleRegister = async (e, setErrorMessage) => {
         // Mensaje de éxito
         console.log('Detalles de la persona registrados');
     } catch (error) {
-        console.error('Error al registrar la persona:', error);
+        
         setErrorMessage('Ocurrió un error al registrar la persona');
     }
 };

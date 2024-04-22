@@ -35,13 +35,13 @@ function Login({ isOpen, onClose, onLogin  }) {
 
     // Estado inicial para los campos del formulario de Login
     const initialStateLogin = {
-        username: '',
+        user_name: '',
         password: '',
     };
 
     // Estado inicial para los errores de validación de Login
     const initialStateErrorsLogin = {
-        username: '',
+        user_name: '',
         password: '',
     };
 
@@ -88,7 +88,7 @@ function Login({ isOpen, onClose, onLogin  }) {
         setFormStateLogin({ ...formStateLogin, [name]: value });
 
         // Validaciones para el campo 'username' de LOGIN
-        if (name === 'username') {
+        if (name === 'user_name') {
             if (value.length === 0) {
                 setFormErrorsLogin({ ...formErrorsLogin, msgErrorusername: '' });
             } else if (value.length < 3) {
@@ -209,7 +209,7 @@ function Login({ isOpen, onClose, onLogin  }) {
         }
 
         // Validaciones para el campo 'username'
-        if (name === 'username') {
+        if (name === 'user_name') {
             // Expresión regular para validar el nombre de usuario
             // Esta expresión permite letras, números y guiones bajos, con una longitud de 3 a 15 caracteres
             const regexUsername = /^[a-zA-Z0-9_]{3,15}$/;
@@ -297,8 +297,9 @@ function Login({ isOpen, onClose, onLogin  }) {
 
         // Llama a handleRegister pasando setErrorMessage para manejar mensajes de error
         await handleLogin(e, setErrorMessage);
-        console.log('login.jsx handleSubmitLogin errorMessage: '+ errorMessage);
-        console.log('login.jsx handleSubmitLogin user: '+ user);
+       
+        console.log('login.jsx handleSubmitLogin user: '+ user.user_name);
+        console.log(user)
       
         setFormStateLogin(initialStateLogin);
         if (!errorMessage) {
@@ -425,9 +426,9 @@ function Login({ isOpen, onClose, onLogin  }) {
                                 {/* <label htmlFor="username">Usuario:</label> */}
                                 <input className='input-login'
                                     type="text"
-                                    id="username"
-                                    name="username"
-                                    value={formStateLogin.username}
+                                    id="user_name"
+                                    name="user_name"
+                                    value={formStateLogin.user_name}
                                     onChange={newUser ? handleInputChangeRegister : handleInputChangeLogin}
                                     required
                                     placeholder="Usuario"
