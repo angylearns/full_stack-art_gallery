@@ -1,6 +1,7 @@
 .gallery-preview {
 background-color: #669EC6;
 
+
 }
 
 .gallery-images {
@@ -10,6 +11,8 @@ background-color: #669EC6;
 }
 
 .img-style {
- padding: 25px;
+ padding:25px;
  margin: auto;
+ width: 360px;
+ height: 400px;
 }
