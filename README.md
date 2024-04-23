@@ -47,6 +47,11 @@ Para los artistas, la Galería del Coleccionista representa una oportunidad inva
 - **Backend:** Python (Flask)
 - **Base de Datos:** MySQL
 - **Administración de la Base de Datos:** PhpMyAdmin
+- **CORS:** Para el manejo de solicitudes entre diferentes dominios.
+- **Tokens JWT:** Para autenticación de usuarios y sesiones seguras.
+- **SweetAlert:** Para mostrar mensajes de alerta interactivos en la interfaz de usuario.
+
+
 
 ## Instalación y Ejecución
 1. Clona este repositorio: https://github.com/sandra-medina-luque/Galeria-del-Coleccionista.git.
@@ -61,7 +66,7 @@ Para los artistas, la Galería del Coleccionista representa una oportunidad inva
 ## Autores
 - [Angy Machado https://github.com/angylearns]
 - [Esty González https://github.com/EstyGlez]
-- [Lorena Rodriguez https://github.com/Lorena-Rodriguez]
+- [Lorena Rodríguez https://github.com/Lorena-Rodriguez]
 - [María Nadales https://github.com/MNblue]
 - [Sandra Medina https://github.com/sandra-medina-luque]
 

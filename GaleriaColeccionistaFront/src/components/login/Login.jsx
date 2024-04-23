@@ -372,7 +372,8 @@ function Login({ isOpen, onClose, onLogin }) {
                             <span className="close" onClick={onClose}>
                                 &times;
                             </span>
-                            <h2 className='login-title'>{newUser ? "Regístrese" : "Iniciar Sesión"}</h2>
+                            <h2 className='login-title' aria-label="login-title">{newUser ? "Regístrese" : "Iniciar Sesión"}</h2>
+
                             <form onSubmit={newUser ? handleSubmitRegister : handleSubmitLogin}>
                                 {newUser && (
                                     <>
