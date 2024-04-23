@@ -36,13 +36,7 @@ h1 {
     
   }
   
-  /* .artwork-card img {
-    max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
-    height: 500; /* Permite que la altura se ajuste automáticamente */
-    border-radius: 4px;
-    width: 550px; /* Asegura que la imagen se extienda hasta el ancho máximo del contenedor */
-    max-height: auto; /* Establece una altura máxima para la imagen */
-  } */
+
   .artwork-card p {
     margin-bottom: 5px;
   }
