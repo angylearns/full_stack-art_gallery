@@ -1,9 +1,9 @@
 import React from 'react';
 import './footer.css';
-import galeriaImg from './images/galeriaImg.png';
-import faceImg from './images/faceImg.png';
-import twitterImg from './images/twitterImg.png';
-import instaImg from './images/instaImg.png';
+import galeriaImg from './images/galeriaImg.svg';
+import faceImg from './images/faceImg.svg';
+import twitterImg from './images/twitterImg.svg';
+import instaImg from './images/instaImg.svg';
 
 
 const Footer = () => {

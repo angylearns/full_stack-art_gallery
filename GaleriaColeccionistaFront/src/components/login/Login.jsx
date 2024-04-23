@@ -197,7 +197,7 @@ function Login({ isOpen, onClose, onLogin }) {
             if (value.length === 0) {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: '' });
             } else if (!regexEmail.test(value)) {
-                setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: 'El formato del correo electrónico no es válido.' });
+                setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: 'El formato del correo electrónico debe ser ejemplo@dominio.com' });
             } else {
                 setFormErrorsRegister({ ...formErrorsRegister, msgErroremail: '' });
             }
@@ -310,11 +310,11 @@ function Login({ isOpen, onClose, onLogin }) {
 
             // Realizar la solicitud de inicio de sesión
             const tokenData = await handleLogin({ user_name, password }, setErrorMessage);
-            
+
             // Decodificar el token
             const decodedToken = jwtDecode(tokenData.token);
 
-            
+
             setCookie('id_user', decodedToken.id_user);
             setCookie('first_name', decodedToken.first_name);
             setCookie('id_person', decodedToken.id_person);
@@ -396,7 +396,17 @@ function Login({ isOpen, onClose, onLogin }) {
                                     <>
                                         <div className='twoblocks'>
 
-                                            {/* <label htmlFor="first_name">Nombre:</label> */}
+                                           
+                                            <select className='optionusertype'
+                                                id="user_type"
+                                                value={user_type}
+                                                onChange={(e) => setUserType(e.target.value)} required>
+                                                <option value="">Tipo de usuario</option>
+                                                <option value="3" >Cliente</option>
+                                                <option value="2" >Artista</option>
+                                            </select>
+
+                                          
                                             <input className='input-register'
                                                 type="text"
                                                 id="first_name"
@@ -406,8 +416,8 @@ function Login({ isOpen, onClose, onLogin }) {
                                                 required
                                                 placeholder="Nombre"
                                             />
-                                            {formErrorsRegister.msgErrorFirstName && <p>{formErrorsRegister.msgErrorFirstName}</p>}
-                                            {/* <label htmlFor="lastName">Apellidos</label> */}
+                                            {formErrorsRegister.msgErrorFirstName && <p className='error-message'>{formErrorsRegister.msgErrorFirstName}</p>}
+
                                             <input className='input-register'
                                                 type="text"
                                                 id="last_name"
@@ -417,8 +427,8 @@ function Login({ isOpen, onClose, onLogin }) {
                                                 required
                                                 placeholder="Apellidos"
                                             />
-                                            {formErrorsRegister.msgErrorLastName && <p>{formErrorsRegister.msgErrorLastName}</p>}
-                                            {/* <label htmlFor="dni">DNI:</label> */}
+                                         {formErrorsRegister.msgErrorLastName && <p className='error-message'>{formErrorsRegister.msgErrorLastName}</p>}  
+
                                             <input className='input-register'
                                                 type="text"
                                                 id="dni"
@@ -428,9 +438,8 @@ function Login({ isOpen, onClose, onLogin }) {
                                                 required
                                                 placeholder="DNI"
                                             />
-                                            {formErrorsRegister.msgErrordni && <p>{formErrorsRegister.msgErrordni}</p>}
-
-                                            {/* <label htmlFor="birth_date">Fecha de Nacimiento:</label> */}
+                                            {formErrorsRegister.msgErrordni && <p className='error-message'>{formErrorsRegister.msgErrordni}</p>}
+                                   
                                             <input className='input-register'
                                                 type="text"
                                                 id="birth_date"
@@ -440,8 +449,8 @@ function Login({ isOpen, onClose, onLogin }) {
                                                 required
                                                 placeholder="Fecha de Nacimiento"
                                             />
-                                            {formErrorsRegister.msgErrorbirth_date && <p>{formErrorsRegister.msgErrorbirth_date}</p>}
-                                            {/* <label htmlFor="email">Correo Electrónico:</label> */}
+                                            {formErrorsRegister.msgErrorbirth_date && <p className='error-message'>{formErrorsRegister.msgErrorbirth_date}</p>}
+
                                             <input className='input-register'
                                                 type="email"
                                                 id="email"
@@ -451,8 +460,8 @@ function Login({ isOpen, onClose, onLogin }) {
                                                 required
                                                 placeholder="Correo Electrónico"
                                             />
-                                            {formErrorsRegister.msgErroremail && <p>{formErrorsRegister.msgErroremail}</p>}
-                                            {/* <label htmlFor="telephone">Teléfono:</label> */}
+                                            {formErrorsRegister.msgErroremail && <p className='error-message'>{formErrorsRegister.msgErroremail}</p>}
+                                          
                                             <input className='input-register'
                                                 type="telephone"
                                                 id="telephone"
@@ -462,7 +471,8 @@ function Login({ isOpen, onClose, onLogin }) {
                                                 required
                                                 placeholder="Teléfono"
                                             />
-                                            {formErrorsRegister.msgErrortelephone && <p>{formErrorsRegister.msgErrortelephone}</p>}
+                                            {formErrorsRegister.msgErrortelephone && <p className='error-message'>{formErrorsRegister.msgErrortelephone}</p>}
+
 
 
                                         </div>
@@ -472,7 +482,7 @@ function Login({ isOpen, onClose, onLogin }) {
 
                                 {/* CAMPOS COMUNES LOGIN/REGISTER: */}
                                 {/* El mensaje de error es tomado del objeto formerrorregister o del objeto formerrorlogin en función de donde se encuentre el usuario en el modal (newuser) */}
-                                {newUser ? formErrorsRegister.msgErrorusername && <p>  {formErrorsRegister.msgErrorusername}</p> : formErrorsLogin.msgErrorusername && <p>  {formErrorsLogin.msgErrorusername}</p>}
+                                {newUser ? formErrorsRegister.msgErrorusername && <p className='error-message'>  {formErrorsRegister.msgErrorusername}</p> : formErrorsLogin.msgErrorusername && <p className='error-message'>  {formErrorsLogin.msgErrorusername}</p>}
 
                                 {/* <label htmlFor="username">Usuario:</label> */}
                                 <input className='input-login'
@@ -484,7 +494,7 @@ function Login({ isOpen, onClose, onLogin }) {
                                     required
                                     placeholder="Usuario"
                                 />
-                                {newUser ? formErrorsRegister.msgErrorpassword && <p> {formErrorsRegister.msgErrorpassword}</p> : formErrorsLogin.msgErrorpassword && <p> {formErrorsLogin.msgErrorpassword}</p>}
+                                {newUser ? formErrorsRegister.msgErrorpassword && <p className='error-message'> {formErrorsRegister.msgErrorpassword}</p> : formErrorsLogin.msgErrorpassword && <p className='error-message'> {formErrorsLogin.msgErrorpassword}</p>}
                                 {/* {formErrorsLogin.msgErrorpassword && <p>{formErrorsLogin.msgErrorpassword}</p>} */}
                                 {/* <label htmlFor="password">Contraseña:</label> */}
                                 <input className='input-login'
@@ -497,26 +507,18 @@ function Login({ isOpen, onClose, onLogin }) {
                                     placeholder="Contraseña"
                                 />
 
-                                {/* <label htmlFor="userType" className='usertypetext'>Tipo de Usuario:</label> */}
-                                <select className='optionusertype'
-                                    id="user_type"
-                                    value={user_type}
-                                    onChange={(e) => setUserType(e.target.value)} required>
-                                    <option value="">Tipo de usuario</option>
-                                    {/* <option value="cliente" >Cliente</option>
-                                    <option value="artista" >Artista</option> */}
-                                    <option value="3" >Cliente</option>
-                                    <option value="2" >Artista</option>
-                                </select>
+
+
+                            </form>
+                            <div className='buttons-login'>
                                 <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
                                 </button>
-                            </form>
 
-                            <button onClick={handleToggleView} className='buttonsloginlogout'>
-                                {newUser ? "Inicia sesión" : "Regístrate"}
-                            </button>
-
+                                <button onClick={handleToggleView} className='buttonsloginlogout'>
+                                    {newUser ? "Inicia sesión" : "Regístrate"}
+                                </button>
+                            </div>
 
                             {errorMessage && <div className="error-message">{errorMessage}</div>}
                             {!newUser && (

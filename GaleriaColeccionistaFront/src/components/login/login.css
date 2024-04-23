@@ -1,12 +1,13 @@
 @media screen and (min-width: 430px) {
 
     .modal {
-        padding-top: 180px;
+        /* padding-top: 40px; */
         position: fixed;
-        top: 50%;
+        top: 30%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 28%;
+        height: 300px;
     }
 
     .close {
@@ -15,7 +16,7 @@
 
     .App {
 
-        height: auto;
+        height: autopx;
         padding: 25px;
         margin: 15px;
         color: black;
@@ -34,7 +35,9 @@
 
     .login-title {
         color: #21577E;
+        padding-left: 38%;
     }
+
 
     .usertypetext {
         color: #21577E;
@@ -72,7 +75,11 @@
         margin-top: 15px;
         border-radius: 8px;
         width: 170px;
-        height: 25px;
+        height: 40px;
+        padding-left: 10%;
+        margin-left: 13%;
+        margin-bottom: 5px;
+        font-size: 14px;
     }
 
     .button-submit {
@@ -82,6 +89,7 @@
         height: 35px;
         background-color: white;
         border-radius: 10px;
+
     }
 
     .button-submit:hover {
@@ -112,6 +120,7 @@
     .twoblocks {
         display: flex;
         flex-direction: column;
+
     }
 
     .quetionandbutton {
@@ -127,17 +136,23 @@
     }
 
     .error-message {
-        color: grey; 
-        font-size: 11px; 
-      
+        color: grey;
+        font-size: 11px;
+
     }
+}
+
+.buttons-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 @media screen and (max-width: 429px) {
 
 
     .App {
-
+        width: 40%;
         height: auto;
         padding: 10px;
         margin: 20px;
@@ -177,7 +192,8 @@
         background-color: transparent;
         display: flex;
         flex-direction: column;
-        padding: 10px;
+        /* padding: 10px; */
+        margin-left: 21%;
     }
 
     .input-register {
@@ -190,7 +206,8 @@
         flex-direction: column;
         padding: 10px;
     }
-        .button-submit {
+
+    .button-submit {
         margin-top: 15px;
         border: none;
         width: 135px;
@@ -221,10 +238,25 @@
         border-radius: 8px;
         width: 170px;
         height: 25px;
+        font-size: 10px;
+        padding-left: 10%;
     }
 
     .error-message {
-        color: grey; 
-        font-size: 10px; 
+        color: grey;
+        font-size: 10px;
+    }
+
+    .buttons-login {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .twoblocks {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }

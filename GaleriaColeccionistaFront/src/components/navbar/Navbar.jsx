@@ -4,9 +4,11 @@ import logo from "../../images/logo.svg";
 import search from "../../images/search.svg";
 import login from "../../images/login.svg";
 import logout from "../../images/logout.svg";
+import home from "../../images/home.svg";
 import shoppingCart from "../../images/shoppingCart.svg";
 import line from "../../images/line.svg";
 import Login from '../login/Login';
+import { Link } from 'react-router-dom';
 // import Swal from 'sweetalert2'
 import ShoppingCart from '../shoppingCart/ShoppingCart';
 
@@ -76,18 +78,24 @@ function Navbar() {
         <div className='icons-group'>
 
           <div className='logo-and-gallery-button'>
+
             <img src={logo} className='logo' alt="" />
 
-            <button className='gallery_button'>GALERIA</button>
+            <Link to="/Gallery">
+              <button className='gallery_button'>GALERIA</button>
+            </Link>
 
+            <button className='home'>
+              <img src={home} alt="imghome" className='imghome' />
+            </button>
 
           </div>
+
 
           <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
 
 
-
-          <form className='form'>
+          <form className='navbar-form'>
             <input className='input-navbar'
               type="text"
               // placeholder=""
@@ -102,11 +110,11 @@ function Navbar() {
           {/* PROPS */}
 
           <button onClick={handleOpenLogin} className='login'>
-            <img src={login} alt="login" />
+            <img src={login} alt="imglogin" className='imglogin' />
           </button>
 
           <button onClick={handleLogout} className='logout'>
-            <img src={logout} alt="logout" />
+            <img src={logout} alt="imglogout" className='imglogout' />
           </button>
 
           <img src={shoppingCart} className='shoppingcart' alt="shoppingcart" onClick={handleClick} />
