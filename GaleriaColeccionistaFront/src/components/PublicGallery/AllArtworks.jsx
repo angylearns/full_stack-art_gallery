@@ -39,10 +39,11 @@ const AllArtworks = ({ isAuthenticated }) => {
   }
 
   // Función para establecer una cookie
-  function setCookie(name, value, daysToExpire) {
+  function setCookie(name, value, hoursToExpire) {
     const expirationDate = new Date();
-    expirationDate.setDate(expirationDate.getDate() + daysToExpire);
-    const cookieValue = encodeURIComponent(value) + ((daysToExpire) ? `; expires=${expirationDate.toUTCString()}` : '');
+    //cookies caducan en una hora
+    expirationDate.setTime(expirationDate.getTime() + (hoursToExpire * 3600000));
+    const cookieValue = encodeURIComponent(value) + ((hoursToExpire) ? `; expires=${expirationDate.toUTCString()}` : '');
     document.cookie = `${name}=${cookieValue}; path=/`;
   }
 
@@ -56,7 +57,7 @@ const AllArtworks = ({ isAuthenticated }) => {
       //localStorage.setItem('products', JSON.stringify(arrayProduct));
       // Guardar el array en la cookie
 
-      setCookie('products', JSON.stringify(arrayProduct), 30); // Guardar la cookie por 30 días
+      setCookie('products', JSON.stringify(arrayProduct), 1); // Guardar la cookie por 30 días
 
     }
   }, [arrayProduct]);

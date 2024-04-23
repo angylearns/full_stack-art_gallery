@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { adminServiceF } from "../../services/adminServiceF";
 // import Swal from 'sweetalert';
 import Swal from 'sweetalert2';
-
+import Cookies from 'js-cookie'; // Importa la biblioteca js-cookie
 
 
 function EndPurchase() {
@@ -18,6 +18,7 @@ function EndPurchase() {
     const { data } = location.state;
     const total = data.total;
     const products = data.products;//lista de products que llegan del carrito y que se van a comprar
+    // const [productL,setProductL] = useState([]);
 
     const [idUser, setIdUser] = useState(""); //usuario conectado, recuperado de localStorage
 
@@ -49,112 +50,128 @@ function EndPurchase() {
         return formattedDate;
     }
 
-    useEffect(() => {
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser != null) {
+    const deleteProductCookie = (index) => {
+      
+        // Obtener todas las cookies y convertirlas en una matriz de objetos JavaScript
+        let cookies = Cookies.get('products');
+        if (cookies) {
+            cookies = JSON.parse(cookies);
 
-            setIdUser(storedUser.id_user)
-        }
+            // Buscar y eliminar el producto con el id_producto dado
+            const nuevasCookies = cookies.filter(producto => producto.id_product !== index);
 
-    }, []);
-
-    const handlePay = async () => {
-
+            // Actualizar las cookies en el navegador con las nuevasCookies
+            Cookies.set('products', JSON.stringify(nuevasCookies));
 
 
-        //............................................. ojo .............................................................
-        //para pagar necesito los datos del usuario registrado en concreto id_user_fk = id_user, de momento harcodeo para probar
-        //necesito el id de todos los productos del carrito para crear un registro en la tabla purchase order por cada producto 
-        //para el usuario indicado, productos ya los tengo en products
+        };
 
-        const dateToday = saveDate();
-
-        for (let i = 0; i < products.length; i++) {
-            const objeto = products[i];
-            const idProduct = objeto.id_product; // Extraemos el campo 'id' del producto actual
-            const order = {
-                id_purchase_order: "",
-                date: dateToday,
-                status: "Preparation",
-                id_user_fk: idUser,
-                id_product_fk: idProduct
-            };
-            setPurchaseOrder(order);
-
-            try {
-                const newPurchaseOrder = await adminServiceF.postPurchaseOrder1(order);
-                
-                Swal.fire({
-                    title: '¡Felicitaciones!',
-                    text: 'Su compra se realizó con éxito.',
-                    icon: 'success',
-                    confirmButtonText: 'Aceptar'
-                });
-            } catch (error) {
-                console.error("Error al insertar datos:", error);
+    }
+        useEffect(() => {
+            
+            const userCookie = Cookies.get('id_user');
+            if (userCookie) {
+                //   const user = JSON.parse(userCookie);
+                setIdUser(userCookie);
             }
-        }
-    };
+
+        }, []);
+
+        const handlePay = async () => {
 
 
-    return (
-        <>
-            <div className="containerF">
-                <div className="row">
-                    <div className="column1">
-                        <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={() => cancelPay()} />
+            const dateToday = saveDate();
+
+            for (let i = 0; i < products.length; i++) {
+                const objeto = products[i];
+                const idProduct = objeto.id_product; // Extraemos el campo 'id' del producto actual
+                const order = {
+                    id_purchase_order: "",
+                    date: dateToday,
+                    status: "Preparation",
+                    id_user_fk: idUser,
+                    id_product_fk: idProduct
+                };
+                setPurchaseOrder(order);
+
+                try {
+                    const newPurchaseOrder = await adminServiceF.postPurchaseOrder1(order);
+                    const updateStock = await adminServiceF.patchAllProducts(products);
+                    //el producto se ha comprado, borrar de las cookies
+                    deleteProductCookie(idProduct);
+
+
+                    Swal.fire({
+                        title: '¡Felicitaciones!',
+                        text: 'Su compra se realizó con éxito.',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    });
+                } catch (error) {
+                    console.error("Error al insertar datos:", error);
+                }
+            }
+        };
+
+
+        return (
+            <>
+                <div className="containerF">
+                    <div className="row">
+                        <div className="column1">
+                            <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={() => cancelPay()} />
+                        </div>
                     </div>
-                </div>
-                <div className="row">
-                    <div className="column2">
-                        {/* Contenido de la fila 2, que son las imagenes de los métodos de pago*/}
-                        <div className="image-container">
-                            <img src="https://i.postimg.cc/vZzHxQhC/visa.png" alt="Imagen 1" className="image" />
-                            <img src="https://i.postimg.cc/6QbWzYD0/mastercard.png" alt="Imagen 2" className="image imageTransparent" />
-                            <img src="https://i.postimg.cc/t4SGH72R/amex.png" alt="Imagen 3" className="image imageTransparent" />
-                            <img src="https://i.postimg.cc/28NzHqXP/paypal1.png" alt="Imagen 4" className="image imageTransparent" />
-                            <img src="https://i.postimg.cc/cLNNcV6Z/bitcoin.png" alt="Imagen 5" className="image imageTransparent" />
+                    <div className="row">
+                        <div className="column2">
+                            {/* Contenido de la fila 2, que son las imagenes de los métodos de pago*/}
+                            <div className="image-container">
+                                <img src="https://i.postimg.cc/vZzHxQhC/visa.png" alt="Imagen 1" className="image" />
+                                <img src="https://i.postimg.cc/6QbWzYD0/mastercard.png" alt="Imagen 2" className="image imageTransparent" />
+                                <img src="https://i.postimg.cc/t4SGH72R/amex.png" alt="Imagen 3" className="image imageTransparent" />
+                                <img src="https://i.postimg.cc/28NzHqXP/paypal1.png" alt="Imagen 4" className="image imageTransparent" />
+                                <img src="https://i.postimg.cc/cLNNcV6Z/bitcoin.png" alt="Imagen 5" className="image imageTransparent" />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row central">
+                        <div className="column">
+                            {/* Contenido de la fila 3 (central con formulario) */}
+                            <form className='myForm'>
+                                <div className='dataCC1'>
+                                    <h4>Tus datos de pago</h4>
+                                    <label>Titular de la tarjeta</label>
+                                    <input type="text" placeholder="Vincent Picasso" />
+                                    <label>Número de la tarjeta</label>
+                                    <input type="text" placeholder="xxxx xxxx xxxx xxxx" />
+                                </div>
+                                <div className='dataCC2'>
+                                    <div className='smallData'>
+                                        <label>Caducidad</label>
+                                        <input type="text" placeholder="MM/YYYY" className='dateCC' />
+                                    </div>
+                                    <div className='smallData'>
+                                        <label>cvv</label>
+                                        <input type="text" placeholder="Ej. 123" className='cvv' />
+                                    </div>
+                                </div>
+                                <div className='total'>
+                                    <h4>Monto total</h4>
+                                    <h4 className='priceT'>{total} EUR</h4>
+                                    <input type='checkbox' defaultChecked></input><label>Guardar para futuras compras</label>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="column">
+                            <button className='btnPay' onClick={() => handlePay()}>Pagar ahora <img src="https://i.postimg.cc/FRtzfRxN/candado2.png" alt="pagar" className='btnIcon' /></button>
                         </div>
                     </div>
                 </div>
-                <div className="row central">
-                    <div className="column">
-                        {/* Contenido de la fila 3 (central con formulario) */}
-                        <form className='myForm'>
-                            <div className='dataCC1'>
-                                <h4>Tus datos de pago</h4>
-                                <label>Titular de la tarjeta</label>
-                                <input type="text" placeholder="Vincent Picasso" />
-                                <label>Número de la tarjeta</label>
-                                <input type="text" placeholder="xxxx xxxx xxxx xxxx" />
-                            </div>
-                            <div className='dataCC2'>
-                                <div className='smallData'>
-                                    <label>Caducidad</label>
-                                    <input type="text" placeholder="MM/YYYY" className='dateCC' />
-                                </div>
-                                <div className='smallData'>
-                                    <label>cvv</label>
-                                    <input type="text" placeholder="Ej. 123" className='cvv' />
-                                </div>
-                            </div>
-                            <div className='total'>
-                                <h4>Monto total</h4>
-                                <h4 className='priceT'>{total} EUR</h4>
-                                <input type='checkbox' defaultChecked></input><label>Guardar para futuras compras</label>
-                            </div>
-                        </form>
+            </>
+        )
+    }
 
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="column">
-                        <button className='btnPay' onClick={() => handlePay()}>Pagar ahora <img src="https://i.postimg.cc/FRtzfRxN/candado2.png" alt="pagar" className='btnIcon' /></button>
-                    </div>
-                </div>
-            </div>
-        </>
-    )
-}
-
-export default EndPurchase
+    export default EndPurchase

@@ -1,17 +1,6 @@
 import axios from "axios";
 
-// const apiClient = axios.create({
-//     baseURL: 'http://localhost:5000/',
-//     withCredentials: false,
-//     headers: {
-//         Accept: 'application/json',
-//         'Content-Type': 'application/json'
-//     }
-// });
 
-// const apiClient = axios.create({
-//     baseURL: 'http://localhost:5000/'
-// });
 const apiClient = axios.create({
     baseURL: 'http://localhost:5000/',
     withCredentials: false,
@@ -21,24 +10,9 @@ const apiClient = axios.create({
     }
 });
 
-// const apiClient = axios.create({
-//     baseURL: 'http://localhost:5000/',
-//     headers: {
-//         'Content-Type': 'multipart/form-data'
-//     }
-// });
 
 export const adminServiceF = {
 
-    // async getAllUser() {
-    //     try {
-    //         let response = await apiClient.get("/users");
-    //         return response.data;
-    //     } catch (error) {
-    //         console.error("Error al obtener usuarios:", error);
-    //         throw error; 
-    //     }
-    // },
 
     async getAllPersons() {
         try {
@@ -92,6 +66,18 @@ export const adminServiceF = {
             return response.data;
         } catch (error) {
             console.error("Error al insertar datossss:", error);
+            throw error;
+        }
+    },
+
+    async patchAllProducts(products) {
+        try {
+            
+            let products2 = JSON.stringify(products)
+            let response = await apiClient.patch("/product/patch", products2);
+            return response.data;
+        } catch (error) {
+            console.error("Error al actualizar datos del producto:", error);
             throw error;
         }
     }
