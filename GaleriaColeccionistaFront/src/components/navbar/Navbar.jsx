@@ -81,9 +81,9 @@ const handleCerrarComponente = () => {
   // Cambia el estado para ocultar el componente
   setMostrarComponente(false);
 
-  // Navegar hacia atrás en el historial del navegador
-  window.history.back();
-};
+    // Navegar hacia atrás en el historial del navegador
+    // window.history.back();
+  };
 
 
 return (

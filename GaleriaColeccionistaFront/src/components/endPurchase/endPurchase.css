@@ -157,5 +157,9 @@ input {
 .total input[type='checkbox'],
 .total label {
     margin: 5px 0;
-    /* Ajusta el margen vertical */
+    
+}
+
+.swal-container {
+    z-index: 99999; 
 }

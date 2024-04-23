@@ -83,3 +83,7 @@ tr.highlighted {
   text-overflow: ellipsis;
   /* Mostrar puntos suspensivos (...) si el texto se desborda horizontalmente */
 }
+
+.swal-container {
+  z-index: 99999; 
+}

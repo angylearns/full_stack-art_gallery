@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import EndPurchase from '../endPurchase/EndPurchase';
+// import Swal from 'sweetalert2';
 
 function ShoppingCart({ onClose }) {
 
@@ -38,11 +39,11 @@ function ShoppingCart({ onClose }) {
     const handleCerrarComponente = () => {
         // Cambia el estado para ocultar el componente
         setMostrarComponente(false);
-    
+
         // Navegar hacia atrás en el historial del navegador
-        window.history.back();
-      };
-    
+        // window.history.back();
+    };
+
 
 
     // Función para obtener el valor de una cookie por su nombre
@@ -87,7 +88,21 @@ function ShoppingCart({ onClose }) {
         // navigate('/EndPurchase', { state: { total } });
         //navigate('/EndPurchase', { state: { data } });
         // Cambia el estado para mostrar el componente
-        setMostrarComponente(true);
+        if (total != 0) {
+            setMostrarComponente(true);
+        } else {
+            // Swal.fire({
+            //     title: 'Error',
+            //     text: 'No tiene productos en su carrito',
+            //     icon: 'error',
+            //     confirmButtonText: 'Aceptar',
+            //     position: 'center', // Puedes ajustar la posición si lo deseas
+            //     customClass: {
+            //         container: 'swal-container', // Clase personalizada para el contenedor del modal
+            //     },
+            // })
+            alert("No tiene productos en su carrito");
+        }
     };
 
     const [highlightedIndex, setHighlightedIndex] = useState(null);
@@ -139,9 +154,9 @@ function ShoppingCart({ onClose }) {
                     </tfoot>
                 </table>
                 <div >
-          {/* Renderiza el componente si mostrarComponente es true */}
-          {mostrarComponente && <EndPurchase onClose={handleCerrarComponente} data={data} />}
-        </div>
+                    {/* Renderiza el componente si mostrarComponente es true */}
+                    {mostrarComponente && <EndPurchase onClose={handleCerrarComponente} data={data} />}
+                </div>
             </div>
         </>
     )
