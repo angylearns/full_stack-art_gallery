@@ -5,7 +5,7 @@ import '../shoppingCart/ShoppingCart';
 import { useLocation } from 'react-router-dom';
 import { adminServiceF } from "../../services/adminServiceF";
 // import Swal from 'sweetalert';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 import Cookies from 'js-cookie'; // Importa la biblioteca js-cookie
 
 
@@ -124,17 +124,18 @@ function EndPurchase({ onClose, data }) {
             }
         }
         if (endOk) {
-            Swal.fire({
-                title: '¡Felicitaciones!',
-                text: 'Su compra se realizó con éxito.',
-                icon: 'success',
-                confirmButtonText: 'Aceptar',
-                position: 'center', // Puedes ajustar la posición si lo deseas
-                customClass: {
-                    container: 'swal-container', // Clase personalizada para el contenedor del modal
-                },
+            // Swal.fire({
+            //     title: '¡Felicitaciones!',
+            //     text: 'Su compra se realizó con éxito.',
+            //     icon: 'success',
+            //     confirmButtonText: 'Aceptar',
+            //     position: 'center', // Puedes ajustar la posición si lo deseas
+            //     customClass: {
+            //         container: 'swal-container', // Clase personalizada para el contenedor del modal
+            //     },
                 
-            });
+            // });
+            alert("compra realizada con éxito");
             
         }
 

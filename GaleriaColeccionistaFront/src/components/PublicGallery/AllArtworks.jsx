@@ -2,7 +2,7 @@ import "./allArtworks.css"
 import React, { useState, useEffect } from "react";
 import "./allArtworks.css";
 import productService from "../../services/productService";
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 const AllArtworks = ({ isAuthenticated }) => {
   const [productos, setProductos] = useState([]);
@@ -55,19 +55,21 @@ const AllArtworks = ({ isAuthenticated }) => {
     // Si el producto no existe en el array, agrégalo
     if (!existeProducto) {
       setArrayProduct(prevArray => [...prevArray, product]);
-      Swal.fire({
-        title: 'Comprar',
-        text: 'Producto agregado al carrito.',
-        icon: 'info',
-        confirmButtonText: 'Aceptar'
-      });
+      // Swal.fire({
+      //   title: 'Comprar',
+      //   text: 'Producto agregado al carrito.',
+      //   icon: 'info',
+      //   confirmButtonText: 'Aceptar'
+      // });
+      alert("producto agregado al carrito");
     } else {
-      Swal.fire({
-        title: 'Atención',
-        text: 'Este producto ya se encuentra en su carrito.',
-        icon: 'info',
-        confirmButtonText: 'Aceptar'
-      });
+      // Swal.fire({
+      //   title: 'Atención',
+      //   text: 'Este producto ya se encuentra en su carrito.',
+      //   icon: 'info',
+      //   confirmButtonText: 'Aceptar'
+      // });
+      alert("No se puede agregar el producto, ya se encuentra en el carrito");
     }
 
   };

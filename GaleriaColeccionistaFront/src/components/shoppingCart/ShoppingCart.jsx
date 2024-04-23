@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import EndPurchase from '../endPurchase/EndPurchase';
-import Swal from 'sweetalert2';
+// import Swal from 'sweetalert2';
 
 function ShoppingCart({ onClose }) {
 
@@ -91,16 +91,17 @@ function ShoppingCart({ onClose }) {
         if (total != 0) {
             setMostrarComponente(true);
         } else {
-            Swal.fire({
-                title: 'Error',
-                text: 'No tiene productos en su carrito',
-                icon: 'error',
-                confirmButtonText: 'Aceptar',
-                position: 'center', // Puedes ajustar la posición si lo deseas
-                customClass: {
-                    container: 'swal-container', // Clase personalizada para el contenedor del modal
-                },
-            })
+            // Swal.fire({
+            //     title: 'Error',
+            //     text: 'No tiene productos en su carrito',
+            //     icon: 'error',
+            //     confirmButtonText: 'Aceptar',
+            //     position: 'center', // Puedes ajustar la posición si lo deseas
+            //     customClass: {
+            //         container: 'swal-container', // Clase personalizada para el contenedor del modal
+            //     },
+            // })
+            alert("No tiene productos en su carrito");
         }
     };
 
