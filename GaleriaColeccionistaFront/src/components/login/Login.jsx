@@ -309,11 +309,11 @@ function Login({ isOpen, onClose, onLogin }) {
 
             // Realizar la solicitud de inicio de sesión
             const tokenData = await handleLogin({ user_name, password }, setErrorMessage);
-            
+
             // Decodificar el token
             const decodedToken = jwtDecode(tokenData.token);
 
-            
+
             setCookie('id_user', decodedToken.id_user);
             setCookie('first_name', decodedToken.first_name);
             setCookie('id_person', decodedToken.id_person);
@@ -325,7 +325,7 @@ function Login({ isOpen, onClose, onLogin }) {
             const userTypeDecoded = decodedToken.user_type;
             console.log(userTypeDecoded);
 
-            switch(userTypeDecoded) {
+            switch (userTypeDecoded) {
                 case 'Admin':
                     navigate('/admin');
                     break;
@@ -333,7 +333,7 @@ function Login({ isOpen, onClose, onLogin }) {
                     navigate('/artist');
                     break;
                 case 'Client':
-                    navigate('/'); 
+                    navigate('/');
                     break;
                 default:
                     console.error('Tipo de usuario no reconocido');
@@ -505,6 +505,7 @@ function Login({ isOpen, onClose, onLogin }) {
                                     <option value="">Tipo de usuario</option>
                                     {/* <option value="cliente" >Cliente</option>
                                     <option value="artista" >Artista</option> */}
+                                    <option value="1" >Admin</option>
                                     <option value="3" >Cliente</option>
                                     <option value="2" >Artista</option>
                                 </select>
