@@ -5,11 +5,12 @@ import '../endPurchase/EndPurchase'
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import EndPurchase from '../endPurchase/EndPurchase';
 
-function ShoppingCart() {
+function ShoppingCart({ onClose }) {
 
     const navigate = useNavigate();
-
+    const [mostrarComponente, setMostrarComponente] = useState(false);
     const [productList2, setProductList2] = useState([]);
 
     // Calcular el total de los precios
@@ -34,7 +35,14 @@ function ShoppingCart() {
 
     }, []);
 
-
+    const handleCerrarComponente = () => {
+        // Cambia el estado para ocultar el componente
+        setMostrarComponente(false);
+    
+        // Navegar hacia atrás en el historial del navegador
+        window.history.back();
+      };
+    
 
 
     // Función para obtener el valor de una cookie por su nombre
@@ -51,7 +59,7 @@ function ShoppingCart() {
 
     // Manejador de clic para mostrar el número de fila en una alert
     const mostrarNumeroFila = (index) => {
-         alert(`Número de fila: ${index + 1}`);
+        //  alert(`Número de fila: ${index + 1}`);
         eliminarProducto(index);
     };
 
@@ -77,7 +85,9 @@ function ShoppingCart() {
     const handleEndPurchase = (total) => {
         // history.push('/pagos');
         // navigate('/EndPurchase', { state: { total } });
-        navigate('/EndPurchase', { state: { data } });
+        //navigate('/EndPurchase', { state: { data } });
+        // Cambia el estado para mostrar el componente
+        setMostrarComponente(true);
     };
 
     const [highlightedIndex, setHighlightedIndex] = useState(null);
@@ -101,7 +111,7 @@ function ShoppingCart() {
                             <th>ID</th>
                             <th>Título</th>
                             <th>Precio</th>
-                            <th></th>
+                            <th><img className="closeW" src="https://i.postimg.cc/dV7GcqJf/cerrarV2.png" alt="Cerrar" onClick={onClose}></img></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -128,6 +138,10 @@ function ShoppingCart() {
                         </tr>
                     </tfoot>
                 </table>
+                <div >
+          {/* Renderiza el componente si mostrarComponente es true */}
+          {mostrarComponente && <EndPurchase onClose={handleCerrarComponente} data={data} />}
+        </div>
             </div>
         </>
     )
