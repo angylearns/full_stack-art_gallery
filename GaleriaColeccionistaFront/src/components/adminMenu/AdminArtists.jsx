@@ -23,7 +23,7 @@ function AdminArtists({ artists }) {
 
     const [formData, setFormData] = useState({
         id_person: '',
-        name: '',
+        first_name: '',
         last_name: '',
         dni: '',
         birth_date: '',
@@ -156,7 +156,7 @@ function AdminArtists({ artists }) {
             password: formData.password,
             user_type: 'Artist',
             id_person: "",
-            name: formData.name,
+            first_name: formData.first_name,
             last_name: formData.last_name,
             dni: formData.dni,
             birth_date: formData.birth_date,
@@ -259,7 +259,7 @@ function AdminArtists({ artists }) {
                             {artistsGlobal.map((user, index) => (
                                 <tr key={index}>
                                     <td>{user.id_person}</td>
-                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["name"]} onChange={(e) => handleInputChange(e.target.value, index, "name")} /> : user.name}</td>
+                                    <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["first_name"]} onChange={(e) => handleInputChange(e.target.value, index, "first_name")} /> : user.first_name}</td>
                                     <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["last_name"]} onChange={(e) => handleInputChange(e.target.value, index,"last_name")} /> : user.last_name}</td>
                                     <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["dni"]} onChange={(e) => handleInputChange(e.target.value,index, "dni")} /> : user.dni}</td>
                                     <td>{editableRows.includes(index) ? <input type="text" defaultValue={artistsGlobal[index]["birth_date"]} onChange={(e) => handleInputChange(e.target.value,index, "birth_date")} /> : user.birth_date}</td>
@@ -290,7 +290,7 @@ function AdminArtists({ artists }) {
                         <div className="groupForm1">
                             <div className="smallDiv">
                                 <label className="labelStyle">Nombre:</label>
-                                <input type="text" name="name" value={formData.name} onChange={handleChange} required />
+                                <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} required />
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">Apellido:</label>
