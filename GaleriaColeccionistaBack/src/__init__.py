@@ -36,6 +36,7 @@ def init_app(config):
     app.register_blueprint(ProductRouter.postProduct, url_prefix='/product')
     app.register_blueprint(ProductRouter.putProduct, url_prefix='/product')
     app.register_blueprint(ProductRouter.deleteProduct, url_prefix='/product')
+    app.register_blueprint(ProductRouter.patchProduct, url_prefix='/product')
 
     app.register_blueprint(PurchaseOrderRouter.mainPurchaseOrder, url_prefix='/purchaseorder')
     # app.register_blueprint(PurchaseOrderRouter.postPurchaseOrder, url_prefix='/purchaseorders')
