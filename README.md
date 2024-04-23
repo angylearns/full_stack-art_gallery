@@ -1,5 +1,5 @@
 # Galeria-del-Coleccionista
-![Imagen portada](./GaleriaColeccionistaFront/src/components/hero/images/image2.svg)![Texto galería](./GaleriaColeccionistaFront/src/components/hero/images/imageHero.svg)
+![Imagen portada](./GaleriaColeccionistaFront/src/images/Group%203.png)![Texto galería](./GaleriaColeccionistaFront/src/components/hero/images/imageHero.svg)
 
 
 
