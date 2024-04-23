@@ -3,7 +3,36 @@
     .container-navbar {
         width: 100%;
         background-color: #E6ECEC;
-        height: 180px;
+        height: 230px;
+        padding-left: 18%;
+        padding-bottom: 2%;
+    }
+
+    .logo-and-gallery-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding-top: 2%;
+        padding-left: 2%;
+    }
+
+
+    .gallery_button {
+        border: 0;
+        background-color: transparent;
+        color: #21577E;
+        font-size: 25px;
+        height: fit-content;
+
+    }
+
+    .logo {
+        border: 0;
+        background-color: transparent;
+        width: 58px;
+        height: fit-content;
+        padding-bottom: 8%;
+
     }
 
     .icons-group {
@@ -15,12 +44,6 @@
         padding-top: 70px;
     }
 
-    .logo {
-        padding-left: 120px;
-        border: 0;
-        background-color: transparent;
-    }
-
     .home {
         padding-top: 1.5%;
     }
@@ -28,6 +51,7 @@
     .navbaruserhello {
         color: black;
         margin-top: 3.2%;
+        font-size: 25px;
     }
 
     .shoppingcart {
@@ -41,7 +65,7 @@
 
     .form {
         padding-top: 20px;
-        padding-left: 30%;
+        padding-left: 20%;
     }
 
     .search {
@@ -49,18 +73,24 @@
         background-color: transparent;
         padding-top: 15px;
         padding-left: 0px;
+        width: 28px;
     }
 
     .login {
         padding-top: 15px;
+        width: 28px;
+
     }
 
     .logout {
         padding-top: 15px;
+        width: 28px;
     }
 
     .shoppingcart {
         padding-top: 10px;
+        padding-right: 22%;
+        width: 28px;
     }
 
     .input-navbar {
@@ -85,14 +115,12 @@
         background-color: transparent;
     }
 
-    .gallery_button {
-        border: 0;
-        background-color: transparent;
-        color: #21577E;
-    }
+
 
     .line {
-        width: 80%;
+        width: 75%;
+        padding-left: 3%;
+
     }
 }
 

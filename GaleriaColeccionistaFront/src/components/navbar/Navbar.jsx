@@ -60,15 +60,17 @@ const handleLoginSuccess = (user) => {
         <div className='icons-group'>
 
           <div className='logo-and-gallery-button'>
+
             <img src={logo} className='logo' alt="" />
 
             <button className='gallery_button'>GALERIA</button>
 
-            
+          
+
           </div>
 
-           <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
-
+           
+          <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
   
           
             <form className='form'>
