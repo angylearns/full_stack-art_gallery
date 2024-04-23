@@ -55,8 +55,13 @@ const AllArtworks = ({ isAuthenticated }) => {
     // Si el producto no existe en el array, agrégalo
     if (!existeProducto) {
       setArrayProduct(prevArray => [...prevArray, product]);
+      Swal.fire({
+        title: 'Comprar',
+        text: 'Producto agregado al carrito.',
+        icon: 'info',
+        confirmButtonText: 'Aceptar'
+      });
     } else {
-      // Si el producto ya existe en el array, puedes mostrar un mensaje o realizar alguna otra acción
       Swal.fire({
         title: 'Atención',
         text: 'Este producto ya se encuentra en su carrito.',

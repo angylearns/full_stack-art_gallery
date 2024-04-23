@@ -40,7 +40,7 @@ function ShoppingCart({ onClose }) {
         setMostrarComponente(false);
     
         // Navegar hacia atrás en el historial del navegador
-        window.history.back();
+        // window.history.back();
       };
     
 

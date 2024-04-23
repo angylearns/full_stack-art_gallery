@@ -127,70 +127,77 @@ function EndPurchase({ onClose, data }) {
                 title: '¡Felicitaciones!',
                 text: 'Su compra se realizó con éxito.',
                 icon: 'success',
-                confirmButtonText: 'Aceptar'
+                confirmButtonText: 'Aceptar',
+                position: 'center', // Puedes ajustar la posición si lo deseas
+                customClass: {
+                    container: 'swal-container', // Clase personalizada para el contenedor del modal
+                },
+
             });
         }
-    };
+
+    }
+// };
 
 
-    return (
-        <>
-            <div className="containerF">
-                <div className="row">
-                    <div className="column1">
-                        <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={ onClose } />
-                    </div>
+return (
+    <>
+        <div className="containerF">
+            <div className="row">
+                <div className="column1">
+                    <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={onClose} />
                 </div>
-                <div className="row">
-                    <div className="column2">
-                        {/* Contenido de la fila 2, que son las imagenes de los métodos de pago*/}
-                        <div className="image-container">
-                            <img src="https://i.postimg.cc/vZzHxQhC/visa.png" alt="Imagen 1" className="image" />
-                            <img src="https://i.postimg.cc/6QbWzYD0/mastercard.png" alt="Imagen 2" className="image imageTransparent" />
-                            <img src="https://i.postimg.cc/t4SGH72R/amex.png" alt="Imagen 3" className="image imageTransparent" />
-                            <img src="https://i.postimg.cc/28NzHqXP/paypal1.png" alt="Imagen 4" className="image imageTransparent" />
-                            <img src="https://i.postimg.cc/cLNNcV6Z/bitcoin.png" alt="Imagen 5" className="image imageTransparent" />
-                        </div>
-                    </div>
-                </div>
-                <div className="row central">
-                    <div className="column">
-                        {/* Contenido de la fila 3 (central con formulario) */}
-                        <form className='myForm'>
-                            <div className='dataCC1'>
-                                <h4>Tus datos de pago</h4>
-                                <label>Titular de la tarjeta</label>
-                                <input type="text" placeholder="Vincent Picasso" />
-                                <label>Número de la tarjeta</label>
-                                <input type="text" placeholder="xxxx xxxx xxxx xxxx" />
-                            </div>
-                            <div className='dataCC2'>
-                                <div className='smallData'>
-                                    <label>Caducidad</label>
-                                    <input type="text" placeholder="MM/YYYY" className='dateCC' />
-                                </div>
-                                <div className='smallData'>
-                                    <label>cvv</label>
-                                    <input type="text" placeholder="Ej. 123" className='cvv' />
-                                </div>
-                            </div>
-                            <div className='total'>
-                                <h4>Monto total</h4>
-                                <h4 className='priceT'>{total} EUR</h4>
-                                <input type='checkbox' defaultChecked></input><label>Guardar para futuras compras</label>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="column">
-                        <button className='btnPay' onClick={() => handlePay()}>Pagar ahora <img src="https://i.postimg.cc/FRtzfRxN/candado2.png" alt="pagar" className='btnIcon' /></button>
+            </div>
+            <div className="row">
+                <div className="column2">
+                    {/* Contenido de la fila 2, que son las imagenes de los métodos de pago*/}
+                    <div className="image-container">
+                        <img src="https://i.postimg.cc/vZzHxQhC/visa.png" alt="Imagen 1" className="image" />
+                        <img src="https://i.postimg.cc/6QbWzYD0/mastercard.png" alt="Imagen 2" className="image imageTransparent" />
+                        <img src="https://i.postimg.cc/t4SGH72R/amex.png" alt="Imagen 3" className="image imageTransparent" />
+                        <img src="https://i.postimg.cc/28NzHqXP/paypal1.png" alt="Imagen 4" className="image imageTransparent" />
+                        <img src="https://i.postimg.cc/cLNNcV6Z/bitcoin.png" alt="Imagen 5" className="image imageTransparent" />
                     </div>
                 </div>
             </div>
-        </>
-    )
+            <div className="row central">
+                <div className="column">
+                    {/* Contenido de la fila 3 (central con formulario) */}
+                    <form className='myForm'>
+                        <div className='dataCC1'>
+                            <h4>Tus datos de pago</h4>
+                            <label>Titular de la tarjeta</label>
+                            <input type="text" placeholder="Vincent Picasso" />
+                            <label>Número de la tarjeta</label>
+                            <input type="text" placeholder="xxxx xxxx xxxx xxxx" />
+                        </div>
+                        <div className='dataCC2'>
+                            <div className='smallData'>
+                                <label>Caducidad</label>
+                                <input type="text" placeholder="MM/YYYY" className='dateCC' />
+                            </div>
+                            <div className='smallData'>
+                                <label>cvv</label>
+                                <input type="text" placeholder="Ej. 123" className='cvv' />
+                            </div>
+                        </div>
+                        <div className='total'>
+                            <h4>Monto total</h4>
+                            <h4 className='priceT'>{total} EUR</h4>
+                            <input type='checkbox' defaultChecked></input><label>Guardar para futuras compras</label>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <div className="row">
+                <div className="column">
+                    <button className='btnPay' onClick={() => handlePay()}>Pagar ahora <img src="https://i.postimg.cc/FRtzfRxN/candado2.png" alt="pagar" className='btnIcon' /></button>
+                </div>
+            </div>
+        </div>
+    </>
+)
 }
 
 export default EndPurchase
