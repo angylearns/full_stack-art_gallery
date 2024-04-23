@@ -132,8 +132,9 @@ function EndPurchase({ onClose, data }) {
                 customClass: {
                     container: 'swal-container', // Clase personalizada para el contenedor del modal
                 },
-
+                
             });
+            
         }
 
     }
