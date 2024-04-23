@@ -1,16 +1,20 @@
 import {Outlet} from "react-router-dom";
 import Navbar from "../components/navbar/Navbar.jsx";
 
-const LayoutPublic = () =>{
+
+
+const LayoutAdmin = () =>{
 
     return(
         <>
              <Navbar/>
              <Outlet/>
+             
+             
         </>
    
     )
 
 }
 
-export default LayoutPublic;
+export default LayoutAdmin;

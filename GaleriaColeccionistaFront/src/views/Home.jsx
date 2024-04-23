@@ -3,6 +3,7 @@ import GalleryPreview from "../components/galleryPreviewHome/GalleryPreview";
 import Hero from "../components/hero/Hero";
 import LastProducts from "../components/lastProducts/LastProducts";
 
+
 function Home(){
     return(
         <>

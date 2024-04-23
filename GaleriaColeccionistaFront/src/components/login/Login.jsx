@@ -6,10 +6,14 @@ import Navbar from '../navbar/Navbar';
 import { handleLogin, handleRegister } from '../../handlers/loginHandler';
 import { useCookies } from 'react-cookie'
 import { jwtDecode } from 'jwt-decode'
+import { useNavigate } from 'react-router-dom';
 
 
 function Login({ isOpen, onClose, onLogin }) {
 
+    const navigate = useNavigate();
+
+    
     // Estado inicial para los campos del formulario de Registro
     const initialStateRegister = {
 
@@ -321,6 +325,20 @@ function Login({ isOpen, onClose, onLogin }) {
 
             const userTypeDecoded = decodedToken.user_type;
             console.log(userTypeDecoded);
+
+            switch(userTypeDecoded) {
+                case 'Admin':
+                    navigate('/admin');
+                    break;
+                case 'Artist':
+                    navigate('/artist');
+                    break;
+                case 'Client':
+                    navigate('/'); 
+                    break;
+                default:
+                    console.error('Tipo de usuario no reconocido');
+            }
 
             // switch(userTypeDecoded){
             //     case 'Admin':

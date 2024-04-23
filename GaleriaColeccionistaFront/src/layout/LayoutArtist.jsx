@@ -1,7 +1,7 @@
 import {Outlet} from "react-router-dom";
 import Navbar from "../components/navbar/Navbar.jsx";
 
-const LayoutPublic = () =>{
+const LayoutArtist = () =>{
 
     return(
         <>
@@ -13,4 +13,4 @@ const LayoutPublic = () =>{
 
 }
 
-export default LayoutPublic;
+export default LayoutArtist;
