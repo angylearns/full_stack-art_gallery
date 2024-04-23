@@ -44,7 +44,7 @@ export const Router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element:<Administrator/>
+                element:<Administrator/>,
             }
           
 
