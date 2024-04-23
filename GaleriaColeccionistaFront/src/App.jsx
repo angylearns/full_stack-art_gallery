@@ -27,8 +27,8 @@ function App() {
       {/* <AdminMenu/> */}
       {/* <Navbar /> */}
       {/* <Artist /> */}
-      {/* <Gallery/> */}
-       <Home/> 
+      <Gallery/>
+       {/* <Home/>  */}
     </>
   )
 }
