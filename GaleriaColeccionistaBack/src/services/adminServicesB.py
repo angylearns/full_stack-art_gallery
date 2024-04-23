@@ -81,7 +81,7 @@ class adminServicesB():
             print(connection)
             with connection.cursor() as cursor:
                 id_person = person.id_person
-                name =person.name
+                first_name =person.first_name
                 last_name = person.last_name
                 dni = person.dni
                 birth_date = person.birth_date
@@ -89,8 +89,8 @@ class adminServicesB():
                 telephone = person.telephone
                 id_user_fk = person.id_user_fk
 
-                cursor.execute("INSERT INTO person (id_person, name, last_name, dni, birth_date, email, telephone, id_user_fk)"+
-                           "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')".format(id_person, name, last_name, dni, birth_date, email, telephone, id_user_fk))
+                cursor.execute("INSERT INTO person (id_person, first_name, last_name, dni, birth_date, email, telephone, id_user_fk)"+
+                           "VALUES ('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')".format(id_person, first_name, last_name, dni, birth_date, email, telephone, id_user_fk))
                 connection.commit()
             print("cucucucuwowowowowowowowowowowowwowowowowowowowowowowowowowowowwocucucucucucucucuc")
             connection.close()
@@ -124,9 +124,9 @@ class adminServicesB():
                 print("este es el id que llega y debe estar actualizado")
                 print(id_person)
 
-                name =person.name
+                first_name =person.first_name
                 print("este es el nombre que llega y debe estar actualizado")
-                print(name)
+                
                 last_name = person.last_name
                 dni = person.dni
                 # Cadena de fecha
@@ -140,7 +140,7 @@ class adminServicesB():
                 telephone = person.telephone
                 id_user_fk = person.id_user_fk
                 
-                cursor.execute("UPDATE person SET name='{1}', last_name='{2}', dni ='{3}',birth_date='{4}',email='{5}',telephone='{6}' WHERE person.id_person ='{0}'".format(id_person,name,last_name,dni,birth_date,email,telephone))                           
+                cursor.execute("UPDATE person SET first_name='{1}', last_name='{2}', dni ='{3}',birth_date='{4}',email='{5}',telephone='{6}' WHERE person.id_person ='{0}'".format(id_person,first_name,last_name,dni,birth_date,email,telephone))                           
                 connection.commit()
 
                 

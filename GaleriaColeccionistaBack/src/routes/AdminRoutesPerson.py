@@ -35,14 +35,14 @@ def dashboard_admin_persons():
         print(user1)
 
         id_person = request.json["id_person"]
-        name = request.json["name"]
+        first_name = request.json["first_name"]
         last_name = request.json["last_name"]
         dni = request.json["dni"]
         birth_date = request.json["birth_date"]
         email = request.json["email"]
         telephone = request.json["telephone"]
         id_user_fk = request.json["id_user_fk"]
-        person1 = Person(id_person, name, last_name, dni, birth_date, email, telephone,id_user_fk)
+        person1 = Person(id_person, first_name, last_name, dni, birth_date, email, telephone,id_user_fk)
         print("persona recuperadaaaaaa del jsonnnnnnnnnnnn")
 
     # if request.method != 'GET':
@@ -79,7 +79,7 @@ def dashboard_admin_persons():
         # Creas un diccionario con los datos del usuario
             person_serializable = {
                 "id_person": person_data[0],
-                "name": person_data[1],
+                "first_name": person_data[1],
                 "last_name": person_data[2],
                 "dni": person_data[3],
                 "birth_date": person_data[4],
