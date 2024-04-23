@@ -108,7 +108,7 @@ function EndPurchase({ onClose, data }) {
                 id_product_fk: idProduct
             };
             setPurchaseOrder(order);
-
+             products[i].in_stock = 0;
             try {
                 const newPurchaseOrder = await adminServiceF.postPurchaseOrder1(order);
                 const updateStock = await adminServiceF.patchAllProducts(products);
