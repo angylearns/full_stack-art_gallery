@@ -8,6 +8,10 @@ h1 {
     background-color: #669ec6;
   }
   
+  .img-style{
+    height: 400px;
+    width: 400px;
+  }
 
 
   .navbar {
