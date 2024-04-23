@@ -8,48 +8,38 @@ import LayoutAdmin from "../layout/LayoutAdmin.jsx";
 import AdminView from "../views/AdminView.jsx";
 
 export const Router = createBrowserRouter([
-    {
-        path: '/',
-        element: <LayoutPublic/>,
-        children: [
-            {
-                index: true,
-                element: <Home/>
-            },
-            {
-                path: "/gallery",
-                element: <Gallery/>
-            }
-
-
-        ]
-
-
-    
-    },
-    {
-        path: '/artist',
-        element: <LayoutArtist/>,
-        children: [
-            {
-                index: true,
-                element:<Artist/>
-            }
-
-        ]
-    },
-    {
-        path: '/admin',
-        element: <LayoutAdmin/>,
-        children: [
-            {
-                index: true,
-                element:<AdminView/>
-            }
-        ]
-
-    }
-
-
-    
-])
+  {
+    path: "/",
+    element: <LayoutPublic />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/gallery",
+        element: <Gallery />,
+      },
+    ],
+  },
+  {
+    path: "/artist",
+    element: <LayoutArtist />,
+    children: [
+      {
+        index: true,
+        element: <Artist />,
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <LayoutAdmin />,
+    children: [
+      {
+        index: true,
+        element: <AdminView />,
+      },
+    ],
+  },
+]);
