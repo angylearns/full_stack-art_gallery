@@ -1,3 +1,6 @@
+@media screen and (min-width: 430px) {
+
+
 .flex-wrap{
     display: flex;
     background-color: #E6ECEC;
@@ -33,4 +36,34 @@
     padding-bottom: 20%;
    }
 
- 
+}
+
+@media screen and (max-width: 429px) {
+
+    .hero-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .hero-container p {
+        position: absolute;
+        top: 21%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white; 
+        font-size: 30px; 
+       }
+
+    .hero-image{
+        width: 80%;
+        height: auto;
+        padding-left: 40px;
+    }
+
+    .hero-image-text{
+        height: 100%;
+        width: 10%;
+       
+    }
+}

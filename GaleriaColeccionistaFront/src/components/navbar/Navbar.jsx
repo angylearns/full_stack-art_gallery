@@ -1,9 +1,10 @@
-import { useState, useEffect  } from 'react'
+import { useState, useEffect } from 'react'
 import './navbar.css'
 import logo from "../../images/logo.svg";
 import search from "../../images/search.svg";
 import login from "../../images/login.svg";
 import logout from "../../images/logout.svg";
+import home from "../../images/home.svg";
 import shoppingCart from "../../images/shoppingCart.svg";
 import line from "../../images/line.svg";
 import Login from '../login/Login';
@@ -19,7 +20,7 @@ function Navbar() {
     setIsLoginOpen(true);
   };
 
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
   // DESLOGUEARSE
   const handleLogout = () => {
     // Eliminar el usuario del almacenamiento local
@@ -38,19 +39,19 @@ function Navbar() {
   useEffect(() => {
     const loggedInUser = localStorage.getItem('user');
     if (loggedInUser) {
-        const foundUser = JSON.parse(loggedInUser);
-        setUser(foundUser);
+      const foundUser = JSON.parse(loggedInUser);
+      setUser(foundUser);
     }
-}, []);
+  }, []);
 
-const handleLoginSuccess = (user) => {
-  console.log('handleLoginSuccess '+ JSON.stringify(user));
-  console.log('handleLoginSuccess '+ user);
-  if (user) {
-    setUser(JSON.parse(user)); // Actualiza el estado del usuario después de iniciar sesión
-  }
-  
-};
+  const handleLoginSuccess = (user) => {
+    console.log('handleLoginSuccess ' + JSON.stringify(user));
+    console.log('handleLoginSuccess ' + user);
+    if (user) {
+      setUser(JSON.parse(user)); // Actualiza el estado del usuario después de iniciar sesión
+    }
+
+  };
 
   return (
     <>
@@ -65,25 +66,27 @@ const handleLoginSuccess = (user) => {
 
             <button className='gallery_button'>GALERIA</button>
 
-          
+            <button className='home'>
+              <img src={home} alt="imghome" />
+            </button>
 
           </div>
 
-           
-          <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
-  
-          
-            <form className='form'>
-              <input className='input-navbar'
-                type="text"
-                // placeholder=""
-                value=''
-                onChange={(e) => setSearchValue(e.target.value)}
-              />
-            </form>
 
-            <img src={search} className='search' alt="" />
-         
+          <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
+
+
+          <form className='form'>
+            <input className='input-navbar'
+              type="text"
+              // placeholder=""
+              value=''
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
+          </form>
+
+          <img src={search} className='search' alt="" />
+
 
           {/* PROPS */}
 

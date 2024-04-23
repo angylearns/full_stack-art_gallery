@@ -46,6 +46,10 @@
 
     .home {
         padding-top: 1.5%;
+        border: none;
+        background-color: transparent;
+        padding-bottom: 5%;
+        padding-left: 5%;
     }
 
     .navbaruserhello {
@@ -84,7 +88,7 @@
 
     .logout {
         padding-top: 15px;
-        width: 28px;
+        width: 2px;
     }
 
     .shoppingcart {
@@ -147,12 +151,15 @@
     }
 
     .home {
-        width: 15px;
+     
         margin-right: 10px;
         padding-top: 3px;
-
+        border: none;
+        background-color: transparent;
     }
+    
 
+    
     .navbaruserhello {
         padding-top: 5px;
         font-size: 11px;
@@ -191,15 +198,15 @@
     }
 
     .imglogin {
-        width: 15px;
+        width: 10px;
     }
 
     .imglogout {
-        width: 15px;
+        width: 10px;
     }
 
     .login {
-        width: 15px;
+        width: 10px;
         height: auto;
         border: 0;
         background-color: transparent;
@@ -207,7 +214,7 @@
     }
 
     .logout {
-        width: 15px;
+        width: 10px;
         border: 0;
         background-color: transparent;
         padding-left: 18px;
