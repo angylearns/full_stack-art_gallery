@@ -1,107 +1,17 @@
 
 
-// import loginService from '../services/loginService.js';
-
-// export const handleLogin = async (e, setErrorMessage) => {
-//     e.preventDefault();
-//     console.log('LORENA handler handleLogin');
-//     console.log('LORENA handler handleLogin e ' + e);
-//     console.log('LORENA handler handleLogin username ' + username.required);
-//     console.log('LORENA handler handleLogin username ' + username.value);
-//     //console.log('LORENA handleLogin password ' + JSON.stringify(password));
-
-
-//     try {
-//         const users = await loginService.getUsersByUsernameAndPassword(username.value, password.value);
-//         if (users && users.length > 0) {
-
-//             console.log('LORENA handler handleLogin Usuario conectado ' + users[0].id_user, users[0].user_name);
-
-
-
-
-//             localStorage.setItem('user', JSON.stringify(users[0]));
-//         } else {
-//             // Usuario no encontrado, mostrar mensaje de error
-//             console.error('Usuario no encontrado');
-//             alert('Usuario no encontrado');
-
-//         }
-
-//     } catch (error) {
-//         console.error(error.message);
-//         setErrorMessage('Ocurrió un error al iniciar sesión');
-//     }
-// };
-
-// export const handleRegister = async (e, setErrorMessage) => {
-//     e.preventDefault();
-//     const username = document.getElementById('username').value;
-//     const password = document.getElementById('password').value;
-
-//     try {
-//         console.log('loginHandler: handleRegister: first_name ' + first_name.value);
-//         console.log('loginHandler: handleRegister: last_name ' + last_name.value);
-//         console.log('loginHandler: handleRegister: dni ' + dni.value);
-//         console.log('loginHandler: handleRegister: birth_date ' + birth_date.value);
-//         console.log('loginHandler: handleRegister: email ' + email.value);
-//         console.log('loginHandler: handleRegister: telephone ' + telephone.value);
-//         console.log('loginHandler: handleRegister: userType ' + userType.value);
-
-//         // Verifica si el usuario ya existe antes de intentar registrar
-//         const listaUser = await loginService.checkUserExists(username.value);
-//         console.log("Lista user");
-//         console.log(listaUser);
-//         if (listaUser && listaUser.length > 0) {
-//             // setErrorMessage('El usuario ya existe. Por favor, elige un nombre de usuario o correo electrónico diferente.');
-//             alert("Este usuario ya está registrado");
-//             return;
-//         }
-
-//         //checkPersonExists
-//         const existingPerson = await loginService.checkPersonExists(email.value);
-//         console.log('loginHandler: handleRegister: existinPerson' + existingPerson);
-//         if (existingPerson && existingPerson.length > 0) {
-//             // setErrorMessage('El usuario ya existe. Por favor, elige un nombre de usuario o correo electrónico diferente.');
-//             alert("Este email ya está registrado");
-//             return;
-//         }
-
-
-//         const newUser = await loginService.addUser(username.value, password.value, userType.value);
-//         console.log('loginHandler newUser', newUser);
-//         const newPerson = await loginService.addPerson(first_name.value, last_name.value, dni.value, birth_date.value, email.value, telephone.value, newUser.id);
-
-
-
-//         //setUser(newUser); // Actualizar el estado global con el nuevo usuario registrado
-//         localStorage.setItem('user', JSON.stringify(newUser)); // Opcional: Guardar en el almacenamiento local
-//         console.log('Usuario registrado:', newUser);
-//     } catch (error) {
-//         console.error('Error al registrar el usuario:', error);
-//         setErrorMessage('Ocurrió un error al registrar el usuario');
-//     }
-// };
-
 import loginService from '../services/loginService.js';
 
-export const handleLogin = async (e, setErrorMessage) => {
-    e.preventDefault();
-    const user_name = document.getElementById('user_name').value;
-    const password = document.getElementById('password').value;
 
+export const handleLogin = async ({ user_name, password }, setErrorMessage) => {
     try {
-        const users = await loginService.getUsersByUsernameAndPassword(user_name, password);
-        if (users && users.length > 0) {
-            console.log('Usuario conectado:', users[0].id_user, users[0].user_name);
-            localStorage.setItem('user', JSON.stringify(users[0]));
-        } else {
-            console.error('Usuario no encontrado');
-            alert('Usuario no encontrado');
-        }
+        const users = await loginService.postUsersByUsernameAndPassword(user_name, password);
+        console.log(users);
+        return users; // Devuelve el objeto users que probablemente contiene el token
     } catch (error) {
         console.error('Error al iniciar sesión:', error);
         setErrorMessage('Ocurrió un error al iniciar sesión');
+        throw error; // También puedes lanzar el error para que sea manejado por el código que llama a handleLogin
     }
 };
 
@@ -137,7 +47,7 @@ export const handleRegister = async (e, setErrorMessage) => {
         // Mensaje de éxito
         console.log('Detalles de la persona registrados');
     } catch (error) {
-        console.error('Error al registrar la persona:', error);
+        
         setErrorMessage('Ocurrió un error al registrar la persona');
     }
 };

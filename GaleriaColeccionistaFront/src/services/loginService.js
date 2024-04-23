@@ -1,23 +1,28 @@
+
+
 const API_URL = 'http://127.0.0.1:5000';
 
 
 const loginService = {
-  getUsersByUsernameAndPassword: async (user_name, password) => {
+  postUsersByUsernameAndPassword: async (user_name, password) => {
     try {
-      console.log('service getUsersByUsernameAndPassword ini ' + user_name)
-      const response = await fetch(`${API_URL}/user?user_name=${user_name}&password=${password}`);
-      if (!response.ok) {
-        throw new Error('Error al obtener los usuarios');
-      }
-
-      console.log('service getUsersByUsernameAndPassword end response.json()  ' + response);
-      return await response.json();
+        const response = await fetch(`${API_URL}/userL/`, {
+            method: 'POST',                                                      
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ user_name, password }),
+        });
+        if (!response.ok) {
+            throw new Error('Error al iniciar sesión');
+        }
+        const data = await response.json();
+        return data; // Devuelve tanto el token como los datos de usuario
     } catch (error) {
-      console.error(error);
-      throw new Error('Ocurrió un error al obtener los usuarios');
+        console.error('Error al iniciar sesión:', error);
+        throw error;
     }
-
-  },
+},
 
   
   addPerson: async (first_name, last_name, dni, birth_date, email, telephone, id_user_fk) => {
@@ -33,7 +38,9 @@ const loginService = {
       if (!response.ok) {
         throw new Error('Error al registrar el usuario');
       }
-      return await response.json();
+      
+      return await response.json().result;
+      
     } catch (error) {
       console.error('Error al guardar persona:', error);
       throw error;

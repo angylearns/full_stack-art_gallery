@@ -30,6 +30,132 @@
       "user_name": "kikiki",
       "password": "1234",
       "userType": "cliente"
+    },
+    {
+      "id": "0c99",
+      "user_name": "Loredfsdf",
+      "password": "123",
+      "userType": "cliente"
+    },
+    {
+      "id": "3f61",
+      "user_name": "Loredfsdffgf",
+      "password": "123444",
+      "userType": "cliente"
+    },
+    {
+      "id": "a9fe",
+      "user_name": "lore_india",
+      "password": "555",
+      "userType": "cliente"
+    },
+    {
+      "id": "3c82",
+      "user_name": "pepepe",
+      "password": "ñeñe",
+      "userType": "cliente"
+    },
+    {
+      "id": "290e",
+      "user_name": "aefjk",
+      "password": "454545",
+      "userType": "cliente"
+    },
+    {
+      "id": "c154",
+      "user_name": "rereer",
+      "password": "454545",
+      "userType": "cliente"
+    },
+    {
+      "id": "64f0",
+      "user_name": "111",
+      "password": "2154",
+      "userType": "cliente"
+    },
+    {
+      "id": "71b1",
+      "user_name": "fjdkfd5",
+      "password": "1125",
+      "userType": "cliente"
+    },
+    {
+      "id": "18de",
+      "user_name": "yhklgklfg",
+      "password": "4155",
+      "userType": "artista"
+    },
+    {
+      "id": "5b56",
+      "user_name": "rafague",
+      "password": "ujuk",
+      "userType": "cliente"
+    },
+    {
+      "id": "5c21",
+      "user_name": "lala",
+      "password": "pepe",
+      "userType": "2"
+    },
+    {
+      "id": "7d59",
+      "user_name": "lore_indiasaer",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "386c",
+      "user_name": "silvia",
+      "password": "lele",
+      "userType": "3"
+    },
+    {
+      "id": "b7d5",
+      "user_name": "gege",
+      "password": "123",
+      "userType": "2"
+    },
+    {
+      "id": "7815",
+      "user_name": "lolila",
+      "password": "123",
+      "userType": "2"
+    },
+    {
+      "id": "4d65",
+      "user_name": "kdfjdk",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "89d7",
+      "user_name": "login",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "4610",
+      "user_name": "probando",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "a57d",
+      "user_name": "probando2",
+      "password": "123",
+      "userType": "3"
+    },
+    {
+      "id": "0aea",
+      "user_name": "kiki89",
+      "password": "kiki89",
+      "userType": "3"
+    },
+    {
+      "id": "b6ba",
+      "user_name": "tete5",
+      "password": "1234",
+      "userType": "3"
     }
   ],
   "person": [
@@ -82,6 +208,216 @@
       "email": "ezc@gmail.com",
       "telephone": "646753432",
       "id_user": "6191"
+    },
+    {
+      "id": "3026",
+      "first_name": "Rodrí",
+      "last_name": "Cos",
+      "dni": "123587l44",
+      "birth_date": "1977-12-06",
+      "email": "lorrc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "0c99"
+    },
+    {
+      "id": "28a3",
+      "first_name": "Rodríasdfaf",
+      "last_name": "Cosfads",
+      "dni": "123587l443",
+      "birth_date": "1977-12-06",
+      "email": "lorrererc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "3f61"
+    },
+    {
+      "id": "d6e2",
+      "first_name": "Rodríguez",
+      "last_name": "Cortés",
+      "dni": "24587987",
+      "birth_date": "1985-12-06",
+      "email": "lelele@gmail.com",
+      "telephone": "646753432",
+      "id_user": "a9fe"
+    },
+    {
+      "id": "4082",
+      "first_name": "lalajeejeje",
+      "last_name": "jojojo",
+      "dni": "456464",
+      "birth_date": "2000-12-5",
+      "email": "pepepe@gmail.com",
+      "telephone": "646753432",
+      "id_user": "3c82"
+    },
+    {
+      "id": "b8d7",
+      "first_name": "memem",
+      "last_name": "Corleñka",
+      "dni": "456464",
+      "birth_date": "1985-12-06",
+      "email": "fjsdkl@gmail.com",
+      "telephone": "646753432",
+      "id_user": "290e"
+    },
+    {
+      "id": "39cc",
+      "first_name": "asdfajf",
+      "last_name": "dfjf",
+      "dni": "456464",
+      "birth_date": "1985-12-06",
+      "email": "aireedhj@fgkfg.com",
+      "telephone": "646753432",
+      "id_user": "c154"
+    },
+    {
+      "id": "c14f",
+      "first_name": "sf",
+      "last_name": "sffhtht",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "laeuisfnjezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "64f0"
+    },
+    {
+      "id": "f2f0",
+      "first_name": "iefjskf",
+      "last_name": "asdfhfkj",
+      "dni": "kdjfdafj",
+      "birth_date": "1977-12-06",
+      "email": "afhaejf@gmail.com",
+      "telephone": "654354",
+      "id_user": "71b1"
+    },
+    {
+      "id": "3c78",
+      "first_name": "kfjri",
+      "last_name": "dfadkfh",
+      "dni": "3546523",
+      "birth_date": "1977-12-06",
+      "email": "jdrgrkdg@gmail.com",
+      "telephone": "646753432",
+      "id_user": "18de"
+    },
+    {
+      "id": "e10f",
+      "first_name": "fkdajf",
+      "last_name": "fadsjk",
+      "dni": "12354687l",
+      "birth_date": "1985-12-06",
+      "email": "sdkjfaskfjriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "5b56"
+    },
+    {
+      "id": "674f",
+      "first_name": "fguj",
+      "last_name": "ghjj",
+      "dni": "45634568",
+      "birth_date": "1985-12-07",
+      "email": "w456tyc@gmail.com",
+      "telephone": "589658745",
+      "id_user": "5c21"
+    },
+    {
+      "id": "46f8",
+      "first_name": "asdfjk",
+      "last_name": "sdff",
+      "dni": "456464",
+      "birth_date": "2000-12-5",
+      "email": "eeeee@gmail.com",
+      "telephone": "65688933",
+      "id_user": "7d59"
+    },
+    {
+      "id": "e853",
+      "first_name": "eirfeasefj",
+      "last_name": "asdfs",
+      "dni": "55658855",
+      "birth_date": "1985-12-06",
+      "email": "asfertag@gmail.com",
+      "telephone": "584785698",
+      "id_user": "386c"
+    },
+    {
+      "id": "7e0a",
+      "first_name": "fgsdfga",
+      "last_name": "adgadg",
+      "dni": "24587987",
+      "birth_date": "1985-12-06",
+      "email": "asfase@gmail.com",
+      "telephone": "646753432",
+      "id_user": "b7d5"
+    },
+    {
+      "id": "a908",
+      "first_name": "sertgtar",
+      "last_name": "asdfa",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "sadfds@gmail.com",
+      "telephone": "646753432",
+      "id_user": "7815"
+    },
+    {
+      "id": "91b4",
+      "first_name": "lorfaskf",
+      "last_name": "asdfgaf",
+      "dni": "12354687l",
+      "birth_date": "1985-12-06",
+      "email": "dfgsdryriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "4d65"
+    },
+    {
+      "id": "fb02",
+      "first_name": "asdfgr",
+      "last_name": "Cortés",
+      "dni": "12354687l",
+      "birth_date": "1985-12-06",
+      "email": "asdferdriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "89d7"
+    },
+    {
+      "id": "f96b",
+      "first_name": "lelele",
+      "last_name": "jejeje",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "asfaesf@gmail.com",
+      "telephone": "646753432",
+      "id_user": "4610"
+    },
+    {
+      "id": "d435",
+      "first_name": "asfasetag",
+      "last_name": "asfefe",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "at54e5teuezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "a57d"
+    },
+    {
+      "id": "49f3",
+      "first_name": "lore",
+      "last_name": "r",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "454545guezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "0aea"
+    },
+    {
+      "id": "4f6b",
+      "first_name": "lore",
+      "last_name": "rere",
+      "dni": "12354687l",
+      "birth_date": "1977-12-06",
+      "email": "44444444odriguezc@gmail.com",
+      "telephone": "646753432",
+      "id_user": "b6ba"
     }
   ]
 }

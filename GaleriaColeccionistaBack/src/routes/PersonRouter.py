@@ -39,9 +39,9 @@ def post_person():
 
     if PersonService.post_person(person):
         print('Consola:Persona insertada: ', person)
-        return 'Persona creado.'
+        return jsonify({'id_person':'','first_name':first_name,'last_name':last_name, 'dni':dni, 'birth_date':birth_date, 'email': email, 'telephone':telephone, 'id_user_fk':id_user_fk })
     
-    return 'Página: Ok'
+    return jsonify({'id_person':'','first_name':first_name,'last_name':last_name, 'dni':dni, 'birth_date':birth_date, 'email': email, 'telephone':telephone, 'id_user_fk':id_user_fk })
 
 @putPerson.route('/<int:id_person>', methods=['PUT'])
 
