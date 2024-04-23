@@ -1,6 +1,6 @@
 # Galeria-del-Coleccionista
 ![Texto galería](./GaleriaColeccionistaFront/src/components/hero/images/imageHero.svg)
-![Imagen portada](./GaleriaColeccionistaFront/src/components/hero/images/image2.svg
+![Imagen portada](./GaleriaColeccionistaFront/src/components/hero/images/image2.svg)
 
 
 ## Descripción del Proyecto
