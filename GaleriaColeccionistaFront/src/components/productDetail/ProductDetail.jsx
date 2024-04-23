@@ -31,10 +31,24 @@ function ProductDetail() {
 
   }, []);
 
+
+  // Función para establecer una cookie
+  function setCookie(name, value, daysToExpire) {
+    const expirationDate = new Date();
+    expirationDate.setDate(expirationDate.getDate() + daysToExpire);
+    const cookieValue = encodeURIComponent(value) + ((daysToExpire) ? `; expires=${expirationDate.toUTCString()}` : '');
+    document.cookie = `${name}=${cookieValue}; path=/`;
+  }
+
   //guardamos el producto en local storage para que luego aparezca en la lista de la compra que es la que lo recupera
   useEffect(() => {
     if (arrayProduct.length > 0) {
       localStorage.setItem('products', JSON.stringify(arrayProduct));
+      // Guardar el array en la cookie
+      
+      setCookie('products', JSON.stringify(arrayProduct), 30); // Guardar la cookie por 30 días
+
+
     }
   }, [arrayProduct]);
 

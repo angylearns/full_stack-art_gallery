@@ -1,5 +1,5 @@
 .containerF {
-    width: 23%;
+    width: 55%;
     /* background-color: pink; */
     color: #21577E;
     border: 1px solid;
@@ -127,6 +127,7 @@ input {
     border: 0;
     border-radius: 5px;
     padding: 5px;
+    margin-left:5%;
 }
 
 .cvv {

@@ -24,7 +24,7 @@ function AdminCustomers({ customers }) {
         id_user: '',
         username: '',
         password: '',
-        user_type: 'Artist'
+        user_type: 'Client'
     });
 
     const handleEdit = (index) => {
@@ -88,6 +88,19 @@ function AdminCustomers({ customers }) {
         console.log(formData);
         await postUsers(formData);
         setUpdatePage(prevState => !prevState); // Cambiar el estado para forzar la actualización de la página
+        setFormData({
+            id_person: '',
+            first_name: '',
+            last_name: '',
+            dni: '',
+            birth_date: '',
+            email: '',
+            telephone: '',
+            id_user: '',
+            username: '',
+            password: '',
+            user_type: 'Client'
+        });
     };
 
     useEffect(() => {
@@ -182,7 +195,7 @@ function AdminCustomers({ customers }) {
                         <div className="groupForm1">
                             <div className="smallDiv">
                                 <label className="labelStyle">Nombre:</label>
-                                <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} required/>
+                                <input type="text" name="first_name" value={formData.first_name} onChange={handleChange} required />
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">Apellido:</label>
@@ -190,7 +203,7 @@ function AdminCustomers({ customers }) {
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">DNI:</label>
-                                <input type="text" name="dni" value={formData.dni} onChange={handleChange} required/>
+                                <input type="text" name="dni" value={formData.dni} onChange={handleChange} required />
 
                             </div>
                             <div className="smallDiv">
@@ -201,7 +214,7 @@ function AdminCustomers({ customers }) {
                         <div className="groupForm2">
                             <div className="smallDiv">
                                 <label className="labelStyle">Email:</label>
-                                <input type="text" name="email" value={formData.email} onChange={handleChange} required/>
+                                <input type="text" name="email" value={formData.email} onChange={handleChange} required />
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle">Teléfono:</label>
@@ -214,7 +227,7 @@ function AdminCustomers({ customers }) {
                             </div>
                             <div className="smallDiv">
                                 <label className="labelStyle"> Contraseña: </label>
-                                <input type="text" name="password" value={formData.password} onChange={handleChange} required/>
+                                <input type="text" name="password" value={formData.password} onChange={handleChange} required />
                             </div>
                         </div>
                         {/* <label>

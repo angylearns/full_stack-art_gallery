@@ -3,6 +3,7 @@ from flask import jsonify
 from src.models.userModel import User
 from src.models.personModel import Person
 from datetime import datetime
+from werkzeug.security import generate_password_hash
 
 class adminServicesB():
 
@@ -58,8 +59,15 @@ class adminServicesB():
             with connection.cursor() as cursor:
                 id_user = user.id_user
                 user_name = user.user_name
-                password = user.password
+                # password = user.password
                 user_type = user.user_type
+                passwordunic = user.password
+                password = generate_password_hash (passwordunic,  'pbkdf2:sha256', 30)
+                # cursor.callproc("InsertUser", (id_user, user_name, password, user_type))
+                # connection.commit()
+                # print("usuario añadido")
+
+
 
                 cursor.execute("INSERT INTO user (id_user, user_name, password, user_type )"+
                            "VALUES ('{0}','{1}','{2}','{3}')".format(id_user,user_name,password,user_type))

@@ -6,18 +6,20 @@ import { useLocation } from 'react-router-dom';
 import { adminServiceF } from "../../services/adminServiceF";
 // import Swal from 'sweetalert';
 import Swal from 'sweetalert2';
+import Cookies from 'js-cookie'; // Importa la biblioteca js-cookie
 
 
-
-function EndPurchase() {
+function EndPurchase({ onClose, data }) {
 
     const navigate = useNavigate();
 
     const location = useLocation();
     // const { total } = location.state;
-    const { data } = location.state;
-    const total = data.total;
-    const products = data.products;//lista de products que llegan del carrito y que se van a comprar
+    // const { data } = location.state;
+    const { total, products } = data;
+    // const total = data.total;
+    // const products = data.products;//lista de products que llegan del carrito y que se van a comprar
+    const [endOk, setEndOk] = useState(false);
 
     const [idUser, setIdUser] = useState(""); //usuario conectado, recuperado de localStorage
 
@@ -34,6 +36,15 @@ function EndPurchase() {
         navigate('/ShoppingCart');
     };
 
+    const handleCerrarComponente = () => {
+        // Cambia el estado para ocultar el componente
+        setMostrarComponente(false);
+
+        // Navegar hacia atrás en el historial del navegador
+        window.history.back();
+    };
+
+
     const saveDate = () => {
         // Obtener la fecha de hoy
         const today = new Date();
@@ -47,25 +58,42 @@ function EndPurchase() {
         // Formatear la fecha en formato YYYY-MM-DD
         const formattedDate = `${year}-${month}-${day}`;
         return formattedDate;
+    };
+
+
+
+
+    const deleteProductCookie = (index) => {
+
+        // Obtener todas las cookies y convertirlas en una matriz de objetos JavaScript
+        let cookies = Cookies.get('products');
+        if (cookies) {
+            cookies = JSON.parse(cookies);
+
+            // Buscar y eliminar el producto con el id_producto dado
+            const nuevasCookies = cookies.filter(producto => producto.id_product !== index);
+
+            // Actualizar las cookies en el navegador con las nuevasCookies
+            Cookies.set('products', JSON.stringify(nuevasCookies));
+
+
+        };
+
     }
 
-    useEffect(() => {
-        const storedUser = JSON.parse(localStorage.getItem('user'));
-        if (storedUser != null) {
 
-            setIdUser(storedUser.id_user)
+    useEffect(() => {
+
+        const userCookie = Cookies.get('id_user');
+        if (userCookie) {
+            //   const user = JSON.parse(userCookie);
+            setIdUser(userCookie);
         }
 
     }, []);
 
     const handlePay = async () => {
 
-
-
-        //............................................. ojo .............................................................
-        //para pagar necesito los datos del usuario registrado en concreto id_user_fk = id_user, de momento harcodeo para probar
-        //necesito el id de todos los productos del carrito para crear un registro en la tabla purchase order por cada producto 
-        //para el usuario indicado, productos ya los tengo en products
 
         const dateToday = saveDate();
 
@@ -83,16 +111,24 @@ function EndPurchase() {
 
             try {
                 const newPurchaseOrder = await adminServiceF.postPurchaseOrder1(order);
-                
-                Swal.fire({
-                    title: '¡Felicitaciones!',
-                    text: 'Su compra se realizó con éxito.',
-                    icon: 'success',
-                    confirmButtonText: 'Aceptar'
-                });
+                const updateStock = await adminServiceF.patchAllProducts(products);
+                //el producto se ha comprado, borrar de las cookies
+                deleteProductCookie(idProduct);
+                setEndOk(true);
+
+
             } catch (error) {
+                setEndOk(false);
                 console.error("Error al insertar datos:", error);
             }
+        }
+        if (endOk) {
+            Swal.fire({
+                title: '¡Felicitaciones!',
+                text: 'Su compra se realizó con éxito.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            });
         }
     };
 
@@ -102,7 +138,7 @@ function EndPurchase() {
             <div className="containerF">
                 <div className="row">
                     <div className="column1">
-                        <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={() => cancelPay()} />
+                        <img src='https://i.postimg.cc/02mCX6rw/cerrar.png' alt="close" onClick={ onClose } />
                     </div>
                 </div>
                 <div className="row">

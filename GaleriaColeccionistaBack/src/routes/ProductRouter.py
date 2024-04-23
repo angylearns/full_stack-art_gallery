@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, json
 from src.services.ProductService import ProductService
 from src.models.productModel import Product
 
@@ -7,6 +7,7 @@ postProduct = Blueprint('product_blueprint_post', __name__)
 putProduct = Blueprint('product_blueprint_put', __name__)
 deleteProduct = Blueprint('product_blueprint_delete', __name__)
 getLastProductId = Blueprint('product_blueprint_last_product_id', __name__)
+patchProduct = Blueprint('product_blueprint_patch', __name__)
 
 
 
@@ -90,5 +91,48 @@ def delete_product(id_product):
     ProductService.delete_product(id_product)
     print("Consola: Producto eliminado.")
     return "Página: Producto eliminado."
+
+
+@patchProduct.route("/patch", methods=["PATCH"])
+def patch_product():
+    print("estamos actulizando el stock de productos comprados a cero")
+    datos = request.json  # Esto contendrá los datos enviados desde React
+    # products2 = json.loads(datos['products2'])  # Convertir la cadena JSON de nuevo a una lista de Python
+    # Ahora puedes recorrer la lista `products2` como desees
+    print(request.json)
+
+    for product in datos:
+        print(product)
+        id_product = product["id_product"]
+        url = product["url"]
+        title = product["title"]
+        price = product["price"]
+        material = product["material"]
+        dimensions = product["dimensions"]
+        in_stock = 0
+        style = product["style"]
+        id_person_fk = product["id_person_fk"]
+
+        updateproduct = Product(
+            id_product,
+            url,
+            title,
+            price,
+            material,
+            dimensions,
+            in_stock,
+            style,
+            id_person_fk,
+        )
+        ProductService.put_product(id_product, updateproduct)
+        print("Consola: Producto actualizado: ")
+        return "Página: Producto actualizado."
+
+
+
+    return jsonify({'mensaje': 'Datos recibidos correctamente'})
+
+
+
 
 
