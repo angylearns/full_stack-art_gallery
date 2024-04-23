@@ -1,0 +1,38 @@
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    height: 100%; 
+    /* width: 100%; */
+  }
+  
+  .fila {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    
+  }
+  
+  .fila-superior {
+    /* flex: 1; */
+    height: 25%;
+  }
+  
+  .fila-inferior {
+    /* flex: 2; Esto hará que la segunda fila sea el doble de alta que la primera */
+    height: 500px;
+    /* width: 100%; */
+  }
+  
+  .columna {
+    /* flex: 1; */
+    border: 1px solid black; /* Para propósitos de demostración */
+    width: 100%;
+  }
+  
+  .columna-grande {
+    /* flex: 2;  */
+    border: 1px solid black; /* Para propósitos de demostración */
+    width: 100%;
+    padding: 3%;
+  }
+  
