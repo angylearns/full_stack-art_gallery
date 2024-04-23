@@ -186,6 +186,19 @@ function AdminArtists({ artists }) {
         await postUsers(formData);
         // window.location.reload(); // Recargar la página
         setUpdatePage(prevState => !prevState); // Cambiar el estado para forzar la actualización de la página
+        setFormData({
+            id_person: '',
+            first_name: '',
+            last_name: '',
+            dni: '',
+            birth_date: '',
+            email: '',
+            telephone: '',
+            id_user: '',
+            username: '',
+            password: '',
+            user_type: 'Artist'
+        });
     };
 
     useEffect(() => {

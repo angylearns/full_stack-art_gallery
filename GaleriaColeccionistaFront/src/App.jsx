@@ -24,10 +24,10 @@ function App() {
       <Navbar />
       {/* <ShoppingCart /> */}
       {/* <ProductDetail /> */}
-      <AdminMenu/>
+      {/* <AdminMenu/> */}
       {/* <Navbar /> */}
       {/* <Artist /> */}
-      {/* <Gallery/> */}
+      <Gallery/>
        {/* <Home/>  */}
     </>
   )
