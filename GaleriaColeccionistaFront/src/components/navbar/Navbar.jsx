@@ -8,6 +8,7 @@ import home from "../../images/home.svg";
 import shoppingCart from "../../images/shoppingCart.svg";
 import line from "../../images/line.svg";
 import Login from '../login/Login';
+import { Link } from 'react-router-dom';
 // import Swal from 'sweetalert2'
 
 
@@ -64,7 +65,9 @@ function Navbar() {
 
             <img src={logo} className='logo' alt="" />
 
-            <button className='gallery_button'>GALERIA</button>
+            <Link to="/Gallery">
+              <button className='gallery_button'>GALERIA</button>
+            </Link>
 
             <button className='home'>
               <img src={home} alt="imghome" className='imghome' />
