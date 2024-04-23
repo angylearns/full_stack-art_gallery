@@ -8,6 +8,8 @@ h1 {
     background-color: #669ec6;
   }
   
+
+
   .navbar {
     display: flex;
     flex-wrap: wrap;
@@ -68,4 +70,12 @@ h1 {
       width:max-content
     }
   } */
+
+
+  .cbtn-disabled{
+    cursor:not-allowed;
+    opacity: 0.5;
+   pointer-events: none;
+  }
   
+ 

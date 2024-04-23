@@ -18,7 +18,7 @@ function EndPurchase() {
     const { data } = location.state;
     const total = data.total;
     const products = data.products;//lista de products que llegan del carrito y que se van a comprar
-    // const [productL,setProductL] = useState([]);
+     const [endOk,setEndOk] = useState(false);
 
     const [idUser, setIdUser] = useState(""); //usuario conectado, recuperado de localStorage
 
@@ -99,17 +99,21 @@ function EndPurchase() {
                     const updateStock = await adminServiceF.patchAllProducts(products);
                     //el producto se ha comprado, borrar de las cookies
                     deleteProductCookie(idProduct);
+                    setEndOk(true);
 
-
-                    Swal.fire({
-                        title: '¡Felicitaciones!',
-                        text: 'Su compra se realizó con éxito.',
-                        icon: 'success',
-                        confirmButtonText: 'Aceptar'
-                    });
+                  
                 } catch (error) {
+                    setEndOk(false);
                     console.error("Error al insertar datos:", error);
                 }
+            }
+            if(endOk){
+                Swal.fire({
+                    title: '¡Felicitaciones!',
+                    text: 'Su compra se realizó con éxito.',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                });
             }
         };
 

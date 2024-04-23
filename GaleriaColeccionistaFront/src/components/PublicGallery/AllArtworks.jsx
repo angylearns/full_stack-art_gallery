@@ -2,6 +2,7 @@ import "./allArtworks.css"
 import React, { useState, useEffect } from "react";
 import "./allArtworks.css";
 import productService from "../../services/productService";
+import Swal from 'sweetalert2';
 
 const AllArtworks = ({ isAuthenticated }) => {
   const [productos, setProductos] = useState([]);
@@ -48,7 +49,22 @@ const AllArtworks = ({ isAuthenticated }) => {
   }
 
   const handleSaveProduct = (product) => {
+    //si el producto ya ha sido añadido que lo indique y no lo añada de nuevo
+    // Verificar si el producto ya está presente en el array
+  const existeProducto = arrayProduct.find((p) => p.id_product === product.id_product);
+  // Si el producto no existe en el array, agrégalo
+  if (!existeProducto) {
     setArrayProduct(prevArray => [...prevArray, product]);
+  } else {
+    // Si el producto ya existe en el array, puedes mostrar un mensaje o realizar alguna otra acción
+    Swal.fire({
+      title: 'Atención',
+      text: 'Este producto ya se encuentra en su carrito.',
+      icon: 'success',
+      confirmButtonText: 'Aceptar'
+  });
+  }
+  
   };
 
   //guardamos el producto en local storage para que luego aparezca en la lista de la compra que es la que lo recupera
@@ -136,12 +152,13 @@ const AllArtworks = ({ isAuthenticated }) => {
             <p>Stock: {producto.in_stock}</p>
             <p>Categoría: {producto.style}</p>
 
-            <button
-              className="btn-add-to-cart"
-              onClick={() => handleSaveProduct(producto)}
-            >
-              Añadir al carrito
-            </button>
+              <button
+        className={producto.in_stock === 0 ? 'cbtn-disabled' : 'btn-add-to-cart'}
+        onClick={() => handleSaveProduct(producto)}
+        disabled={producto.in_stock === 0} // Expresión ternaria para deshabilitar el botón si in_stock es cero
+      >
+        Añadir al carrito
+      </button>
 
           </div>
         ))}
