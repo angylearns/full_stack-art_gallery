@@ -319,6 +319,19 @@ function Login({ isOpen, onClose, onLogin }) {
             setCookie('user_name', decodedToken.user_name);
             console.log(decodedToken)
 
+            const userTypeDecoded = decodedToken.user_type;
+            console.log(userTypeDecoded);
+
+            // switch(userTypeDecoded){
+            //     case 'Admin':
+            //         navigate('/admin');
+            //         break;
+            //     case 'Artist':
+            //         navigate('/user');
+            //         break;
+            //     case 'User':
+            //         navigate('/user');
+            // }
             // Hacer cualquier otra acción necesaria después del inicio de sesión
             // Por ejemplo, redireccionar a una página de perfil
         } catch (error) {
