@@ -34,7 +34,7 @@ def post_person():
     print(email)
     print(id_user_fk)
 
-    person= Person(0,first_name,last_name,dni,birth_date,email, telephone, id_user_fk)
+    person= Person(None,first_name,last_name,dni,birth_date,email, telephone, id_user_fk)
 
 
     if PersonService.post_person(person):

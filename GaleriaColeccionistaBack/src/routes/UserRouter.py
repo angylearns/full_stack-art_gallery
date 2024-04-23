@@ -31,7 +31,7 @@ def post_user():
     print(user_type)
     
 
-    user= User(0,user_name,password,user_type)
+    user= User(None,user_name,password,user_type)
 
 
     if UserService.post_user(user):

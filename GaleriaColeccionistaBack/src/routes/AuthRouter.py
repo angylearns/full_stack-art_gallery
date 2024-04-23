@@ -39,7 +39,7 @@ def handle_login():
             password = request.json['password']
 
             # Crea un objeto User con los datos recibidos
-            user = User(0, user_name, password, None)
+            user = User(None, user_name, password, None)
             person=(Person(None, None, None, None, None, None, None, None))
 
             log_user = AuthService.auth_login_user(user, person)
