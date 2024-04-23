@@ -1,124 +1,230 @@
-.modal {
-    padding-top: 180px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 28%;
+@media screen and (min-width: 430px) {
+
+    .modal {
+        padding-top: 180px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 28%;
+    }
+
+    .close {
+        padding-left: 90%;
+    }
+
+    .App {
+
+        height: auto;
+        padding: 25px;
+        margin: 15px;
+        color: black;
+        background-color: #E6ECEC;
+    }
+
+    .login {
+        width: 28px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-title {
+        color: #21577E;
+    }
+
+    .usertypetext {
+        color: #21577E;
+    }
+
+    .input-login {
+        width: 200px;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .input-register {
+        width: 200px;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        outline: none;
+    }
+
+    .optionusertype {
+        margin-top: 15px;
+        border-radius: 8px;
+        width: 170px;
+        height: 25px;
+    }
+
+    .button-submit {
+        margin-top: 15px;
+        border: none;
+        width: 135px;
+        height: 35px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .button-submit:hover {
+        background-color: #EF0B6A;
+    }
+
+    .buttonsloginlogout {
+        margin-top: 15px;
+        border: none;
+        width: 135px;
+        height: 35px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .buttonsloginlogout:hover {
+        background-color: #EF0B6A;
+    }
+
+    .button-register {
+        border: none;
+        width: 135px;
+        height: 35px;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .twoblocks {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .quetionandbutton {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 10px;
+    }
+
+    .questiontextregistered {
+        color: #21577E;
+        font-size: small;
+    }
+
+    .error-message {
+        color: grey; 
+        font-size: 11px; 
+      
+    }
 }
 
-.close {
-    padding-left: 90%;
-}
+@media screen and (max-width: 429px) {
 
-.App {
 
-    height: auto;
-    padding: 25px;
-    margin: 15px;
-    color: black;
-    background-color: #E6ECEC;
-}
+    .App {
 
-.login {
-    width: 28px;
-}
+        height: auto;
+        padding: 10px;
+        margin: 20px;
+        color: #21577E;
+        background-color: #E6ECEC;
+    }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    .formlogin {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-.login-title {
-    color: #21577E;
-}
+    .modal {
+        padding-top: 180px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+    }
 
-.usertypetext {
-    color: #21577E;
-}
+    .close {
+        padding-left: 90%;
+    }
 
-.input-login {
-    width: 200px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
+    .login-title {
+        color: #21577E;
+        font-size: 15px;
+    }
 
-.input-register {
-    width: 200px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
+    .input-login {
+        width: 150px;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
 
-input:focus,
-textarea:focus,
-select:focus {
-    outline: none;
-}
+    .input-register {
+        width: 150px;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+        .button-submit {
+        margin-top: 15px;
+        border: none;
+        width: 135px;
+        height: 35px;
+        background-color: white;
+        border-radius: 10px;
+    }
 
-.optionusertype {
-    margin-top: 15px;
-    border-radius: 8px;
-    width: 170px;
-    height: 25px;
-}
+    .button-submit:hover {
+        background-color: #EF0B6A;
+    }
 
-.button-submit {
-    margin-top: 15px;
-    border: none;
-    width: 135px;
-    height: 35px;
-    background-color: white;
-    border-radius: 10px;
-}
+    .buttonsloginlogout {
+        margin-top: 15px;
+        border: none;
+        width: 135px;
+        height: 35px;
+        background-color: white;
+        border-radius: 10px;
+    }
 
-.button-submit:hover {
-    background-color: #EF0B6A;
-}
+    .buttonsloginlogout:hover {
+        background-color: #EF0B6A;
+    }
 
-.buttonsloginlogout {
-    margin-top: 15px;
-    border: none;
-    width: 135px;
-    height: 35px;
-    background-color: white;
-    border-radius: 10px;
-}
+    .optionusertype {
+        margin-top: 15px;
+        border-radius: 8px;
+        width: 170px;
+        height: 25px;
+    }
 
-.buttonsloginlogout:hover {
-    background-color: #EF0B6A;
-}
-
-.button-register {
-    border: none;
-    width: 135px;
-    height: 35px;
-    background-color: white;
-    border-radius: 10px;
-}
-
-.twoblocks {
-    display: flex;
-    flex-direction: column;
-}
-
-.quetionandbutton{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-top: 10px;
-}
-.questiontextregistered{
-    color: #21577E;
-    font-size: small;
+    .error-message {
+        color: grey; 
+        font-size: 10px; 
+    }
 }

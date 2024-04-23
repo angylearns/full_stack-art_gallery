@@ -1,85 +1,205 @@
-.container-navbar {
-    width: 100%;
-    background-color: #E6ECEC;
-    height: 180px;
+@media screen and (min-width: 430px) {
+
+    .container-navbar {
+        width: 100%;
+        background-color: #E6ECEC;
+        height: 180px;
+    }
+
+    .icons-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding-top: 70px;
+    }
+
+    .logo {
+        padding-left: 120px;
+        border: 0;
+        background-color: transparent;
+    }
+
+    .home {
+        padding-top: 1.5%;
+    }
+
+    .navbaruserhello {
+        color: black;
+        margin-top: 3.2%;
+    }
+
+    .shoppingcart {
+        padding-right: 10%;
+    }
+
+    .form-and-search {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .form {
+        padding-top: 20px;
+        padding-left: 30%;
+    }
+
+    .search {
+        border: 0;
+        background-color: transparent;
+        padding-top: 15px;
+        padding-left: 0px;
+    }
+
+    .login {
+        padding-top: 15px;
+    }
+
+    .logout {
+        padding-top: 15px;
+    }
+
+    .shoppingcart {
+        padding-top: 10px;
+    }
+
+    .input-navbar {
+        width: 180px;
+        border-radius: 10px;
+        border: none;
+    }
+
+    .login_logout {
+        display: flex;
+        flex-direction: row;
+        padding-left: 70%;
+    }
+
+    .login {
+        border: 0;
+        background-color: transparent;
+    }
+
+    .logout {
+        border: 0;
+        background-color: transparent;
+    }
+
+    .gallery_button {
+        border: 0;
+        background-color: transparent;
+        color: #21577E;
+    }
+
+    .line {
+        width: 80%;
+    }
 }
 
-.icons-group {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding-top: 70px;
-}
+@media screen and (max-width: 429px) {
 
-.logo {
-    padding-left: 110px;
-}
+    .container-navbar {
+        width: 430px;
+    }
 
-.navbaruserhello{
-    color: black;
-    margin-top: 3.2%;
-}
+    .icons-group {
+        height: 100px;
+    }
 
-.shoppingcart {
-    padding-right: 10%;
-}
+    .logo {
+        display: none;
+    }
 
-.form-and-search {
-    display: flex;
-    flex-direction: row;
-    width: 00px;
-}
+    .icons-group {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        background-color: #E6ECEC;
+    }
 
-.form {
-    padding-top: 20px;
-    padding-left: 30%;
-}
+    .home {
+        width: 15px;
+        margin-right: 10px;
+        padding-top: 3px;
 
-.search {
-    padding-top: 15px;
-    padding-left: 0px;
-}
+    }
 
-.login {
-    padding-top: 15px;
-}
+    .navbaruserhello {
+        padding-top: 5px;
+        font-size: 11px;
+        color: #21577E;
+    }
 
-.logout {
-    padding-top: 15px;
-}
+    .gallery_button {
+        font-size: 11px;
+        border: none;
+        background-color: transparent;
+        color: #21577E;
+    }
 
-.shoppingcart {
-    padding-top: 10px;
-}
+    .form {
+        padding-left: 15%;
 
-.input-navbar {
-    width: 180px;
-    border-radius: 10px;
-    border: none;
-}
-
-.login_logout {
-    display: flex;
-    flex-direction: row;
-    padding-left: 70%;
+    }
 
 
-}
+    .input-navbar {
+        width: 110px;
+        height: 15px;
+        border: none;
+        border-radius: 8px;
+    }
 
-.login {
-    border: 0;
-    background-color: transparent;
-}
+    .search {
+        width: 13px;
+        border: 0;
+        background-color: transparent;
+        padding-left: 30px;
+    }
 
-.logout {
-    border: 0;
-    background-color: transparent;
-}
+    .imgsearch {
+        width: 13px;
+    }
 
-.gallery_button {
-    border: 0;
-    background-color: transparent;
-    color: #21577E;
+    .imglogin {
+        width: 15px;
+    }
+
+    .imglogout {
+        width: 15px;
+    }
+
+    .login {
+        width: 15px;
+        height: auto;
+        border: 0;
+        background-color: transparent;
+        padding-left: 15px;
+    }
+
+    .logout {
+        width: 15px;
+        border: 0;
+        background-color: transparent;
+        padding-left: 18px;
+    }
+
+    .shoppingcart {
+        width: 16px;
+        padding-bottom: 4px;
+        border: 0;
+        background-color: transparent;
+        padding-left: 17px;
+    }
+
+    .logo-and-gallery-button {
+        padding-right: 1%;
+    }
+
+    .line {
+        width: 90%;
+
+    }
+
 }
