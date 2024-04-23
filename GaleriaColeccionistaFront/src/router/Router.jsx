@@ -6,6 +6,7 @@ import Artist from "../views/Artist.jsx";
 import LayoutArtist from "../layout/LayoutArtist.jsx";
 import Administrator from "../layout/LayoutAdmin.jsx";
 import LayoutAdmin from "../layout/LayoutAdmin.jsx";
+import AdminView from "../views/AdminView.jsx";
 
 export const Router = createBrowserRouter([
     {
@@ -44,12 +45,12 @@ export const Router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element:<Administrator/>,
+                element:<AdminView/>
             }
-          
-
         ]
+
     }
+
 
     
 ])
