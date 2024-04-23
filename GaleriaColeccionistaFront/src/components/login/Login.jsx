@@ -338,23 +338,16 @@ function Login({ isOpen, onClose, onLogin }) {
                 default:
                     console.error('Tipo de usuario no reconocido');
             }
+            alert('Inició sesión');
 
-            // switch(userTypeDecoded){
-            //     case 'Admin':
-            //         navigate('/admin');
-            //         break;
-            //     case 'Artist':
-            //         navigate('/user');
-            //         break;
-            //     case 'User':
-            //         navigate('/user');
-            // }
-            // Hacer cualquier otra acción necesaria después del inicio de sesión
-            // Por ejemplo, redireccionar a una página de perfil
+            // Cerrar el modal
+            onClose();
+            
         } catch (error) {
             console.error('Error al iniciar sesión:', error);
             setErrorMessage('Ocurrió un error al iniciar sesión');
         }
+        
     };
 
 
@@ -512,12 +505,11 @@ function Login({ isOpen, onClose, onLogin }) {
                                 <button type="submit" className='button-submit'>
                                     {newUser ? "Registrarse" : "Iniciar Sesión"}
                                 </button>
-                            </form>
-
-                            <button onClick={handleToggleView} className='buttonsloginlogout'>
+                                <button onClick={handleToggleView} className='buttonsloginlogout'>
                                 {newUser ? "Inicia sesión" : "Regístrate"}
                             </button>
 
+                            </form>
 
                             {errorMessage && <div className="error-message">{errorMessage}</div>}
                             {!newUser && (

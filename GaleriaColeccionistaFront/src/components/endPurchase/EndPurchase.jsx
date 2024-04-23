@@ -123,21 +123,12 @@ function EndPurchase({ onClose, data }) {
                 console.error("Error al insertar datos:", error);
             }
         }
-        if (endOk) {
-            // Swal.fire({
-            //     title: '¡Felicitaciones!',
-            //     text: 'Su compra se realizó con éxito.',
-            //     icon: 'success',
-            //     confirmButtonText: 'Aceptar',
-            //     position: 'center', // Puedes ajustar la posición si lo deseas
-            //     customClass: {
-            //         container: 'swal-container', // Clase personalizada para el contenedor del modal
-            //     },
-                
-            // });
-            alert("compra realizada con éxito");
+        
             
-        }
+            alert("compra realizada con éxito");
+           
+            
+        
 
     }
 // };
