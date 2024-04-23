@@ -140,7 +140,7 @@ const AllArtworks = ({ isAuthenticated }) => {
         {filteredProductos.map((producto) => (
           <div key={producto.id_product} className="artwork-card">
             <h3>{producto.title}</h3>
-            <img
+            <img className="img-style"
               src={producto.url}
               alt={producto.title}
               width={500}

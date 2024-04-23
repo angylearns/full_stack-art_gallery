@@ -1,0 +1,12 @@
+{
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
+  },
+  
+  
+  "moduleNameMapper": {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+    "\\.(svg)$": "<rootDir>/tests/__mocks__/images/login.svg"
+  },
+  "testEnvironment": "jsdom"
+}
