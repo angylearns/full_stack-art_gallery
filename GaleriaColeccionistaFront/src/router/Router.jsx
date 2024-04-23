@@ -4,7 +4,6 @@ import Gallery from "../views/Gallery";
 import LayoutPublic from "../layout/LayoutPublic.jsx";
 import Artist from "../views/Artist.jsx";
 import LayoutArtist from "../layout/LayoutArtist.jsx";
-import Administrator from "../layout/LayoutAdmin.jsx";
 import LayoutAdmin from "../layout/LayoutAdmin.jsx";
 import AdminView from "../views/AdminView.jsx";
 
