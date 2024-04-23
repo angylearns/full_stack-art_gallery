@@ -112,9 +112,10 @@ function EndPurchase({ onClose, data }) {
             try {
                 const newPurchaseOrder = await adminServiceF.postPurchaseOrder1(order);
                 const updateStock = await adminServiceF.patchAllProducts(products);
+                setEndOk(true);
                 //el producto se ha comprado, borrar de las cookies
                 deleteProductCookie(idProduct);
-                setEndOk(true);
+               
 
 
             } catch (error) {
