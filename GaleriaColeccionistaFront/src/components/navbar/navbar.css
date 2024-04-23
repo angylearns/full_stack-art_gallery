@@ -67,7 +67,7 @@
         flex-direction: row;
     }
 
-    .form {
+    .navbar-form {
         padding-top: 20px;
         padding-left: 20%;
     }
@@ -88,7 +88,7 @@
 
     .logout {
         padding-top: 15px;
-        width: 2px;
+        width: 28px;
     }
 
     .shoppingcart {
@@ -131,35 +131,42 @@
 @media screen and (max-width: 429px) {
 
     .container-navbar {
-        width: 430px;
+        width: 100%;
+        
     }
 
     .icons-group {
         height: 100px;
+        display: flex;
+        flex-direction: row;
     }
 
     .logo {
-        display: none;
+        width: 30px;
     }
 
     .icons-group {
+       
         display: flex;
         flex-direction: row;
         align-items: center;
         width: 100%;
         background-color: #E6ECEC;
+        /* padding-left: 10%; */
     }
 
     .home {
-     
+
         margin-right: 10px;
         padding-top: 3px;
         border: none;
         background-color: transparent;
     }
-    
 
-    
+    .imghome {
+        width: 15px;
+    }
+
     .navbaruserhello {
         padding-top: 5px;
         font-size: 11px;
@@ -174,14 +181,14 @@
     }
 
     .form {
-        padding-left: 15%;
+        padding-left: 2%;
 
     }
 
 
     .input-navbar {
-        width: 110px;
-        height: 15px;
+        width: 70px;
+        height: 10px;
         border: none;
         border-radius: 8px;
     }
@@ -190,7 +197,7 @@
         width: 13px;
         border: 0;
         background-color: transparent;
-        padding-left: 30px;
+        padding-left: 1%;
     }
 
     .imgsearch {
@@ -198,15 +205,15 @@
     }
 
     .imglogin {
-        width: 10px;
+        width: 15px;
     }
 
     .imglogout {
-        width: 10px;
+        width: 15px;
     }
 
     .login {
-        width: 10px;
+       
         height: auto;
         border: 0;
         background-color: transparent;
@@ -214,7 +221,7 @@
     }
 
     .logout {
-        width: 10px;
+      
         border: 0;
         background-color: transparent;
         padding-left: 18px;
@@ -229,7 +236,8 @@
     }
 
     .logo-and-gallery-button {
-        padding-right: 1%;
+        /* padding-right: 1%; */
+        display: flex;
     }
 
     .line {

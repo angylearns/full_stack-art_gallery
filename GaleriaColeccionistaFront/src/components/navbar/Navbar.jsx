@@ -67,7 +67,7 @@ function Navbar() {
             <button className='gallery_button'>GALERIA</button>
 
             <button className='home'>
-              <img src={home} alt="imghome" />
+              <img src={home} alt="imghome" className='imghome' />
             </button>
 
           </div>
@@ -76,7 +76,7 @@ function Navbar() {
           <p className='navbaruserhello'>{user ? `Hola, ${user.user_name}` : '¡Hola!'}</p>
 
 
-          <form className='form'>
+          <form className='navbar-form'>
             <input className='input-navbar'
               type="text"
               // placeholder=""
@@ -91,11 +91,11 @@ function Navbar() {
           {/* PROPS */}
 
           <button onClick={handleOpenLogin} className='login'>
-            <img src={login} alt="login" />
+            <img src={login} alt="imglogin" className='imglogin' />
           </button>
 
           <button onClick={handleLogout} className='logout'>
-            <img src={logout} alt="logout" />
+            <img src={logout} alt="imglogout" className='imglogout' />
           </button>
 
           <img src={shoppingCart} className='shoppingcart' alt="shoppingcart" />

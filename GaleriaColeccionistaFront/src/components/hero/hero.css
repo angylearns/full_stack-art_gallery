@@ -32,9 +32,9 @@
     font-size: 150px; 
    }
 
-   .text-image-2{
+   /* .text-image-2{
     padding-bottom: 20%;
-   }
+   } */
 
 }
 
@@ -46,14 +46,14 @@
         align-items: center;
     }
 
-    .hero-container p {
+    /* .hero-container p {
         position: absolute;
         top: 21%;
         left: 50%;
         transform: translate(-50%, -50%);
         color: white; 
         font-size: 30px; 
-       }
+       } */
 
     .hero-image{
         width: 80%;
