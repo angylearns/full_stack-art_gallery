@@ -21,11 +21,11 @@ export const updateProduct = async (productId, newProduct, fetchData) => {
 export const handleEdit = (productId, productos, setNewProduct, setIsEditing) => {
   const productToEdit = productos.find((producto) => producto.id_product === productId);
   setNewProduct({
-     ...productToEdit,
-     id_product: productToEdit.id_product,
+    ...productToEdit,
+    id_product: productToEdit.id_product,
   });
   setIsEditing(true);
- };
+};
 
 export const deleteProduct = async (productId, fetchData) => {
   try {

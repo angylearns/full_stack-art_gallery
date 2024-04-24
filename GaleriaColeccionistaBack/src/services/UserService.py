@@ -13,7 +13,6 @@ class UserService():
                 cursor.execute('SELECT * FROM user')
                 result= cursor.fetchall()
                 list_user=[User.convert_from_BD(row) for row in result]
-                print(result)
                 connection.close()
                 return list_user
                 
@@ -25,8 +24,6 @@ class UserService():
     def post_user(cls, user: User):
         try:
             connection=get_connection()
-            print(connection)
-            print("estamos post user")
             with connection.cursor() as cursor:
                 id_user = user.id_user
                 user_name = user.user_name
@@ -40,7 +37,6 @@ class UserService():
                 return 'Usuario agregado correctamente'
                
         except Exception as ex: 
-            print("erorororororororor")
             print(ex)
 
     @classmethod

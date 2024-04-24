@@ -25,12 +25,6 @@ def post_user():
     password = request.json ['password']
     user_type = request.json ['user_type']
     
-
-    print(user_name)
-    print(password)
-    print(user_type)
-    
-
     user= User(None,user_name,password,user_type)
 
 

@@ -1,15 +1,13 @@
-import AllArtworks from "../components/PublicGallery/AllArtworks"
+import AllArtworks from "../components/PublicGallery/AllArtworks";
 import Footer from "../components/footer/Footer";
 
-
-function Gallery (){
-
-    return(
+function Gallery() {
+  return (
     <>
-    <AllArtworks/>
-    <Footer/>
+      <AllArtworks />
+      <Footer />
     </>
-    )
+  );
 }
 
 export default Gallery;

@@ -27,13 +27,6 @@ def post_person():
     telephone = request.json ['telephone']
     id_user_fk = request.json ['id_user_fk']
 
-    print(first_name)
-    print(last_name)
-    print(dni)
-    print(birth_date)
-    print(email)
-    print(id_user_fk)
-
     person= Person(None,first_name,last_name,dni,birth_date,email, telephone, id_user_fk)
 
 
@@ -68,4 +61,3 @@ def delete_person(id_person):
     PersonService.delete_person(id_person)
     print('Consola: Persona eliminada.')
     return 'Página: Persona eliminada.'
-

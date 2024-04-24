@@ -10,7 +10,6 @@ getLastProductId = Blueprint('product_blueprint_last_product_id', __name__)
 patchProduct = Blueprint('product_blueprint_patch', __name__)
 
 
-
 @getProduct.route("/", methods=["GET"])
 def get_product():
     list_product = ProductService.get_product()
@@ -31,14 +30,6 @@ def post_product():
     style = request.json["style"]
     id_person_fk = request.json["id_person_fk"]
 
-    print(url)
-    print(title)
-    print(price)
-    print(material)
-    print(dimensions)
-    print(in_stock)
-    print(style)
-    print(id_person_fk)
 
     product = Product(
         0, url, title, price, material, dimensions, in_stock, style, id_person_fk
@@ -95,11 +86,8 @@ def delete_product(id_product):
 
 @patchProduct.route("/patch", methods=["PATCH"])
 def patch_product():
-    print("estamos actulizando el stock de productos comprados a cero")
-    datos = request.json  # Esto contendrá los datos enviados desde React
-    # products2 = json.loads(datos['products2'])  # Convertir la cadena JSON de nuevo a una lista de Python
-    # Ahora puedes recorrer la lista `products2` como desees
-    print(request.json)
+    
+    datos = request.json
 
     for product in datos:
         print(product)
@@ -131,8 +119,3 @@ def patch_product():
 
 
     return jsonify({'mensaje': 'Datos recibidos correctamente'})
-
-
-
-
-

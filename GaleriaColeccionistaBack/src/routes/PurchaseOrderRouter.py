@@ -16,21 +16,13 @@ def get_purchaseorder():
 @mainPurchaseOrder.route('/post',methods=['POST'])
 def post_users():
 
-    print("cucucucucucucucucucuc")
     id_purchase_order = request.json['id_purchase_order']
     date = request.json ['date']
     status = request.json ['status']
     id_user_fk = request.json ['id_user_fk']
     id_product_fk = request.json ['id_product_fk']
     
-    print(id_purchase_order)
-    print(date)
-    print(status)
-    print(id_user_fk)
-    print(id_product_fk)
-    
     purchaseorder= PurchaseOrder(id_purchase_order,date,status,id_user_fk,id_product_fk)
-
 
     if PurchaseOrderService.post_purchaseorder(purchaseorder):
         print('Consola:Pedido insertado: ', purchaseorder)
@@ -61,4 +53,3 @@ def delete_purchaseorder(id_purchase_order):
     PurchaseOrderService.delete_purchaseorder(id_purchase_order)
     print('Consola: Pedido eliminado.')
     return 'Página: Pedido eliminado.'
-

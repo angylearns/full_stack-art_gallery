@@ -22,8 +22,6 @@ class AuthService():
     
                     person=Person(row[4], row[5], None, None, None, None, None, user)
                     authenticated_user = person
-                    print('A continuación este es el authenticated_user:')
-                    print(authenticated_user)
 
                 else:
                    
@@ -36,7 +34,6 @@ class AuthService():
             return authenticated_user
 
         except Exception as ex:
-            # Imprime cualquier excepción que ocurra durante el proceso de autenticación
             print("Error en auth_login_user:", ex)
             return None
 
@@ -48,10 +45,8 @@ class AuthService():
             with connection.cursor() as cursor:
                 cursor.execute('CALL sp_login_user(%s)', (user_name,))
                 row = cursor.fetchone()
-                print("Info del usuario:", row)
 
                 if row is not None:
-                    # Extrae los datos del usuario y la persona correspondientes
                     user_id = row[0]
                     user_name = row[1]
                     password = row[2]
@@ -65,7 +60,6 @@ class AuthService():
                     telephone = row[10]
                     id_user_fk = row[11]
 
-                    # crea un diccionario con los datos extraidos
                     combined_data = {
                         'user_id': user_id,
                         'user_name': user_name,
@@ -80,7 +74,7 @@ class AuthService():
                         'telephone': telephone,
                         'id_user_fk': id_user_fk
                     }
-                    print("Info del usuario:", combined_data)
+                    
                     return combined_data
                     
                 else:

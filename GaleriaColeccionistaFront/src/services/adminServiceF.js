@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const apiClient = axios.create({
     baseURL: 'http://localhost:5000/',
     withCredentials: false,
@@ -10,9 +9,7 @@ const apiClient = axios.create({
     }
 });
 
-
 export const adminServiceF = {
-
 
     async getAllPersons() {
         try {
@@ -59,8 +56,6 @@ export const adminServiceF = {
 
     async postPurchaseOrder1(purchaseOrder) {
         try {
-            console.log("purchaseeeeeeeee")
-            console.log(purchaseOrder)
             let purchaseOrder2 = JSON.stringify(purchaseOrder)
             let response = await apiClient.post("/purchaseorder/post", purchaseOrder2);
             return response.data;
@@ -72,7 +67,6 @@ export const adminServiceF = {
 
     async patchAllProducts(products) {
         try {
-            
             let products2 = JSON.stringify(products)
             let response = await apiClient.patch("/product/patch", products2);
             return response.data;
@@ -82,4 +76,3 @@ export const adminServiceF = {
         }
     }
 }
-

@@ -23,7 +23,6 @@ class ProductService():
     def post_product(cls, product: Product):
         try:
             connection=get_connection()
-            print(connection)
         
             with connection.cursor() as cursor:
                 id_product = product.id_product

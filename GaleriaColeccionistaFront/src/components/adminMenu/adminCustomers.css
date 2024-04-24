@@ -1,23 +1,20 @@
-.tableOwerflow{
+.tableOwerflow {
   overflow-x: auto;
-  
-  /* background-color: pink; */
   width: 100%;
 }
 
-.getContainer{
+.getContainer {
   background-color: rgb(255, 255, 255);
   max-height: 400px;
   overflow-y: auto;
-} 
-
-.mainContainer{
-  width:100%;
-  /* overflow: auto; */
-  background-color:#9BC9F4;
 }
 
-.postContainer{
+.mainContainer {
+  width: 100%;
+  background-color: #9bc9f4;
+}
+
+.postContainer {
   overflow-x: auto;
   width: auto;
   padding-top: 2%;
@@ -26,114 +23,94 @@
   padding-right: 5%;
 }
 
-
 .button1 {
-background-color: white; 
-/* color: #21577E;  */
-/* border: 1px solid #21577E; */
-border:0;
-/* padding: 5px 5px;  */
-width: fit-content;
-/* border-radius: 5px;  */
-cursor: pointer; 
-transition: background-color 0.3s; /* Transición suave */
+  background-color: white;
+  border: 0;
+  width: fit-content;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-img{
-width: 35px;
-height:35px;
-border:0;
+img {
+  width: 35px;
+  height: 35px;
+  border: 0;
 }
-
-
-
 
 input {
-  background-color: rgb(242, 242, 242); 
+  background-color: rgb(242, 242, 242);
   border: 1px solid #abc2d2;
-  padding: 8px; 
-  border-radius: 5px; 
-  margin:5px;
+  padding: 8px;
+  border-radius: 5px;
+  margin: 5px;
 }
-
 
 input:hover {
-  background-color: white; 
+  background-color: white;
 }
-
 
 input:focus {
-  background-color: rgb(255, 255, 209); 
+  background-color: rgb(255, 255, 209);
 }
 
-label{
+label {
   margin: 2px;
 }
 
-
-.formContentA{
+.formContentA {
   display: flex;
   flex-direction: row;
-
   justify-content: center;
   align-items: center;
   justify-items: center;
 }
 
-
-
-.groupForm1{
-  display: flex;
-  flex-direction: column;
-  align-items: end;  
-}
-
-.groupForm2{
+.groupForm1 {
   display: flex;
   flex-direction: column;
   align-items: end;
 }
 
-.smallDiv{
-  text-align: center; 
+.groupForm2 {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }
 
-.labelStyle{
+.smallDiv {
+  text-align: center;
+}
+
+.labelStyle {
   display: block;
   margin-bottom: 5px;
 }
 
-.buttonAdd{
+.buttonAdd {
   margin-left: 5px;
 }
 
 @media screen and (max-width: 600px) {
-
-  .formContentA{
+  .formContentA {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
-
 }
-
 
 .buttonAA {
   background-color: white;
-  color: #21577E;
-  border: 1px solid #21577E;
+  color: #21577e;
+  border: 1px solid #21577e;
   padding: 8px 8px;
   width: fit-content;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  /* Transición suave */
   margin: 3px;
 }
 
-
 .buttonAA:hover {
-  background-color: #EF0B6A;
+  background-color: #ef0b6a;
   color: white;
-
 }

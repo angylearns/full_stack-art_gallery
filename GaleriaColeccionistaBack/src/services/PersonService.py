@@ -12,7 +12,6 @@ class PersonService():
                 cursor.execute('SELECT * FROM person')
                 result= cursor.fetchall()
                 list_person=[Person.convert_from_BD(row) for row in result]
-                print(result)
                 connection.close()
                 return list_person
                
@@ -23,7 +22,6 @@ class PersonService():
     def post_person(cls, person: Person):
         try:
             connection=get_connection()
-            print(connection)
         
             with connection.cursor() as cursor:
                 id_person = person.id_person
@@ -73,4 +71,3 @@ class PersonService():
              return 'Persona actualizado correctamente'
         except Exception as ex:
                print(ex)
-     

@@ -25,9 +25,8 @@ class Security():
               'user_type': person.id_user_fk.user_type,
               'id_person': person.id_person,
               'first_name': person.first_name
-
-              
             }
+            
             return jwt.encode(payload,cls.jwt_key, algorithm='HS256')  
     
         except Exception as ex:
