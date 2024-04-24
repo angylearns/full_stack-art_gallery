@@ -12,19 +12,18 @@ table th {
   width: 100%;
   margin-bottom: 5%;
   margin-top: 5%;
-  background-color: #21577E;
+  background-color: #21577e;
   color: #ffffff;
   border: 0;
   border-radius: 5px;
-  
 }
 
-.closeW{
+.closeW {
   width: 24px;
   height: 24px;
 }
 
-.closeW :hover{
+.closeW :hover {
   cursor: pointer;
   background-color: rgb(148, 240, 240);
 }
@@ -37,11 +36,11 @@ table th {
   overflow-x: auto;
   background-color: white;
   position: fixed;
-  top:50%;
-  left:50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  max-height: 90%; 
+  max-height: 90%;
   overflow-y: auto;
 }
 
@@ -55,7 +54,7 @@ table th {
   height: 20%;
 }
 
-.imgDelete :hover{
+.imgDelete :hover {
   cursor: pointer;
 }
 
@@ -63,27 +62,18 @@ tr.highlighted {
   background-color: rgb(196, 228, 243);
 }
 
-/* table tr:nth-child(even) {
-    background-color: #f2f2f2; /* Cambia el color de fondo de las filas pares */
-/*}*/
-
 .tableM {
   width: 100%;
-  table-layout: fixed; /* Fijar el ancho de las columnas para que se ajusten al ancho del contenedor */
+  table-layout: fixed;
 }
 
 .tableM td:nth-child(3),
-/* Estilo solo aplicado a la tercera columna (título) */
 .tableM th:nth-child(3) {
-  /* Añadir también para los encabezados de columna para mantener la alineación */
   white-space: nowrap;
-  /* Evitar el ajuste de línea */
   overflow: hidden;
-  /* Ocultar el texto que se desborda */
   text-overflow: ellipsis;
-  /* Mostrar puntos suspensivos (...) si el texto se desborda horizontalmente */
 }
 
 .swal-container {
-  z-index: 99999; 
+  z-index: 99999;
 }

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import './galleryPreview.css';
-import productService from '../../services/productService';
+import React, { useState, useEffect } from "react";
+import "./galleryPreview.css";
+import productService from "../../services/productService";
 
 const GalleryPreview = () => {
   const [productos, setProductos] = useState([]);
@@ -15,7 +15,7 @@ const GalleryPreview = () => {
       const productsData = await productService.getAllProducts();
       setProductos(productsData);
     } catch (error) {
-      console.error('Error al obtener productos:', error);
+      console.error("Error al obtener productos:", error);
     }
   };
 
@@ -39,11 +39,11 @@ const GalleryPreview = () => {
   });
 
   const categorias = [
-    'Arte Abstracto',
-    'Realismo Contemporaneo',
-    'Arte Digital',
-    'Expresionismo',
-    'Neo-Pop'
+    "Arte Abstracto",
+    "Realismo Contemporaneo",
+    "Arte Digital",
+    "Expresionismo",
+    "Neo-Pop",
   ];
 
   return (
@@ -64,7 +64,8 @@ const GalleryPreview = () => {
       </div>
       <div className="gallery-images">
         {filteredProductos.slice(0, 6).map((producto) => (
-          <img className='img-style'
+          <img
+            className="img-style"
             key={producto.id_product}
             src={producto.url}
             alt={producto.title}

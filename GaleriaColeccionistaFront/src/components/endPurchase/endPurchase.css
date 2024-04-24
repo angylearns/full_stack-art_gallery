@@ -1,6 +1,5 @@
 .containerF {
     width: 55%;
-    /* background-color: pink; */
     color: #21577E;
     border: 1px solid;
     border-color: #f0f0f0;
@@ -103,7 +102,6 @@ input {
 
 .titleColumn {
     display: flex;
-    /* background-color: rgb(158, 241, 158); */
     text-align: left;
     gap: 5%;
 }

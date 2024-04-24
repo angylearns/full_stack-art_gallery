@@ -1,23 +1,19 @@
-.product-gallery{
-    background-color: #21577E;
-    color: #e6ecec;
-    
+.product-gallery {
+  background-color: #21577e;
+  color: #e6ecec;
 }
 
 .product-item img {
-    width: 360px;
-    height: 420px;
-    object-fit: cover; 
-} 
- 
+  width: 360px;
+  height: 420px;
+  object-fit: cover;
+}
+
 .modal-content {
-    width: 720px; /* 360px * 2 */
-    height: 840px; /* 420px * 2 */
-  
-  }
+  width: 720px;
+  height: 840px;
+}
 
 .audio-style {
-    margin-bottom: 10px;
-
-}  
-
+  margin-bottom: 10px;
+}

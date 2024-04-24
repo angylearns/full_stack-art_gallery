@@ -1,37 +1,27 @@
-import "./allArtworks.css"
+import "./allArtworks.css";
 import React, { useState, useEffect } from "react";
 import "./allArtworks.css";
 import productService from "../../services/productService";
-// import Swal from 'sweetalert2';
 
 const AllArtworks = ({ isAuthenticated }) => {
   const [productos, setProductos] = useState([]);
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
   const [arrayProduct, setArrayProduct] = useState([]);
 
-
-
   useEffect(() => {
     fetchData();
-    // Recuperar los datos de la cookie
-    const storedProductsCookie = getCookie('products');
+    const storedProductsCookie = getCookie("products");
 
     if (storedProductsCookie != null) {
       const storedProducts = JSON.parse(storedProductsCookie);
       setArrayProduct(storedProducts);
     }
-
-
-
   }, []);
 
-
-
-  // Función para obtener el valor de una cookie por su nombre
   function getCookie(name) {
-    const cookies = document.cookie.split('; ');
+    const cookies = document.cookie.split("; ");
     for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].split('=');
+      const cookie = cookies[i].split("=");
       if (cookie[0] === name) {
         return decodeURIComponent(cookie[1]);
       }
@@ -39,49 +29,31 @@ const AllArtworks = ({ isAuthenticated }) => {
     return null;
   }
 
-  // Función para establecer una cookie
   function setCookie(name, value, hoursToExpire) {
     const expirationDate = new Date();
-    //cookies caducan en una hora
-    expirationDate.setTime(expirationDate.getTime() + (hoursToExpire * 3600000));
-    const cookieValue = encodeURIComponent(value) + ((hoursToExpire) ? `; expires=${expirationDate.toUTCString()}` : '');
+    expirationDate.setTime(expirationDate.getTime() + hoursToExpire * 3600000);
+    const cookieValue =
+      encodeURIComponent(value) +
+      (hoursToExpire ? `; expires=${expirationDate.toUTCString()}` : "");
     document.cookie = `${name}=${cookieValue}; path=/`;
   }
 
   const handleSaveProduct = (product) => {
-    //si el producto ya ha sido añadido que lo indique y no lo añada de nuevo
-    // Verificar si el producto ya está presente en el array
-    const existeProducto = arrayProduct.find((p) => p.id_product === product.id_product);
-    // Si el producto no existe en el array, agrégalo
+    const existeProducto = arrayProduct.find(
+      (p) => p.id_product === product.id_product
+    );
     if (!existeProducto) {
-      setArrayProduct(prevArray => [...prevArray, product]);
-      // Swal.fire({
-      //   title: 'Comprar',
-      //   text: 'Producto agregado al carrito.',
-      //   icon: 'info',
-      //   confirmButtonText: 'Aceptar'
-      // });
+      setArrayProduct((prevArray) => [...prevArray, product]);
+
       alert("producto agregado al carrito");
     } else {
-      // Swal.fire({
-      //   title: 'Atención',
-      //   text: 'Este producto ya se encuentra en su carrito.',
-      //   icon: 'info',
-      //   confirmButtonText: 'Aceptar'
-      // });
       alert("No se puede agregar el producto, ya se encuentra en el carrito");
     }
-
   };
 
-  //guardamos el producto en local storage para que luego aparezca en la lista de la compra que es la que lo recupera
   useEffect(() => {
     if (arrayProduct.length > 0) {
-      //localStorage.setItem('products', JSON.stringify(arrayProduct));
-      // Guardar el array en la cookie
-
-      setCookie('products', JSON.stringify(arrayProduct), 1); // Guardar la cookie por 30 días
-
+      setCookie("products", JSON.stringify(arrayProduct), 1);
     }
   }, [arrayProduct]);
 
@@ -105,12 +77,6 @@ const AllArtworks = ({ isAuthenticated }) => {
     }
   };
 
-  // const handleAddToCart = (productId) => {
-  //   //PENDIENTE Lógica para añadir el producto al carrito
-  //   console.log(`Añadir producto ${productId} al carrito`);
-
-  // };
-
   const filteredProductos = productos.filter((producto) => {
     if (categoriasSeleccionadas.length === 0) {
       return true;
@@ -124,7 +90,7 @@ const AllArtworks = ({ isAuthenticated }) => {
     "Realismo Contemporaneo",
     "Arte Digital",
     "Expresionismo",
-    "Neo-Pop"
+    "Neo-Pop",
   ];
 
   return (
@@ -147,7 +113,8 @@ const AllArtworks = ({ isAuthenticated }) => {
         {filteredProductos.map((producto) => (
           <div key={producto.id_product} className="artwork-card">
             <h3>{producto.title}</h3>
-            <img className="img-style"
+            <img
+              className="img-style"
               src={producto.url}
               alt={producto.title}
               width={500}
@@ -160,13 +127,14 @@ const AllArtworks = ({ isAuthenticated }) => {
             <p>Categoría: {producto.style}</p>
 
             <button
-              className={producto.in_stock === 0 ? 'cbtn-disabled' : 'btn-add-to-cart'}
+              className={
+                producto.in_stock === 0 ? "cbtn-disabled" : "btn-add-to-cart"
+              }
               onClick={() => handleSaveProduct(producto)}
-              disabled={producto.in_stock === 0} // Expresión ternaria para deshabilitar el botón si in_stock es cero
+              disabled={producto.in_stock === 0}
             >
               Añadir al carrito
             </button>
-
           </div>
         ))}
       </div>

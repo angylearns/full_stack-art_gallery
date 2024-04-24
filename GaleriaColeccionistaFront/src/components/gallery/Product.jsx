@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./product.css";
 import productService from "../../services/productService";
-import {addProduct, updateProduct, handleEdit, deleteProduct} from "../../handlers/productHandler";
-  
- 
-  
-
+import {
+  addProduct,
+  updateProduct,
+  handleEdit,
+  deleteProduct,
+} from "../../handlers/productHandler";
 
 const Product = () => {
   const [productos, setProductos] = useState([]);
@@ -20,6 +21,7 @@ const Product = () => {
     style: "",
     id_person_fk: "2",
   });
+
   const [isEditing, setIsEditing] = useState(false);
   const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState([]);
   const formRef = useRef(null);
@@ -36,11 +38,11 @@ const Product = () => {
       console.error("Error al obtener productos:", error);
     }
   };
-  //ESTO DEBERÍA ESTAR EN CARPETA HANDLE
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      if (newProduct.id_product) { // Verifica si el producto tiene un id_product
+      if (newProduct.id_product) {
         await updateProduct(newProduct.id_product, newProduct, fetchData);
       } else {
         await addProduct(newProduct, fetchData);
@@ -62,10 +64,9 @@ const Product = () => {
     }
   };
 
-  
   const handleEditClick = (productId) => {
     handleEdit(productId, productos, setNewProduct, setIsEditing);
- };
+  };
 
   const handleDelete = async (productId) => {
     await deleteProduct(productId, fetchData);
@@ -95,8 +96,7 @@ const Product = () => {
     "Realismo Contemporaneo",
     "Arte Digital",
     "Expresionismo",
-    "Neo-Pop"
-    
+    "Neo-Pop",
   ];
 
   return (
@@ -183,17 +183,6 @@ const Product = () => {
             required
           />
 
-          {/* <label htmlFor="title">Stock:</label>
-          <input
-            type="text"
-            id="title"
-            value={newProduct.in_stock}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, in_stock: e.target.value })
-            }
-            required
-          /> */}
-
           <label htmlFor="style">Categoría de la obra:</label>
           <select
             id="style"
@@ -205,18 +194,18 @@ const Product = () => {
           >
             <option value="">Selecciona una categoría</option>
             <option value="Arte Abstracto">Arte Abstracto</option>
-            <option value="Realismo Contemporaneo">Realismo Contemporáneo</option>
+            <option value="Realismo Contemporaneo">
+              Realismo Contemporáneo
+            </option>
             <option value="Arte Digital">Arte Digital</option>
             <option value="Expresionismo">Expresionismo</option>
             <option value="Neo-Pop">Neo-Pop</option>
-            
           </select>
 
           <button className="button-add-product" type="submit">
             {isEditing ? "Actualizar Producto" : "Agregar Producto"}
           </button>
         </form>
-        
       </div>
 
       <div className="product-list">

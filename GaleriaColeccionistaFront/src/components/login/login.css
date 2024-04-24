@@ -1,261 +1,250 @@
 @media screen and (min-width: 430px) {
+  .modal {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28%;
+    height: 300px;
+  }
 
-    .modal {
-        /* padding-top: 40px; */
-        position: fixed;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 28%;
-        height: 300px;
-    }
+  .close {
+    padding-left: 90%;
+  }
 
-    .close {
-        padding-left: 90%;
-    }
+  .App {
+    height: autopx;
+    padding: 25px;
+    margin: 15px;
+    color: black;
+    background-color: #e6ecec;
+  }
 
-    .App {
+  .login {
+    width: 28px;
+  }
 
-        height: autopx;
-        padding: 25px;
-        margin: 15px;
-        color: black;
-        background-color: #E6ECEC;
-    }
-
-    .login {
-        width: 28px;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .login-title {
-        color: #21577E;
-        padding-left: 38%;
-    }
-
-
-    .usertypetext {
-        color: #21577E;
-    }
-
-    .input-login {
-        width: 200px;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
-        background-color: transparent;
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    .input-register {
-        width: 200px;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
-        background-color: transparent;
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-    }
-
-    input:focus,
-    textarea:focus,
-    select:focus {
-        outline: none;
-    }
-
-    .optionusertype {
-        margin-top: 15px;
-        border-radius: 8px;
-        width: 170px;
-        height: 40px;
-        padding-left: 10%;
-        margin-bottom: 5px;
-        font-size: 14px;
-    }
-
-    .button-submit {
-        margin-top: 15px;
-        border: none;
-        width: 135px;
-        height: 35px;
-        background-color: white;
-        border-radius: 10px;
-
-    }
-
-    .button-submit:hover {
-        background-color: #EF0B6A;
-    }
-
-    .buttonsloginlogout {
-        margin-top: 15px;
-        border: none;
-        width: 135px;
-        height: 35px;
-        background-color: white;
-        border-radius: 10px;
-    }
-
-    .buttonsloginlogout:hover {
-        background-color: #EF0B6A;
-    }
-
-    .button-register {
-        border: none;
-        width: 135px;
-        height: 35px;
-        background-color: white;
-        border-radius: 10px;
-    }
-
-    .twoblocks {
-        display: flex;
-        flex-direction: column;
-
-    }
-
-    .quetionandbutton {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        padding-top: 10px;
-    }
-
-    .questiontextregistered {
-        color: #21577E;
-        font-size: small;
-    }
-
-    .error-message {
-        color: grey;
-        font-size: 11px;
-
-    }
-}
-
-.buttons-login {
+  form {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .login-title {
+    color: #21577e;
+    padding-left: 38%;
+  }
+
+  .usertypetext {
+    color: #21577e;
+  }
+
+  .input-login {
+    width: 200px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .input-register {
+    width: 200px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: none;
+  }
+
+  .optionusertype {
+    margin-top: 15px;
+    border-radius: 8px;
+    width: 170px;
+    height: 40px;
+    padding-left: 10%;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  .button-submit {
+    margin-top: 15px;
+    border: none;
+    width: 135px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .button-submit:hover {
+    background-color: #ef0b6a;
+  }
+
+  .buttonsloginlogout {
+    margin-top: 15px;
+    border: none;
+    width: 135px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .buttonsloginlogout:hover {
+    background-color: #ef0b6a;
+  }
+
+  .button-register {
+    border: none;
+    width: 135px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .twoblocks {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quetionandbutton {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 10px;
+  }
+
+  .questiontextregistered {
+    color: #21577e;
+    font-size: small;
+  }
+
+  .error-message {
+    color: grey;
+    font-size: 11px;
+  }
+}
+
+.buttons-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 429px) {
+  .App {
+    width: 40%;
+    height: auto;
+    padding: 10px;
+    margin: 20px;
+    color: #21577e;
+    background-color: #e6ecec;
+  }
 
+  .formlogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .App {
-        width: 40%;
-        height: auto;
-        padding: 10px;
-        margin: 20px;
-        color: #21577E;
-        background-color: #E6ECEC;
-    }
+  .modal {
+    padding-top: 180px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+  }
 
-    .formlogin {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .close {
+    padding-left: 90%;
+  }
 
-    .modal {
-        padding-top: 180px;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 70%;
-    }
+  .login-title {
+    color: #21577e;
+    font-size: 15px;
+  }
 
-    .close {
-        padding-left: 90%;
-    }
+  .input-login {
+    width: 150px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    margin-left: 21%;
+  }
 
-    .login-title {
-        color: #21577E;
-        font-size: 15px;
-    }
+  .input-register {
+    width: 150px;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
 
-    .input-login {
-        width: 150px;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
-        background-color: transparent;
-        display: flex;
-        flex-direction: column;
-        /* padding: 10px; */
-        margin-left: 21%;
-    }
+  .button-submit {
+    margin-top: 15px;
+    border: none;
+    width: 135px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+  }
 
-    .input-register {
-        width: 150px;
-        border-left: 0;
-        border-right: 0;
-        border-top: 0;
-        background-color: transparent;
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-    }
+  .button-submit:hover {
+    background-color: #ef0b6a;
+  }
 
-    .button-submit {
-        margin-top: 15px;
-        border: none;
-        width: 135px;
-        height: 35px;
-        background-color: white;
-        border-radius: 10px;
-    }
+  .buttonsloginlogout {
+    margin-top: 15px;
+    border: none;
+    width: 135px;
+    height: 35px;
+    background-color: white;
+    border-radius: 10px;
+  }
 
-    .button-submit:hover {
-        background-color: #EF0B6A;
-    }
+  .buttonsloginlogout:hover {
+    background-color: #ef0b6a;
+  }
 
-    .buttonsloginlogout {
-        margin-top: 15px;
-        border: none;
-        width: 135px;
-        height: 35px;
-        background-color: white;
-        border-radius: 10px;
-    }
+  .optionusertype {
+    margin-top: 15px;
+    border-radius: 8px;
+    width: 170px;
+    height: 25px;
+    font-size: 10px;
+    padding-left: 10%;
+  }
 
-    .buttonsloginlogout:hover {
-        background-color: #EF0B6A;
-    }
+  .error-message {
+    color: grey;
+    font-size: 10px;
+  }
 
-    .optionusertype {
-        margin-top: 15px;
-        border-radius: 8px;
-        width: 170px;
-        height: 25px;
-        font-size: 10px;
-        padding-left: 10%;
-    }
+  .buttons-login {
+    display: flex;
+    flex-direction: row;
+  }
 
-    .error-message {
-        color: grey;
-        font-size: 10px;
-    }
-
-    .buttons-login {
-        display: flex;
-        flex-direction: row;
-
-    }
-
-    .twoblocks {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .twoblocks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

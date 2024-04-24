@@ -1,47 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import productService from '../../services/productService';
-import './lastProducts.css';
+import React, { useState, useEffect } from "react";
+import productService from "../../services/productService";
+import "./lastProducts.css";
 import ModalImage from "react-modal-image";
 
-
 const LastProducts = () => {
- const [recentProducts, setRecentProducts] = useState([]);
+  const [recentProducts, setRecentProducts] = useState([]);
 
- useEffect(() => {
+  useEffect(() => {
     fetchRecentProducts();
- }, []);
+  }, []);
 
- const fetchRecentProducts = async () => {
+  const fetchRecentProducts = async () => {
     try {
       const productsData = await productService.getRecentProducts();
       setRecentProducts(productsData);
     } catch (error) {
-      console.error('Error al obtener los últimos productos:', error);
+      console.error("Error al obtener los últimos productos:", error);
     }
- };
+  };
 
- return (
-    <div className='product-gallery'>
+  return (
+    <div className="product-gallery">
       <h1>Obras recién llegadas</h1>
       <div className="product-list">
         {recentProducts.map((product) => (
           <div key={product.id} className="product-item">
             <ModalImage
-             small={product.url}
-             large={product.url} 
-             alt={product.title}
+              small={product.url}
+              large={product.url}
+              alt={product.title}
             />
             <h3>{product.title}</h3>
-            <audio controls className='audio-style'>
-             <source src="/song.mp3" type="audio/mpeg" />
-             Tu navegador no soporta el elemento de audio.
+            <audio controls className="audio-style">
+              <source src="/song.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
             </audio>
           </div>
         ))}
       </div>
-      {/* <p>Clica <Link to="/Gallery">aquí</Link> para ver más obras en la galería.</p> */}
     </div>
- );
+  );
 };
 
 export default LastProducts;
