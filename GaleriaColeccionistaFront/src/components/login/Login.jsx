@@ -348,6 +348,18 @@ function Login({ isOpen, onClose, onLogin }) {
                 {newUser && (
                   <>
                     <div className="twoblocks">
+                      <select
+                        className="optionusertype"
+                        id="user_type"
+                        value={user_type}
+                        onChange={(e) => setUserType(e.target.value)}
+                        required
+                      >
+                        <option value="">Tipo de usuario</option>
+                        <option value="1">Admin</option>
+                        <option value="3">Cliente</option>
+                        <option value="2">Artista</option>
+                      </select>
                       <input
                         className="input-register"
                         type="text"
@@ -471,18 +483,6 @@ function Login({ isOpen, onClose, onLogin }) {
                   placeholder="Contraseña"
                 />
 
-                <select
-                  className="optionusertype"
-                  id="user_type"
-                  value={user_type}
-                  onChange={(e) => setUserType(e.target.value)}
-                  required
-                >
-                  <option value="">Tipo de usuario</option>
-                  <option value="1">Admin</option>
-                  <option value="3">Cliente</option>
-                  <option value="2">Artista</option>
-                </select>
                 <button type="submit" className="button-submit">
                   {newUser ? "Registrarse" : "Iniciar Sesión"}
                 </button>
