@@ -73,9 +73,11 @@ function Navbar() {
               <button className="gallery_button">GALERIA</button>
             </Link>
 
+            <Link to="/">
             <button className="home">
               <img src={home} alt="imghome" className="imghome" />
             </button>
+            </Link>
           </div>
 
           <p className="navbaruserhello">
