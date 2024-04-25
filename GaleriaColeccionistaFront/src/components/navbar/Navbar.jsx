@@ -13,6 +13,7 @@ import ShoppingCart from "../shoppingCart/ShoppingCart";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
+
 function Navbar() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [mostrarComponente, setMostrarComponente] = useState(false);
@@ -24,6 +25,31 @@ function Navbar() {
   };
 
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const cookies = document.cookie.split(';');
+    const hiName = "user_name";
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].trim();
+    if (cookie.startsWith(`${hiName}=`)) {
+      setUser (cookie.substring(hiName.length + 1));
+      
+    }
+  }
+ 
+    // const getUserNameFromCookies = () => {
+    //   const cookies = document.cookie.split(';');
+    //   for (const cookie of cookies) {
+    //     const [name, value] = cookie.split('=');
+    //     if (name === 'user_name') {
+    //       setUser(value);
+    //       break;
+    //     }
+    //   }
+    // };
+
+  //   getUserNameFromCookies();
+   }, []);
 
   const handleLogout = () => {
     Cookies.remove("user_name");
@@ -38,13 +64,13 @@ function Navbar() {
     alert("vete ya a dormir ");
   };
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const foundUser = JSON.parse(loggedInUser);
-      setUser(foundUser);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     setUser(foundUser);
+  //   }
+  // }, []);
 
   const handleLoginSuccess = (user) => {
     console.log("handleLoginSuccess " + JSON.stringify(user));
@@ -81,7 +107,7 @@ function Navbar() {
           </div>
 
           <p className="navbaruserhello">
-            {user ? `Hola, ${user.user_name}` : "¡Hola!"}
+            {user ? `Hola, ${user}` : "¡Hola!"}
           </p>
 
           <form className="navbar-form">
