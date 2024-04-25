@@ -36,19 +36,7 @@ function Navbar() {
       
     }
   }
- 
-    // const getUserNameFromCookies = () => {
-    //   const cookies = document.cookie.split(';');
-    //   for (const cookie of cookies) {
-    //     const [name, value] = cookie.split('=');
-    //     if (name === 'user_name') {
-    //       setUser(value);
-    //       break;
-    //     }
-    //   }
-    // };
 
-  //   getUserNameFromCookies();
    }, []);
 
   const handleLogout = () => {
@@ -61,16 +49,8 @@ function Navbar() {
 
     setUser(null);
     navigate("/");
-    alert("vete ya a dormir ");
+    alert("Hasta pronto!");
   };
-
-  // useEffect(() => {
-  //   const loggedInUser = localStorage.getItem("user");
-  //   if (loggedInUser) {
-  //     const foundUser = JSON.parse(loggedInUser);
-  //     setUser(foundUser);
-  //   }
-  // }, []);
 
   const handleLoginSuccess = (user) => {
     console.log("handleLoginSuccess " + JSON.stringify(user));
