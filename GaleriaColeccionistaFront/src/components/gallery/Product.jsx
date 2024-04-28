@@ -7,6 +7,7 @@ import {
   handleEdit,
   deleteProduct,
 } from "../../handlers/productHandler";
+import Cookies from "js-cookie";
 
 const Product = () => {
   const [productos, setProductos] = useState([]);
@@ -19,7 +20,7 @@ const Product = () => {
     dimensions: "",
     in_stock: "",
     style: "",
-    id_person_fk: "2",
+    id_person_fk: "",
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -28,6 +29,17 @@ const Product = () => {
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    const hiName = "id_person"; 
+    const idPerson = Cookies.get(hiName);
+    if (idPerson) {
+      setNewProduct((prevState) => ({
+        ...prevState,
+        id_person_fk: idPerson,
+      }));
+    }
   }, []);
 
   const fetchData = async () => {
@@ -139,7 +151,7 @@ const Product = () => {
             <img
               src={newProduct.url}
               alt="Previsualización de la imagen"
-              style={{ maxWidth: "20%", height: "200px" }}
+              style={{ width: "200px", height: "200px" }}
             />
           )}
           <label htmlFor="title">Título:</label>
