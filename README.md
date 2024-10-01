@@ -1,5 +1,5 @@
 # Galeria-del-Coleccionista
-![Imagen portada](./GaleriaColeccionistaFront/src/images/Group%203.png)![Texto galería](./GaleriaColeccionistaFront/src/components/hero/images/imageHero.svg)
+![Art gallery](https://github.com/user-attachments/assets/3a2fe65a-b23e-4bcb-8521-b61033ffecd6)
 
 
 
@@ -18,6 +18,7 @@ Para los artistas, la Galería del Coleccionista representa una oportunidad inva
 
 ## Funcionalidades Principales
 ### Tipos de Usuarios
+
 1. **Administrador (admin):**
    - Gestiona artistas y clientes.
    - Inserta, modifica, elimina y consulta información de artistas y clientes.
